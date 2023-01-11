@@ -1,0 +1,30 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: docs/intro
+options:
+  numbered: false
+
+parts:
+- caption: TRACE Overview
+  chapters:
+  - file: docs/overview
+  - file: docs/elements
+#  - file: questions
+  - file: docs/barriers
+  - file: docs/usecases
+  - file: docs/glossary
+  - file: docs/about
+  - file: docs/acknowledgements
+- caption: TRACE Specifications
+  chapters:
+  - file: docs/specifications
+  - file: docs/specifications/trace-certificate/0.1/index
+  - file: docs/specifications/tro/0.1/index
+- caption: TRACE Infrastructure
+  chapters:
+  - file: docs/trace-toolkit
+  - file: docs/slurm-plugin
+  - file: docs/wholetale-integration
+  - file: docs/skope-integration
