@@ -1,6 +1,9 @@
 # Overview
 
-TRACE is developing three separate specifications:
+At the core of the TRACE project is a conceptual model and technical
+specification for formally describing TRACE Systems and TROs. TROs are an
+extension of the research object concept.
+
 
 * [System Certificate Specification](system-certificate-spec): Technical specification for TRACE
   System certificates. Provide authoritative
