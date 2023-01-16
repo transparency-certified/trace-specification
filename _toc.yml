@@ -11,6 +11,7 @@ parts:
   chapters:
   - file: docs/overview
   - file: docs/elements
+  - file: docs/users
 #  - file: questions
   - file: docs/barriers
   - file: docs/usecases
@@ -20,10 +21,12 @@ parts:
 - caption: TRACE Specifications
   chapters:
   - file: docs/specifications
+  - file: docs/conceptual-model
   - file: docs/specifications/trace-certificate/0.1/index
   - file: docs/specifications/tro/0.1/index
 - caption: TRACE Infrastructure
   chapters:
+  - file: docs/infrastructure
   - file: docs/trace-toolkit
   - file: docs/slurm-plugin
   - file: docs/wholetale-integration
