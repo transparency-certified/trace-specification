@@ -14,7 +14,7 @@ employed by system owners to:
 
 At the core of the TRACE model is the Transparency-Certified System (TRACE
 System).  We consider a TRACE System to be any structured
-process that can be used to generate TRO (described below). This may be a
+process that can be used to generate a [TRO](element-tro). This may be a
 specific computational platform; a special queue in a job scheduling system; or
 a person-centric documented workflow. The purpose of the TRACE System is to
 certify that a computational workflow was executed and to convey details about
@@ -34,8 +34,8 @@ owner and supported by the system owner's reputation.
 (element-tro)=
 ## Transparency-Certified Research Objects (TRO)
 
-TRACE Systems produce [Transparency-Certified Research Objects](element-tro),
-which can be
+TRACE Systems produce Transparency-Certified Research Objects (TROs) which can
+be used for dissemination and review. 
 
 A TRO is an aggregation of computational research artifacts, records of their
 execution within a particular system, technical metadata about their contents,
