@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>TRACE Users and Roles &#8212; Transparency Certified</title>
+    <title>Personas in TRACE &#8212; Transparency Certified</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -124,7 +124,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   TRACE Users and Roles
+   Personas in TRACE
   </a>
  </li>
  <li class="toctree-l1">
@@ -132,9 +132,46 @@ const thebe_selector_output = ".output, .cell_output"
    Barriers to Transparency
   </a>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="case-profiles.html">
+   Case Studies
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/rdc.html">
+     Research Data Centers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/bplim.html">
+     Banco de Portugal
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/twitter.html">
+     Twitter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/ipums.html">
+     IPUMS
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/campus-cluster.html">
+     Campus Cluster
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="usecases.html">
-   Use Cases
+  <a class="reference internal" href="examples.html">
+   Examples
   </a>
  </li>
  <li class="toctree-l1">
@@ -162,6 +199,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="specifications.html">
    Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="questions.html">
+   Transparency Questions
   </a>
  </li>
  <li class="toctree-l1">
@@ -333,7 +375,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>TRACE Users and Roles</h1>
+                <h1>Personas in TRACE</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -345,50 +387,32 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="trace-users-and-roles">
-<span id="trace-users"></span><h1>TRACE Users and Roles<a class="headerlink" href="#trace-users-and-roles" title="Permalink to this headline">#</a></h1>
-<p>We consider the following to be the primary users or roles of TRACE.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="personas-in-trace">
+<span id="trace-users"></span><h1>Personas in TRACE<a class="headerlink" href="#personas-in-trace" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p><strong>Research producer (U1)</strong>. The scientist (or team) who conducts research
-using a computational platform/system.</p></li>
-<li><p><strong>System owner (U2)</strong>. The owner of a computational platform or system within which
-computational research is conducted. In general, U2 need not be distinct from
-U1 (for example, if the system is the researcher’s laptop), but for the
-purposes of this project will be expressly assumed to be a third party not
-directly involved in the research conducted by U1. For example: Whole Tale,
-campus research cluster, or journal reproducibility  verification procedures.</p></li>
-<li><p><strong>Research Consumer (U3)</strong>. Has an interest in knowing if the research can be
-trusted and specifically whether and how research artifacts were actually
-used to obtain results. Consumes (reads, reuses) outcomes of research
-(articles, data) and in this model, signals of its transparency and
-reliability (certificates).</p></li>
-<li><p><strong>Research Intermediaries or Platforms (U4)</strong>. Intermediate between U1 and U3
-and have or support policies concerning the integrity, transparency, and
-reproducibility of computational results. For example: journals, data portals,
-science gateways, working paper archives, statistical agencies, research data
-repositories.</p></li>
-<li><p><strong>Research Verifier (U5)</strong>. Evaluates computational research artifacts for
-conformance with policies established by U4, potentially including repeating
-computations to verify reported results. In the context of this model, U2, U3,
-U4 could be verifiers. For U3 and U4 acting as verifiers, verification is a
-costly ex-post process of repeating computational analysis. Since U1 and U2
-are the originators of computational analysis, they are generally not in the
-role of U5. Examples: LDI, Odum, or the Certification Agency for Scientific
-Code and Data (cascad).</p></li>
-<li><p><strong>System auditor (U6)</strong>. An expert with respect to research transparency who
-needs to be able to verify the transparency qualities asserted by U2 via a TRACE
-certificate.</p></li>
+<li><p><strong>Author/Researcher</strong>. A researcher creates the original (quantitative)
+resaerch, selecting data to analyze and creating software or code to conduct
+the analysis. The research benefits from the TRACE system since they do not
+need to understand the transparency characteristics of the platform they are
+using and are assured compliance with transparency and reproducibility
+policies.</p></li>
+<li><p><strong>TRACE Producer</strong>. A TRACE producer is involved in provisioning data and
+computational resources for researchers. On behalf of the researcher, the
+TRACE producer verifies that the computations underlying the researcher’s
+analysis are reliably performed, without the researcher intervening in the
+creation of final output products. A TRACE producer may be involved in the
+original computation (the final “production” run”) or after the researcher has
+made a replication package available (for exampe, to a journal). Our primary
+focus is the feasibility of the first scenario, but the second scenario is
+fully consistent with this approach.</p></li>
+<li><p><strong>TRACE consumer</strong>. A TRACE consumer is an individual or organization
+wishing to query the authenticity and reliability of the research stemming
+from a replication package. In particular, the TRACE consumer wishes to identify
+if the researcher may have manipulated the output results, whether the original
+data, if it cannot be published, was actually used. In doing so, the TRACE
+consumer will wish to ascertain aspects of the Trusted Research Object (TRO),
+such as its integrity, and aspects of the system which produced the TRO.</p></li>
 </ul>
-<p>A central goal of TRACE is to address how system owners (U2) can be efficient
-and trusted “verifiers” in the sense of ensuring the transparency of
-computational research executed within their system.  This is efficient because
-U2 does not need to repeat the computational analysis, reducing the burden on U1
-to conform to community or journal policies as well as the burden on U3, U4, and
-U5 to assess the integrity of computational artifacts. U2 will be trusted by
-adopting the TRACE model, which provides them with the tools to convey that the
-original computation was conducted in a repeatable way; that the computational
-artifacts used can be packaged or well-described; and that computational results
-can be reproduced with a very high likelihood.</p>
 </section>
 
     <script type="text/x-thebe-config">

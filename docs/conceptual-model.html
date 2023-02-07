@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="System Certificate Specification 0.1" href="specifications/trace-certificate/0.1/index.html" />
-    <link rel="prev" title="Overview" href="specifications.html" />
+    <link rel="prev" title="Transparency Questions" href="questions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,7 +124,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="users.html">
-   TRACE Users and Roles
+   Personas in TRACE
   </a>
  </li>
  <li class="toctree-l1">
@@ -132,9 +132,46 @@ const thebe_selector_output = ".output, .cell_output"
    Barriers to Transparency
   </a>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="case-profiles.html">
+   Case Studies
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/rdc.html">
+     Research Data Centers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/bplim.html">
+     Banco de Portugal
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/twitter.html">
+     Twitter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/ipums.html">
+     IPUMS
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="case-profiles/campus-cluster.html">
+     Campus Cluster
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="usecases.html">
-   Use Cases
+  <a class="reference internal" href="examples.html">
+   Examples
   </a>
  </li>
  <li class="toctree-l1">
@@ -162,6 +199,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="specifications.html">
    Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="questions.html">
+   Transparency Questions
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -321,12 +363,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signature">
+   Signature
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#circle-of-trust">
+   Circle of Trust
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-workflow">
+   TRACE Workflow
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -338,6 +414,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signature">
+   Signature
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#circle-of-trust">
+   Circle of Trust
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-workflow">
+   TRACE Workflow
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -347,6 +446,15 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="conceptual-model">
 <span id="id1"></span><h1>Conceptual Model<a class="headerlink" href="#conceptual-model" title="Permalink to this headline">#</a></h1>
+<section id="signature">
+<h2>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="circle-of-trust">
+<h2>Circle of Trust<a class="headerlink" href="#circle-of-trust" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="trace-workflow">
+<h2>TRACE Workflow<a class="headerlink" href="#trace-workflow" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -376,11 +484,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="specifications.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="questions.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Overview</p>
+            <p class="prev-next-title">Transparency Questions</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="specifications/trace-certificate/0.1/index.html" title="next page">
