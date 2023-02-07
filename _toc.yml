@@ -12,15 +12,22 @@ parts:
   - file: docs/overview
   - file: docs/elements
   - file: docs/users
-#  - file: questions
   - file: docs/barriers
-  - file: docs/usecases
+  - file: docs/case-profiles
+    sections:
+    - file: docs/case-profiles/rdc
+    - file: docs/case-profiles/bplim
+    - file: docs/case-profiles/twitter
+    - file: docs/case-profiles/ipums
+    - file: docs/case-profiles/campus-cluster
+  - file: docs/examples
   - file: docs/glossary
   - file: docs/about
   - file: docs/acknowledgements
 - caption: TRACE Specifications
   chapters:
   - file: docs/specifications
+  - file: docs/questions
   - file: docs/conceptual-model
   - file: docs/specifications/trace-certificate/0.1/index
   - file: docs/specifications/tro/0.1/index
