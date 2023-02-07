@@ -9,6 +9,7 @@ options:
 parts:
 - caption: TRACE Overview
   chapters:
+  - file: docs/motivation
   - file: docs/overview
   - file: docs/elements
   - file: docs/users
