@@ -24,3 +24,23 @@
   consumer will wish to ascertain aspects of the Trusted Research Object (TRO),
   such as its integrity, and aspects of the system which produced the TRO.
 
+
+# Examples of personas (hypothetical)
+
+* Census Bureau/Statistics Canada/German IAB/Bank of Portugal might act as TRACE
+  producer for researchers in the (FS)RDC. Journals, other researchers, and the
+  public are TRACE consumers, wishing to assess the veracity of the research
+  produced using data that cannot be accessed easily or at all.
+* A journal data editor might also act as TRACE producer of articles conditionally
+  accepted, submitted by authors. 
+* A university IT infrastructure, or a national IT infrastructure (XSEDE) might
+  serve as a TRACE producer for its researchers, for instance, when data can be
+  stored on campus infrastructure subject to NDA, making available a special job
+  queue on their high-performance compute clusters.
+* A platform such as Whole Tale or CodeOcean might act as a TRACE producer for
+  users.
+* A journal data editor or peer reviewer might act as a TRACE consumer,
+  assessing the conformance of research conducted on a TRACE system to 
+  transparency and reproducibility policies.
+* Other researchers, replicators, and the broader scientific community  are also
+  TRACE consumers.
