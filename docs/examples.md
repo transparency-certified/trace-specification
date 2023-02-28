@@ -21,10 +21,12 @@ Berger, David, Kyle Herkenhoff, and Simon Mongey. 2022. "Labor Market Power."
 American Economic Review 112(4): 1147–93. [Replication
 package](https://doi.org/10.3886/E154241V2)
 * Uses confidential [Census data](caseprofile-rdc), passed disclosure avoidance review
+
 Yeh, Chen, Claudia Macaluso, and Brad Hershbein. 2022. "Monopsony in the US
 Labor Market." American Economic Review 112(7): 2099–2138.
 [Paper](https://www.aeaweb.org/articles?id=10.1257/aer.20200025) [Replication
 package](https://doi.org/10.3886/E162581V1)
+
 * Uses confidential [Census data](caseprofile-rdc), passed disclosure avoidance review
 
 
