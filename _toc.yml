@@ -11,7 +11,6 @@ parts:
   chapters:
   - file: docs/motivation
   - file: docs/overview
-  - file: docs/elements
   - file: docs/users
   - file: docs/barriers
   - file: docs/case-profiles
@@ -21,10 +20,12 @@ parts:
     - file: docs/case-profiles/twitter
     - file: docs/case-profiles/ipums
     - file: docs/case-profiles/campus-cluster
+    - file: docs/case-profiles/whole-tale
   - file: docs/examples
   - file: docs/glossary
   - file: docs/about
   - file: docs/acknowledgements
+  - file: docs/references
 - caption: TRACE Specifications
   chapters:
   - file: docs/specifications
@@ -39,3 +40,6 @@ parts:
   - file: docs/slurm-plugin
   - file: docs/wholetale-integration
   - file: docs/skope-integration
+- caption: TRACE Development
+  chapters:
+  - file: docs/dev/signing
