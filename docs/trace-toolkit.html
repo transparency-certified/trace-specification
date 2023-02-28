@@ -189,6 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
    Acknowledgements
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -251,6 +256,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="skope-integration.html">
    SKOPE Integration
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  TRACE Development
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dev/signing.html">
+   Signing
   </a>
  </li>
 </ul>
@@ -363,12 +380,58 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-cli">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     trace-cli
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-bdbag">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     trace-bdbag
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-server">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     trace-server
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -380,6 +443,41 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-cli">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     trace-cli
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-bdbag">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     trace-bdbag
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trace-server">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     trace-server
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -389,6 +487,31 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="trace-toolkit">
 <h1>TRACE Toolkit<a class="headerlink" href="#trace-toolkit" title="Permalink to this headline">#</a></h1>
+<p>The TRACE toolkit is a Python library/package that implements the TRACE
+specification.</p>
+<section id="trace-cli">
+<h2><code class="docutils literal notranslate"><span class="pre">trace-cli</span></code><a class="headerlink" href="#trace-cli" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">trace-cli</span></code> supports:</p>
+<ul class="simple">
+<li><p>Submit</p></li>
+<li><p>Inspect</p></li>
+<li><p>Verify</p></li>
+</ul>
+</section>
+<section id="trace-bdbag">
+<h2><code class="docutils literal notranslate"><span class="pre">trace-bdbag</span></code><a class="headerlink" href="#trace-bdbag" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">trace-bdbag</span></code> package:</p>
+<ul class="simple">
+<li><p>Create and sign TRO</p></li>
+</ul>
+</section>
+<section id="trace-server">
+<h2><code class="docutils literal notranslate"><span class="pre">trace-server</span></code><a class="headerlink" href="#trace-server" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">trace-server</span></code>:</p>
+<ul class="simple">
+<li><p>Expansion of the proof-of-concept for containerized execution not based on WT.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

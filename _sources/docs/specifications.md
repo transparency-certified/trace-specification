@@ -6,13 +6,15 @@ extension of the research object concept. These specifications are designed to
 systematically answer questions about TROs and the TRACE Systems that generate
 them.
 
+This section includes the following:
+
 * [Transparency Questions](questions): Questions that the TRACE specifications
   are intended to help answer.
 * [Conceptual Model](conceptual-model): The high-level TRACE conceptual model.
 * [System Certificate Specification](system-certificate-spec): Technical
   specification for TRACE System certificates. Provide authoritative information
-  about the system in which computations were executed.  Transparent Research
-* Object Specification (TRO): Technical specification for TROs. An extension and
+  about the system in which computations were executed.  
+* Transparent Research Object Specification (TRO): Technical specification for TROs. An extension and
   clarification of the Research Object contept.
 * <a  href="../specifications/0.1/doc/index-en.html"
   target="_blank">Transparent Research Object Vocabulariy (TROV)</a>: Controlled vocabularly for TROs

@@ -189,6 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
    Acknowledgements
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -251,6 +256,18 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="skope-integration.html">
    SKOPE Integration
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  TRACE Development
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dev/signing.html">
+   Signing
   </a>
  </li>
 </ul>
@@ -386,18 +403,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#signature">
-   Signature
+  <a class="reference internal nav-link" href="#transparency-certified-system-trace-system">
+   Transparency-Certified System (TRACE System)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#circle-of-trust">
-   Circle of Trust
+  <a class="reference internal nav-link" href="#trace-system-certificate">
+   TRACE System Certificate
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#trace-workflow">
-   TRACE Workflow
+  <a class="reference internal nav-link" href="#transparency-certified-research-objects-tro">
+   Transparency-Certified Research Objects (TRO)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#digital-signature">
+   Digital signature
   </a>
  </li>
 </ul>
@@ -420,18 +442,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#signature">
-   Signature
+  <a class="reference internal nav-link" href="#transparency-certified-system-trace-system">
+   Transparency-Certified System (TRACE System)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#circle-of-trust">
-   Circle of Trust
+  <a class="reference internal nav-link" href="#trace-system-certificate">
+   TRACE System Certificate
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#trace-workflow">
-   TRACE Workflow
+  <a class="reference internal nav-link" href="#transparency-certified-research-objects-tro">
+   Transparency-Certified Research Objects (TRO)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#digital-signature">
+   Digital signature
   </a>
  </li>
 </ul>
@@ -446,14 +473,76 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="conceptual-model">
 <span id="id1"></span><h1>Conceptual Model<a class="headerlink" href="#conceptual-model" title="Permalink to this headline">#</a></h1>
-<section id="signature">
-<h2>Signature<a class="headerlink" href="#signature" title="Permalink to this headline">#</a></h2>
+<p>The TRACE project is developing a set of infrastructure elements that can be
+used by system owners to:</p>
+<ol class="simple">
+<li><p>declare the dimensions of computational transparency supported by their
+platform;</p></li>
+<li><p>certify that a specific computational workflow was executed on the platform; and</p></li>
+<li><p>bundle artifacts along records of their execution and certify them for
+dissemination.</p></li>
+</ol>
+<p>TRACE will result in a specification as well as a reference software
+implementation based on the conceptual model described here.</p>
+<figure class="align-default" id="trace-overview">
+<img alt="../_images/trace-overview-flowchart.png" src="../_images/trace-overview-flowchart.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">TRACE System Overview</span><a class="headerlink" href="#trace-overview" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>At the core of the TRACE model is the <a class="reference internal" href="#element-trace-system"><span class="std std-ref">Transparency-Certified
+System</span></a> or TRACE System. TRACE systems are responsible for
+the execution of computational workflows on behalf of researchers where
+guaranteeing the transparency of results is important. TRACE system owners
+maintain a structured document, the <a class="reference internal" href="#element-trace-certificate"><span class="std std-ref">TRACE System
+Certificate</span></a>, that specifies how transparency is
+supported by the system and a signing key associated with the certificate. TRACE
+systems execute computational workflows, possibly collecting runtime and
+computational provenance information, and produce a <a class="reference internal" href="#element-tro"><span class="std std-ref">Transparent Research
+Object</span></a> (TRO). TROs are a collection of computational
+artifacts (inputs, outputs, code, environment) along with records of their
+execution with the system, <a class="reference internal" href="#element-signature"><span class="std std-ref">signed</span></a> by the system within
+which they were executed.</p>
+<section id="transparency-certified-system-trace-system">
+<span id="element-trace-system"></span><h2>Transparency-Certified System (TRACE System)<a class="headerlink" href="#transparency-certified-system-trace-system" title="Permalink to this headline">#</a></h2>
+<p>A TRACE system is any structured process that can be used to generate a
+<a class="reference internal" href="#element-tro"><span class="std std-ref">TRO</span></a> including a specific computational platform; a special queue
+on a job scheduling system; or a person-centric documented workflow. The purpose
+of the TRACE system is to certify that a computational workflow was executed and
+to communicate details about how the system ensures the transparency of results.</p>
 </section>
-<section id="circle-of-trust">
-<h2>Circle of Trust<a class="headerlink" href="#circle-of-trust" title="Permalink to this headline">#</a></h2>
+<section id="trace-system-certificate">
+<span id="element-trace-certificate"></span><h2>TRACE System Certificate<a class="headerlink" href="#trace-system-certificate" title="Permalink to this headline">#</a></h2>
+<p>A TRACE System Certificate is a structured document that describes how TROs are
+produced by a TRACE System and how the system ensures results transparency and
+reproducibility. It includes the following information:</p>
+<ul class="simple">
+<li><p>Assertions about supported transparency levels and features (see
+<a class="reference internal" href="questions.html#questions"><span class="std std-ref">transparency questions</span></a>).</p></li>
+<li><p>Links to relevant versions of organizational policy and workflow documentation.</p></li>
+<li><p>Public key of a digital signature used to sign TROs.</p></li>
+</ul>
 </section>
-<section id="trace-workflow">
-<h2>TRACE Workflow<a class="headerlink" href="#trace-workflow" title="Permalink to this headline">#</a></h2>
+<section id="transparency-certified-research-objects-tro">
+<span id="element-tro"></span><h2>Transparency-Certified Research Objects (TRO)<a class="headerlink" href="#transparency-certified-research-objects-tro" title="Permalink to this headline">#</a></h2>
+<p>TRACE Systems produce Transparency-Certified Research Objects (TROs) which can
+be used for dissemination and review.</p>
+<p>A TRO is an aggregation of computational research artifacts, records of their
+execution within a particular system, technical metadata about their contents,
+digitally signed by the system within which they are executed. The central
+purpose of a TRO is to provide a trustworthy record of computations used to
+obtain results, eliminating the need for verification through repeating
+computations. TROs are produced by TRACE Systems and may be consumed by other
+researchers, replicators, or reviewers. The TRO will be signed by the system
+owner using a digital signature. The integrity of the TRO can be verified using
+the affixed signature.</p>
+</section>
+<section id="digital-signature">
+<span id="element-signature"></span><h2>Digital signature<a class="headerlink" href="#digital-signature" title="Permalink to this headline">#</a></h2>
+<p>A TRACE system owner maintains a signing key or certificate used to digitally
+sign TROs created by the system. The signature can be used to verify that a TRO
+was generated by a specific TRACE system. See the <a class="reference internal" href="dev/signing.html#signing"><span class="std std-ref">Signing</span></a> for a
+technical discussion of implementation options.</p>
 </section>
 </section>
 

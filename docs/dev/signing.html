@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>IPUMS &#8212; Transparency Certified</title>
+    <title>Signing &#8212; Transparency Certified</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Campus Cluster" href="campus-cluster.html" />
-    <link rel="prev" title="Twitter" href="twitter.html" />
+    <link rel="prev" title="SKOPE Integration" href="../skope-integration.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,7 +110,7 @@ const thebe_selector_output = ".output, .cell_output"
   TRACE Overview
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../motivation.html">
    Motivation
@@ -132,38 +131,38 @@ const thebe_selector_output = ".output, .cell_output"
    Barriers to Transparency
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../case-profiles.html">
    Case Studies
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="rdc.html">
+    <a class="reference internal" href="../case-profiles/rdc.html">
      Research Data Centers
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="bplim.html">
+    <a class="reference internal" href="../case-profiles/bplim.html">
      Banco de Portugal
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="twitter.html">
+    <a class="reference internal" href="../case-profiles/twitter.html">
      Twitter
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../case-profiles/ipums.html">
      IPUMS
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="campus-cluster.html">
+    <a class="reference internal" href="../case-profiles/campus-cluster.html">
      Campus Cluster
     </a>
    </li>
@@ -264,9 +263,9 @@ const thebe_selector_output = ".output, .cell_output"
   TRACE Development
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../dev/signing.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Signing
   </a>
  </li>
@@ -343,7 +342,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/docs/case-profiles/ipums.md"
+        <a href="../../_sources/docs/dev/signing.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -380,23 +379,100 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gpg-wot-v-x-509-ca">
+   GPG/WOT v. X.509/CA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gnupg-gpg">
+   GnuPG (GPG)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x-509">
+   X.509
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-considerations">
+   Other considerations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#worth-noting">
+   Worth noting
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>IPUMS</h1>
+                <h1>Signing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gpg-wot-v-x-509-ca">
+   GPG/WOT v. X.509/CA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gnupg-gpg">
+   GnuPG (GPG)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x-509">
+   X.509
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-considerations">
+   Other considerations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#worth-noting">
+   Worth noting
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -404,22 +480,115 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="ipums">
-<span id="caseprofile-ipums"></span><h1>IPUMS<a class="headerlink" href="#ipums" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://ipums.org">IPUMS</a> is a service of the Minnesota Population Center that
-provides integrated census and survey data from around the world. IPUMS
-maintains nine different data products including IPUMS USA and IPUMS CPS, widely
-used in social science research.  Researchers typically create custom extracts
-using the IPUMS webiste or API (beta), but the extracts are subject to licenses
-that restrict or prohibit redistribution. Additionally, the underlying data
-products are subject to change over time, so there is no guarantee that a future
-replicator will obtain the same extract using the original author’s query.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="signing">
+<span id="id1"></span><h1>Signing<a class="headerlink" href="#signing" title="Permalink to this headline">#</a></h1>
+<p>Signing TROs in TRACE can be implemented using any digital signature mechanism.
+The basic requirements for signing TROs are integrity (the TRO is what it is),
+non-repudiability (the signer cannot deny that they signed it). The signature
+mechanism determines how TROs are verified and TRACE is concerned with verifying
+the signature at the time of TRO creation even if the signing key/certificate
+has expired or been revoked/invalidated.  We have considered initially using
+<a class="reference internal" href="#signing-gpg"><span class="std std-ref">GPG</span></a> with possible future support for <a class="reference internal" href="#signing-x509"><span class="std std-ref">X.509
+certificates</span></a>.</p>
+<p>A key difference between these two approaches is the underlying trust model.
+In public key infrastructure (PKI), trust models define how the authenticity of
+the binding between a key and its owner is determined. GPG implements a
+decentralized trust model called the web of trust (WOT) and X.509 implements a
+centralized trust model based on a heirarchy of certificate authorities (CA). In the
+WOT model, the authenticity of keys is determined by a network of individuals who
+endorse or sign the key. In the CA model, a centralized authority is responsible for
+vetting identities.</p>
+<p>We can envision TRACE working in either way. Producers and consumers of TROs can
+form a WOT, endorsing each others’ keys. Similarly, producers and consumers of
+TROs can rely on third-party CAs. Both GPG and X.509 technologies are mature,
+well-documented, and ubiquitous.</p>
+<section id="gpg-wot-v-x-509-ca">
+<h2>GPG/WOT v. X.509/CA<a class="headerlink" href="#gpg-wot-v-x-509-ca" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>IPUMS USA: Full Count data may not be redistributed. Sample data may be
-published to meet journal requirements.</p></li>
-<li><p>IPUMS CPS: Subsets of data may be published to meet journal requirements.</p></li>
-<li><p>IPUMS International: Redistribution is prohibited.</p></li>
+<li><p>X.509 can be used to verify an organization or individual. GPG is intended to
+verify an individual and is bound only to an email address.</p></li>
+<li><p>GPG trust levels are private, specific to the individual, and often hard to
+understand. Similarly with GPG validity.</p></li>
+<li><p>Once sent to a keyserver, GPG keys can never been deleted but can be revoked.</p></li>
+<li><p>GPG keyrings can be maintained by individuals or shared.</p></li>
+<li><p>Keys may be revoked, compromised, or expire</p></li>
 </ul>
+</section>
+<section id="gnupg-gpg">
+<span id="signing-gpg"></span><h2>GnuPG (GPG)<a class="headerlink" href="#gnupg-gpg" title="Permalink to this headline">#</a></h2>
+<p>GNU Privacy Guard (GPG) is an open-source implementation of the OpenPGP
+standard (<a class="reference external" href="https://www.ietf.org/rfc/rfc4880.txt">RFC 4880</a>). PGP is intended to
+provide data integrity services via encryption, compression, and digital
+signatures. For the purpose of TRACE, we are interested in the GPG digital
+signature and key management capabilities.</p>
+<p>Use case: A TRACE system owner generates a GPG key that represents the identity
+of the TRACE system. A given system may have only one signing key. The system
+owner distributes their signing key by publishing to a public keyserver (or
+possibly a shared keyring maintained by the TRACE community). Other stakeholders
+in the TRACE community validate the system owner’s key via the WOT model by
+signing the key. The system owner’s key can be used to validate TROs signed
+using the specific key.</p>
+</section>
+<section id="x-509">
+<span id="signing-x509"></span><h2>X.509<a class="headerlink" href="#x-509" title="Permalink to this headline">#</a></h2>
+<p>X.509 is a standard defining the format of public key certificates used in a
+variety of encryption and digital signature applications. X.509 certificates are
+commonly used for encryption of client-server communications (e.g., TLS/SSL,
+HTTPS) and electronic signatures (code signing, email signing, document
+signing). The X.509 standard includes the ability to specify the purpose of a
+certificate and that certificates must not be used for any other purpose than
+those specified (e.g., server authentication, client authentication, code
+signing, email protection, and timestamping).</p>
+<p>There are two types of certificates: certificate authority (CA) or end-entity. A
+CA certificate may be an intermediate or root certificate and can be used to
+issue other certificates. End-entity certificates must either be self-signed or
+signed by a CA. Certificates may identify individuals, organizations, or
+domains. A TRACE System would use an end-entity certificate.</p>
+<p>X.509 defines certificate revocation lists to distribute information about
+certificates deemed invalid by a signing authority. This may include
+intermediate certificates. The CILogon service provides free “end entity
+certificates” based on individual user authentiaction. These can be used only
+for SSL client authentication and S/MIME signing/encryption.</p>
+<p>Code Signing certificates are typically used to assert the identity of a party
+responsible for the creation of executable code and are therefore not applicable
+to the TRACE system, since the TRACE system is responsible only for a record of
+the execution of code created by an author. Code Signing certificates are not
+free due to the process required to ensure an individual or organization’s
+identity. For academic software, code signing certificates are often issued only
+at the institutional level.</p>
+</section>
+<section id="other-considerations">
+<h2>Other considerations<a class="headerlink" href="#other-considerations" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Attached v detached signatures: Signatures may be either attached or detached.
+For zip archives, attached signatures can be embedded in comment blocks or
+included metadata files. For detached signatures, the signature file must be
+distributed with the TRO.</p></li>
+<li><p>Certificate validation and timestamping: TRACE validation is concerned with
+whether the signature was valid at the time of signing.</p></li>
+<li><p>Multiple signatures: Systems like Cosign support multiple signatures.</p></li>
+<li><p>Certificate compromise, expiration, revocation</p></li>
+</ul>
+</section>
+<section id="worth-noting">
+<h2>Worth noting<a class="headerlink" href="#worth-noting" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>GitHub allows users to <a class="reference external" href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">sign
+commits</a>
+using GPG, SSH, or S/MIME.</p></li>
+<li><p>Java’s jarsigner was a common approach to signing zip archives using X.509
+certificates.</p></li>
+<li><p>Debian developers must identify themselves by providing an OpenGPG key that is
+signed by at least two existing members of the project
+(<a class="reference external" href="https://wiki.debian.org/DebianKeyring">DebianKeyring</a>).</p></li>
+<li><p>Android’s original apksigner was an extension of jarsigner (<a class="reference external" href="https://www.theseus.fi/bitstream/handle/10024/155717/horn_klaus.pdf">Code Signing Android and iOS
+Applications</a>)</p></li>
+<li><p><a class="reference external" href="https://github.com/sigstore/cosign">Cosign</a> can sign any artifact pushed to
+an OCI registry and supports multiple signatures.</p></li>
+<li><p><a class="reference external" href="https://wiki.debian.org/SecureApt">SecureApt</a> and other package managers
+distribute keyrings.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -435,7 +604,7 @@ published to meet journal requirements.</p></li>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs/case-profiles"
+            path: "./docs/dev"
         },
         predefinedOutput: true
     }
@@ -449,19 +618,12 @@ published to meet journal requirements.</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="twitter.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../skope-integration.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Twitter</p>
+            <p class="prev-next-title">SKOPE Integration</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="campus-cluster.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Campus Cluster</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
