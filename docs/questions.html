@@ -123,11 +123,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="elements.html">
-   TRACE Elements
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="users.html">
    Personas in TRACE
   </a>
@@ -498,6 +493,13 @@ sources:</p>
 party?</p></li>
 <li><p>Is information about dynamically retrieved inputs included in the TRO?</p></li>
 </ul>
+<p>These questions require that the TRO also contain:</p>
+<ul class="simple">
+<li><p>A complete list of inputs regardless of whether they are excluded or
+dynamically loaded.</p></li>
+<li><p>Metadata about the inputs to support future identification and use (such as
+path, filename, hash, or persistent identifier)</p></li>
+</ul>
 <p><strong>Have the inputs been modified?</strong></p>
 <p>It is also possible that an input may be modified or removed by a TRACE system
 workflow during execution. An example of this is disclosure avoidance processes.</p>
@@ -525,7 +527,8 @@ in the TRO?</p></li>
 </section>
 <section id="questions-about-outputs">
 <h2>Questions about Outputs:<a class="headerlink" href="#questions-about-outputs" title="Permalink to this headline">#</a></h2>
-<p>Research transparency and reproducibility requires access to the {term}<code class="docutils literal notranslate"><span class="pre">outputs</span> <span class="pre">&lt;Output&gt;</span></code> associated with reported results.</p>
+<p>Research transparency and reproducibility requires access to the <a class="reference internal" href="glossary.html#term-Output"><span class="xref std std-term">outputs</span></a>
+associated with reported results.</p>
 <p><strong>Are all outputs included in a TRO?</strong></p>
 <ul class="simple">
 <li><p>If outputs may be excluded, are they retained, identifiable, and accessible by
