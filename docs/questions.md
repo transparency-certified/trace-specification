@@ -29,6 +29,12 @@ sources:
   party?
 * Is information about dynamically retrieved inputs included in the TRO?
 
+These questions require that the TRO also contain:
+* A complete list of inputs regardless of whether they are excluded or
+  dynamically loaded.
+* Metadata about the inputs to support future identification and use (such as
+  path, filename, hash, or persistent identifier)
+
 **Have the inputs been modified?**
 
 It is also possible that an input may be modified or removed by a TRACE system 
@@ -54,8 +60,8 @@ include:
 
 ## Questions about Outputs:
 
-Research transparency and reproducibility requires access to the {term}`outputs
-<Output>` associated with reported results. 
+Research transparency and reproducibility requires access to the {term}`outputs <Output>` 
+associated with reported results. 
 
 **Are all outputs included in a TRO?**
 
