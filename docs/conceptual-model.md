@@ -1,7 +1,15 @@
 (conceptual-model)=
-# Conceptual Model
+# Conceptual Model (v3)
 
-This section describes the TRACE conceptual model in detail:
+The TRACE model defines the entities and relationships required to describe and
+represent Transparent Research Objects (TROs) and the Transparent Research
+Systems (TRSs) that produce them.
+
+This section describes the current revision of TRACE conceptual model in detail.
+The model is demonstrated via the
+[trace-model](https://github.com/transparency-certified/trace-model) repository
+and implemented in the [TRACE Prototype](trace-prototype) service.
+
 * A **Transparent Research Object (TRO)** is a pairing of a **TRO declaration** and a **TRO composition**.
 * The **TRO composition** comprises all of the digital artifacts and (potentially unpersisted) bitstreams that the **TRO declaration** describes. 
 * The **TRO composition** does *not* include the **TRO declaration** that describes it.
@@ -33,3 +41,62 @@ This section describes the TRACE conceptual model in detail:
 * A **TRO declaration**, and the associated **TRS signature file**, together must be time-stamped by a **Time Stamping Authority** (**TSA**, see RFA 3161 TSA), such as https://www.freetsa.org, which typically will be managed independently of the TRS.
 * A **TRS** generates a signed timestamp for each **TRO** it endorses by sending a digest of the concatenation of the **TRO declaration** and the **TRS signature** to a TSA and stores the response from the TSA in a Trusted Timestamp file that subsequently can be used to verify that the associated **TRO declaration** and **TRS signature files** were not modified since they were timestamped.
 
+## Instance examples
+
+The following examples illustrate different possible configurations of a TRO. 
+
+```{figure} images/trace-instance-1.png
+---
+name: trace-instance-1
+height: 20em
+---
+A TRO with a payload of two files in a filesystem, along with a TRO declaration in the same directory. Emphasize that the TRO declaration is not part of the payload.
+```
+
+```{figure} images/trace-instance-2.png
+---
+name: trace-instance-2
+height: 20em
+---
+A TRO with a payload of two files stored in a single zip, where the TRO declaration is outside of the zip file.
+```
+
+```{figure} images/trace-instance-3.png
+---
+name: trace-instance-3
+height: 20em
+---
+A TRO with a payload of two files stored in a single zip, where the TRO declaration is inside the same zip file. Emphasize that even though the declaration is in the zip, it is not part of the payload, and does not contribute to the fingerprint.
+```
+
+```{figure} images/trace-instance-4.png
+---
+name: trace-instance-4
+height: 20em
+---
+A TRO with a payload of three files, two small files in a zip file, and a third huge file on a web server (500 GB datafile).
+```
+
+```{figure} images/trace-instance-5.png
+---
+name: trace-instance-5
+height: 20em
+---
+A TRO with a payload of 20 files in a BDBAG. The TRO declaration includes a TRO Artifact Record for each of these 20 data files in the BDBAG, where each record has a file path and a digest.
+```
+
+```{figure} images/trace-instance-6.png
+---
+name: trace-instance-6
+height: 20em
+---
+A TRO with a payload of 20 files in a BDBAG. The TRO declaration contains NO artifact records, but instead refers to the BDBAG manifest.
+```
+
+```{figure} images/trace-instance-7.png
+---
+name: trace-instance-7
+height: 20em
+---
+A TRO with a payload of 21 files, where 20 files in a BDBAG and one huge file on a web server. The TRO declaration refers to the BDBAG manifest, and declares an additional Artifact Record for the 21st file.
+```
