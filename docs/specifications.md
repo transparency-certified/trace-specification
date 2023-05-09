@@ -10,7 +10,8 @@ This section includes the following:
 
 * [Transparency Questions](questions): Questions that the TRACE specifications
   are intended to help answer.
-* [Conceptual Model](conceptual-model): The high-level TRACE conceptual model.
+* [Elements](elements): TRACE elements
+* [Conceptual Model](conceptual-model): TRACE conceptual model
 * [System Certificate Specification](system-certificate-spec): Technical
   specification for TRACE System certificates. Provide authoritative information
   about the system in which computations were executed.  
