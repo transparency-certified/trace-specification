@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>About &#8212; Transparency Certified</title>
+    <title>TRACE Prototype &#8212; Transparency Certified</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Acknowledgements" href="acknowledgements.html" />
-    <link rel="prev" title="Glossary" href="glossary.html" />
+    <link rel="next" title="TRACE Toolkit" href="trace-toolkit.html" />
+    <link rel="prev" title="Overview" href="infrastructure.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
   TRACE Overview
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="motivation.html">
    Motivation
@@ -179,8 +179,8 @@ const thebe_selector_output = ".output, .cell_output"
    Glossary
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="about.html">
    About
   </a>
  </li>
@@ -237,14 +237,14 @@ const thebe_selector_output = ".output, .cell_output"
   TRACE Infrastructure
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="infrastructure.html">
    Overview
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="trace-prototype.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    TRACE Prototype
   </a>
  </li>
@@ -353,7 +353,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/docs/about.md"
+        <a href="../_sources/docs/trace-prototype.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -390,23 +390,90 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#server-trace-poc-xyz">
+   server.trace-poc.xyz
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submitting-a-run">
+   Submitting a Run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inspecting-the-tro">
+   Inspecting the TRO
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#github-action">
+   GitHub Action
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>About</h1>
+                <h1>TRACE Prototype</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#server-trace-poc-xyz">
+   server.trace-poc.xyz
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submitting-a-run">
+   Submitting a Run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inspecting-the-tro">
+   Inspecting the TRO
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#github-action">
+   GitHub Action
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -414,9 +481,90 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="about">
-<h1>About<a class="headerlink" href="#about" title="Permalink to this headline">#</a></h1>
-<p>About the TRACE team and how it emerged</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="trace-prototype">
+<span id="id1"></span><h1>TRACE Prototype<a class="headerlink" href="#trace-prototype" title="Permalink to this headline">#</a></h1>
+<p>The TRACE Prototype has been developed as an end-to-end implementation to
+facilitate requirements discussions. It consists of the following:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://server.trace-poc.xyz">https://server.trace-poc.xyz</a>: Running instance of the TRACE prototype server</p></li>
+<li><p><a class="reference external" href="https://github.com/transparency-certified/trace-prototype">trace-prototype</a>:
+contains source code for a proof-of-concept TRACE Server and associated
+commandline interface.</p></li>
+<li><p><a class="reference external" href="https://github.com/transparency-certified/sample-trace-workflow/">sample-trace-workflow</a>: Example
+workflow to demonstrate command-line integration including GitHub actions.</p></li>
+</ul>
+<section id="server-trace-poc-xyz">
+<h2>server.trace-poc.xyz<a class="headerlink" href="#server-trace-poc-xyz" title="Permalink to this headline">#</a></h2>
+<p>This is a running instance of the
+<a class="reference external" href="https://github.com/transparency-certified/trace-prototype">trace-prototype</a> server
+for use with the command line interface and to demonstrate GitHub actions
+integration. It is a Docker-based implementation that uses repo2docker to build
+a container image used to execute runs.</p>
+<p>The website provides includes the following:</p>
+<ul class="simple">
+<li><p>TRACE Server ID: Unique identifier for this server (URI)</p></li>
+<li><p>TRACE Server Fingerprint: GPG public key for this server</p></li>
+</ul>
+</section>
+<section id="submitting-a-run">
+<h2>Submitting a Run<a class="headerlink" href="#submitting-a-run" title="Permalink to this headline">#</a></h2>
+<p>To submit a run to <code class="docutils literal notranslate"><span class="pre">server.trace-poc.xyz</span></code>, you must first intall the
+<code class="docutils literal notranslate"><span class="pre">trace-prototype</span></code> client:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">transparency</span><span class="o">-</span><span class="n">certified</span><span class="o">/</span><span class="n">trace</span><span class="o">-</span><span class="n">prototype</span>
+</pre></div>
+</div>
+<p>Clone the
+<a class="reference external" href="https://github.com/transparency-certified/sample-trace-workflow">sample-trace-workflow</a>
+repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">transparency</span><span class="o">-</span><span class="n">certified</span><span class="o">/</span><span class="n">sample</span><span class="o">-</span><span class="n">trace</span><span class="o">-</span><span class="n">workflow</span>
+<span class="n">cd</span> <span class="n">sample</span><span class="o">-</span><span class="n">trace</span><span class="o">-</span><span class="n">workflow</span>
+</pre></div>
+</div>
+<p>Submit the run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trace</span><span class="o">-</span><span class="n">poc</span> <span class="n">submit</span> <span class="o">--</span><span class="n">entrypoint</span> <span class="s2">&quot;run.sh&quot;</span> <span class="o">--</span><span class="n">container</span><span class="o">-</span><span class="n">user</span> <span class="n">rstudio</span> <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="nb">dir</span> <span class="s2">&quot;/home/rstudio&quot;</span> <span class="o">--</span><span class="n">trace</span><span class="o">-</span><span class="n">server</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">server</span><span class="o">.</span><span class="n">trace</span><span class="o">-</span><span class="n">poc</span><span class="o">.</span><span class="n">xyz</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>This will create a new entry on the server at <a class="reference external" href="https://server.trace-poc.xyz/">https://server.trace-poc.xyz/</a>.</p>
+</section>
+<section id="inspecting-the-tro">
+<h2>Inspecting the TRO<a class="headerlink" href="#inspecting-the-tro" title="Permalink to this headline">#</a></h2>
+<p>For each TRO generated by the server, it creates:</p>
+<ul class="simple">
+<li><p>TRS Signature (<code class="docutils literal notranslate"><span class="pre">.sig</span></code>): Digest of the contents of the TRO declaration signed using the TRS private key</p></li>
+<li><p>TRO Declaration (<code class="docutils literal notranslate"><span class="pre">.jsonld</span></code>): JSON-LD document containing the unique ID and public key of the TRS that produced the TRO, claims about the capabilities of the TRS, and a individual artifacts that are part of the TRO composition.</p></li>
+<li><p>TRO Composition (<code class="docutils literal notranslate"><span class="pre">.zip</span></code>): Comprises all of the digital artifacts (potentially unpersisted) that the TRO declaration describes.</p></li>
+<li><p>Trusted Timestamp (<code class="docutils literal notranslate"><span class="pre">.tsr</span></code>): A signed timestamp of the TRO declaration and TRS signature provided by a timestamp authority.</p></li>
+</ul>
+<p>For more information, see the <a class="reference internal" href="conceptual-model.html#conceptual-model"><span class="std std-ref">Conceptual Model</span></a> section.</p>
+<p>To verify the TRS signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the public key from the TRO declaration:</span>
+
+<span class="n">cat</span> <span class="o">&lt;</span><span class="n">tro</span><span class="o">&gt;.</span><span class="n">jsonld</span> <span class="o">|</span> <span class="n">jq</span> <span class="o">-</span><span class="n">r</span> <span class="s1">&#39;.[&quot;@graph&quot;][][&quot;trov:wasAssembledBy&quot;][&quot;trov:publicKey&quot;]&#39;</span> <span class="o">&gt;</span> <span class="n">trs</span><span class="o">.</span><span class="n">gpg</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">trs.gpg</span>
+
+<span class="n">gpg</span> <span class="o">--</span><span class="n">verify</span> <span class="o">&lt;</span><span class="n">tro</span><span class="o">&gt;.</span><span class="n">sig</span> <span class="o">&lt;</span><span class="n">tro</span><span class="o">&gt;.</span><span class="n">jsonld</span>
+</pre></div>
+</div>
+<p>To view the trusted timestamp information:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">ts</span> <span class="o">-</span><span class="n">reply</span> <span class="o">-</span><span class="ow">in</span> <span class="o">&lt;</span><span class="n">tro</span><span class="o">&gt;.</span><span class="n">tsr</span> <span class="o">-</span><span class="n">text</span>
+</pre></div>
+</div>
+<p>To verify the trusted timestamp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">freetsa</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">tsa</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">freetsa</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">cacert</span><span class="o">.</span><span class="n">pem</span>
+
+<span class="n">openssl</span> <span class="n">ts</span> <span class="o">-</span><span class="n">verify</span> <span class="o">-</span><span class="n">data</span> <span class="n">file</span> <span class="o">-</span><span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">tsr</span> <span class="o">-</span><span class="n">CAfile</span> <span class="n">cacert</span><span class="o">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">untrusted</span> <span class="n">tsa</span><span class="o">.</span><span class="n">crt</span> 
+</pre></div>
+</div>
+</section>
+<section id="github-action">
+<h2>GitHub Action<a class="headerlink" href="#github-action" title="Permalink to this headline">#</a></h2>
+<p>The
+<a class="reference external" href="https://github.com/transparency-certified/sample-trace-workflow">sample-trace-workflow</a>
+repository includes a <a class="reference external" href="https://github.com/transparency-certified/sample-trace-workflow/blob/main/.github/workflows/compute.yml">GitHub Action
+workflow</a>
+that demonstrates using the TRACE prototype to create a TRO on push.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -446,17 +594,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="glossary.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="infrastructure.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Glossary</p>
+            <p class="prev-next-title">Overview</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="acknowledgements.html" title="next page">
+    <a class='right-next' id="next-link" href="trace-toolkit.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Acknowledgements</p>
+        <p class="prev-next-title">TRACE Toolkit</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
