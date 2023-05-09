@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Conceptual Model &#8212; Transparency Certified</title>
+    <title>Conceptual Model (v3) &#8212; Transparency Certified</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -218,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Conceptual Model
+   Conceptual Model (v3)
   </a>
  </li>
  <li class="toctree-l1">
@@ -385,23 +385,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instance-examples">
+   Instance examples
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Conceptual Model</h1>
+                <h1>Conceptual Model (v3)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instance-examples">
+   Instance examples
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -409,9 +446,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="conceptual-model">
-<span id="id1"></span><h1>Conceptual Model<a class="headerlink" href="#conceptual-model" title="Permalink to this headline">#</a></h1>
-<p>This section describes the TRACE conceptual model in detail:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="conceptual-model-v3">
+<span id="conceptual-model"></span><h1>Conceptual Model (v3)<a class="headerlink" href="#conceptual-model-v3" title="Permalink to this headline">#</a></h1>
+<p>The TRACE model defines the entities and relationships required to describe and
+represent Transparent Research Objects (TROs) and the Transparent Research
+Systems (TRSs) that produce them.</p>
+<p>This section describes the current revision of TRACE conceptual model in detail.
+The model is demonstrated via the
+<a class="reference external" href="https://github.com/transparency-certified/trace-model">trace-model</a> repository
+and implemented in the <span class="xref myst">TRACE Prototype</span> service.</p>
 <ul class="simple">
 <li><p>A <strong>Transparent Research Object (TRO)</strong> is a pairing of a <strong>TRO declaration</strong> and a <strong>TRO composition</strong>.</p></li>
 <li><p>The <strong>TRO composition</strong> comprises all of the digital artifacts and (potentially unpersisted) bitstreams that the <strong>TRO declaration</strong> describes.</p></li>
@@ -456,6 +499,52 @@ identified by a <strong>TRO composition fingerprint</strong> (or <strong>composi
 <li><p>A <strong>TRO declaration</strong>, and the associated <strong>TRS signature file</strong>, together must be time-stamped by a <strong>Time Stamping Authority</strong> (<strong>TSA</strong>, see RFA 3161 TSA), such as <a class="reference external" href="https://www.freetsa.org">https://www.freetsa.org</a>, which typically will be managed independently of the TRS.</p></li>
 <li><p>A <strong>TRS</strong> generates a signed timestamp for each <strong>TRO</strong> it endorses by sending a digest of the concatenation of the <strong>TRO declaration</strong> and the <strong>TRS signature</strong> to a TSA and stores the response from the TSA in a Trusted Timestamp file that subsequently can be used to verify that the associated <strong>TRO declaration</strong> and <strong>TRS signature files</strong> were not modified since they were timestamped.</p></li>
 </ul>
+<section id="instance-examples">
+<h2>Instance examples<a class="headerlink" href="#instance-examples" title="Permalink to this headline">#</a></h2>
+<p>The following examples illustrate different possible configurations of a TRO.</p>
+<figure class="align-default" id="trace-instance-1">
+<a class="reference internal image-reference" href="../_images/trace-instance-1.png"><img alt="../_images/trace-instance-1.png" src="../_images/trace-instance-1.png" style="height: 20em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">A TRO with a payload of two files in a filesystem, along with a TRO declaration in the same directory. Emphasize that the TRO declaration is not part of the payload.</span><a class="headerlink" href="#trace-instance-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="trace-instance-2">
+<a class="reference internal image-reference" href="../_images/trace-instance-2.png"><img alt="../_images/trace-instance-2.png" src="../_images/trace-instance-2.png" style="height: 20em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">A TRO with a payload of two files stored in a single zip, where the TRO declaration is outside of the zip file.</span><a class="headerlink" href="#trace-instance-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="trace-instance-3">
+<a class="reference internal image-reference" href="../_images/trace-instance-3.png"><img alt="../_images/trace-instance-3.png" src="../_images/trace-instance-3.png" style="height: 20em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">A TRO with a payload of two files stored in a single zip, where the TRO declaration is inside the same zip file. Emphasize that even though the declaration is in the zip, it is not part of the payload, and does not contribute to the fingerprint.</span><a class="headerlink" href="#trace-instance-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="trace-instance-4">
+<a class="reference internal image-reference" href="../_images/trace-instance-4.png"><img alt="../_images/trace-instance-4.png" src="../_images/trace-instance-4.png" style="height: 20em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">A TRO with a payload of three files, two small files in a zip file, and a third huge file on a web server (500 GB datafile).</span><a class="headerlink" href="#trace-instance-4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="trace-instance-5">
+<a class="reference internal image-reference" href="../_images/trace-instance-5.png"><img alt="../_images/trace-instance-5.png" src="../_images/trace-instance-5.png" style="height: 20em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">A TRO with a payload of 20 files in a BDBAG. The TRO declaration includes a TRO Artifact Record for each of these 20 data files in the BDBAG, where each record has a file path and a digest.</span><a class="headerlink" href="#trace-instance-5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="trace-instance-6">
+<a class="reference internal image-reference" href="../_images/trace-instance-6.png"><img alt="../_images/trace-instance-6.png" src="../_images/trace-instance-6.png" style="height: 20em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">A TRO with a payload of 20 files in a BDBAG. The TRO declaration contains NO artifact records, but instead refers to the BDBAG manifest.</span><a class="headerlink" href="#trace-instance-6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="trace-instance-7">
+<a class="reference internal image-reference" href="../_images/trace-instance-7.png"><img alt="../_images/trace-instance-7.png" src="../_images/trace-instance-7.png" style="height: 20em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">A TRO with a payload of 21 files, where 20 files in a BDBAG and one huge file on a web server. The TRO declaration refers to the BDBAG manifest, and declares an additional Artifact Record for the 21st file.</span><a class="headerlink" href="#trace-instance-7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
