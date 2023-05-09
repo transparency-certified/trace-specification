@@ -510,18 +510,19 @@ a container image used to execute runs.</p>
 <h2>Submitting a Run<a class="headerlink" href="#submitting-a-run" title="Permalink to this headline">#</a></h2>
 <p>To submit a run to <code class="docutils literal notranslate"><span class="pre">server.trace-poc.xyz</span></code>, you must first intall the
 <code class="docutils literal notranslate"><span class="pre">trace-prototype</span></code> client:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">transparency</span><span class="o">-</span><span class="n">certified</span><span class="o">/</span><span class="n">trace</span><span class="o">-</span><span class="n">prototype</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install git+https://github.com/transparency-certified/trace-prototype
 </pre></div>
 </div>
 <p>Clone the
 <a class="reference external" href="https://github.com/transparency-certified/sample-trace-workflow">sample-trace-workflow</a>
 repository:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">transparency</span><span class="o">-</span><span class="n">certified</span><span class="o">/</span><span class="n">sample</span><span class="o">-</span><span class="n">trace</span><span class="o">-</span><span class="n">workflow</span>
-<span class="n">cd</span> <span class="n">sample</span><span class="o">-</span><span class="n">trace</span><span class="o">-</span><span class="n">workflow</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/transparency-certified/sample-trace-workflow
+$ cd sample-trace-workflow
 </pre></div>
 </div>
 <p>Submit the run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trace</span><span class="o">-</span><span class="n">poc</span> <span class="n">submit</span> <span class="o">--</span><span class="n">entrypoint</span> <span class="s2">&quot;run.sh&quot;</span> <span class="o">--</span><span class="n">container</span><span class="o">-</span><span class="n">user</span> <span class="n">rstudio</span> <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="nb">dir</span> <span class="s2">&quot;/home/rstudio&quot;</span> <span class="o">--</span><span class="n">trace</span><span class="o">-</span><span class="n">server</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">server</span><span class="o">.</span><span class="n">trace</span><span class="o">-</span><span class="n">poc</span><span class="o">.</span><span class="n">xyz</span> <span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ trace-poc submit --entrypoint &quot;run.sh&quot; --container-user rstudio \
+  --target-repo-dir &quot;/home/rstudio&quot; --trace-server https://server.trace-poc.xyz .
 </pre></div>
 </div>
 <p>This will create a new entry on the server at <a class="reference external" href="https://server.trace-poc.xyz/">https://server.trace-poc.xyz/</a>.</p>
@@ -536,24 +537,55 @@ repository:</p>
 <li><p>Trusted Timestamp (<code class="docutils literal notranslate"><span class="pre">.tsr</span></code>): A signed timestamp of the TRO declaration and TRS signature provided by a timestamp authority.</p></li>
 </ul>
 <p>For more information, see the <a class="reference internal" href="conceptual-model.html#conceptual-model"><span class="std std-ref">Conceptual Model</span></a> section.</p>
-<p>To verify the TRS signature:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the public key from the TRO declaration:</span>
+<p>To verify the TRS signature, first extract the public key from the TRO
+declaration and import it using GPG:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>uuid=&lt;541e03e5-ca1f-4fc3-9ed7-3b93be56e02b&gt;
+$ cat ${uuid}.jsonld | jq -r &#39;.&quot;@graph&quot;[0].&quot;trov:wasAssembledBy&quot;.&quot;trov:publicKey&quot;&#39; &amp;&gt; trs.asc
 
-<span class="n">cat</span> <span class="o">&lt;</span><span class="n">tro</span><span class="o">&gt;.</span><span class="n">jsonld</span> <span class="o">|</span> <span class="n">jq</span> <span class="o">-</span><span class="n">r</span> <span class="s1">&#39;.[&quot;@graph&quot;][][&quot;trov:wasAssembledBy&quot;][&quot;trov:publicKey&quot;]&#39;</span> <span class="o">&gt;</span> <span class="n">trs</span><span class="o">.</span><span class="n">gpg</span>
-<span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">trs.gpg</span>
+$ gpg --import trs.asc
+gpg: key 0x5651D2C6E0F242A7: public key &quot;TRACE POC (TRACE System Proof of Concept) &lt;trace-poc@gmail.com&gt;&quot; imported
+gpg: Total number processed: 1
+gpg:               imported: 1
 
-<span class="n">gpg</span> <span class="o">--</span><span class="n">verify</span> <span class="o">&lt;</span><span class="n">tro</span><span class="o">&gt;.</span><span class="n">sig</span> <span class="o">&lt;</span><span class="n">tro</span><span class="o">&gt;.</span><span class="n">jsonld</span>
+$ gpg --edit-key 5651D2C6E0F242A7
+...
+gpg&gt; trust
+Please decide how far you trust this user to correctly verify other users&#39; keys
+(by looking at passports, checking fingerprints from different sources, etc.)
+
+  1 = I don&#39;t know or won&#39;t say
+  2 = I do NOT trust
+  3 = I trust marginally
+  4 = I trust fully
+  5 = I trust ultimately
+  m = back to the main menu
+
+Your decision? 5
+
+$ gpg --verify ${uuid}.sig ${uuid}.jsonld
+gpg: Signature made Tue May  9 11:20:18 2023 EDT
+gpg:                using RSA key 8771159FF4E3647B997CC5445651D2C6E0F242A7
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+gpg: Good signature from &quot;TRACE POC (TRACE System Proof of Concept) 
+     &lt;trace-poc@gmail.com&gt;&quot; [ultimate]
 </pre></div>
 </div>
 <p>To view the trusted timestamp information:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">ts</span> <span class="o">-</span><span class="n">reply</span> <span class="o">-</span><span class="ow">in</span> <span class="o">&lt;</span><span class="n">tro</span><span class="o">&gt;.</span><span class="n">tsr</span> <span class="o">-</span><span class="n">text</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>openssl ts -reply -in ${uuid}.tsr -text
 </pre></div>
 </div>
 <p>To verify the trusted timestamp:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">freetsa</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">tsa</span><span class="o">.</span><span class="n">crt</span>
-<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">freetsa</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">cacert</span><span class="o">.</span><span class="n">pem</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://freetsa.org/files/tsa.crt
+$ wget https://freetsa.org/files/cacert.pem
 
-<span class="n">openssl</span> <span class="n">ts</span> <span class="o">-</span><span class="n">verify</span> <span class="o">-</span><span class="n">data</span> <span class="n">file</span> <span class="o">-</span><span class="ow">in</span> <span class="n">file</span><span class="o">.</span><span class="n">tsr</span> <span class="o">-</span><span class="n">CAfile</span> <span class="n">cacert</span><span class="o">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">untrusted</span> <span class="n">tsa</span><span class="o">.</span><span class="n">crt</span> 
+$ echo -n &quot;{\&quot;tro_declaration\&quot;: \&quot;$(sha512sum ${uuid}.jsonld | \
+  cut -f1 -d &#39; &#39;)\&quot;, \&quot;trs_signature\&quot;: \&quot;$(sha512sum ${uuid}.sig | \
+  cut -f1 -d &#39; &#39;)\&quot;}&quot; &gt; $uuid.ts
+
+$ openssl ts -verify -data $uuid.ts -in $uuid.tsr -CAfile cacert.pem -untrusted tsa.crt
+Verification: OK
 </pre></div>
 </div>
 </section>
