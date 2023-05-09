@@ -20,7 +20,6 @@ parts:
     - file: docs/case-profiles/twitter
     - file: docs/case-profiles/ipums
     - file: docs/case-profiles/campus-cluster
-    - file: docs/case-profiles/whole-tale
   - file: docs/examples
   - file: docs/glossary
   - file: docs/about
