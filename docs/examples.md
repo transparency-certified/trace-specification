@@ -45,7 +45,7 @@ American Economic Journal: Macroeconomics 13(2): 444–86.
 * Requires 12 cores, 512GB RAM and ~3TB fast local storage. Run time was >12 hours.
 
 Webb, Clayton; Linn, Suzanna; Lebo, Matthew, 2019, "Replication Data for: Beyond
-the Unit Root Question: Uncertainty and Inference",
+the Unit Root Question: Uncertainty and Inference", [Paper](https://doi.org/10.1111/ajps.12506) 
 [Replication package](https://doi.org/10.7910/DVN/ZBRTJH)
 * Simulations were performed on the University of Kansas High Performance
   Compute Cluster with each job requesting 4 nodes with 20 cores per node.
@@ -60,33 +60,37 @@ Public Goods: The Evidence from Deforestation",
 
 (example-twitter)=
 ## Twitter
+
 Oklobdzija, Stan; Kousser, Thad; Butler, Daniel, 2022, "Replication Data for: Do
-Male and Female Legislators Have Different Twitter Communication Styles?",
-https://doi.org/10.15139/S3/MHAAZV, UNC Dataverse.
-* Uses Twitter data
+Male and Female Legislators Have Different Twitter Communication Styles?", [Paper](https://doi.org/10.1017/spq.2022.16)
+[Replication package](https://doi.org/10.15139/S3/MHAAZV)
+* Uses Twitter data, which cannot be redistributed.
 
 (example-international-agencies)=
-## International statistical agencies
+## International data
 
 Hjortskov, Morten; Andersen, Simon Calmar; Jakobsen, Morten, 2018, "Replication
 Data for: Encouraging Political Voices of Underrepresented Citizens through
 Coproduction. Evidence from a Randomized Field Trial". [Replication
 package](https://doi.org/10.7910/DVN/MZKJDR)
 * Confidential data from Statistics Denmark
+* Danish data is only accessible upon application and on servers hosted by Statistics Denmark.
 
 Hager, Anselm; Hilbig, Hanno, 2019, "Replication Data for: Do Inheritance
-Customs Affect Political and Social Inequality" [Replication
+Customs Affect Political and Social Inequality" [Paper](https://doi.org/10.1111/ajps.12460) [Replication
 package](https://doi.org/10.7910/DVN/ZUH3UG)
-* Confidential data from German SOEP
+* Uses data from German SOEP (a survey created by the German Institute for
+  Economic Research, DIW Berlin, a private research institute)
+* Access requires signing a use agreement and prevents redistribution. Accessible data differ depending on location of researcher.
+* Additional geolocated data can only be accessed on-site at DIW Berlin.
 
 Bonhomme, Lamadon, and Manresa, forthcoming. "A distributional Framework for
-matched employer-employee data". Econometrica. [Github
+matched employer-employee data". Econometrica. [Paper](https://doi.org/10.3982/ECTA15722) [Github
 repo](https://github.com/tlamadon/blm-replicate)
-* Docker runs with synthetic data and is designed to run on confidential data
-  from Sweden.
-* Injecting a bit of code would make this be able to run on Swedish data and 
-  demonstrate input data, output results, and possibly some disclosure avoidance 
-  review (not specified)
+* Docker runs with synthetic data 
+* Docker is designed to run on confidential data from Sweden, accessible only upon application and from within Europe.
+
+> NOTE: The use of Docker (=TRS) would make generating a TRO relatively straightforward, subject to the same caveats as the FSRDC case.
 
 
 (example-ipums)=
