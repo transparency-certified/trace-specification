@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Twitter" href="twitter.html" />
-    <link rel="prev" title="Research Data Centers" href="rdc.html" />
+    <link rel="prev" title="Federal Research Data Centers" href="rdc.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -144,7 +144,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="rdc.html">
-     Research Data Centers
+     Federal Research Data Centers
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -428,6 +428,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processing">
+   Processing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#archiving">
    Archiving
   </a>
@@ -435,11 +440,6 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#citation">
    Citation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#replication-verification">
-   Replication verification
   </a>
  </li>
 </ul>
@@ -477,6 +477,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#processing">
+   Processing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#archiving">
    Archiving
   </a>
@@ -484,11 +489,6 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#citation">
    Citation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#replication-verification">
-   Replication verification
   </a>
  </li>
 </ul>
@@ -507,16 +507,16 @@ title="Print to PDF"
 Laboratory</a> (BPLIM) provides access
 to datasets about the Portuguese economy. The following summary is based on the
 BPLIM <a class="reference external" href="https://msites-dee-bplim-prd.azurewebsites.net/sites/default/files/guide_for_researchers_v202210.pdf">Guide for
-Researchers</a>.</p>
+Researchers</a> and <a class="reference external" href="https://doi.org/10.1162/99608f92.54a00239">Guimarães (2023)</a>.</p>
 <section id="data-access">
 <h2>Data access<a class="headerlink" href="#data-access" title="Permalink to this headline">#</a></h2>
-<p>Data can only be accessed using BPLIM’s dedicated servers. Under some
-circumstances, researchers maybe granted surrogate access to the server, where
+<p>Data can only be accessed using BPLIM’s dedicated servers. Once approved,
+external researchers are granted surrogate access to the server, where
 BPLIM staff execute scripts written by an external researcher and outputs are
 shared after review. Internal researchers have broader access to BPLIM datasets
 while external researchers must apply for access to BPLIM data including a
 detailed project description.</p>
-<p>Datasets made available to external researchers are classified as low, medium,
+<p>Datasets made available to external researchers on the BPLIM servers are classified as low, medium,
 or high confidentiality.  Datasets classified with medium confidentiality have
 modified values (perturbed data) and those with high confidentiality contain
 modified values and are restriced to a subsample of observations. BPLIM may
@@ -524,10 +524,11 @@ provide modified versions of the original datasets to external researchers to
 develop their analysis, but these are not valid for research purposes.
 Researchers must then request that BPLIM run their analysis on the original
 data.</p>
+<p>Datasets are assigned DOIs.</p>
 </section>
 <section id="statistical-software">
 <h2>Statistical software<a class="headerlink" href="#statistical-software" title="Permalink to this headline">#</a></h2>
-<p>BPLIM servers provide a Linux environment with Stata, R, and Julia. BPLIM staff
+<p>BPLIM servers provide a Linux environment with Stata, R,  Julia, and Python. BPLIM staff
 can assist researchers with installing additional packages for their project.
 BPLIM has also developed custom Stata packages.</p>
 </section>
@@ -537,6 +538,15 @@ BPLIM has also developed custom Stata packages.</p>
 servers. For external researchers, BPLIM staff will verify that all outputs
 conform to policies (termed “output verification”).</p>
 </section>
+<section id="processing">
+<h2>Processing<a class="headerlink" href="#processing" title="Permalink to this headline">#</a></h2>
+<p>External researchers develop their code on the BPLIM servers, using the provided data. BPLIM staff validate (reproduce) the analysis by running the code on the same data, but on internal servers. They then modify the scripts to use the confidential data, produce output based on the confidential data, and after output verification, provide the output to the researcher.</p>
+<p>More recently, they have been pushing researches to work with  Singularity containers (<a class="reference external" href="https://github.com/BPLIM/Containers">https://github.com/BPLIM/Containers</a>). They have developed an <a class="reference external" href="https://github.com/BPLIM/ReplicationApp">app</a> that can already run the researchers’ code within the container, and let the researcher verify that the code runs cleanly.</p>
+<p><strong>The app could be augmented to generate a TRO. The app itself would be described as part of the TRS.</strong></p>
+<blockquote>
+<div><p>The initial TRO in the current usage is not useful to the researcher, since it only tells the BPLIM staff that the code runs cleanly. The confidential TRO generated by the app (TRS) on the confidential data needs vetting, similar to the <a class="reference internal" href="rdc.html#caseprofile-rdc"><span class="std std-ref">FSRDC case</span></a>.</p>
+</div></blockquote>
+</section>
 <section id="archiving">
 <h2>Archiving<a class="headerlink" href="#archiving" title="Permalink to this headline">#</a></h2>
 <p>When a project is “closed”, BPLIM will archive a copy of all analysis files and
@@ -545,13 +555,7 @@ unless the researcher explicitly request and justify why they must be archived.<
 </section>
 <section id="citation">
 <h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">#</a></h2>
-<p>BPLIM requests that all datasets be cited</p>
-</section>
-<section id="replication-verification">
-<h2>Replication verification<a class="headerlink" href="#replication-verification" title="Permalink to this headline">#</a></h2>
-<p>BPLIM will work with third-parties reponsible for verifying the replicability of
-results (including data editors, certification services, or individual
-researchers).</p>
+<p>BPLIM requests that all datasets be cited.</p>
 </section>
 </section>
 
@@ -586,7 +590,7 @@ researchers).</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Research Data Centers</p>
+            <p class="prev-next-title">Federal Research Data Centers</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="twitter.html" title="next page">
