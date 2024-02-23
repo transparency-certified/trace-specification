@@ -17,5 +17,5 @@ This section includes the following:
   about the system in which computations were executed.  
 * Transparent Research Object Specification (TRO): Technical specification for TROs. An extension and
   clarification of the Research Object contept.
-* <a  href="../specifications/0.1/doc/index-en.html"
+* <a  href="../../trov/0.1/index.html"
   target="_blank">Transparent Research Object Vocabulariy (TROV)</a>: Controlled vocabularly for TROs
