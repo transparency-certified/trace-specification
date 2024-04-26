@@ -40,6 +40,7 @@ and implemented in the [TRACE Prototype](trace-prototype) service.
 * Because the validity of a keypair associated with a **TRS** may be limited in time, either due to scheduled expiration or explicit revocation, the date on  which a **TRS** private key was used to sign a **TRO declaration** must also be established authoritatively.
 * A **TRO declaration**, and the associated **TRS signature file**, together must be time-stamped by a **Time Stamping Authority** (**TSA**, see RFA 3161 TSA), such as https://www.freetsa.org, which typically will be managed independently of the TRS.
 * A **TRS** generates a signed timestamp for each **TRO** it endorses by sending a digest of the concatenation of the **TRO declaration** and the **TRS signature** to a TSA and stores the response from the TSA in a Trusted Timestamp file that subsequently can be used to verify that the associated **TRO declaration** and **TRS signature files** were not modified since they were timestamped.
+* A **TRO** declaration may optionally specify one or more **artifact arrangements**.
 
 ## Instance examples
 
