@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Conceptual Model (v3) &#8212; Transparency Certified</title>
+    <title>Conceptual Model (v4) &#8212; Transparency Certified</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -218,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Conceptual Model (v3)
+   Conceptual Model (v4)
   </a>
  </li>
  <li class="toctree-l1">
@@ -426,7 +426,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Conceptual Model (v3)</h1>
+                <h1>Conceptual Model (v4)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -451,8 +451,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="conceptual-model-v3">
-<span id="conceptual-model"></span><h1>Conceptual Model (v3)<a class="headerlink" href="#conceptual-model-v3" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="conceptual-model-v4">
+<span id="conceptual-model"></span><h1>Conceptual Model (v4)<a class="headerlink" href="#conceptual-model-v4" title="Permalink to this headline">#</a></h1>
 <p>The TRACE model defines the entities and relationships required to describe and
 represent Transparent Research Objects (TROs) and the Transparent Research
 Systems (TRSs) that produce them.</p>
@@ -503,7 +503,18 @@ identified by a <strong>TRO composition fingerprint</strong> (or <strong>composi
 <li><p>Because the validity of a keypair associated with a <strong>TRS</strong> may be limited in time, either due to scheduled expiration or explicit revocation, the date on  which a <strong>TRS</strong> private key was used to sign a <strong>TRO declaration</strong> must also be established authoritatively.</p></li>
 <li><p>A <strong>TRO declaration</strong>, and the associated <strong>TRS signature file</strong>, together must be time-stamped by a <strong>Time Stamping Authority</strong> (<strong>TSA</strong>, see RFA 3161 TSA), such as <a class="reference external" href="https://www.freetsa.org">https://www.freetsa.org</a>, which typically will be managed independently of the TRS.</p></li>
 <li><p>A <strong>TRS</strong> generates a signed timestamp for each <strong>TRO</strong> it endorses by sending a digest of the concatenation of the <strong>TRO declaration</strong> and the <strong>TRS signature</strong> to a TSA and stores the response from the TSA in a Trusted Timestamp file that subsequently can be used to verify that the associated <strong>TRO declaration</strong> and <strong>TRS signature files</strong> were not modified since they were timestamped.</p></li>
-<li><p>A <strong>TRO</strong> declaration may optionally specify one or more <strong>artifact arrangements</strong>.</p></li>
+<li><p>A <strong>TRO</strong> declaration may optionally specify one or more <strong>artifact arrangements</strong>.  An <strong>artifact arrangement</strong> specifies the location of one or more of the artifacts included in the <strong>TRO composition</strong>. Multiple locations for a single artifact may be indicated by including it in multiple arrangements.</p></li>
+<li><p>A <strong>TRO declaration</strong> additionally may specify one or more <strong>research performances</strong>.
+A <strong>research performance</strong> may <strong>access</strong> (read data from) one or more <strong>artifact arrangements</strong>, and <strong>contribute</strong> to (write data to) one or more other <strong>artifact arrangements</strong>.</p>
+<ul>
+<li><p>Example: The execution of a single program on a set of input files to produce a set of output files can be represented as a single <strong>research performance</strong> (the program execution) that <strong>accesses</strong> (the input files in) one <strong>artifact arrangement</strong> and <strong>contributes</strong> (the output files) to another <strong>artifact arrangement</strong>.</p></li>
+</ul>
+</li>
+<li><p>The trustworthy characteristics of a <strong>research performance</strong> may be enumerated by assigning to it one or more <strong>performance attributes</strong> that indicate the conditions guaranteed by the <strong>TRS</strong> during that performance.  Each <strong>performance attribute</strong> assigned to a <strong>research performance</strong> must be <strong>warranted by</strong> a corresponding <strong>TRS capability</strong> that was declared within the <strong>TRS certificate</strong> at the time the latter was signed.</p>
+<ul>
+<li><p>Example:  Assigning the <strong>performance attribute</strong> “internet isolation” to a <strong>research performance</strong> (making the claim that the performance was carried out in isolation from the Internet) also requires specifying the corresponding <strong>TRS capability</strong> that warrants this claim (e.g. “internet isolation capability”), that in turn must be enumerated within the signed <strong>TRS certificate</strong> (along with all the other certified capabilities of the <strong>TRS</strong>).</p></li>
+</ul>
+</li>
 </ul>
 <section id="instance-examples">
 <h2>Instance examples<a class="headerlink" href="#instance-examples" title="Permalink to this headline">#</a></h2>

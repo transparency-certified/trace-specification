@@ -1,5 +1,5 @@
 (conceptual-model)=
-# Conceptual Model (v3)
+# Conceptual Model (v4)
 
 The TRACE model defines the entities and relationships required to describe and
 represent Transparent Research Objects (TROs) and the Transparent Research
@@ -40,7 +40,12 @@ and implemented in the [TRACE Prototype](trace-prototype) service.
 * Because the validity of a keypair associated with a **TRS** may be limited in time, either due to scheduled expiration or explicit revocation, the date on  which a **TRS** private key was used to sign a **TRO declaration** must also be established authoritatively.
 * A **TRO declaration**, and the associated **TRS signature file**, together must be time-stamped by a **Time Stamping Authority** (**TSA**, see RFA 3161 TSA), such as https://www.freetsa.org, which typically will be managed independently of the TRS.
 * A **TRS** generates a signed timestamp for each **TRO** it endorses by sending a digest of the concatenation of the **TRO declaration** and the **TRS signature** to a TSA and stores the response from the TSA in a Trusted Timestamp file that subsequently can be used to verify that the associated **TRO declaration** and **TRS signature files** were not modified since they were timestamped.
-* A **TRO** declaration may optionally specify one or more **artifact arrangements**.
+* A **TRO** declaration may optionally specify one or more **artifact arrangements**.  An **artifact arrangement** specifies the location of one or more of the artifacts included in the **TRO composition**. Multiple locations for a single artifact may be indicated by including it in multiple arrangements. 
+* A **TRO declaration** additionally may specify one or more **research performances**.
+A **research performance** may **access** (read data from) one or more **artifact arrangements**, and **contribute** to (write data to) one or more other **artifact arrangements**.
+  * Example: The execution of a single program on a set of input files to produce a set of output files can be represented as a single **research performance** (the program execution) that **accesses** (the input files in) one **artifact arrangement** and **contributes** (the output files) to another **artifact arrangement**.
+* The trustworthy characteristics of a **research performance** may be enumerated by assigning to it one or more **performance attributes** that indicate the conditions guaranteed by the **TRS** during that performance.  Each **performance attribute** assigned to a **research performance** must be **warranted by** a corresponding **TRS capability** that was declared within the **TRS certificate** at the time the latter was signed.
+  * Example:  Assigning the **performance attribute** "internet isolation" to a **research performance** (making the claim that the performance was carried out in isolation from the Internet) also requires specifying the corresponding **TRS capability** that warrants this claim (e.g. "internet isolation capability"), that in turn must be enumerated within the signed **TRS certificate** (along with all the other certified capabilities of the **TRS**). 
 
 ## Instance examples
 
