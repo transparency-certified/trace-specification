@@ -1,9 +1,9 @@
 # Building Trust in Computational Research
 
-Reproducing an analysis can be hard or impossible (long compute times,
-restricted compute resources, ephemerous or confidential data). 
+**Reproducing reported research findings can be difficult or impossible** when
+the analysis that produced the findings relies on access-restricted data and/or
+large-scale computational resources.
 
-The TRACE project proposes a novel solution: certify the successful *original*
-execution of the (computational) workflow that produced the reported findings
-*in situ*.
+TRACE offers a framework for **certifying the original execution of the
+computational workflow** that produced the reported findings *in situ*.
 
