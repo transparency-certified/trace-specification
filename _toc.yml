@@ -44,3 +44,4 @@ parts:
 - caption: TRACE Development
   chapters:
   - file: docs/dev/signing
+  - file: docs/dev/trs-setup
