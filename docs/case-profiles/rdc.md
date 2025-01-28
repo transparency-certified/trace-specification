@@ -13,7 +13,7 @@ The following summary is based on the FSRDC's [Researcher
 Handbook](https://psurdc.psu.edu/sites/rdc/files/2021-07/Researcher_Handbook_1208020.pdf). 
 We use the example of Census Bureau data, but the case applies more generally.
 
-### Inputs
+## Inputs
 
 Census Bureau data accessible via the FSRDC is confidential and protected under Title 13 of the U.S. Code.
 Researchers must apply for access to data covered under Title 13. Available
@@ -24,7 +24,7 @@ Employer-Household Dynamics (LEHD).
 
 Datasets are currently not assigned a persistent public identifier, though a Census Bureau internal database tracks data made available through the FSRDCs.
 
-### Environment
+## Environment
 
 Researchers access FSRDC systems via a remote desktop interface (Citrix-based), which in turn connects to the internal compute cluster via a software thin-client (NX). The Linux compute cluster is known as the [Integrated Research
 Environment](https://www2.census.gov/foia/events/2017-03/2017_03_16/7_Integrated_Research_Environment_IRE.pdf). 
@@ -36,7 +36,7 @@ from other networks.
 Other environments not considered in this case are a prototype [Cloud Research
 Environment](https://www.census.gov/content/dam/Census/library/publications/2022/adrm/2022-CSRM-Annual-Report.pdf) and custom Windows access for specific software.
  
-### Outputs and disclosure review
+## Outputs and disclosure review
 
 All outputs are subject to review for potential disclosure of confidential
 information. This disclosure review is conducted by the agency providing the data, *i.e.*, the Census Bureau's Disclosure Review Board (DRB) reviews output that is based on Census Bureau data, the Bureau of Labor Statistics reviews output that is produced from BLS data, etc.  
@@ -44,7 +44,7 @@ To prepare disclosable output,  researchers are asked modify data by applying va
 (combine) certain cells, suppressing or replacing information, or adding noise. Some output may not be disclosable. Release of "intermediate output" (not included in publication) is
 discouraged. The FSRDC system provides SAS and Stata programs to help with disclosure anlaysis.
 
-### Archiving
+## Archiving
 
 Researchers are responsible for ensuring that artifacts are archived by moving
 files to a special "archive" directory. CES policy is to archive files for seven
