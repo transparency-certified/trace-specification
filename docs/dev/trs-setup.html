@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TRACE Server Setup Guide &#8212; Transparency Certified</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/dev/trs-setup';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Signing" href="signing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Transparency Certified - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Transparency Certified - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Our Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../users.html">Personas in TRACE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../barriers.html">Barriers to Transparency</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../case-profiles.html">Case Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../case-profiles/rdc.html">Federal Research Data Centers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../case-profiles/bplim.html">Banco de Portugal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../case-profiles/twitter.html">Twitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../case-profiles/ipums.html">IPUMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../case-profiles/campus-cluster.html">Campus Cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Specifications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../specifications.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../questions.html">Transparency Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elements.html">TRACE Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conceptual-model.html">Conceptual Model (v4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/trace-certificate/0.1/index.html">System Certificate Specification 0.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../specifications/tro/0.1/index.html">Transparent Research Objects 0.1</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Infrastructure</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../infrastructure.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trace-prototype.html">TRACE Prototype</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trace-toolkit.html">TRACE Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../slurm-plugin.html">SLURM Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wholetale-integration.html">Whole Tale Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skope-integration.html">SKOPE Integration</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Development</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="signing.html">Signing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TRACE Server Setup Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/dev/trs-setup.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TRACE Server Setup Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before you begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-a-gpg-key-pair">Generating a GPG key pair</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-trace-server-environment">Setting up the TRACE Server Environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-system-dependencies">Installing System Dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-tro-utils">Installing tro-utils</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-trace-server-capabilities">Define the TRACE Server capabilities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-example-tro-generation">Executing example TRO generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-tro">Publishing the TRO</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="trace-server-setup-guide">
+<h1>TRACE Server Setup Guide<a class="headerlink" href="#trace-server-setup-guide" title="Link to this heading">#</a></h1>
+<section id="before-you-begin">
+<h2>Before you begin<a class="headerlink" href="#before-you-begin" title="Link to this heading">#</a></h2>
+<p>This guide assumes that you have a system running Ubuntu 24.04 LTS. If you are using a different operating system, you may need to adjust the commands accordingly. We also assume that you can execute commands as the root user. Places where you need to run a command as the root user will be indicated with <code class="docutils literal notranslate"><span class="pre">sudo</span></code>. We recommend that you create a dedicated user for running the TRACE Server. In our example we will use the username <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code>.</p>
+<p>Before you begin, you need to have the following installed on your system:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://gnupg.org/">GPG</a></p></li>
+<li><p><a class="reference external" href="https://www.python.org/">Python 3.8+</a></p></li>
+</ul>
+<p>You can do this by running the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>gnupg<span class="w"> </span>python3
+</pre></div>
+</div>
+</section>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<section id="generating-a-gpg-key-pair">
+<h3>Generating a GPG key pair<a class="headerlink" href="#generating-a-gpg-key-pair" title="Link to this heading">#</a></h3>
+<p>To generate a GPG key pair, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gpg<span class="w"> </span>--full-generate-key
+gpg<span class="w"> </span><span class="o">(</span>GnuPG<span class="o">)</span><span class="w"> </span><span class="m">2</span>.4.4<span class="p">;</span><span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2024</span><span class="w"> </span>g10<span class="w"> </span>Code<span class="w"> </span>GmbH
+This<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software:<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>free<span class="w"> </span>to<span class="w"> </span>change<span class="w"> </span>and<span class="w"> </span>redistribute<span class="w"> </span>it.
+There<span class="w"> </span>is<span class="w"> </span>NO<span class="w"> </span>WARRANTY,<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>extent<span class="w"> </span>permitted<span class="w"> </span>by<span class="w"> </span>law.
+
+Please<span class="w"> </span><span class="k">select</span><span class="w"> </span>what<span class="w"> </span>kind<span class="w"> </span>of<span class="w"> </span>key<span class="w"> </span>you<span class="w"> </span>want:
+<span class="w">   </span><span class="o">(</span><span class="m">1</span><span class="o">)</span><span class="w"> </span>RSA<span class="w"> </span>and<span class="w"> </span>RSA
+<span class="w">   </span><span class="o">(</span><span class="m">2</span><span class="o">)</span><span class="w"> </span>DSA<span class="w"> </span>and<span class="w"> </span>Elgamal
+<span class="w">   </span><span class="o">(</span><span class="m">3</span><span class="o">)</span><span class="w"> </span>DSA<span class="w"> </span><span class="o">(</span>sign<span class="w"> </span>only<span class="o">)</span>
+<span class="w">   </span><span class="o">(</span><span class="m">4</span><span class="o">)</span><span class="w"> </span>RSA<span class="w"> </span><span class="o">(</span>sign<span class="w"> </span>only<span class="o">)</span>
+<span class="w">   </span><span class="o">(</span><span class="m">9</span><span class="o">)</span><span class="w"> </span>ECC<span class="w"> </span><span class="o">(</span>sign<span class="w"> </span>and<span class="w"> </span>encrypt<span class="o">)</span><span class="w"> </span>*default*
+<span class="w">  </span><span class="o">(</span><span class="m">10</span><span class="o">)</span><span class="w"> </span>ECC<span class="w"> </span><span class="o">(</span>sign<span class="w"> </span>only<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span><span class="m">14</span><span class="o">)</span><span class="w"> </span>Existing<span class="w"> </span>key<span class="w"> </span>from<span class="w"> </span>card
+Your<span class="w"> </span>selection?<span class="w"> </span><span class="m">9</span>
+Please<span class="w"> </span><span class="k">select</span><span class="w"> </span>which<span class="w"> </span>elliptic<span class="w"> </span>curve<span class="w"> </span>you<span class="w"> </span>want:
+<span class="w">   </span><span class="o">(</span><span class="m">1</span><span class="o">)</span><span class="w"> </span>Curve<span class="w"> </span><span class="m">25519</span><span class="w"> </span>*default*
+<span class="w">   </span><span class="o">(</span><span class="m">4</span><span class="o">)</span><span class="w"> </span>NIST<span class="w"> </span>P-384
+<span class="w">   </span><span class="o">(</span><span class="m">6</span><span class="o">)</span><span class="w"> </span>Brainpool<span class="w"> </span>P-256
+Your<span class="w"> </span>selection?<span class="w"> </span><span class="m">1</span>
+Please<span class="w"> </span>specify<span class="w"> </span>how<span class="w"> </span>long<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>valid.
+<span class="w">         </span><span class="nv">0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>key<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>expire
+<span class="w">      </span>&lt;n&gt;<span class="w">  </span><span class="o">=</span><span class="w"> </span>key<span class="w"> </span>expires<span class="w"> </span><span class="k">in</span><span class="w"> </span>n<span class="w"> </span>days
+<span class="w">      </span>&lt;n&gt;w<span class="w"> </span><span class="o">=</span><span class="w"> </span>key<span class="w"> </span>expires<span class="w"> </span><span class="k">in</span><span class="w"> </span>n<span class="w"> </span>weeks
+<span class="w">      </span>&lt;n&gt;m<span class="w"> </span><span class="o">=</span><span class="w"> </span>key<span class="w"> </span>expires<span class="w"> </span><span class="k">in</span><span class="w"> </span>n<span class="w"> </span>months
+<span class="w">      </span>&lt;n&gt;y<span class="w"> </span><span class="o">=</span><span class="w"> </span>key<span class="w"> </span>expires<span class="w"> </span><span class="k">in</span><span class="w"> </span>n<span class="w"> </span>years
+Key<span class="w"> </span>is<span class="w"> </span>valid<span class="w"> </span><span class="k">for</span>?<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="w"> </span>2y
+Key<span class="w"> </span>expires<span class="w"> </span>at<span class="w"> </span>Fri<span class="w"> </span>Jan<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">15</span>:05:04<span class="w"> </span><span class="m">2027</span><span class="w"> </span>UTC
+Is<span class="w"> </span>this<span class="w"> </span>correct?<span class="w"> </span><span class="o">(</span>y/N<span class="o">)</span><span class="w"> </span>y
+
+GnuPG<span class="w"> </span>needs<span class="w"> </span>to<span class="w"> </span>construct<span class="w"> </span>a<span class="w"> </span>user<span class="w"> </span>ID<span class="w"> </span>to<span class="w"> </span>identify<span class="w"> </span>your<span class="w"> </span>key.
+
+Real<span class="w"> </span>name:<span class="w"> </span>Example<span class="w"> </span>Trace<span class="w"> </span>System
+Email<span class="w"> </span>address:<span class="w"> </span>valid.email@my.organization.com
+Comment:<span class="w"> </span>
+You<span class="w"> </span>selected<span class="w"> </span>this<span class="w"> </span>USER-ID:
+<span class="w">    </span><span class="s2">&quot;Example Trace System &lt;valid.email@my.organization.com&gt;&quot;</span>
+
+Change<span class="w"> </span><span class="o">(</span>N<span class="o">)</span>ame,<span class="w"> </span><span class="o">(</span>C<span class="o">)</span>omment,<span class="w"> </span><span class="o">(</span>E<span class="o">)</span>mail<span class="w"> </span>or<span class="w"> </span><span class="o">(</span>O<span class="o">)</span>kay/<span class="o">(</span>Q<span class="o">)</span>uit?<span class="w"> </span>O
+</pre></div>
+</div>
+<p>At this stage you will be asked to enter a passphrase. This passphrase will be used to unlock your private key when you need to use it. Make sure you remember this passphrase, as you will need it later on. For this example we are going to use <code class="docutils literal notranslate"><span class="pre">s3cr3tkey</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>We<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>generate<span class="w"> </span>a<span class="w"> </span>lot<span class="w"> </span>of<span class="w"> </span>random<span class="w"> </span>bytes.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>good<span class="w"> </span>idea<span class="w"> </span>to<span class="w"> </span>perform
+some<span class="w"> </span>other<span class="w"> </span>action<span class="w"> </span><span class="o">(</span><span class="nb">type</span><span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>keyboard,<span class="w"> </span>move<span class="w"> </span>the<span class="w"> </span>mouse,<span class="w"> </span>utilize<span class="w"> </span>the
+disks<span class="o">)</span><span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>prime<span class="w"> </span>generation<span class="p">;</span><span class="w"> </span>this<span class="w"> </span>gives<span class="w"> </span>the<span class="w"> </span>random<span class="w"> </span>number
+generator<span class="w"> </span>a<span class="w"> </span>better<span class="w"> </span>chance<span class="w"> </span>to<span class="w"> </span>gain<span class="w"> </span>enough<span class="w"> </span>entropy.
+gpg:<span class="w"> </span>/home/ubuntu/.gnupg/trustdb.gpg:<span class="w"> </span>trustdb<span class="w"> </span>created
+gpg:<span class="w"> </span>directory<span class="w"> </span><span class="s1">&#39;/home/ubuntu/.gnupg/openpgp-revocs.d&#39;</span><span class="w"> </span>created
+gpg:<span class="w"> </span>revocation<span class="w"> </span>certificate<span class="w"> </span>stored<span class="w"> </span>as<span class="w"> </span><span class="s1">&#39;/home/ubuntu/.gnupg/openpgp-revocs.d/9A5209A464B9E0CFCCD108C96FB96730E419869C.rev&#39;</span>
+public<span class="w"> </span>and<span class="w"> </span>secret<span class="w"> </span>key<span class="w"> </span>created<span class="w"> </span>and<span class="w"> </span>signed.
+
+pub<span class="w">   </span>ed25519<span class="w"> </span><span class="m">2025</span>-01-15<span class="w"> </span><span class="o">[</span>SC<span class="o">]</span><span class="w"> </span><span class="o">[</span>expires:<span class="w"> </span><span class="m">2027</span>-01-15<span class="o">]</span>
+<span class="w">      </span>9A5209A464B9E0CFCCD108C96FB96730E419869C<span class="w">           </span>&lt;--------<span class="w"> </span>THIS<span class="w"> </span>IS<span class="w"> </span>YOUR<span class="w"> </span>FINGERPRINT
+uid<span class="w">                      </span>Example<span class="w"> </span>Trace<span class="w"> </span>System<span class="w"> </span>&lt;valid.email@my.organization.com&gt;
+sub<span class="w">   </span>cv25519<span class="w"> </span><span class="m">2025</span>-01-15<span class="w"> </span><span class="o">[</span>E<span class="o">]</span><span class="w"> </span><span class="o">[</span>expires:<span class="w"> </span><span class="m">2027</span>-01-15<span class="o">]</span>
+</pre></div>
+</div>
+<p>Please note that the key that we just generated has a fingerprint of <code class="docutils literal notranslate"><span class="pre">9A5209A464B9E0CFCCD108C96FB96730E419869C</span></code>. You will need this fingerprint for signing TROs. You can ensure that proper fingerprint and secret is used during the signing process by adding the following to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">GPG_FINGERPRINT</span><span class="o">=</span><span class="s2">&quot;9A5209A464B9E0CFCCD108C96FB96730E419869C&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GPG_PASSPHRASE</span><span class="o">=</span><span class="s2">&quot;s3cr3tkey&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="setting-up-the-trace-server-environment">
+<h2>Setting up the TRACE Server Environment<a class="headerlink" href="#setting-up-the-trace-server-environment" title="Link to this heading">#</a></h2>
+<p>This part of the guide will vary depending on your site’s specific needs. Our example relies on R and Python for data processing, Docker for workflow execution, and <code class="docutils literal notranslate"><span class="pre">git</span></code> for accessing user contributed code that we are going to run. In general, your setup should rely on existing practices at your site. Additionally we are going to use <a class="reference external" href="https://pypi.org/project/tro-utils/">tro-utils</a> to simplify the generation of TROs.</p>
+<section id="installing-system-dependencies">
+<h3>Installing System Dependencies<a class="headerlink" href="#installing-system-dependencies" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv
+</pre></div>
+</div>
+</section>
+<section id="installing-tro-utils">
+<h3>Installing tro-utils<a class="headerlink" href="#installing-tro-utils" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>~/trs-env<span class="w">   </span><span class="c1"># Create a virtual environment for the TRACE Server</span>
+$<span class="w"> </span>.<span class="w"> </span>~/trs-env/bin/activate<span class="w">    </span><span class="c1"># Activate the virtual environment</span>
+<span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>tro-utils<span class="w">       </span><span class="c1"># Install tro-utils</span>
+</pre></div>
+</div>
+</section>
+<section id="define-the-trace-server-capabilities">
+<h3>Define the TRACE Server capabilities<a class="headerlink" href="#define-the-trace-server-capabilities" title="Link to this heading">#</a></h3>
+<p>TROs contain by default basic information about the TRS that was used to generate them. In order to specify your system
+basic info and capabilities create a file <code class="docutils literal notranslate"><span class="pre">~/trs.jsonld</span></code> with the following content:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;rdfs:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRS that can monitor netowork accesses or provide Internet isolation&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:hasCapability&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CanRecordInternetAccess&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CanProvideInternetIsolation&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;trov:owner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Organization&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example TRACE Server&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:contact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;valid_email@my.organization.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myorg-trs&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="executing-example-tro-generation">
+<h2>Executing example TRO generation<a class="headerlink" href="#executing-example-tro-generation" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Download the repository containing the example user code for creating TRO:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/transparency-certified/sample-trace-workflow
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Activate the virtual environment and initiate TRO before executing user code:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>.<span class="w"> </span>~/trs-env/bin/activate
+<span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>tro-utils<span class="w"> </span>--declaration<span class="w"> </span>sample_tro.jsonld<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--profile<span class="w"> </span>~/trs.jsonld<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>arrangement<span class="w"> </span>add<span class="w"> </span>sample-trace-workflow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span><span class="s2">&quot;Before executing workflow&quot;</span><span class="w"> </span>-i<span class="w"> </span>.git
+Loading<span class="w"> </span>profile<span class="w"> </span>from<span class="w"> </span>/home/ubuntu/trs.jsonld
+</pre></div>
+</div>
+<p>At this point, the intial TRO has been created. You can now execute the user code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>sample-trace-workflow
+<span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>trace-example/sample-trace-workflow<span class="w"> </span>.
+<span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>bash<span class="w"> </span>run_locally.sh<span class="w"> </span>latest<span class="w"> </span>trace-example
+<span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Record the changes made by the user code:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>tro-utils<span class="w"> </span>--declaration<span class="w"> </span>sample_tro.jsonld<span class="w"> </span>arrangement<span class="w"> </span>add<span class="w"> </span>sample-trace-workflow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span><span class="s2">&quot;After executing workflow&quot;</span><span class="w"> </span>-i<span class="w"> </span>.git
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Verify that the TRO contains two arrangements:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>tro-utils<span class="w"> </span>--declaration<span class="w"> </span>sample_tro.jsonld<span class="w"> </span>arrangement<span class="w"> </span>list
+Arrangement<span class="o">(</span><span class="nv">id</span><span class="o">=</span>arrangement/0<span class="o">)</span>:<span class="w"> </span>Before<span class="w"> </span>executing<span class="w"> </span>workflow
+Arrangement<span class="o">(</span><span class="nv">id</span><span class="o">=</span>arrangement/1<span class="o">)</span>:<span class="w"> </span>After<span class="w"> </span>executing<span class="w"> </span>workflow
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Add details about the workflow execution:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>tro-utils<span class="w"> </span>--declaration<span class="w"> </span>sample_tro.jsonld<span class="w"> </span>performance<span class="w"> </span>add<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-m<span class="w"> </span><span class="s2">&quot;My magic workflow&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-s<span class="w"> </span><span class="m">2025</span>-01-15T09:22:01<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="m">2024</span>-01-15T10:00:11<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-c<span class="w"> </span>trov:InternetIsolation<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-c<span class="w"> </span>trov:InternetAccessRecording<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-a<span class="w"> </span>arrangement/0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-M<span class="w"> </span>arrangement/1
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Timestamp and sign the TRO:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>tro-utils<span class="w"> </span>--declaration<span class="w"> </span>sample_tro.jsonld<span class="w"> </span>sign
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>(Optional) Verify the TRO:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>trs-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>tro-utils<span class="w"> </span>--declaration<span class="w"> </span>sample_tro.jsonld<span class="w"> </span>verify
+Using<span class="w"> </span>configuration<span class="w"> </span>from<span class="w"> </span>/usr/lib/ssl/openssl.cnf
+Warning:<span class="w"> </span>certificate<span class="w"> </span>from<span class="w"> </span><span class="s1">&#39;/tmp/tmp2607sx0l&#39;</span><span class="w"> </span>with<span class="w"> </span>subject<span class="w"> </span><span class="s1">&#39;/O=Free TSA/OU=TSA/description=This certificate digitally signs documents and time stamp requests made using the freetsa.org online services/CN=www.freetsa.org/emailAddress=busilezas@gmail.com/L=Wuerzburg/C=DE/ST=Bayern&#39;</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>CA<span class="w"> </span>cert
+Verification:<span class="w"> </span>OK
+</pre></div>
+</div>
+<p>You should now have a TRO in the file <code class="docutils literal notranslate"><span class="pre">sample_tro.jsonld</span></code> along with it signature in <code class="docutils literal notranslate"><span class="pre">sample_tro.sig</span></code> and TSR in <code class="docutils literal notranslate"><span class="pre">sample_tro.tsr</span></code>. Now we can proceed to publish the TRO.</p>
+</section>
+<section id="publishing-the-tro">
+<h2>Publishing the TRO<a class="headerlink" href="#publishing-the-tro" title="Link to this heading">#</a></h2>
+<p>TRS should provide a landing page where TROs can be accessed and TRS capabilities can be viewed.</p>
+<p>To publish the TRO, you need to have a web server running on your system. We are going to use a simple Flask app with a template webpage capable of listing TROs and basic info about TRS. You can download it by running the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/transparency-certified/trs-template
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>trs-template
+$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>server-env
+$<span class="w"> </span>.<span class="w"> </span>./server-env/bin/activate
+<span class="o">(</span>server-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>Now you need to copy the TROs to the web server directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>server-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>cp<span class="w"> </span>~/sample_tro.*<span class="w">  </span>~/trs-template/data/
+</pre></div>
+</div>
+<p>Finally, you can start the web server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>server-env<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>python3<span class="w"> </span>app.py
+</pre></div>
+</div>
+<p>Webserver should be available at <code class="docutils literal notranslate"><span class="pre">http://localhost:5000/</span></code>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/dev"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="signing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Signing</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-begin">Before you begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-a-gpg-key-pair">Generating a GPG key pair</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-trace-server-environment">Setting up the TRACE Server Environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-system-dependencies">Installing System Dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-tro-utils">Installing tro-utils</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-trace-server-capabilities">Define the TRACE Server capabilities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-example-tro-generation">Executing example TRO generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-tro">Publishing the TRO</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The TRACE Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

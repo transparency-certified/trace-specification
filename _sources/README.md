@@ -1,2 +1,0 @@
-# jb-test
-JupyterBook test

@@ -52,7 +52,7 @@ produced by a TRACE System and how the system ensures results transparency and
 reproducibility. It includes the following information:
 
 * Assertions about supported transparency levels and features (see
-  [transparency questions](questions)).
+  [transparency questions](./questions)).
 * Links to relevant versions of organizational policy and workflow documentation.
 * Public key of a digital signature used to sign TROs.
 

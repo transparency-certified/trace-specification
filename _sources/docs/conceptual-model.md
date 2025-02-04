@@ -8,7 +8,7 @@ Systems (TRSs) that produce them.
 This section describes the current revision of TRACE conceptual model in detail.
 The model is demonstrated via the
 [trace-model](https://github.com/transparency-certified/trace-model) repository
-and implemented in the [TRACE Prototype](trace-prototype) service.
+and implemented in the [TRACE Prototype](./trace-prototype) service.
 
 * A **Transparent Research Object (TRO)** is a pairing of a **TRO declaration** and a **TRO composition**.
 * The **TRO composition** comprises all of the digital artifacts and (potentially unpersisted) bitstreams that the **TRO declaration** describes. 
