@@ -202,7 +202,7 @@ ubuntu@b3fabd1971c7:/project#
 
 TROs contain by default basic information about the TRS that was used to generate them. We therefore need to specify the [TRACE System
 Certificate](element-trace-certificate), that specifies how transparency is
-supported by the system and a signing key associated with the certificate. The current implementation reliese on a JSON-LD representation of the capabilities of the system. By convention, this is stored in a file `trs.jsonld` or similar. There can be multiple such specifications in use at the same time. Those in use should be separately published (see [web server](web-server)), and preserved.
+supported by the system and a signing key associated with the certificate. The current implementation relies on a JSON-LD representation of the capabilities of the system. By convention, this is stored in a file `trs.jsonld` or similar. There can be multiple such specifications in use at the same time. Those in use should be separately published (see [web server](web-server)), and preserved.
 
 The TRACE System Certificate is expressed in structured language that describe assertions about supported transparency levels and features (see
   [transparency questions](questions)).
