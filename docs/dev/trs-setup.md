@@ -150,7 +150,7 @@ sudo apt install -y git python3-pip python3-venv docker.io docker-buildx
 
 ## Installing TRO-UTILS
 
-We have prepared a reference implemenation in Python to simplify the generation of TROS. We suggest to use these in your TRACE server if possible. The utilities are available at [tro-utils](https://pypi.org/project/tro-utils/).
+We have prepared a reference implementation in Python to simplify the generation of TROS. We suggest to use these in your TRACE server if possible. The utilities are available at [tro-utils](https://pypi.org/project/tro-utils/).
 
 :::{admonition} Example: Installing `tro-utils`
 :class: note
