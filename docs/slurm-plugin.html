@@ -339,7 +339,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -355,6 +357,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-example">Implementation example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-for-slurm">Plugin for SLURM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-with-docker">Implementation with Docker</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternate-implementation">Alternate implementation</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -366,6 +381,28 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="slurm-plugin">
 <h1>SLURM Plugin<a class="headerlink" href="#slurm-plugin" title="Link to this heading">#</a></h1>
+<section id="implementation-example">
+<h2>Implementation example<a class="headerlink" href="#implementation-example" title="Link to this heading">#</a></h2>
+<section id="plugin-for-slurm">
+<h3>Plugin for SLURM<a class="headerlink" href="#plugin-for-slurm" title="Link to this heading">#</a></h3>
+<p><a class="github reference external" href="https://github.com/transparency-certified/spank-tro">transparency-certified/spank-tro</a></p>
+</section>
+<section id="implementation-with-docker">
+<h3>Implementation with Docker<a class="headerlink" href="#implementation-with-docker" title="Link to this heading">#</a></h3>
+<p><a class="github reference external" href="https://github.com/transparency-certified/slurm-docker-cluster">transparency-certified/slurm-docker-cluster</a></p>
+</section>
+</section>
+<section id="alternate-implementation">
+<h2>Alternate implementation<a class="headerlink" href="#alternate-implementation" title="Link to this heading">#</a></h2>
+<p>A possible implementation could be based on the <a class="reference external" href="https://slurm.schedmd.com/burst_buffer.html#lua_config">LUA Burst Buffer</a> implementation (see <a class="reference external" href="https://github.com/SchedMD/slurm/blob/master/etc/burst_buffer.lua.example">example</a>).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm_bb_setup</span></code>: initialize TRS system, capture system information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm_bb_data_in</span></code>: stage data to separate file space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm_bb_pre_run</span></code>: run first TRO record of base state of the file space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm_bb_post_run</span></code>:  run second TRO record at end of the job, amend TRO with additional process information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm_bb_data_out</span></code>: copy any changed files and the TRO back</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -422,6 +459,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-example">Implementation example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-for-slurm">Plugin for SLURM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-with-docker">Implementation with Docker</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternate-implementation">Alternate implementation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
