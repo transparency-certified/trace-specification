@@ -29,9 +29,8 @@ transparent Research Objects (TROs). It is designed to be used in conjunction wi
 
 ## `trace-prototype`
 
-[trace-prototype](https://github.com/transparency-certified/trace-prototype) is a
-an expansion of the proof-of-concept for containerized execution outside of [Whole Tale](https://wholetale.org).
-
+[trace-prototype](https://github.com/transparency-certified/trace-prototype) is an
+expansion of the proof-of-concept for containerized execution outside of [Whole Tale](https://wholetale.org).
 It consists of a simple Docker-based job execution service utilizing REST API that's capable of
 
 * Running jobs in a containerized environment.
