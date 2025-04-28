@@ -1,10 +1,17 @@
 # SLURM Plugin
 
-:::{note}
+## Implementation example
 
-This has not yet been implemented.
+### Plugin for SLURM
 
-:::
+<https://github.com/transparency-certified/spank-tro>
+
+### Implementation with Docker
+
+<https://github.com/transparency-certified/slurm-docker-cluster> 
+
+
+## Alternate implementation
 
 A possible implementation could be based on the [LUA Burst Buffer](https://slurm.schedmd.com/burst_buffer.html#lua_config) implementation (see [example](https://github.com/SchedMD/slurm/blob/master/etc/burst_buffer.lua.example)).
 
