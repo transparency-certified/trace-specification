@@ -169,7 +169,7 @@ TROFILE=$PROJBASE/sample_tro-$(date +%F-%H-%M-%S).jsonld
 TRS_LOCATION=~/trs.jsonld        # We keep this outside of the Project directory
 WEBBASE=$PROJBASE/trs-template   # We will use this for the sample web server
 
-export PROJBASE TROFILE TRS_LOCATION
+export PROJBASE TROFILE TRS_LOCATION WEBBASE
 
 ```
 
