@@ -283,7 +283,15 @@ with output
 ```
 Loading profile from /home/ubuntu/trs.jsonld
 ```
+
+Optionally, create a ZIP archive containing the state of the workflow before execution. For example:
+
+```bash
+cd sample-trace-workflow
+zip -r arrangement0.zip * -x .git
+```
 :::
+
 
 ## Executing defined workflow.
 
@@ -328,7 +336,26 @@ Arrangement(id=arrangement/0): Before executing workflow
 Arrangement(id=arrangement/1): After executing workflow
 ```
 
+Optionally, create a ZIP archive containing the second arrangement after workflow execution:
+
+```bash
+cd sample-trace-workflow
+zip -r arrangement1.zip * -x .git
+```
+
 :::
+
+## Storing the Composition
+
+Per the TRACE Conceptual Model, the TRO **composition** comprises all of the digital artifacts described in the TRO declaration. By design, elements of the composition may be stored in different locations (or possibly unpersisted) due to various restrictions. We can consider the following examples:
+
+* TRO with two arrangements: As in the current example the initial arrangement (pre-execution) and final arrangement (post-execution).
+* TRO with confidential elements: The initial arrangment contains confidential information that cannot be redistributed but is retained on a secure system. After execution, the second arrangement still contains confidential information and is similarly retained. After the removal of confidential information (e.g., via disclosure avoidance activities), the final arrangement is captured and disseminated. 
+
+There are variety of ways to capture the compositions for both TROs. As in the current example, we can create a ZIP or BagIt archive of the project directory at each stage, reflecting the different arrangements (possibly with confidential elements removed). For storage efficiency, the composition could also be managed using a version control system (e.g., Git) where each arrangement is a tag. 
+
+For this example, we will capture and publish the composition using ZIP archives.
+
 
 ## Finalizing TRO
 
@@ -406,7 +433,7 @@ sample_tro-2025-04-25-09-20-26.tsr
 :::
 
 (web-server)=
-## Publishing the TRO and TRS
+## Publishing the TRO and TRS 
 
 :::{margin} **Where is the content of the output produced?**
 We need to complement the example to provide an example provision of the complete output. ZIP file? Bagit?
@@ -462,5 +489,44 @@ python3 app.py
 Webserver should be available at `http://localhost:5000/`.
 
 ![Sample webserver](/docs/images/flask-sample-server-1.png)
+
+:::
+
+:::{admonition} Example: Publishing TROs to Zenodo
+:class: note
+
+An alternative to hosting the TROs on a local webserver is to publish them to a trusted repository such as [Zenodo](https://zenodo.org/). In this example, the TRO is published to Zenodo including the declaration (`.jsonld`), signatures (`.sig`, `.tsr`) and optional composition as a set of ZIP archives.
+
+First, create the Zenodo metadata for the deposit as `zenodo.json`:
+
+```json
+{
+  "metadata": {
+    "title": "Example TRO with Composition",
+    "upload_type": "dataset",
+    "description": "Example TRO with zipped composition.",
+    "creators": [
+      {
+        "name": "User, Example",
+        "affiliation": "TRS Organization"
+      }
+    ],
+    "keywords": ["example", "TRACE", "TRO"],
+    "license": "CC-BY-4.0"
+  }
+}
+```
+
+After [obtaining an API key](https://developers.zenodo.org/), we can use the provided [zenodo_upload.py](zenodo_upload.py) to create a draft deposit. Note that the script uses `sandbox.zenodo.org` by default:
+
+```bash
+export API_KEY=your_zenodo_api_key
+python zenodo_upload.py $API_KEY \
+    --metadata zenodo.json \
+    --files $TRO_NAME.jsonld $TRO_NAME.sig $TRO_NAME.tsr \
+            arrangement0.zip arrangement1.zip
+```
+
+This will create a draft deposit that can be manually published.
 
 :::
