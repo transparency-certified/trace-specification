@@ -41,7 +41,7 @@ parts:
   - file: docs/slurm-plugin
   - file: docs/wholetale-integration
   - file: docs/skope-integration
+  - file: docs/sample-implementation
 - caption: TRACE Development
   chapters:
   - file: docs/dev/signing
-  - file: docs/dev/trs-setup

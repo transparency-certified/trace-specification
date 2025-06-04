@@ -1,4 +1,6 @@
-# TRACE Server Setup Guide
+# TRACE Sample Implementation
+
+This document illustrates the "full package". It provides implementable examples of how to define a TRACE server in the formal specification of a TRS, then how to run two different types of TRACE-compliant workflows (automated and manual), and two separate ways to publish the final results (all-in-one server, and separately with a trusted repository).
 
 ## Pre-requisites
 
