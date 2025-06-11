@@ -727,23 +727,20 @@ sample_tro-2025-04-25-09-20-26.tsr
 </section>
 <section id="publishing-the-tro-and-trs">
 <span id="web-server"></span><h2>Publishing the TRO and TRS<a class="headerlink" href="#publishing-the-tro-and-trs" title="Link to this heading">#</a></h2>
-<aside class="margin sidebar">
-<p class="sidebar-title"><strong>Where is the content of the output produced?</strong></p>
-<p>We need to complement the example to provide an example provision of the complete output. ZIP file? Bagit?</p>
-</aside>
 <p>Now we can proceed to publish the TRO.
 The organization must provide a landing page where TROs can be indexed, possibly accessed, and TRS capabilities can be viewed.</p>
 <ul class="simple">
 <li><p>TROs themselves can reside on the organization’s web server, or a trusted repository (e.g., <a class="reference external" href="https://zenodo.org">Zenodo</a>, Dataverse instances, etc.).</p></li>
-<li><p>TRS capabilities should be published on the organization’s web server.</p></li>
+<li><p>TRS capabilities should be published on the organization’s web server. <strong>This is not integrated into this example</strong>, but see <a class="reference external" href="https://transparency-certified.github.io/trov-demos/">TROV demos</a>, in particular</p>
+<ul>
+<li><p><a class="reference external" href="https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html">TRS Report</a></p></li>
+<li><p><a class="reference external" href="https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report.html">A query interface  to a TRO report</a></p></li>
+</ul>
+</li>
 <li><p>Optionally, when not self-hosting TROs, the organization can provide a landing page that links to the TROs hosted on other repositories.</p></li>
 </ul>
-<aside class="margin sidebar">
-<p class="sidebar-title">We could also provide an example with Zenodo (sandbox) for content/TRO</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">zenodo_get</span></code> to create and publish.</p>
-</aside>
 <div class="note admonition">
-<p class="admonition-title">Example: Publishing TROs and TRS locally</p>
+<p class="admonition-title">Example: Publishing TROs and TRS all-in-one</p>
 <p>We are going to use a simple Flask app with a template webpage capable of listing TROs and basic info about TRS. You can download it by running the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$PROJBASE</span>
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/transparency-certified/trs-template
@@ -800,6 +797,8 @@ python<span class="w"> </span>zenodo_upload.py<span class="w"> </span><span clas
 </pre></div>
 </div>
 <p>This will create a draft deposit that can be manually published.</p>
+<p><strong>Listing TROs</strong></p>
+<p>TROs can now be listed on the organization’s website, yet be preserved on Zenodo infrastructure. While the TRS information is embedded into the TRO, the entire system should be documented on the organization’s own website, f.i., via the <a class="reference external" href="https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html">TRS Report</a>.</p>
 </div>
 </section>
 </section>

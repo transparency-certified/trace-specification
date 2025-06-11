@@ -437,22 +437,18 @@ sample_tro-2025-04-25-09-20-26.tsr
 (web-server)=
 ## Publishing the TRO and TRS 
 
-:::{margin} **Where is the content of the output produced?**
-We need to complement the example to provide an example provision of the complete output. ZIP file? Bagit?
-:::
 
 Now we can proceed to publish the TRO.
 The organization must provide a landing page where TROs can be indexed, possibly accessed, and TRS capabilities can be viewed.
 
 - TROs themselves can reside on the organization's web server, or a trusted repository (e.g., [Zenodo](https://zenodo.org), Dataverse instances, etc.).
-- TRS capabilities should be published on the organization's web server.
+- TRS capabilities should be published on the organization's web server. **This is not integrated into this example**, but see [TROV demos](https://transparency-certified.github.io/trov-demos/), in particular 
+  - [TRS Report](https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html)
+  - [A query interface  to a TRO report](https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report.html)
 - Optionally, when not self-hosting TROs, the organization can provide a landing page that links to the TROs hosted on other repositories.
  
-:::{margin} We could also provide an example with Zenodo (sandbox) for content/TRO
-Use `zenodo_get` to create and publish.
-:::
 
-:::{admonition} Example: Publishing TROs and TRS locally
+:::{admonition} Example: Publishing TROs and TRS all-in-one
 :class: note
 
 We are going to use a simple Flask app with a template webpage capable of listing TROs and basic info about TRS. You can download it by running the following command:
@@ -530,5 +526,9 @@ python zenodo_upload.py $API_KEY \
 ```
 
 This will create a draft deposit that can be manually published.
+
+**Listing TROs**
+
+TROs can now be listed on the organization's website, yet be preserved on Zenodo infrastructure. While the TRS information is embedded into the TRO, the entire system should be documented on the organization's own website, f.i., via the [TRS Report](https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html).
 
 :::
