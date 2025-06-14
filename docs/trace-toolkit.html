@@ -362,9 +362,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-cli"><code class="docutils literal notranslate"><span class="pre">trace-cli</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tro-utils"><code class="docutils literal notranslate"><span class="pre">tro-utils</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-bdbag"><code class="docutils literal notranslate"><span class="pre">trace-bdbag</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-server"><code class="docutils literal notranslate"><span class="pre">trace-server</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-prototype"><code class="docutils literal notranslate"><span class="pre">trace-prototype</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -378,15 +378,25 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="trace-toolkit">
 <h1>TRACE Toolkit<a class="headerlink" href="#trace-toolkit" title="Link to this heading">#</a></h1>
-<p>The TRACE toolkit is a Python library/package that implements the TRACE
+<p>The TRACE toolkit is a collection of Python libraries/packages that implements the TRACE
 specification.</p>
-<section id="trace-cli">
-<h2><code class="docutils literal notranslate"><span class="pre">trace-cli</span></code><a class="headerlink" href="#trace-cli" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">trace-cli</span></code> supports:</p>
+<section id="tro-utils">
+<h2><code class="docutils literal notranslate"><span class="pre">tro-utils</span></code><a class="headerlink" href="#tro-utils" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/transparency-certified/tro-utils">tro-utils</a>
+is a Python package that provides utilities for working with
+transparent Research Objects (TROs). It is designed to be used in conjunction with the
+<a class="reference internal" href="specifications/tro/0.1/index.html"><span class="std std-doc">TRO specification</span></a>. The package includes following functions:</p>
 <ul class="simple">
-<li><p>Submit</p></li>
-<li><p>Inspect</p></li>
-<li><p>Verify</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verify</span></code> - Verify the integrity of a TRO (i.e. it was signed and timestamped
+correctly).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arrangement</span></code> - Manages arrangements in the TRO. It has subcommands like <code class="docutils literal notranslate"><span class="pre">add</span></code>
+(adds a directory as a composition to the TRO) and <code class="docutils literal notranslate"><span class="pre">list</span></code> (lists available arrangements in the TRO).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">composition</span></code> - Manages compositions in the TRO. It has subcommands like <code class="docutils literal notranslate"><span class="pre">info</span></code>
+that gets information about a current composition in the TRO.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">performance</span></code> - Manages performance in the TRO. It has subcommands like <code class="docutils literal notranslate"><span class="pre">add</span></code>
+(adds a performance to the TRO).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sign</span></code> - Signs a TRO with a given key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">report</span></code> - Generates a report from a TRO.</p></li>
 </ul>
 </section>
 <section id="trace-bdbag">
@@ -396,12 +406,18 @@ specification.</p>
 <li><p>Create and sign TRO</p></li>
 </ul>
 </section>
-<section id="trace-server">
-<h2><code class="docutils literal notranslate"><span class="pre">trace-server</span></code><a class="headerlink" href="#trace-server" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">trace-server</span></code>:</p>
+<section id="trace-prototype">
+<h2><code class="docutils literal notranslate"><span class="pre">trace-prototype</span></code><a class="headerlink" href="#trace-prototype" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/transparency-certified/trace-prototype">trace-prototype</a> is an
+expansion of the proof-of-concept for containerized execution outside of <a class="reference external" href="https://wholetale.org">Whole Tale</a>.
+It consists of a simple Docker-based job execution service utilizing REST API that’s capable of</p>
 <ul class="simple">
-<li><p>Expansion of the proof-of-concept for containerized execution not based on WT.</p></li>
+<li><p>Running jobs in a containerized environment.</p></li>
+<li><p>Generating compute environment using repo2docker.</p></li>
+<li><p>Configuring TRO claims.</p></li>
+<li><p>Generating TROs using BagIt and signing them with GPG.</p></li>
 </ul>
+<p>and a command-line interface for uploading jobs and downloading TROs from the server.</p>
 </section>
 </section>
 
@@ -469,9 +485,9 @@ specification.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-cli"><code class="docutils literal notranslate"><span class="pre">trace-cli</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tro-utils"><code class="docutils literal notranslate"><span class="pre">tro-utils</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-bdbag"><code class="docutils literal notranslate"><span class="pre">trace-bdbag</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-server"><code class="docutils literal notranslate"><span class="pre">trace-server</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trace-prototype"><code class="docutils literal notranslate"><span class="pre">trace-prototype</span></code></a></li>
 </ul>
   </nav></div>
 
