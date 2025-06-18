@@ -210,9 +210,9 @@ The TRACE System Certificate is expressed in structured language that describe a
   [transparency questions](questions)).
 
 
-:::{margin} **`trs.jsonld** needs key specification?
+:::{margin} The **`trs.jsonld** here is very simple. 
 :class: note
-To be consistent, we need the key specification as part of the sample JSON-LD file.
+A more complete list of possible capabilities is listed in the [sample `trs.jsonld`](https://github.com/transparency-certified/trov-demos/blob/main/exports/trs.jsonld), see also its rendering in the [TRS Report](https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html).
 :::
 
 :::{admonition} Example: Creating a TRS description
