@@ -218,7 +218,7 @@ A more complete list of possible capabilities is listed in the [sample `trs.json
 :::{admonition} Example: Creating a TRS description
 :class: note
 
-Create `~/trs.jsonld` with the following content:
+Create `$TRS_LOCATION` with the following content:
 
 ```json
   {
@@ -234,7 +234,7 @@ Create `~/trs.jsonld` with the following content:
       }
     ],
     "trov:owner": "My Organization",
-    "trov:description": "Example TRACE Server",
+    "trov:description": "Fully automated TRACE server",
     "trov:contact": "valid_email@my.organization.com",
     "trov:url": "http://127.0.0.1/",
     "trov:name": "myorg-trs",
@@ -290,7 +290,7 @@ Optionally, create a ZIP archive containing the state of the workflow before exe
 
 ```bash
 cd sample-trace-workflow
-zip -r arrangement0.zip * -x .git
+zip -r ../arrangement0.zip * -x .git
 ```
 :::
 
@@ -298,15 +298,7 @@ zip -r arrangement0.zip * -x .git
 ## Executing defined workflow.
 
 
-At this point, the intial TRO has been created. The various tasks that a typical workflow requires are now executed. At the core, this means executing the user-provided research code, however, it might also entail discrete additional (manual) steps. The described workflow should be explicit about these steps, and care should be taken to ensure that TRO snapshots are made at each step of more complex workflows. For instance, if there are additional data acquisition steps or software that is not scripted:
-
-1. Obtain user code (TRO Arrangement 0)
-2. Provision user project with restricted-access data (TRO Arrangement 1)
-3. Run user code, part 1 (TRO Arrangement 2)
-4. Manually run QGIS code to generate map (TRO Arrangement 3)
-5. Run user code, part 2 (TRO Arrangement 4)
-6. Apply disclosure avoidance vetting, modifying certain files (TRO Arrangement 5)
-
+At this point, the intial TRO has been created. The various tasks that a typical workflow requires are now executed. At the core, this means executing the user-provided research code, however, it might also entail discrete additional (manual) steps. The described workflow should be explicit about these steps, and care should be taken to ensure that TRO snapshots are made at each step of more complex workflows. 
 
 :::{admonition} Example: Running the example workflow
 :class: note
@@ -342,7 +334,27 @@ Optionally, create a ZIP archive containing the second arrangement after workflo
 
 ```bash
 cd sample-trace-workflow
-zip -r arrangement1.zip * -x .git
+zip -r ../arrangement1.zip * -x .git
+```
+
+:::
+
+:::{admonition} Example: When there are additional data acquisition steps or software that are not scripted:
+:class: note
+
+
+1. Obtain user code (TRO Arrangement 0)
+2. Provision user project with restricted-access data (TRO Arrangement 1)
+3. Run user code, part 1 (TRO Arrangement 2)
+4. Manually run QGIS code to generate map (TRO Arrangement 3)
+5. Run user code, part 2 (TRO Arrangement 4)
+6. Apply disclosure avoidance vetting, modifying certain files (TRO Arrangement 5)
+
+After each step, run the arrangement recording and optionally capture the state of the project.
+
+```bash
+tro-utils --declaration $TROFILE arrangement add sample-trace-workflow \
+    -m "After executing workflow Step X" -i .git
 ```
 
 :::
@@ -354,9 +366,9 @@ Per the TRACE Conceptual Model, the TRO **composition** comprises all of the dig
 * TRO with two arrangements: As in the current example the initial arrangement (pre-execution) and final arrangement (post-execution).
 * TRO with confidential elements: The initial arrangment contains confidential information that cannot be redistributed but is retained on a secure system. After execution, the second arrangement still contains confidential information and is similarly retained. After the removal of confidential information (e.g., via disclosure avoidance activities), the final arrangement is captured and disseminated. 
 
-There are variety of ways to capture the compositions for both TROs. As in the current example, we can create a ZIP or BagIt archive of the project directory at each stage, reflecting the different arrangements (possibly with confidential elements removed). For storage efficiency, the composition could also be managed using a version control system (e.g., Git) where each arrangement is a tag. 
+There are variety of ways to capture the compositions for both TROs. As in the current example, we can create a ZIP or [BagIt](https://en.wikipedia.org/wiki/BagIt) archive of the project directory at each stage, reflecting the different arrangements (possibly with confidential elements removed). For storage efficiency, the composition could also be managed using a version control system (e.g., Git) where each arrangement is a tag. 
 
-For this example, we will capture and publish the composition using ZIP archives.
+For this example, we have been  capturing  the compositions using ZIP archives, each of which can be published.
 
 
 ## Finalizing TRO
@@ -388,7 +400,7 @@ Note that `InternetIsolation` and `InternetAccessRecording` are capabilities tha
 
 ### Timestamp and sign the TRO
 
-To wrap up, the TRO is signed. This ensures that no further modifications can be made to the TRO. The signature is created using the private key and stored in a separate file.
+To wrap up, the TRO is signed. This ensures that no further modifications can be made to the TRO. The signature is created using the private key and stored in a separate file. The signature also uses a time-stamp service (TSA) to ensure that the signature is valid at the time of signing. 
 
 :::{admonition} Example: Signing the TRO
 :class: note
@@ -430,7 +442,8 @@ sample-trace-workflow/
 sample_tro-2025-04-25-09-20-26.jsonld
 sample_tro-2025-04-25-09-20-26.sig
 sample_tro-2025-04-25-09-20-26.tsr
-
+arrangement0.zip
+arrangement1.zip
 ```
 :::
 
@@ -466,7 +479,7 @@ source ~/server-env/bin/activate
 cd $WEBBASE
 python3 -m pip install -r requirements.txt
 ```
-
+and publish
 
 **Publishing TROs**
 
@@ -529,6 +542,13 @@ This will create a draft deposit that can be manually published.
 
 **Listing TROs**
 
-TROs can now be listed on the organization's website, yet be preserved on Zenodo infrastructure. While the TRS information is embedded into the TRO, the entire system should be documented on the organization's own website, f.i., via the [TRS Report](https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html).
+TROs can now be listed on the organization's website, yet be preserved on Zenodo infrastructure. 
 
 :::
+
+## Publicly displaying system information
+
+While the TRS information is embedded into the TRO, the entire system should be documented on the organization's own website, f.i., via the [TRS Report](https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html). When multiple methods exist to create TROs (f.i., some fully automated, others with some manual intervention), multiple TRS descriptions should be used. 
+
+
+

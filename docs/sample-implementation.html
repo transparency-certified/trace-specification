@@ -379,6 +379,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-tro-and-trs">Publishing the TRO and TRS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publicly-displaying-system-information">Publicly displaying system information</a></li>
 </ul>
             </nav>
         </div>
@@ -556,7 +557,7 @@ supported by the system and a signing key associated with the certificate. The c
 </aside>
 <div class="note admonition">
 <p class="admonition-title">Example: Creating a TRS description</p>
-<p>Create <code class="docutils literal notranslate"><span class="pre">~/trs.jsonld</span></code> with the following content:</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">$TRS_LOCATION</span></code> with the following content:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;rdfs:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRS that can monitor netowork accesses or provide Internet isolation&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;trov:hasCapability&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -570,7 +571,7 @@ supported by the system and a signing key associated with the certificate. The c
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;trov:owner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Organization&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;trov:description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example TRACE Server&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fully automated TRACE server&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;trov:contact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;valid_email@my.organization.com&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;trov:url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1/&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;trov:name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myorg-trs&quot;</span><span class="p">,</span>
@@ -614,22 +615,14 @@ tro-utils<span class="w"> </span>--declaration<span class="w"> </span><span clas
 </div>
 <p>Optionally, create a ZIP archive containing the state of the workflow before execution. For example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sample-trace-workflow
-zip<span class="w"> </span>-r<span class="w"> </span>arrangement0.zip<span class="w"> </span>*<span class="w"> </span>-x<span class="w"> </span>.git
+zip<span class="w"> </span>-r<span class="w"> </span>../arrangement0.zip<span class="w"> </span>*<span class="w"> </span>-x<span class="w"> </span>.git
 </pre></div>
 </div>
 </div>
 </section>
 <section id="executing-defined-workflow">
 <h2>Executing defined workflow.<a class="headerlink" href="#executing-defined-workflow" title="Link to this heading">#</a></h2>
-<p>At this point, the intial TRO has been created. The various tasks that a typical workflow requires are now executed. At the core, this means executing the user-provided research code, however, it might also entail discrete additional (manual) steps. The described workflow should be explicit about these steps, and care should be taken to ensure that TRO snapshots are made at each step of more complex workflows. For instance, if there are additional data acquisition steps or software that is not scripted:</p>
-<ol class="arabic simple">
-<li><p>Obtain user code (TRO Arrangement 0)</p></li>
-<li><p>Provision user project with restricted-access data (TRO Arrangement 1)</p></li>
-<li><p>Run user code, part 1 (TRO Arrangement 2)</p></li>
-<li><p>Manually run QGIS code to generate map (TRO Arrangement 3)</p></li>
-<li><p>Run user code, part 2 (TRO Arrangement 4)</p></li>
-<li><p>Apply disclosure avoidance vetting, modifying certain files (TRO Arrangement 5)</p></li>
-</ol>
+<p>At this point, the intial TRO has been created. The various tasks that a typical workflow requires are now executed. At the core, this means executing the user-provided research code, however, it might also entail discrete additional (manual) steps. The described workflow should be explicit about these steps, and care should be taken to ensure that TRO snapshots are made at each step of more complex workflows.</p>
 <div class="note admonition">
 <p class="admonition-title">Example: Running the example workflow</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$PROJBASE</span>/sample-trace-workflow
@@ -654,7 +647,23 @@ Arrangement<span class="o">(</span><span class="nv">id</span><span class="o">=</
 </div>
 <p>Optionally, create a ZIP archive containing the second arrangement after workflow execution:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>sample-trace-workflow
-zip<span class="w"> </span>-r<span class="w"> </span>arrangement1.zip<span class="w"> </span>*<span class="w"> </span>-x<span class="w"> </span>.git
+zip<span class="w"> </span>-r<span class="w"> </span>../arrangement1.zip<span class="w"> </span>*<span class="w"> </span>-x<span class="w"> </span>.git
+</pre></div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Example: When there are additional data acquisition steps or software that are not scripted:</p>
+<ol class="arabic simple">
+<li><p>Obtain user code (TRO Arrangement 0)</p></li>
+<li><p>Provision user project with restricted-access data (TRO Arrangement 1)</p></li>
+<li><p>Run user code, part 1 (TRO Arrangement 2)</p></li>
+<li><p>Manually run QGIS code to generate map (TRO Arrangement 3)</p></li>
+<li><p>Run user code, part 2 (TRO Arrangement 4)</p></li>
+<li><p>Apply disclosure avoidance vetting, modifying certain files (TRO Arrangement 5)</p></li>
+</ol>
+<p>After each step, run the arrangement recording and optionally capture the state of the project.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tro-utils<span class="w"> </span>--declaration<span class="w"> </span><span class="nv">$TROFILE</span><span class="w"> </span>arrangement<span class="w"> </span>add<span class="w"> </span>sample-trace-workflow<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span><span class="s2">&quot;After executing workflow Step X&quot;</span><span class="w"> </span>-i<span class="w"> </span>.git
 </pre></div>
 </div>
 </div>
@@ -666,8 +675,8 @@ zip<span class="w"> </span>-r<span class="w"> </span>arrangement1.zip<span class
 <li><p>TRO with two arrangements: As in the current example the initial arrangement (pre-execution) and final arrangement (post-execution).</p></li>
 <li><p>TRO with confidential elements: The initial arrangment contains confidential information that cannot be redistributed but is retained on a secure system. After execution, the second arrangement still contains confidential information and is similarly retained. After the removal of confidential information (e.g., via disclosure avoidance activities), the final arrangement is captured and disseminated.</p></li>
 </ul>
-<p>There are variety of ways to capture the compositions for both TROs. As in the current example, we can create a ZIP or BagIt archive of the project directory at each stage, reflecting the different arrangements (possibly with confidential elements removed). For storage efficiency, the composition could also be managed using a version control system (e.g., Git) where each arrangement is a tag.</p>
-<p>For this example, we will capture and publish the composition using ZIP archives.</p>
+<p>There are variety of ways to capture the compositions for both TROs. As in the current example, we can create a ZIP or <a class="reference external" href="https://en.wikipedia.org/wiki/BagIt">BagIt</a> archive of the project directory at each stage, reflecting the different arrangements (possibly with confidential elements removed). For storage efficiency, the composition could also be managed using a version control system (e.g., Git) where each arrangement is a tag.</p>
+<p>For this example, we have been  capturing  the compositions using ZIP archives, each of which can be published.</p>
 </section>
 <section id="finalizing-tro">
 <h2>Finalizing TRO<a class="headerlink" href="#finalizing-tro" title="Link to this heading">#</a></h2>
@@ -692,7 +701,7 @@ zip<span class="w"> </span>-r<span class="w"> </span>arrangement1.zip<span class
 </section>
 <section id="timestamp-and-sign-the-tro">
 <h3>Timestamp and sign the TRO<a class="headerlink" href="#timestamp-and-sign-the-tro" title="Link to this heading">#</a></h3>
-<p>To wrap up, the TRO is signed. This ensures that no further modifications can be made to the TRO. The signature is created using the private key and stored in a separate file.</p>
+<p>To wrap up, the TRO is signed. This ensures that no further modifications can be made to the TRO. The signature is created using the private key and stored in a separate file. The signature also uses a time-stamp service (TSA) to ensure that the signature is valid at the time of signing.</p>
 <div class="note admonition">
 <p class="admonition-title">Example: Signing the TRO</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tro-utils<span class="w"> </span>--declaration<span class="w"> </span><span class="nv">$TROFILE</span><span class="w"> </span>sign
@@ -720,6 +729,8 @@ Verification:<span class="w"> </span>OK
 sample_tro-2025-04-25-09-20-26.jsonld
 sample_tro-2025-04-25-09-20-26.sig
 sample_tro-2025-04-25-09-20-26.tsr
+arrangement0.zip
+arrangement1.zip
 </pre></div>
 </div>
 </div>
@@ -753,6 +764,7 @@ python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </
 python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
+<p>and publish</p>
 <p><strong>Publishing TROs</strong></p>
 <p>Copy the TROs to the web server directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span><span class="nv">$PROJBASE</span>/sample_tro-*<span class="w">  </span><span class="nv">$WEBBASE</span>/data/
@@ -798,8 +810,12 @@ python<span class="w"> </span>zenodo_upload.py<span class="w"> </span><span clas
 </div>
 <p>This will create a draft deposit that can be manually published.</p>
 <p><strong>Listing TROs</strong></p>
-<p>TROs can now be listed on the organization’s website, yet be preserved on Zenodo infrastructure. While the TRS information is embedded into the TRO, the entire system should be documented on the organization’s own website, f.i., via the <a class="reference external" href="https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html">TRS Report</a>.</p>
+<p>TROs can now be listed on the organization’s website, yet be preserved on Zenodo infrastructure.</p>
 </div>
+</section>
+<section id="publicly-displaying-system-information">
+<h2>Publicly displaying system information<a class="headerlink" href="#publicly-displaying-system-information" title="Link to this heading">#</a></h2>
+<p>While the TRS information is embedded into the TRO, the entire system should be documented on the organization’s own website, f.i., via the <a class="reference external" href="https://transparency-certified.github.io/trov-demos/demo/02-tro-examples/03-skope-lbda-processing/products/report_trs.html">TRS Report</a>. When multiple methods exist to create TROs (f.i., some fully automated, others with some manual intervention), multiple TRS descriptions should be used.</p>
 </section>
 </section>
 
@@ -884,6 +900,7 @@ python<span class="w"> </span>zenodo_upload.py<span class="w"> </span><span clas
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-tro-and-trs">Publishing the TRO and TRS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publicly-displaying-system-information">Publicly displaying system information</a></li>
 </ul>
   </nav></div>
 
