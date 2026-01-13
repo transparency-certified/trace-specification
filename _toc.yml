@@ -39,8 +39,6 @@ parts:
   - file: docs/trace-prototype
   - file: docs/trace-toolkit
   - file: docs/slurm-plugin
-  - file: docs/wholetale-integration
-  - file: docs/skope-integration
   - file: docs/sample-implementation
 - caption: TRACE Development
   chapters:
