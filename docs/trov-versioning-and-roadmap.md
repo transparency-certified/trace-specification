@@ -58,7 +58,7 @@ Each version that may contain breaking changes relative to its predecessor recei
 
 | Version | Namespace URI | Status |
 |---------|--------------|--------|
-| _(pre-release)_ | `https://w3id.org/trace/2023/05/trov#` | Retired. Frozen snapshot: [Pre-Release Reference](trov-prerelease.md). |
+| _(pre-release)_ | `https://w3id.org/trace/2023/05/trov#` | Retired. Frozen snapshot: Pre-Release Reference [coming soon]. |
 | 0.1 | `https://w3id.org/trace/trov/0.1#` | Draft. First documented and testable version. |
 | 0.2, 0.3, ... | `https://w3id.org/trace/trov/0.2#`, ... | Future pre-1.0 versions, if needed. Each gets its own namespace. |
 | 1.0 | `https://w3id.org/trace/trov/1#` | Planned. |
@@ -68,7 +68,7 @@ Each version that may contain breaking changes relative to its predecessor recei
 
 The pre-release namespace `https://w3id.org/trace/2023/05/trov#` was minted in May 2023 using a date-based URI pattern. TROV now uses a version-based namespace pattern (`trace/trov/{version}#`). Pre-1.0, each version gets its own namespace because breaking changes are expected. Post-1.0, only major versions change the namespace.
 
-The pre-release namespace is retired. TRO declarations created with the `2023/05` namespace remain valid documents but are not guaranteed to conform to TROV 0.1 without conversion. The `2023/05` URI resolves to the [Pre-Release Vocabulary Reference](trov-prerelease.md), which documents the terms used by pre-release implementations and provides migration guidance.
+The pre-release namespace is retired. TRO declarations created with the `2023/05` namespace remain valid documents but are not guaranteed to conform to TROV 0.1 without conversion. The `2023/05` URI will resolve to the Pre-Release Vocabulary Reference [coming soon], which documents the terms used by pre-release implementations and provides migration guidance.
 
 A one-time migration tool will convert pre-release TRO declarations to the 0.1 namespace.
 
