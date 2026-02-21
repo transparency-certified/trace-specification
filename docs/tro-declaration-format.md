@@ -64,7 +64,7 @@ The context defines four namespace prefixes:
 | `trov:` | `https://w3id.org/trace/2023/05/trov#` | All TROV terms |
 | `schema:` | `https://schema.org` | Standard metadata (name, description, dates) |
 
-> **For JSON developers:** The `@context` is boilerplate. Copy it as-is into every TRO declaration. It exists so that downstream tools can interpret the document as linked data, but you never need to resolve or fetch it at runtime. Everything after the `@context` is ordinary JSON.
+> **For JSON developers:** The `@context` is boilerplate. Copy it as-is into every TRO declaration. It exists so that downstream tools can interpret the document as linked data, but you never need to resolve or fetch it at runtime. Everything after the `@context` is ordinary JSON. See [TRO Declaration Design](tro-declaration-design.md) for more on how TRO declarations serve both JSON and RDF audiences.
 
 ---
 

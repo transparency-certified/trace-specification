@@ -224,4 +224,4 @@ TROV uses terms from the following external vocabularies:
 
 **Interoperability.** TROV aims to be interoperable with, rather than to replace, current and future Research Object standards (e.g., RO-Crate), archival formats (e.g., BagIt), and repository layouts. TROV complements the W3C PROV-O ontology for describing general provenance relationships.
 
-**JSON-LD context.** TRO declarations include a `@context` block that maps the short-form term names used in JSON to the full URIs defined here. Producers of TROs reference the context and write ordinary JSON; the context enables downstream RDF processing without requiring the producer to engage with RDF directly.
+**JSON-LD context.** TRO declarations include a `@context` block that maps the short-form term names used in JSON to the full URIs defined here. Producers of TROs reference the context and write ordinary JSON; the context enables downstream RDF processing without requiring the producer to engage with RDF directly. See [TRO Declaration Design](tro-declaration-design.md) for the full rationale behind this dual-audience design.
