@@ -2,7 +2,7 @@
 
 This document describes the versioning policy for the Transparent Research Object Vocabulary (TROV), the current state of the vocabulary, and the roadmap from the current draft to TROV 1.0.
 
-For the vocabulary terms themselves, see the [TROV Vocabulary Reference](trov-vocabulary.md). For the JSON-LD document format, see [TRO Declaration Format](tro-declaration-format.md).
+For the vocabulary terms themselves, see the [TROV Vocabulary Reference](trov-vocabulary.md). For the JSON-LD document format, see [TRO Declaration Format](tro-declaration-format.md). For adding institution-specific metadata to TRO declarations, see the [TROV Extension Guide](trov-extension-guide.md).
 
 ---
 
@@ -151,7 +151,7 @@ trov/2#         →  1.x frozen, new namespace, living docs describe 2.0
 
 ## Extensibility: Adopter-Specific Terms
 
-Adopters will need to include metadata specific to their systems — container runtime details, internal system versions, resource utilization metrics, and similar operational data. This is expected and welcome.
+Adopters will need to include metadata specific to their systems — container runtime details, internal system versions, resource utilization metrics, and similar operational data. This is expected and welcome. For a step-by-step walkthrough, see the [TROV Extension Guide](trov-extension-guide.md).
 
 **Rules for adopter extensions:**
 
