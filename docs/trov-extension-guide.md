@@ -1,8 +1,14 @@
 # TROV Extension Guide
 
-**Adding custom terms to TRO declarations**
+How to include institution-specific metadata in TRO declarations using your own namespace, so that custom terms coexist with TROV terms without conflict. Covers namespace setup, JSON Schema validation of extensions, and term mappings for future alignment.
 
-TRO declarations describe transparency properties using the TROV vocabulary. But every Transparent Research System has operational metadata that TROV does not cover — container runtime details, internal version numbers, resource utilization, institutional identifiers. This guide explains how to include that metadata cleanly, so that it coexists with TROV terms without conflict.
+| Document Section | Description |
+|---------|-------------|
+| [The Rule](#the-rule) | Use your own namespace for institution-specific terms |
+| [Step by Step](#step-by-step) | Choose a prefix, add to @context, use prefixed property names |
+| [JSON Schema Validation](#how-json-schema-validation-handles-extensions) | How the schema validates TROV terms while tolerating extensions |
+| [Aligning with Future Versions](#aligning-custom-terms-with-future-trov-versions) | Options when a custom term is later standardized in TROV |
+| [Summary](#summary) | Do/Don't reference table |
 
 ---
 

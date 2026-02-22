@@ -1,6 +1,18 @@
 # TROV Versioning Strategy and Roadmap
 
-This document describes the versioning policy for the Transparent Research Object Vocabulary (TROV), the current state of the vocabulary, and the roadmap from the current draft to TROV 1.0.
+How TROV versions are numbered, what stability guarantees each version provides, and the roadmap from the current draft (0.1) to a stable 1.0 release. Covers namespace management, documentation lifecycle, repository structure, and w3id.org resolution.
+
+| Document Section | Description |
+|---------|-------------|
+| [Guiding Principles](#guiding-principles) | The five design principles governing TROV's evolution |
+| [Version Numbering](#version-numbering) | Pre-1.0 vs post-1.0 stability, lifecycle states, namespace URIs |
+| [What Constitutes a Version](#what-constitutes-a-version) | What's in 0.1 (current draft) and what 1.0 requires |
+| [Extensibility](#extensibility-adopter-specific-terms) | How adopters add institution-specific terms safely |
+| [Breaking vs Non-Breaking Changes](#breaking-vs-non-breaking-changes) | Classification table for post-1.0 changes |
+| [Sources of Truth](#sources-of-truth-and-their-roles) | Which artifacts are authoritative and how they stay in sync |
+| [Repository Structure](#repository-structure-and-namespace-resolution) | trov and trace-specification layouts, w3id.org resolution |
+| [Roadmap](#roadmap) | Three phases: stabilize 0.1, release 1.0, adoption and governance |
+| [Notes](#notes) | FAQ-style explanations of key design decisions |
 
 For the vocabulary terms themselves, see the [TROV Vocabulary Reference](trov-vocabulary.md). For the JSON-LD document format, see [TRO Declaration Format](tro-declaration-format.md). For adding institution-specific metadata to TRO declarations, see the [TROV Extension Guide](trov-extension-guide.md).
 

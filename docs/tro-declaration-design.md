@@ -1,6 +1,14 @@
 # TRO Declaration Design: JSON and RDF
 
-**How TRO declarations serve both JSON and RDF audiences**
+Why TRO declarations use JSON-LD, what each audience gets from the format, and how the JSON Schema constraint makes both JSON and RDF workflows possible from a single file.
+
+| Document Section | Description |
+|---------|-------------|
+| [The Core Idea](#the-core-idea) | One file, two perspectives: valid JSON and valid RDF simultaneously |
+| [What This Means in Practice](#what-this-means-in-practice) | What producers, JSON consumers, RDF consumers, and repositories each get |
+| [The Constraint That Liberates](#the-constraint-that-liberates) | How the JSON Schema constraint enables both audiences |
+| [The @context Is the Bridge](#the-context-is-the-bridge) | How the JSON-LD context connects the JSON and RDF perspectives |
+| [Summary](#summary) | Four-audience comparison table |
 
 ---
 
