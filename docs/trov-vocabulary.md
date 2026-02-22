@@ -1,15 +1,33 @@
 # TROV Vocabulary Reference
 
-**Transparent Research Object Vocabulary (TROV)**
+Term reference for the Transparent Research Object Vocabulary (TROV). Lists every class, property, and named individual in the current draft, with descriptions and cardinality constraints.
 
-- Namespace: `https://w3id.org/trace/2023/05/trov#`
-- Prefix: `trov:`
-- Ontology IRI: `https://w3id.org/trace/trov/0.1/`
-- Version: 0.1 (Draft)
-- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-- Publisher: [TRACE Project](https://transparency-certified.github.io/)
+| Document Section | Description |
+|---------|-------------|
+| [Vocabulary Metadata](#vocabulary-identity) | Namespace, version, status, and license |
+| [Classes](#classes) | Core entities: TRO, TRS, TRP, artifacts, compositions, arrangements |
+| [Properties](#properties) | Relationships between entities: linking TROs to TRSs, TRPs, arrangements, etc. |
+| [TRS Capability Types](#named-individuals-trs-capability-types) | What a TRS can do (e.g. provide internet isolation) |
+| [TRP Attribute Types](#named-individuals-trp-attribute-types) | Transparency claims about a specific performance |
+| [TRO Attribute Types](#named-individuals-tro-attribute-types) | Transparency claims about a TRO as a whole |
+| [Cardinality Constraints](#cardinality-constraints) | Required vs optional properties and their multiplicities |
+| [External Vocabularies](#external-vocabularies-used) | RDF, RDFS, and schema.org terms used alongside TROV |
+| [Notes](#notes) | JSON-LD context, design rationale, relationship to pre-release |
 
-TROV provides terms for describing Transparent Research Objects (TROs), the Transparent Research Systems (TRS) that produce them, and the Transparent Research Performances (TRPs) they record. For the conceptual background motivating this vocabulary, see the [TRACE Conceptual Model](conceptual-model.md). For the JSON-LD format used to express TRO declarations, see [TRO Declaration Format](tro-declaration-format.md).
+For the conceptual background motivating this vocabulary, see the [TRACE Conceptual Model](conceptual-model.md). For the JSON-LD format used to express TRO declarations, see [TRO Declaration Format](tro-declaration-format.md). For the design rationale behind the JSON-LD format, see [TRO Declaration Design](tro-declaration-design.md).
+
+---
+
+## Vocabulary Metadata
+
+| | |
+|---|---|
+| **Namespace** | `https://w3id.org/trace/trov/0.1#` |
+| **Prefix** | `trov:` |
+| **Version** | 0.1 (Draft) |
+| **License** | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| **Publisher** | [TRACE Project](https://transparency-certified.github.io/) |
+| **Status** | Namespace URI does not yet resolve — see [Versioning Strategy and Roadmap](trov-versioning-and-roadmap.md) for the resolution plan. |
 
 ---
 
@@ -216,7 +234,7 @@ TROV uses terms from the following external vocabularies:
 
 ## Notes
 
-**Namespace.** The current namespace `https://w3id.org/trace/2023/05/trov#` reflects the May 2023 version. The w3id.org persistent URI `https://w3id.org/trace/trov/0.1/` resolves to the formal ontology definition.
+**Namespace.** The 0.1 namespace is `https://w3id.org/trace/trov/0.1#`. This URI does not yet resolve — w3id.org registration is pending. The pre-release namespace `https://w3id.org/trace/2023/05/trov#` is retired; see [Pre-Release Vocabulary Reference](trov-prerelease.md) for migration guidance.
 
 **Extensibility.** The capability and attribute type lists are designed to be extended. New TRS capability types and corresponding performance/TRO attribute types can be added as new transparency conditions are identified. Existing TRS certificates and TRO declarations remain valid when new types are introduced.
 
