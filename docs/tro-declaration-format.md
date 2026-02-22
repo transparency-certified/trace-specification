@@ -2,7 +2,18 @@
 
 A **TRO Declaration** is a JSON-LD document that describes a Transparent Research Object. It records which digital artifacts were involved in a computational workflow, how they were arranged at each stage, what performances (supervised computations) were conducted, and what transparency claims are warranted about the whole process.
 
-This document specifies the structure of a TRO declaration as JSON. For definitions of the vocabulary terms used here, see the [TROV Vocabulary Reference](trov-vocabulary.md). For the conceptual background, see the [TRACE Conceptual Model](conceptual-model.md).
+| Document Section | Description |
+|---------|-------------|
+| [Overview](#overview) | What a TRO declaration contains at a high level |
+| [Document Structure](#document-structure) | The `@context`, `@graph`, and namespace prefixes |
+| [The TRO Object](#the-tro-object) | TRS, compositions, arrangements, artifacts, loci, TRPs |
+| [The Warrant Chain](#the-warrant-chain) | How TRP attributes link back to TRS capabilities |
+| [Identifier Conventions](#identifier-conventions) | `@id` patterns for TRS, TRP, arrangement, and artifact nodes |
+| [Signing and Timestamping](#signing-and-timestamping) | GPG and X.509/CMS signing, timestamp authorities |
+| [Complete Example](#complete-example) | A full annotated TRO declaration |
+| [Notes](#notes) | JSON-LD conventions, design rationale, known limitations |
+
+For definitions of the vocabulary terms used here, see the [TROV Vocabulary Reference](trov-vocabulary.md). For the conceptual background, see the [TRACE Conceptual Model](conceptual-model.md). For the design rationale behind the JSON-LD format, see [TRO Declaration Design](tro-declaration-design.md).
 
 ---
 
