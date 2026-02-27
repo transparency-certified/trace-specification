@@ -6,9 +6,9 @@ How to include institution-specific metadata in TRO declarations using your own 
 |---------|-------------|
 | [The Rule](#the-rule) | Use your own namespace for institution-specific terms |
 | [Step by Step](#step-by-step) | Choose a prefix, add to @context, use prefixed property names |
-| [JSON Schema Validation](#how-json-schema-validation-handles-extensions) | How the schema validates TROV terms while tolerating extensions |
-| [Aligning with Future Versions](#aligning-custom-terms-with-future-trov-versions) | Options when a custom term is later standardized in TROV |
-| [Summary](#summary) | Do/Don't reference table |
+| [JSON Schema Validation](#how-json-schema-validation-handles-extensions) | How the schema validates TROV terms while supporting extensions |
+| [Aligning with Future Versions](#aligning-custom-terms-with-future-trov-versions) | Alignment when a custom term is later standardized in TROV |
+| [Summary](#summary) | Guidelines reference table |
 
 ---
 
@@ -16,7 +16,7 @@ How to include institution-specific metadata in TRO declarations using your own 
 
 **Use your own namespace for institution-specific terms.**
 
-TROV uses the prefix `trov:` for its terms. Your system should define its own prefix for terms specific to your implementation. This guarantees no collision with current or future TROV terms.
+TROV uses the prefix `trov:` for its terms. Your system defines its own prefix for terms specific to your implementation.
 
 ---
 
@@ -24,7 +24,7 @@ TROV uses the prefix `trov:` for its terms. Your system should define its own pr
 
 ### 1. Choose a namespace and prefix
 
-Pick a namespace URI you control and a short prefix. The namespace should be a stable URL — it does not need to resolve to anything today, but it should be yours:
+Pick a namespace URI under an Internet domain you own. The URI is the durable identifier for your terms. The prefix is just a shorthand used within a given TRO declaration:
 
 ```json
 "mytrs": "https://example.org/mytrs#"
@@ -48,8 +48,6 @@ The `@context` block in a TRO declaration maps prefixes to namespace URIs. Add y
 ]
 ```
 
-This is standard JSON-LD practice. Adding your own prefix does not affect TROV conformance.
-
 ### 3. Use prefixed property names for your metadata
 
 Wherever you add custom metadata, use your prefix:
@@ -67,50 +65,26 @@ Wherever you add custom metadata, use your prefix:
 }
 ```
 
-The `trov:` properties are validated by the TROV JSON Schema. The `mytrs:` properties pass through — the schema recognizes them as namespaced extensions and does not flag them.
-
-### 4. Do not use unprefixed custom terms
-
-This is wrong:
-
-```json
-{
-    "@id": "trs",
-    "@type": "trov:TrustedResearchSystem",
-    "trov:name": "My Research System",
-    "version": "0.0.1",
-    "architecture": "x86_64"
-}
-```
-
-Unprefixed terms that are not part of the TROV vocabulary or JSON-LD keywords will be flagged as non-conformant by validators. They also create ambiguity — is `"version"` your system's version, or a future TROV term? A namespace prefix removes the ambiguity.
-
 ---
 
 ## How JSON Schema Validation Handles Extensions
 
-The TROV JSON Schema is designed to validate the TROV core while tolerating namespaced extensions:
+The TROV JSON Schema is designed to validate the TROV core while supporting namespaced extensions:
 
 - **Known `trov:` properties** are validated for presence, type, and structure. Missing required properties, wrong types, and invalid capability or attribute names are caught.
 - **JSON-LD keywords** (`@type`, `@id`, `@context`, etc.) are always allowed.
-- **Namespaced extension terms** (any property matching a `prefix:name` pattern) are allowed through without validation. The schema does not know what `mytrs:version` should look like — that is your responsibility.
+- **Namespaced extension terms** with prefixes defined in the `@context` are allowed through without validation.
 - **Bare unprefixed terms** that are not JSON-LD keywords or known TROV properties are flagged as non-conformant.
-
-This means the schema enforces the "use your own namespace" rule automatically. You get structural validation of the TROV parts of your declaration and freedom to include whatever operational metadata your system needs.
 
 ---
 
 ## Aligning Custom Terms with Future TROV Versions
 
-If a term you defined in your namespace is later standardized as a `trov:` term (for example, if TROV adds `trov:containerArchitecture` in a future minor version), you have two options:
+If a concept you defined in your namespace is later standardized as a `trov:` term (for example, if TROV adds `trov:containerArchitecture` in a future minor version), consider using the standard term in new declarations. Existing TRO declarations remain valid.
 
-### Option A: Update your declarations
+### Optional: Declare a term mapping
 
-Switch from `mytrs:architecture` to `trov:containerArchitecture` in new declarations. Old declarations remain valid — they just use your namespace for a concept that now has a standard name.
-
-### Option B: Declare a term mapping
-
-If you want old declarations to be queryable using the new standard term, you can publish an RDF term mapping. This goes in a small vocabulary file at your namespace URI — not in the `@context` of individual TRO declarations (the `@context` maps names to URIs but cannot express relationships between properties).
+To make existing declarations queryable using the new standard term via RDF tools, you can publish an RDF term mapping. This goes in a small vocabulary file at your namespace URI (not in the `@context` of individual TRO declarations).
 
 For example, if your namespace is `https://example.org/mytrs#`, publish a file at that URL containing:
 
@@ -122,11 +96,9 @@ For example, if your namespace is `https://example.org/mytrs#`, publish a file a
 mytrs:architecture rdfs:subPropertyOf trov:containerArchitecture .
 ```
 
-This tells RDF tools that `mytrs:architecture` is a specific case of `trov:containerArchitecture`. A SPARQL query for the TROV term will also find your custom term. You do not need to modify any existing TRO declarations — anyone who dereferences your namespace finds the mappings automatically.
+This tells RDF tools that `mytrs:architecture` is a specific case of `trov:containerArchitecture`. A SPARQL query for the TROV term will also find your custom term. You do not need to modify any existing TRO declarations. Anyone who dereferences your namespace finds the mappings automatically.
 
-If you don't have infrastructure to serve files at your namespace URI, the mapping file can also be distributed alongside your TRO packages or published in a repository. What matters is that consumers can find it.
-
-> **Note.** Term mappings are only relevant if you or your consumers use RDF tooling. If you treat TRO declarations purely as JSON, Option A (updating new declarations) is simpler and sufficient.
+If you don't have infrastructure to serve files at your namespace URI, the mapping file can also be distributed alongside your TRO packages or published in a repository.
 
 ---
 
@@ -137,5 +109,3 @@ If you don't have infrastructure to serve files at your namespace URI, the mappi
 | Define your own namespace prefix | Use `trov:` for custom terms |
 | Add your prefix to the `@context` | Leave custom terms unprefixed |
 | Use `prefix:name` for all custom properties | Assume bare keys will be ignored |
-| Let the JSON Schema validate TROV structure | Worry about custom terms failing validation |
-| Publish term mappings if you want RDF queryability | Feel obligated to use RDF tooling |
