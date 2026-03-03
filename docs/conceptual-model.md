@@ -2,7 +2,7 @@
 # Conceptual Model (v4)
 
 The TRACE model defines the entities and relationships required to describe and
-represent Transparent Research Objects (TROs) and the Transparent Research
+represent Transparent Research Objects (TROs) and the Trusted Research
 Systems (TRSs) that produce them.
 
 This section describes the current revision of TRACE conceptual model in detail.
