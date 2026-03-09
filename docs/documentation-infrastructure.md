@@ -5,11 +5,10 @@ How the TRACE project's documentation is built and deployed across three GitHub 
 | Document Section | Description |
 |---------|-------------|
 | [Repositories](#repositories) | The three repos that contribute to the public site |
-| [Build and Deploy Steps](#build-and-deploy-steps) | Summary of every step that produces or publishes documentation |
-| [The Project Website](#the-project-website) | Jekyll site serving the landing page and top-level navigation |
-| [The Specification Site](#the-specification-site) | Jupyter Book build, deploy pipeline, and the gh-pages branch |
-| [The Vocabulary Reference](#the-vocabulary-reference) | Widoco-generated documentation from the TROV Turtle ontology |
 | [How the Pieces Connect](#how-the-pieces-connect) | URL structure showing how the three repos map to the public site |
+| [The Project Website](#the-project-website) | Jekyll site serving the landing page and top-level navigation |
+| [The Specification Site](#the-specification-site) | Jupyter Book build and deploy pipeline |
+| [The Vocabulary Reference](#the-vocabulary-reference) | Widoco-generated documentation from the TROV Turtle ontology |
 | [Adding a Page to the Specification](#adding-a-page-to-the-specification) | Steps to create a new document and make it appear on the live site |
 
 For the specification content itself, see [TRACE Specifications](specifications.md). For the TROV vocabulary terms, see [TROV Vocabulary](trov-vocabulary.md).
@@ -22,79 +21,49 @@ Three repositories under the [transparency-certified](https://github.com/transpa
 
 | Repository | Contents | URL |
 |------------|----------|-----|
-| [transparency-certified.github.io](https://github.com/transparency-certified/transparency-certified.github.io) | Jekyll site — project landing page, navigation, job listings | Serves at root: `transparency-certified.github.io/` |
-| [trace-specification](https://github.com/transparency-certified/trace-specification) | Jupyter Book source — specification documents, conceptual model, examples | Serves at: `transparency-certified.github.io/trace-specification/` |
-| [trov](https://github.com/transparency-certified/trov) | TROV ontology in Turtle, SHACL shapes, Widoco configuration | Serves at: `transparency-certified.github.io/trov/` |
+| [transparency-certified.github.io](https://github.com/transparency-certified/transparency-certified.github.io) | Jekyll site — project landing page and navigation | Serves at root: [transparency-certified.github.io/](https://transparency-certified.github.io/) |
+| [trace-specification](https://github.com/transparency-certified/trace-specification) | Jupyter Book source — specification documents, conceptual model, examples | Serves at: [transparency-certified.github.io/trace-specification/](https://transparency-certified.github.io/trace-specification/) |
+| [trov](https://github.com/transparency-certified/trov) | TROV ontology in Turtle and JSON-LD, SHACL shapes, Widoco configuration | Serves at: [transparency-certified.github.io/trov/0.1/](https://transparency-certified.github.io/trov/0.1/) |
 
-Each repository has its own GitHub Pages deployment. GitHub serves all three under the same domain because `transparency-certified.github.io` is the organization's GitHub Pages site, and the other two repos are project-level Pages sites that GitHub mounts at subpaths matching their repository names.
+GitHub serves all three under the same domain: `transparency-certified.github.io` is the organization's GitHub Pages site, and the other two repos are project-level Pages sites that GitHub mounts at subpaths matching their repository names.
 
 ---
 
-## Build and Deploy Steps
+## How the Pieces Connect
 
-Four workflows produce the public site. Three are GitHub Actions workflows defined in `.github/workflows/deploy.yml` files; one is GitHub Pages' built-in Jekyll build. As currently configured, each workflow reads from and writes to its own repository only — no workflow pushes files to another repo. GitHub Pages serves from each repo's deploy branch.
+The public site at `transparency-certified.github.io` is assembled by GitHub Pages from three independent deployments:
 
-### Workflow: GitHub Pages Jekyll build
+```
+transparency-certified.github.io/
+│
+├── /                          ← Jekyll site (transparency-certified.github.io repo, main branch)
+│   ├── index.html                Landing page
+│   └── _config.yml               Menu links into /trace-specification/
+│
+├── /trace-specification/      ← Jupyter Book output (trace-specification repo, gh-pages branch)
+│   ├── docs/specifications.html  Specification entry point
+│   ├── docs/...                  Built documentation pages
+│   └── _static/                  Sphinx theme assets
+│
+└── /trov/                     ← Widoco output (trov repo, gh-pages branch)
+    └── 0.1/index.html            Vocabulary reference
+```
 
-| | |
-|---|---|
-| **Repository** | transparency-certified.github.io |
-| **Defined in** | No workflow file — GitHub Pages' built-in Jekyll build |
-| **Trigger** | Push to `main` on transparency-certified.github.io |
+Each component is built and deployed independently. The Jekyll site links into the specification via its menu configuration. The specification documents link to the vocabulary reference where relevant.
 
-| Step | Input | Output |
-|------|-------|--------|
-| Build and serve Jekyll site | Jekyll source (HTML templates, `_config.yml`, Markdown posts, `_jobs/` collection) | Live site at `transparency-certified.github.io/` |
-
-GitHub Pages handles the build and deploy as a single automatic operation. There is no intermediate artifact or separate deploy step.
-
-### Workflow: `deploy-docs`
-
-| | |
-|---|---|
-| **Repository** | trace-specification |
-| **Defined in** | `.github/workflows/deploy.yml` |
-| **Trigger** | Push to `main` on trace-specification |
-
-| Step | Input | Output | Mechanism |
-|------|-------|--------|-----------|
-| 1. Build Jupyter Book | Markdown in `docs/`, `_config.yml`, `_toc.yml` | Static HTML in `_build/html/` | Runs `jupyter-book build --all .` in `craigwillis/jupyter-book:latest` Docker image |
-| 2. Deploy to gh-pages | `_build/html/` | Commit on orphan `gh-pages` branch | `peaceiris/actions-gh-pages@v3.6.1` GitHub Action |
-
-### Workflow: `run-widoco`
-
-| | |
-|---|---|
-| **Repository** | trov |
-| **Defined in** | `.github/workflows/deploy.yml` |
-| **Trigger** | Push or PR to `main` on trov, or manual dispatch from the Actions tab |
-
-| Step | Input | Output | Mechanism |
-|------|-------|--------|-----------|
-| 1. Build vocabulary docs | `0.1/trov.ttl`, `0.1/trov.config` | HTML documentation in `widoco/0.1/` | Runs [Widoco](https://github.com/dgarijo/Widoco) in `craigwillis/widoco:latest` Docker image |
-| 2. Deploy to gh-pages | `widoco/` directory | Commit on orphan `gh-pages` branch | `peaceiris/actions-gh-pages@v4` GitHub Action |
-
-### GitHub Pages hosting
-
-For the `trace-specification` and `trov` repositories, GitHub Pages automatically serves the contents of the `gh-pages` branch whenever it is updated. This is not a workflow step — it is a separate GitHub Pages configuration that reacts to changes on the branch. The results appear at `transparency-certified.github.io/trace-specification/` and `transparency-certified.github.io/trov/` respectively.
+The `trace-specification` and `trov` repos each deploy to an orphan `gh-pages` branch containing only generated HTML and a `.nojekyll` file that tells GitHub Pages to serve files directly.
 
 ---
 
 ## The Project Website
 
-The **transparency-certified.github.io** repository is a Jekyll site. GitHub Pages builds it automatically from the `main` branch — there is no custom CI workflow. The site provides:
-
-- A landing page with project description and team information
-- Navigation that links into the specification and infrastructure documentation
-- Job listings (a Jekyll collection in `_jobs/`)
-
-The site's menu (configured in `_config.yml`) links to the specification at `/trace-specification/docs/specifications.html` and to the infrastructure overview at `/trace-specification/`. These URLs point into the separately deployed Jupyter Book output from the `trace-specification` repository.
+The **[transparency-certified.github.io](https://github.com/transparency-certified/transparency-certified.github.io)** repository is a Jekyll site. GitHub Pages builds it automatically from the `main` branch. The site provides a landing page with project description and team information, and navigation that links into the specification and vocabulary sites.
 
 ---
 
 ## The Specification Site
 
-The **trace-specification** repository contains the specification documents as Markdown files in `docs/`. The build and deploy process works as follows:
+The **[trace-specification](https://github.com/transparency-certified/trace-specification)** repository contains the specification documents as Markdown files in `docs/`. The build and deploy process works as follows:
 
 ### Source
 
@@ -108,31 +77,21 @@ The `_toc.yml` file controls which documents appear in the built site and in wha
 
 ### Build
 
-On every push to `main`, the GitHub Action runs:
+On every push to `main`, the GitHub Action:
 
 1. Checks out the repository
 2. Runs `jupyter-book build --all .` inside the `craigwillis/jupyter-book:latest` Docker image
-3. The build produces static HTML in `_build/html/`
+3. Produces static HTML in `_build/html/`
 
 ### Deploy
 
-The action uses `peaceiris/actions-gh-pages@v3.6.1` to push the built HTML to the `gh-pages` branch. Each deploy creates a commit with the message `deploy: <commit-hash>`, where the hash references the `main` branch commit that was built.
-
-### The gh-pages branch
-
-The `gh-pages` branch is an **orphan branch** — it was created with no parent commit and shares no history with `main`. The two branches contain entirely different content: `main` has Markdown source, `gh-pages` has generated HTML, CSS, and JavaScript.
-
-The `gh-pages` branch has no common history with `main`. (GitHub's ahead/behind counts are not meaningful for unrelated branches.)
-
-The `gh-pages` branch also contains a `.nojekyll` file, which tells GitHub Pages to serve the files directly rather than processing them through Jekyll.
-
-Deploy commits on `gh-pages` are authored by the CI pipeline. They currently appear under the GitHub noreply address of the user whose credentials the workflow inherited, rather than a bot identity.
+The same GitHub Action uses `peaceiris/actions-gh-pages@v3.6.1` to push the built HTML to the `gh-pages` branch. Each deploy creates a commit with the message `deploy: <commit-hash>`, where the hash references the `main` branch commit that was built.
 
 ---
 
 ## The Vocabulary Reference
 
-The **trov** repository contains the TROV ontology definition and uses a similar but distinct build pipeline.
+The **[trov](https://github.com/transparency-certified/trov)** repository contains the TROV ontology definition and uses a similar build and deploy pipeline.
 
 ### Source
 
@@ -160,36 +119,11 @@ The w3id.org `.htaccess` rules redirect namespace URI requests to files on GitHu
 
 ### Testing the w3id.org redirect rules
 
-w3id.org has no staging environment, so we test the two sides independently:
+w3id.org has no staging environment, so we test independently before and after the PR:
 
 1. **Verify GitHub Pages targets.** Confirm that `https://transparency-certified.github.io/trov/0.1/trov.ttl` (and `.jsonld`, and the HTML index) serve the correct content.
 2. **Test rewrite rules locally.** Run Apache in Docker with our `.htaccess` and verify redirects with `curl -v -H "Accept: text/turtle" http://localhost/trace/trov/0.1` etc.
 3. **Post-merge smoke test.** After the w3id.org PR is merged, verify the live URLs return the expected 303 redirects.
-
----
-
-## How the Pieces Connect
-
-The public site at `transparency-certified.github.io` is assembled by GitHub Pages from three independent deployments:
-
-```
-transparency-certified.github.io/
-│
-├── /                          ← Jekyll site (transparency-certified.github.io repo, main branch)
-│   ├── index.html                Landing page
-│   ├── /jobs/                    Job listings
-│   └── menu links to →
-│
-├── /trace-specification/      ← Jupyter Book output (trace-specification repo, gh-pages branch)
-│   ├── docs/specifications.html  Specification entry point
-│   ├── docs/...                  Built documentation pages
-│   └── _static/                  Sphinx theme assets
-│
-└── /trov/                     ← Widoco output (trov repo, gh-pages branch)
-    └── 0.1/index.html            Vocabulary reference
-```
-
-Each component is built and deployed independently. The Jekyll site links into the specification via its menu configuration. The specification documents link to the vocabulary reference where relevant. There is no shared build step — the three deployments are connected only by URL references.
 
 ---
 
@@ -213,4 +147,4 @@ To add a new document to the specification site:
 
 3. **Push to `main`.** The GitHub Action will build the site and deploy the result to `gh-pages`. The new page will appear at `transparency-certified.github.io/trace-specification/docs/my-new-page.html`.
 
-The build runs automatically — there is no manual deploy step. If the build fails (e.g., due to a syntax error or a broken cross-reference), the `gh-pages` branch is not updated and the live site remains unchanged. Check the Actions tab on the repository to see build status.
+The build runs automatically. If the build fails (e.g., due to a syntax error or a broken cross-reference), the `gh-pages` branch is not updated and the live site remains unchanged. Check the Actions tab on the repository to see build status.
