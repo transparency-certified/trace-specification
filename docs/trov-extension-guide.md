@@ -4,20 +4,17 @@ How to include institution-specific metadata in TRO declarations using your own 
 
 | Document Section | Description |
 |---------|-------------|
-| [The Rule](#the-rule) | Use your own namespace for institution-specific terms |
+| [Overview](#overview) | The core principle and what this guide covers |
 | [Step by Step](#step-by-step) | Choose a prefix, add to @context, use prefixed property names |
 | [JSON Schema Validation](#how-json-schema-validation-handles-extensions) | How the schema validates TROV terms while supporting extensions |
 | [Aligning with Future Versions](#aligning-custom-terms-with-future-trov-versions) | Alignment when a custom term is later standardized in TROV |
 | [Custom Attribute and Capability Types](#custom-attribute-and-capability-types) | Extending the warrant chain with adopter-defined transparency claims |
-| [Summary](#summary) | Guidelines reference table |
 
 ---
 
-## The Rule
+## Overview
 
-**Use your own namespace for institution-specific terms.**
-
-TROV uses the prefix `trov:` for its terms. Your system defines its own prefix for terms specific to your implementation.
+Use your own namespace for institution-specific terms. TROV uses the prefix `trov:` for its terms; your system defines its own prefix for terms specific to your implementation. Custom terms coexist with TROV terms in the same declaration without conflict. The JSON Schema validates TROV terms while allowing namespaced extensions through.
 
 ---
 
@@ -165,12 +162,3 @@ With this declaration loaded, a SPARQL query for all `trov:TRPAttributeType` ins
 
 If a custom type proves broadly useful across multiple TRS implementations, it can be proposed for inclusion in a future TROV version — the same graduation path described in [Aligning Custom Terms with Future TROV Versions](#aligning-custom-terms-with-future-trov-versions).
 
----
-
-## Summary
-
-| Do | Don't |
-|----|-------|
-| Define your own namespace prefix | Use `trov:` for custom terms |
-| Add your prefix to the `@context` | Leave custom terms unprefixed |
-| Use `prefix:name` for all custom properties | Assume bare keys will be ignored |
