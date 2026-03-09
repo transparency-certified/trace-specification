@@ -1,10 +1,10 @@
-# TROV Vocabulary Reference
+# TROV Vocabulary Reference — TROV 0.1 Draft
 
 Term reference for the Transparent Research Object Vocabulary (TROV). Lists every class, property, and named individual in the current draft, with descriptions and cardinality constraints.
 
 | Document Section | Description |
 |---------|-------------|
-| [Vocabulary Metadata](#vocabulary-identity) | Namespace, version, status, and license |
+| [Vocabulary Metadata](#vocabulary-metadata) | Namespace, version, status, and license |
 | [Classes](#classes) | Core entities: TRO, TRS, TRP, artifacts, compositions, arrangements |
 | [Properties](#properties) | Relationships between entities: linking TROs to TRSs, TRPs, arrangements, etc. |
 | [TRS Capability Types](#named-individuals-trs-capability-types) | What a TRS can do (e.g. provide internet isolation) |
@@ -12,6 +12,7 @@ Term reference for the Transparent Research Object Vocabulary (TROV). Lists ever
 | [TRO Attribute Types](#named-individuals-tro-attribute-types) | Transparency claims about a TRO as a whole |
 | [Cardinality Constraints](#cardinality-constraints) | Required vs optional properties and their multiplicities |
 | [External Vocabularies](#external-vocabularies-used) | RDF, RDFS, and schema.org terms used alongside TROV |
+| [Known Limitations](#known-limitations) | Scope boundaries and open questions for 0.1 |
 | [Notes](#notes) | JSON-LD context, design rationale, relationship to pre-release |
 
 For the conceptual background motivating this vocabulary, see the [TRACE Conceptual Model](conceptual-model.md). For the JSON-LD format used to express TRO declarations, see [TRO Declaration Format](tro-declaration-format.md). For the design rationale behind the JSON-LD format, see [TRO Declaration Design](tro-declaration-design.md).
@@ -38,8 +39,8 @@ For the conceptual background motivating this vocabulary, see the [TRACE Concept
 | Class | Description |
 |-------|-------------|
 | `trov:TrustedResearchElement` | Common base class for TRSs, TRPs, and TROs. |
-| `trov:TransparentResearchObject` | A set of research artifacts produced by one or more TRPs and signed by the performing TRS. Subclass of `TrustedResearchElement`. |
-| `trov:TrustedResearchSystem` | A system certified to perform TRPs and assemble TROs. Subclass of `TrustedResearchElement`. |
+| `trov:TransparentResearchObject` | A set of research artifacts produced by one or more TRPs and signed by the assembling TRS. Subclass of `TrustedResearchElement`. |
+| `trov:TrustedResearchSystem` | A system that performs TRPs and assembles TROs. Subclass of `TrustedResearchElement`. |
 | `trov:TrustedResearchPerformance` | A supervised unit of work conducted by a TRS. The centerpiece of the TRACE conceptual model. Subclass of `TrustedResearchElement`. |
 | `trov:TimeStampingAuthority` | An RFC 3161 timestamping authority trusted by a TRS. Subclass of `TrustedResearchElement`. |
 
@@ -49,19 +50,19 @@ For the conceptual background motivating this vocabulary, see the [TRACE Concept
 |-------|-------------|
 | `trov:ArtifactCollection` | Base class for collections of one or more artifacts. |
 | `trov:ArtifactComposition` | The set of all digital artifacts described by a TRO, identified by a composition fingerprint. Subclass of `ArtifactCollection`. |
-| `trov:ResearchArtifact` | A digital object (file, dataset, or bitstream) identified by a content digest. |
-| `trov:CompositionFingerprint` | A digest computed over the sorted digests of all artifacts in a composition. Enables identifying TROs that describe the same set of artifacts. |
+| `trov:ResearchArtifact` | A digital object (file, dataset, or bitstream) identified by a content hash. |
+| `trov:CompositionFingerprint` | A hash computed over the sorted hashes of all artifacts in a composition. Enables identifying TROs that describe the same set of artifacts. |
 
-### Arrangements and Loci
+### Arrangements and Locations
 
 | Class | Description |
 |-------|-------------|
-| `trov:ArtifactArrangement` | A named collection of loci capturing the locations of artifacts at a specific point in a workflow. |
-| `trov:ArtifactLocus` | The location of a specific artifact within an arrangement. Links an artifact to a resource path. Subclass of `ArtifactCollection`. |
+| `trov:ArtifactArrangement` | A named collection of artifact locations. Arrangements are linked to performances as inputs or outputs. |
+| `trov:ArtifactLocation` | The placement of a specific artifact within an arrangement. Links one artifact to one resource path. |
 
 ### The Warrant Chain: Attributes and Capabilities
 
-The warrant chain is the core trust mechanism of TRACE. No transparency claim about a TRO can be asserted without justification traceable to a declared TRS capability.
+The warrant chain is TROV's mechanism for accountability. When transparency claims are made about a TRO, the warrant chain records who is responsible for them.
 
 ```
 TRO attribute
@@ -73,8 +74,8 @@ TRO attribute
 |-------|-------------|
 | `trov:TREAttribute` | Base class for attributes of a TRS, TRP, or TRO. |
 | `trov:TRSAttribute` | An attribute of a TRS. Subclass of `TREAttribute`. |
-| `trov:TRSCapability` | A declared ability of a TRS to enforce a specific transparency condition. Subclass of `TRSAttribute`. The foundation of the warrant chain. |
-| `trov:TRSPolicy` | A transparency condition always enforced by a particular TRS (as opposed to a capability that may be selectively applied). Subclass of `TRSCapability`. |
+| `trov:TRSCapability` | A declared ability of a TRS to enforce a specific transparency condition. Subclass of `TRSAttribute`. |
+| `trov:TRSPolicy` | A TRS-level assertion about a capability. Subclass of `TRSCapability`. Under redesign — see Known Limitations. |
 | `trov:TRPAttribute` | A transparency claim about the conditions under which a specific TRP was conducted. Subclass of `TREAttribute`. |
 | `trov:TROAttribute` | A transparency claim about a TRO as a whole, warranted by attributes of its constituent TRPs. Subclass of `TREAttribute`. |
 
@@ -86,8 +87,9 @@ TRO attribute
 
 | Property | Domain | Range | Description |
 |----------|--------|-------|-------------|
+| `trov:vocabularyVersion` | `TransparentResearchObject` | Literal (string) | The TROV vocabulary version this declaration conforms to (e.g. `"0.1"`). |
 | `trov:wasAssembledBy` | `TransparentResearchObject` | `TrustedResearchSystem` | Links a TRO to the TRS that produced and signed it. |
-| `trov:wasTimestampedBy` | `TransparentResearchObject` | `TimeStampingAuthority` | Links a TRO to the TSA that timestamped the TRS signature. |
+| `trov:wasTimestampedBy` | `TransparentResearchObject` | `TimeStampingAuthority` | Links a TRO to a TSA that timestamped the TRS signature. |
 | `trov:hasComposition` | `TransparentResearchObject` | `ArtifactComposition` | Links a TRO to the composition of artifacts it describes. |
 | `trov:hasArrangement` | `TransparentResearchObject` | `ArtifactArrangement` | Links a TRO to an artifact arrangement it describes. |
 | `trov:hasPerformance` | `TransparentResearchObject` | `TrustedResearchPerformance` | Links a TRO to a TRP it describes. |
@@ -98,7 +100,7 @@ TRO attribute
 | Property | Domain | Range | Description |
 |----------|--------|-------|-------------|
 | `trov:hasCapability` | `TrustedResearchSystem` | `TRSCapability` | Links a TRS to a capability it declares. |
-| `trov:publicKey` | `TrustedResearchSystem` | Literal | The public key (e.g., ASCII-armored GPG key) associated with the TRS. |
+| `trov:publicKey` | `TrustedResearchSystem` | Literal | The signing identity of the TRS (e.g. GPG public key, X.509 certificate). Representation under review for 0.1. |
 
 ### TRP Properties
 
@@ -108,25 +110,26 @@ TRO attribute
 | `trov:accessedArrangement` | `TrustedResearchPerformance` | `ArtifactArrangement` | Links a TRP to an arrangement it read from. |
 | `trov:contributedToArrangement` | `TrustedResearchPerformance` | `ArtifactArrangement` | Links a TRP to an arrangement it wrote to. |
 | `trov:hasPerformanceAttribute` | `TrustedResearchPerformance` | `TRPAttribute` | Links a TRP to a transparency attribute claimed for it. |
-| `trov:startedAtTime` | `TrustedResearchPerformance` | Literal (dateTime) | When the performance began. |
-| `trov:endedAtTime` | `TrustedResearchPerformance` | Literal (dateTime) | When the performance ended. |
+| `trov:startedAtTime` | `TrustedResearchPerformance` | Literal (ISO 8601 string) | When the performance began. |
+| `trov:endedAtTime` | `TrustedResearchPerformance` | Literal (ISO 8601 string) | When the performance ended. |
 
 ### Composition and Artifact Properties
 
 | Property | Domain | Range | Description |
 |----------|--------|-------|-------------|
-| `trov:hasArtifact` | `ArtifactCollection` | `ResearchArtifact` | Links a collection to an artifact it contains. |
+| `trov:hasArtifact` | `ArtifactComposition` | `ResearchArtifact` | Links a composition to an artifact it contains. |
 | `trov:hasFingerprint` | `ArtifactComposition` | `CompositionFingerprint` | Links a composition to its fingerprint. |
-| `trov:sha256` | `ResearchArtifact` or `CompositionFingerprint` | Literal (string) | The SHA-256 digest of an artifact's contents or of a composition's sorted artifact digests. |
+| `trov:hash` | `ResearchArtifact` or `CompositionFingerprint` | Literal (string) | The hash of an artifact's contents or of a composition's sorted artifact hashes. |
+| `trov:hashAlgorithm` | `ResearchArtifact` or `CompositionFingerprint` | Literal (string) | The algorithm used to compute the hash (e.g. `"sha256"`). |
 | `trov:mimeType` | `ResearchArtifact` | Literal (string) | The MIME type of an artifact. |
 
-### Arrangement and Locus Properties
+### Arrangement and Location Properties
 
 | Property | Domain | Range | Description |
 |----------|--------|-------|-------------|
-| `trov:hasLocus` | `ArtifactArrangement` | `ArtifactLocus` | Links an arrangement to one of its loci. |
-| `trov:hasArtifact` | `ArtifactLocus` | `ResearchArtifact` | Links a locus to the artifact at that location. |
-| `trov:hasLocation` | `ArtifactLocus` | Literal (string) | A resource path (file path, URI, or other locator) for the artifact within this arrangement. |
+| `trov:hasArtifactLocation` | `ArtifactArrangement` | `ArtifactLocation` | Links an arrangement to one of its artifact locations. |
+| `trov:artifact` | `ArtifactLocation` | `ResearchArtifact` | Links a location to the artifact placed there. |
+| `trov:path` | `ArtifactLocation` | Literal (string: file path, URI, or other locator) | The resource path for the artifact within this arrangement. |
 
 ### Warrant Chain Properties
 
@@ -148,7 +151,7 @@ The following capability types are currently defined. This list is designed to g
 | `trov:CanProvideInternetIsolation` | `TRSCapability` | The TRS can isolate computations from network access during a TRP. |
 | `trov:CanRecordInternetAccess` | `TRSCapability` | The TRS can record all network accesses made during a TRP. |
 
-### Additional Capabilities Defined in the Vocabulary
+### Additional Capabilities Under Discussion
 
 | Individual | Parent | Description |
 |------------|--------|-------------|
@@ -167,16 +170,6 @@ The following capability types are currently defined. This list is designed to g
 | `trov:CanEnforceInternetIsolation` | `TRSCapability` | The TRS can enforce Internet isolation during a TRP. |
 | `trov:CanPreventUserInteractionDuringRun` | `TRSCapability` | The TRS can prevent user interaction during a TRP. |
 | `trov:CanEnforceCapabilitiesTechnically` | `TRSCapability` | The TRS can enforce all of its declared capabilities through technical means (as opposed to policy-based enforcement). |
-
-### TRS Policy Types
-
-Policies are capabilities that a TRS always enforces (as opposed to capabilities it can selectively apply).
-
-| Individual | Parent | Description |
-|------------|--------|-------------|
-| `trov:EnforcesInternetIsolation` | `TRSPolicy` | The TRS always prevents Internet access during TRPs. |
-| `trov:EnforcesNoninteractiveExecution` | `TRSPolicy` | The TRS always executes TRPs in non-interactive mode. |
-| `trov:EnforcesEnvironmentIsolation` | `TRSPolicy` | The TRS always isolates the host environment during TRPs. |
 
 ---
 
@@ -203,20 +196,23 @@ The following constraints are defined in SHACL shapes and enforced during valida
 
 | Shape | Property | Constraint |
 |-------|----------|------------|
+| TRO | `trov:vocabularyVersion` | Exactly 1 (string) |
 | TRO | `trov:wasAssembledBy` | Exactly 1 TRS |
 | TRO | `trov:wasTimestampedBy` | At most 1 TSA |
-| TRO | `trov:hasComposition` | At least 1 |
+| TRO | `trov:hasComposition` | Exactly 1 |
 | TRO | `trov:hasArrangement` | At least 1 |
 | TRS | `trov:publicKey` | Exactly 1 (string) |
 | TSA | `trov:publicKey` | Exactly 1 (string) |
 | Composition | `trov:hasFingerprint` | Exactly 1 |
 | Composition | `trov:hasArtifact` | At least 1 |
-| Fingerprint | `trov:sha256` | Exactly 1 (string) |
-| Artifact | `trov:sha256` | Exactly 1 (string) |
+| Fingerprint | `trov:hash` | Exactly 1 (string) |
+| Fingerprint | `trov:hashAlgorithm` | Exactly 1 (string) |
+| Artifact | `trov:hash` | Exactly 1 (string) |
+| Artifact | `trov:hashAlgorithm` | Exactly 1 (string) |
 | Artifact | `trov:mimeType` | At most 1 (string) |
-| Arrangement | `trov:hasLocus` | At least 1 |
-| Locus | `trov:hasArtifact` | Exactly 1 |
-| Locus | `trov:hasLocation` | Exactly 1 (string) |
+| Arrangement | `trov:hasArtifactLocation` | At least 1 |
+| Location | `trov:artifact` | Exactly 1 |
+| Location | `trov:path` | Exactly 1 (string) |
 
 ---
 
@@ -228,18 +224,31 @@ TROV uses terms from the following external vocabularies:
 |--------|-----------|-------|
 | `rdf:` | `http://www.w3.org/1999/02/22-rdf-syntax-ns#` | `rdf:type` |
 | `rdfs:` | `http://www.w3.org/2000/01/rdf-schema#` | `rdfs:comment`, `rdfs:Class`, `rdfs:subClassOf` |
-| `schema:` | `https://schema.org` | `schema:CreativeWork`, `schema:Organization`, `schema:creator`, `schema:name`, `schema:description`, `schema:dateCreated` (used in tro-utils for TRO and TRS metadata) |
+| `schema:` | `https://schema.org` | `schema:CreativeWork`, `schema:Organization`, `schema:creator`, `schema:name`, `schema:description`, `schema:dateCreated`. Optional — used in tro-utils for TRO and TRS metadata but not required for conformance. See [TRO Declaration Format — dependency boundary](tro-declaration-format.md#the-context-block). |
+
+---
+
+## Known Limitations
+
+| Limitation | Disposition |
+|-----------|------------|
+| Only two TRP attribute types defined (`InternetIsolation`, `InternetAccessRecording`) | Acceptable for 0.1 — new types can be added without breaking changes |
+| Only one TRO attribute type defined (`IncludesAllInputData`) | Acceptable for 0.1 — same reasoning |
+| `trov:publicKey` representation not finalized (GPG vs X.509 certificate) | Resolve for 0.1 |
+| No `trov:signingMechanism` property to identify the signing approach | Resolve for 0.1 |
+| `TRSPolicy` / `trov:hasPolicy` defined but not wired up | Deferred to 0.2 |
+| `trov:TimeStampingAuthority` wraps an external concept (RFC 3161 TSA) | Acceptable for 0.1 — no standard RDF class exists; candidate for replacement if one emerges |
 
 ---
 
 ## Notes
 
-**Namespace.** The 0.1 namespace is `https://w3id.org/trace/trov/0.1#`. This URI does not yet resolve — w3id.org registration is pending. The pre-release namespace `https://w3id.org/trace/2023/05/trov#` is retired; see [Pre-Release Vocabulary Reference](trov-prerelease.md) for migration guidance.
+**Namespace.** The 0.1 namespace is `https://w3id.org/trace/trov/0.1#`; the pre-release namespace `https://w3id.org/trace/2023/05/trov#` is retired. See [Pre-Release Vocabulary Reference](trov-prerelease.md) for migration guidance.
 
 **Extensibility.** The capability and attribute type lists are designed to be extended. New TRS capability types and corresponding performance/TRO attribute types can be added as new transparency conditions are identified. Existing TRS certificates and TRO declarations remain valid when new types are introduced.
 
-**Signing mechanism.** TROV is agnostic to the specific signing technology. The `trov:publicKey` property reflects the current GPG-based implementation. X.509 support is planned.
+**Signing mechanism.** TROV is agnostic to the specific signing technology. Current implementations use GPG and X.509/CMS. The `trov:publicKey` property representation and a proposed `trov:signingMechanism` property are under review for 0.1.
 
 **Interoperability.** TROV aims to be interoperable with, rather than to replace, current and future Research Object standards (e.g., RO-Crate), archival formats (e.g., BagIt), and repository layouts. TROV complements the W3C PROV-O ontology for describing general provenance relationships.
 
-**JSON-LD context.** TRO declarations include a `@context` block that maps the short-form term names used in JSON to the full URIs defined here. Producers of TROs reference the context and write ordinary JSON; the context enables downstream RDF processing without requiring the producer to engage with RDF directly. See [TRO Declaration Design](tro-declaration-design.md) for the full rationale behind this dual-audience design.
+**JSON-LD context.** TRO declarations use a `@context` block to map short-form term names to the URIs defined here. See [TRO Declaration Format](tro-declaration-format.md) for the structure and [TRO Declaration Design](tro-declaration-design.md) for the dual-audience rationale.
