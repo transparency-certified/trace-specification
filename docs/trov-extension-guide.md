@@ -8,6 +8,7 @@ How to include institution-specific metadata in TRO declarations using your own 
 | [Step by Step](#step-by-step) | Choose a prefix, add to @context, use prefixed property names |
 | [JSON Schema Validation](#how-json-schema-validation-handles-extensions) | How the schema validates TROV terms while supporting extensions |
 | [Aligning with Future Versions](#aligning-custom-terms-with-future-trov-versions) | Alignment when a custom term is later standardized in TROV |
+| [Custom Attribute and Capability Types](#custom-attribute-and-capability-types) | Extending the warrant chain with adopter-defined transparency claims |
 | [Summary](#summary) | Guidelines reference table |
 
 ---
@@ -99,6 +100,70 @@ mytrs:architecture rdfs:subPropertyOf trov:containerArchitecture .
 This tells RDF tools that `mytrs:architecture` is a specific case of `trov:containerArchitecture`. A SPARQL query for the TROV term will also find your custom term. You do not need to modify any existing TRO declarations. Anyone who dereferences your namespace finds the mappings automatically.
 
 If you don't have infrastructure to serve files at your namespace URI, the mapping file can also be distributed alongside your TRO packages or published in a repository.
+
+---
+
+## Custom Attribute and Capability Types
+
+The TROV vocabulary defines a set of performance attribute types (e.g. `trov:InternetIsolation`) and TRS capability types (e.g. `trov:CanProvideInternetIsolation`). Adopters whose TRS enforces transparency conditions not yet covered by TROV can define custom types in their own namespace.
+
+### Using custom types in a TRO declaration
+
+Custom attribute and capability types work exactly like the standard ones — they participate in the warrant chain through the standard `trov:warrantedBy` mechanism:
+
+```json
+"@context": [
+    {
+        "trov": "https://w3id.org/trace/trov/0.1#",
+        "mytrs": "https://example.org/mytrs#"
+    }
+],
+...
+"trov:hasCapability": [
+    {
+        "@id": "trs/capability/0",
+        "@type": "trov:CanProvideInternetIsolation"
+    },
+    {
+        "@id": "trs/capability/1",
+        "@type": "mytrs:CanProvideAuditLogging"
+    }
+],
+...
+"trov:hasPerformanceAttribute": [
+    {
+        "@id": "trp/0/attribute/0",
+        "@type": "trov:InternetIsolation",
+        "trov:warrantedBy": { "@id": "trs/capability/0" }
+    },
+    {
+        "@id": "trp/0/attribute/1",
+        "@type": "mytrs:AuditLogging",
+        "trov:warrantedBy": { "@id": "trs/capability/1" }
+    }
+]
+```
+
+JSON consumers that don't recognize `mytrs:AuditLogging` can safely ignore it — the standard TROV attributes are unaffected.
+
+### Enabling RDF inference for custom types
+
+RDF consumers who want custom types to appear alongside standard TROV types in queries can import the adopter's published vocabulary. The adopter declares the subclass relationship in a vocabulary file at their namespace URI:
+
+```turtle
+@prefix mytrs: <https://example.org/mytrs#> .
+@prefix trov: <https://w3id.org/trace/trov/0.1#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+mytrs:AuditLogging      rdfs:subClassOf trov:TRPAttributeType .
+mytrs:CanProvideAuditLogging rdfs:subClassOf trov:TRSCapabilityType .
+```
+
+With this declaration loaded, a SPARQL query for all `trov:TRPAttributeType` instances will also find `mytrs:AuditLogging`.
+
+### Path to standardization
+
+If a custom type proves broadly useful across multiple TRS implementations, it can be proposed for inclusion in a future TROV version — the same graduation path described in [Aligning Custom Terms with Future TROV Versions](#aligning-custom-terms-with-future-trov-versions).
 
 ---
 

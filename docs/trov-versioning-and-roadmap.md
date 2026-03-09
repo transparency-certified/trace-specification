@@ -138,7 +138,7 @@ trov/2#         →  1.x frozen, new namespace, living docs describe latest 2.x 
 - [ ] Enable w3id.org namespace resolution.
 - [ ] Design signing-identity representation that works across signing mechanisms (GPG, X.509/CMS, and others).
 - [ ] Reconcile duplicate capability types.
-- [ ] Add a property for declaring the TROV vocabulary version used in a TRO declaration.
+- [ ] Add `trov:vocabularyVersion` property for declaring the TROV vocabulary version used in a TRO declaration.
 
 ### TROV 1.0 (First Stable Release)
 
