@@ -2,6 +2,9 @@
 <span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
   TROV 0.1 DRAFT</span>
 
+*This document is a draft and subject to revision.
+Please [submit feedback or report issues](https://github.com/transparency-certified/trace-specification/issues/new?title=tro-declaration-design.md:%20).*
+
 Why TRO declarations use JSON-LD, what each audience gets from the format, and how the JSON Schema constraint makes both JSON and RDF workflows possible from a single file.
 
 | Document Section | Description |

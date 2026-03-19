@@ -2,6 +2,9 @@
 <span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
   TROV 0.1 DRAFT</span>
 
+*This document is a draft and subject to revision.
+Please [submit feedback or report issues](https://github.com/transparency-certified/trace-specification/issues/new?title=trov-vocabulary.md:%20).*
+
 Term reference for the Transparent Research Object Vocabulary (TROV). Lists every class, property, and named individual in the current draft, with descriptions and cardinality constraints.
 
 | Document Section | Description |
