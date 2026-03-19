@@ -1,0 +1,7 @@
+/* Hide the right-sidebar table of contents in PDF/print output.
+   Our documents include their own TOC tables. */
+@media print {
+  .bd-toc {
+    display: none !important;
+  }
+}
