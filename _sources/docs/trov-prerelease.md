@@ -156,7 +156,7 @@ The `schema:` terms appear on the TRO root node and on the TRS node.
 | `trov:hasLocus` | `trov:hasArtifactLocation` |
 | `trov:hasArtifact` (on locus) | `trov:artifact` |
 | `trov:hasLocation` | `trov:path` |
-| `trov:sha256` | `trov:hash` + `trov:hashAlgorithm` |
+| `trov:sha256` | `trov:hash` (object with `trov:hashAlgorithm` + `trov:hashValue`) |
 
 ---
 
@@ -165,6 +165,6 @@ The `schema:` terms appear on the TRO root node and on the TRS node.
 Based on the current 0.1 draft, updating a pre-release TRO declaration to conform to TROV 0.1 involves the following changes. These steps may be revised as 0.1 is finalized.
 
 1. **Update the namespace URI** in the `@context` block from `https://w3id.org/trace/2023/05/trov#` to `https://w3id.org/trace/trov/0.1#`.
-2. **Replace `trov:sha256`** with `trov:hash` and `trov:hashAlgorithm`. Each artifact and composition fingerprint gains a `trov:hashAlgorithm` property (value `"sha256"` for existing declarations).
+2. **Replace `trov:sha256`** with a `trov:hash` object containing `trov:hashAlgorithm` and `trov:hashValue`. For example, `"trov:sha256": "abc..."` becomes `"trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "abc..." }`.
 3. **Add `trov:vocabularyVersion`** property to the TRO root object (value `"0.1"`).
 4. **Rename artifact location terms.** `trov:ArtifactLocus` → `trov:ArtifactLocation`, `trov:hasLocus` → `trov:hasArtifactLocation`, `trov:hasArtifact` (on locations) → `trov:artifact`, `trov:hasLocation` → `trov:path`.

@@ -119,8 +119,9 @@ TRO attribute
 |----------|--------|-------|-------------|
 | `trov:hasArtifact` | `ArtifactComposition` | `ResearchArtifact` | Links a composition to an artifact it contains. |
 | `trov:hasFingerprint` | `ArtifactComposition` | `CompositionFingerprint` | Links a composition to its fingerprint. |
-| `trov:hash` | `ResearchArtifact` or `CompositionFingerprint` | Literal (string) | The hash of an artifact's contents or of a composition's sorted artifact hashes. |
-| `trov:hashAlgorithm` | `ResearchArtifact` or `CompositionFingerprint` | Literal (string) | The algorithm used to compute the hash (e.g. `"sha256"`). |
+| `trov:hash` | `ResearchArtifact` or `CompositionFingerprint` | Object or array of objects | One or more hashes of an artifact's contents or of a composition's sorted artifact hash values. Each object contains `trov:hashAlgorithm` and `trov:hashValue`. |
+| `trov:hashAlgorithm` | (within `trov:hash` object) | Literal (string) | The algorithm used to compute the hash (e.g. `"sha256"`, `"hmac-sha256"`). |
+| `trov:hashValue` | (within `trov:hash` object) | Literal (string) | The computed hash value. |
 | `trov:mimeType` | `ResearchArtifact` | Literal (string) | The MIME type of an artifact. |
 
 ### Arrangement and Location Properties
@@ -205,10 +206,8 @@ The following constraints are defined in SHACL shapes and enforced during valida
 | TSA | `trov:publicKey` | Exactly 1 (string) |
 | Composition | `trov:hasFingerprint` | Exactly 1 |
 | Composition | `trov:hasArtifact` | At least 1 |
-| Fingerprint | `trov:hash` | Exactly 1 (string) |
-| Fingerprint | `trov:hashAlgorithm` | Exactly 1 (string) |
-| Artifact | `trov:hash` | Exactly 1 (string) |
-| Artifact | `trov:hashAlgorithm` | Exactly 1 (string) |
+| Fingerprint | `trov:hash` | Exactly 1 (object) |
+| Artifact | `trov:hash` | At least 1 (object or array) |
 | Artifact | `trov:mimeType` | At most 1 (string) |
 | Arrangement | `trov:hasArtifactLocation` | At least 1 |
 | Location | `trov:artifact` | Exactly 1 |
