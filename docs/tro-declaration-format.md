@@ -210,22 +210,19 @@ The composition is the complete, deduplicated set of all artifacts described by 
     "trov:hasFingerprint": {
         "@id": "fingerprint",
         "@type": "trov:CompositionFingerprint",
-        "trov:hash": "218d9c33959c89013ca3f0f9dfa9479e0df8d5e4a53bb319b5bfab87f506dadc",
-        "trov:hashAlgorithm": "sha256"
+        "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "218d9c33..." }
     },
     "trov:hasArtifact": [
         {
             "@id": "composition/1/artifact/0",
             "@type": "trov:ResearchArtifact",
-            "trov:hash": "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-            "trov:hashAlgorithm": "sha256",
+            "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "b5bb9d80..." },
             "trov:mimeType": "text/plain"
         },
         {
             "@id": "composition/1/artifact/1",
             "@type": "trov:ResearchArtifact",
-            "trov:hash": "7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730",
-            "trov:hashAlgorithm": "sha256",
+            "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "7d865e95..." },
             "trov:mimeType": "application/x-python"
         }
     ]
@@ -247,8 +244,7 @@ The composition is the complete, deduplicated set of all artifacts described by 
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Local identifier. Conventionally `"fingerprint"`. |
 | `@type` | string | **Yes** | Must be `"trov:CompositionFingerprint"`. |
-| `trov:hash` | string | **Yes** | Hash computed over the sorted hashes of all artifacts (see below). |
-| `trov:hashAlgorithm` | string | **Yes** | Algorithm used, e.g. `"sha256"`. |
+| `trov:hash` | object | **Yes** | Hash computed over the sorted hash values of all artifacts (see below). Contains `trov:hashAlgorithm` and `trov:hashValue`. |
 
 **Artifact** fields:
 
@@ -256,17 +252,16 @@ The composition is the complete, deduplicated set of all artifacts described by 
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Local identifier, e.g. `"composition/1/artifact/0"`. Referenced by artifact locations. |
 | `@type` | string | **Yes** | Must be `"trov:ResearchArtifact"`. |
-| `trov:hash` | string | **Yes** | Hash of the artifact's content. |
-| `trov:hashAlgorithm` | string | **Yes** | Algorithm used, e.g. `"sha256"`. |
+| `trov:hash` | object or array | **Yes** | One or more hashes of the artifact's content. Each object contains `trov:hashAlgorithm` (e.g. `"sha256"`) and `trov:hashValue`. |
 | `trov:mimeType` | string | no | MIME type of the artifact (e.g. `"text/plain"`, `"application/pdf"`). |
 
 #### Computing the Composition Fingerprint
 
 The composition fingerprint allows two TROs that describe the same set of artifacts to be identified as equivalent, regardless of arrangement or metadata differences.
 
-**Algorithm** (assumes each artifact has exactly one hash, as in TROV 0.1):
+**Algorithm:**
 
-1. Collect the `trov:hash` value of every artifact in the composition.
+1. Collect all `trov:hashValue` values from every `trov:hash` object on every artifact in the composition. If an artifact has multiple hashes, all of them are included.
 2. Sort the hash values lexicographically.
 3. Concatenate the sorted values into a single string (no separator).
 4. Compute the hash of the concatenated string (UTF-8 encoded). The fingerprint's hash algorithm is independent of the algorithms used to hash individual artifacts.
@@ -276,8 +271,14 @@ The composition fingerprint allows two TROs that describe the same set of artifa
 ```python
 import hashlib
 
-artifact_hashes = sorted(art["trov:hash"] for art in composition["trov:hasArtifact"])
-fingerprint = hashlib.sha256("".join(artifact_hashes).encode("utf-8")).hexdigest()
+def collect_hash_values(artifact):
+    h = artifact["trov:hash"]
+    if isinstance(h, list):
+        return [entry["trov:hashValue"] for entry in h]
+    return [h["trov:hashValue"]]
+
+all_hashes = sorted(v for art in composition["trov:hasArtifact"] for v in collect_hash_values(art))
+fingerprint = hashlib.sha256("".join(all_hashes).encode("utf-8")).hexdigest()
 ```
 
 ---
@@ -582,29 +583,25 @@ The following is a minimal but complete TRO declaration describing a data file a
                 "trov:hasFingerprint": {
                     "@id": "fingerprint",
                     "@type": "trov:CompositionFingerprint",
-                    "trov:hash": "a1b2c3d4...",
-                    "trov:hashAlgorithm": "sha256"
+                    "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "a1b2c3d4..." }
                 },
                 "trov:hasArtifact": [
                     {
                         "@id": "composition/1/artifact/0",
                         "@type": "trov:ResearchArtifact",
-                        "trov:hash": "aaa111...",
-                        "trov:hashAlgorithm": "sha256",
+                        "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "aaa1..." },
                         "trov:mimeType": "text/csv"
                     },
                     {
                         "@id": "composition/1/artifact/1",
                         "@type": "trov:ResearchArtifact",
-                        "trov:hash": "bbb222...",
-                        "trov:hashAlgorithm": "sha256",
+                        "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "bbb2..." },
                         "trov:mimeType": "application/x-python"
                     },
                     {
                         "@id": "composition/1/artifact/2",
                         "@type": "trov:ResearchArtifact",
-                        "trov:hash": "ccc333...",
-                        "trov:hashAlgorithm": "sha256",
+                        "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "ccc3..." },
                         "trov:mimeType": "text/csv"
                     }
                 ]
