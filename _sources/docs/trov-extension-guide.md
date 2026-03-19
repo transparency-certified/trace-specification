@@ -2,6 +2,9 @@
 <span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
   TROV 0.1 DRAFT</span>
 
+*This document is a draft and subject to revision.
+Please [submit feedback or report issues](https://github.com/transparency-certified/trace-specification/issues/new?title=trov-extension-guide.md:%20).*
+
 How to include institution-specific metadata in TRO declarations using your own namespace, so that custom terms coexist with TROV terms without conflict. Covers namespace setup, JSON Schema validation of extensions, and term mappings for future alignment.
 
 | Document Section | Description |
