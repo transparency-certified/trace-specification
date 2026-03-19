@@ -32,12 +32,19 @@ parts:
   - file: docs/elements
   - file: docs/conceptual-model
   - file: docs/tro-declaration-format
+    title: Declaration Format
   - file: docs/tro-declaration-design
+    title: Declaration Design
   - file: docs/trov-vocabulary
+    title: Vocabulary Reference
   - file: docs/trov-extension-guide
+    title: Extension Guide
   - file: docs/trov-versioning-and-roadmap
+    title: Versioning & Roadmap
   - file: docs/trov-prerelease
+    title: Pre-Release Reference
   - file: docs/documentation-infrastructure
+    title: Documentation Infrastructure
 - caption: TRACE Infrastructure
   chapters:
   - file: docs/infrastructure
