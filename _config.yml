@@ -35,5 +35,7 @@ html:
 
 sphinx:
   config:
+    html_css_files:
+      - custom.css
     html_theme_options:
       search_bar_text: "Search..."
