@@ -1,4 +1,6 @@
 # TROV Extension Guide
+<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
+  TROV 0.1 DRAFT</span>
 
 How to include institution-specific metadata in TRO declarations using your own namespace, so that custom terms coexist with TROV terms without conflict. Covers namespace setup, JSON Schema validation of extensions, and term mappings for future alignment.
 

@@ -1,4 +1,6 @@
-# TROV Vocabulary Reference — TROV 0.1 Draft
+# TROV Vocabulary Reference
+<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
+  TROV 0.1 DRAFT</span>
 
 Term reference for the Transparent Research Object Vocabulary (TROV). Lists every class, property, and named individual in the current draft, with descriptions and cardinality constraints.
 
