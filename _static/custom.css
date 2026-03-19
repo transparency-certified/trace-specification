@@ -1,6 +1,7 @@
-/* Hide the right-sidebar table of contents in PDF/print output.
+/* Hide auto-generated tables of contents in PDF/print output.
    Our documents include their own TOC tables. */
 @media print {
+  #jb-print-toc,
   .bd-sidebar-secondary,
   .page-toc {
     display: none !important;
