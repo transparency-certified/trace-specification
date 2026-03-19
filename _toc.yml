@@ -31,8 +31,13 @@ parts:
   - file: docs/questions
   - file: docs/elements
   - file: docs/conceptual-model
-  - file: docs/specifications/trace-certificate/0.1/index
-  - file: docs/specifications/tro/0.1/index
+  - file: docs/tro-declaration-format
+  - file: docs/tro-declaration-design
+  - file: docs/trov-vocabulary
+  - file: docs/trov-extension-guide
+  - file: docs/trov-versioning-and-roadmap
+  - file: docs/trov-prerelease
+  - file: docs/documentation-infrastructure
 - caption: TRACE Infrastructure
   chapters:
   - file: docs/infrastructure
