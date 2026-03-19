@@ -1,0 +1,1264 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TROV Vocabulary Reference — TROV 0.1 Draft &#8212; Transparency Certified</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/trov-vocabulary';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TROV Extension Guide" href="trov-extension-guide.html" />
+    <link rel="prev" title="TRO Declaration Design: JSON and RDF" href="tro-declaration-design.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Transparency Certified - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Transparency Certified - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Our Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Personas in TRACE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="barriers.html">Barriers to Transparency</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="case-profiles.html">Case Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/rdc.html">Federal Research Data Centers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/bplim.html">Banco de Portugal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/twitter.html">Twitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/ipums.html">IPUMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/campus-cluster.html">Campus Cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Specifications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="specifications.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Transparency Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">TRACE Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual-model.html">Conceptual Model (v4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tro-declaration-format.html">TRO Declaration Format — TROV 0.1 Draft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tro-declaration-design.html">TRO Declaration Design: JSON and RDF</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TROV Vocabulary Reference — TROV 0.1 Draft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-extension-guide.html">TROV Extension Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-versioning-and-roadmap.html">TROV Versioning Strategy and Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-prerelease.html">TROV Pre-Release Vocabulary Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation-infrastructure.html">Documentation Infrastructure</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Infrastructure</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-prototype.html">TRACE Prototype</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-toolkit.html">TRACE Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-plugin.html">SLURM Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample-implementation.html">TRACE Sample Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dev/signing.html">Signing</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/trov-vocabulary.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TROV Vocabulary Reference — TROV 0.1 Draft</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vocabulary-metadata">Vocabulary Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-entities">Core Entities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artifacts-and-compositions">Artifacts and Compositions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangements-and-locations">Arrangements and Locations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-warrant-chain-attributes-and-capabilities">The Warrant Chain: Attributes and Capabilities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tro-properties">TRO Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trs-properties">TRS Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trp-properties">TRP Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-and-artifact-properties">Composition and Artifact Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangement-and-location-properties">Arrangement and Location Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warrant-chain-properties">Warrant Chain Properties</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-trs-capability-types">Named Individuals: TRS Capability Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capabilities-implemented-by-tro-utils-sivacor">Capabilities Implemented by tro-utils / SIVACOR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-capabilities-under-discussion">Additional Capabilities Under Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-trp-attribute-types">Named Individuals: TRP Attribute Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-tro-attribute-types">Named Individuals: TRO Attribute Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinality-constraints">Cardinality Constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-vocabularies-used">External Vocabularies Used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-limitations">Known Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="trov-vocabulary-reference-trov-0-1-draft">
+<h1>TROV Vocabulary Reference — TROV 0.1 Draft<a class="headerlink" href="#trov-vocabulary-reference-trov-0-1-draft" title="Link to this heading">#</a></h1>
+<p>Term reference for the Transparent Research Object Vocabulary (TROV). Lists every class, property, and named individual in the current draft, with descriptions and cardinality constraints.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Document Section</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#vocabulary-metadata"><span class="xref myst">Vocabulary Metadata</span></a></p></td>
+<td><p>Namespace, version, status, and license</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#classes"><span class="xref myst">Classes</span></a></p></td>
+<td><p>Core entities: TRO, TRS, TRP, artifacts, compositions, arrangements</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#properties"><span class="xref myst">Properties</span></a></p></td>
+<td><p>Relationships between entities: linking TROs to TRSs, TRPs, arrangements, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#named-individuals-trs-capability-types"><span class="xref myst">TRS Capability Types</span></a></p></td>
+<td><p>What a TRS can do (e.g. provide internet isolation)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#named-individuals-trp-attribute-types"><span class="xref myst">TRP Attribute Types</span></a></p></td>
+<td><p>Transparency claims about a specific performance</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#named-individuals-tro-attribute-types"><span class="xref myst">TRO Attribute Types</span></a></p></td>
+<td><p>Transparency claims about a TRO as a whole</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cardinality-constraints"><span class="xref myst">Cardinality Constraints</span></a></p></td>
+<td><p>Required vs optional properties and their multiplicities</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#external-vocabularies-used"><span class="xref myst">External Vocabularies</span></a></p></td>
+<td><p>RDF, RDFS, and <a class="reference external" href="http://schema.org">schema.org</a> terms used alongside TROV</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#known-limitations"><span class="xref myst">Known Limitations</span></a></p></td>
+<td><p>Scope boundaries and open questions for 0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#notes"><span class="xref myst">Notes</span></a></p></td>
+<td><p>JSON-LD context, design rationale, relationship to pre-release</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For the conceptual background motivating this vocabulary, see the <a class="reference internal" href="conceptual-model.html"><span class="std std-doc">TRACE Conceptual Model</span></a>. For the JSON-LD format used to express TRO declarations, see <a class="reference internal" href="tro-declaration-format.html"><span class="std std-doc">TRO Declaration Format</span></a>. For the design rationale behind the JSON-LD format, see <a class="reference internal" href="tro-declaration-design.html"><span class="std std-doc">TRO Declaration Design</span></a>.</p>
+<hr class="docutils" />
+<section id="vocabulary-metadata">
+<h2>Vocabulary Metadata<a class="headerlink" href="#vocabulary-metadata" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Namespace</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1#</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Prefix</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Version</strong></p></td>
+<td><p>0.1 (Draft)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>License</strong></p></td>
+<td><p><a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Publisher</strong></p></td>
+<td><p><a class="reference external" href="https://transparency-certified.github.io/">TRACE Project</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Status</strong></p></td>
+<td><p>Namespace URI does not yet resolve — see <a class="reference internal" href="trov-versioning-and-roadmap.html"><span class="std std-doc">Versioning Strategy and Roadmap</span></a> for the resolution plan.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<section id="core-entities">
+<h3>Core Entities<a class="headerlink" href="#core-entities" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TrustedResearchElement</span></code></p></td>
+<td><p>Common base class for TRSs, TRPs, and TROs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TransparentResearchObject</span></code></p></td>
+<td><p>A set of research artifacts produced by one or more TRPs and signed by the assembling TRS. Subclass of <code class="docutils literal notranslate"><span class="pre">TrustedResearchElement</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TrustedResearchSystem</span></code></p></td>
+<td><p>A system that performs TRPs and assembles TROs. Subclass of <code class="docutils literal notranslate"><span class="pre">TrustedResearchElement</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TrustedResearchPerformance</span></code></p></td>
+<td><p>A supervised unit of work conducted by a TRS. The centerpiece of the TRACE conceptual model. Subclass of <code class="docutils literal notranslate"><span class="pre">TrustedResearchElement</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TimeStampingAuthority</span></code></p></td>
+<td><p>An RFC 3161 timestamping authority trusted by a TRS. Subclass of <code class="docutils literal notranslate"><span class="pre">TrustedResearchElement</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="artifacts-and-compositions">
+<h3>Artifacts and Compositions<a class="headerlink" href="#artifacts-and-compositions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:ArtifactCollection</span></code></p></td>
+<td><p>Base class for collections of one or more artifacts.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:ArtifactComposition</span></code></p></td>
+<td><p>The set of all digital artifacts described by a TRO, identified by a composition fingerprint. Subclass of <code class="docutils literal notranslate"><span class="pre">ArtifactCollection</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:ResearchArtifact</span></code></p></td>
+<td><p>A digital object (file, dataset, or bitstream) identified by a content hash.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CompositionFingerprint</span></code></p></td>
+<td><p>A hash computed over the sorted hashes of all artifacts in a composition. Enables identifying TROs that describe the same set of artifacts.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="arrangements-and-locations">
+<h3>Arrangements and Locations<a class="headerlink" href="#arrangements-and-locations" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:ArtifactArrangement</span></code></p></td>
+<td><p>A named collection of artifact locations. Arrangements are linked to performances as inputs or outputs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:ArtifactLocation</span></code></p></td>
+<td><p>The placement of a specific artifact within an arrangement. Links one artifact to one resource path.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="the-warrant-chain-attributes-and-capabilities">
+<h3>The Warrant Chain: Attributes and Capabilities<a class="headerlink" href="#the-warrant-chain-attributes-and-capabilities" title="Link to this heading">#</a></h3>
+<p>The warrant chain is TROV’s mechanism for accountability. When transparency claims are made about a TRO, the warrant chain records who is responsible for them.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>TRO attribute
+  ← warranted by → TRP attribute
+    ← warranted by → TRS capability
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TREAttribute</span></code></p></td>
+<td><p>Base class for attributes of a TRS, TRP, or TRO.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TRSAttribute</span></code></p></td>
+<td><p>An attribute of a TRS. Subclass of <code class="docutils literal notranslate"><span class="pre">TREAttribute</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TRSCapability</span></code></p></td>
+<td><p>A declared ability of a TRS to enforce a specific transparency condition. Subclass of <code class="docutils literal notranslate"><span class="pre">TRSAttribute</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TRSPolicy</span></code></p></td>
+<td><p>A TRS-level assertion about a capability. Subclass of <code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code>. Under redesign — see Known Limitations.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TRPAttribute</span></code></p></td>
+<td><p>A transparency claim about the conditions under which a specific TRP was conducted. Subclass of <code class="docutils literal notranslate"><span class="pre">TREAttribute</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TROAttribute</span></code></p></td>
+<td><p>A transparency claim about a TRO as a whole, warranted by attributes of its constituent TRPs. Subclass of <code class="docutils literal notranslate"><span class="pre">TREAttribute</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
+<section id="tro-properties">
+<h3>TRO Properties<a class="headerlink" href="#tro-properties" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Domain</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:vocabularyVersion</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
+<td><p>Literal (string)</p></td>
+<td><p>The TROV vocabulary version this declaration conforms to (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;0.1&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:wasAssembledBy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchSystem</span></code></p></td>
+<td><p>Links a TRO to the TRS that produced and signed it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:wasTimestampedBy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TimeStampingAuthority</span></code></p></td>
+<td><p>Links a TRO to a TSA that timestamped the TRS signature.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactComposition</span></code></p></td>
+<td><p>Links a TRO to the composition of artifacts it describes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactArrangement</span></code></p></td>
+<td><p>Links a TRO to an artifact arrangement it describes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasPerformance</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchPerformance</span></code></p></td>
+<td><p>Links a TRO to a TRP it describes.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TROAttribute</span></code></p></td>
+<td><p>Links a TRO to a transparency attribute asserted for it.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="trs-properties">
+<h3>TRS Properties<a class="headerlink" href="#trs-properties" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Domain</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasCapability</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchSystem</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>Links a TRS to a capability it declares.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchSystem</span></code></p></td>
+<td><p>Literal</p></td>
+<td><p>The signing identity of the TRS (e.g. GPG public key, X.509 certificate). Representation under review for 0.1.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="trp-properties">
+<h3>TRP Properties<a class="headerlink" href="#trp-properties" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Domain</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:wasConductedBy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchPerformance</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchSystem</span></code></p></td>
+<td><p>Links a TRP to the TRS that conducted it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:accessedArrangement</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchPerformance</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactArrangement</span></code></p></td>
+<td><p>Links a TRP to an arrangement it read from.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:contributedToArrangement</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchPerformance</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactArrangement</span></code></p></td>
+<td><p>Links a TRP to an arrangement it wrote to.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasPerformanceAttribute</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchPerformance</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRPAttribute</span></code></p></td>
+<td><p>Links a TRP to a transparency attribute claimed for it.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:startedAtTime</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchPerformance</span></code></p></td>
+<td><p>Literal (ISO 8601 string)</p></td>
+<td><p>When the performance began.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:endedAtTime</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchPerformance</span></code></p></td>
+<td><p>Literal (ISO 8601 string)</p></td>
+<td><p>When the performance ended.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="composition-and-artifact-properties">
+<h3>Composition and Artifact Properties<a class="headerlink" href="#composition-and-artifact-properties" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Domain</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArtifact</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactComposition</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ResearchArtifact</span></code></p></td>
+<td><p>Links a composition to an artifact it contains.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasFingerprint</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactComposition</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CompositionFingerprint</span></code></p></td>
+<td><p>Links a composition to its fingerprint.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hash</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ResearchArtifact</span></code> or <code class="docutils literal notranslate"><span class="pre">CompositionFingerprint</span></code></p></td>
+<td><p>Literal (string)</p></td>
+<td><p>The hash of an artifact’s contents or of a composition’s sorted artifact hashes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hashAlgorithm</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ResearchArtifact</span></code> or <code class="docutils literal notranslate"><span class="pre">CompositionFingerprint</span></code></p></td>
+<td><p>Literal (string)</p></td>
+<td><p>The algorithm used to compute the hash (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;sha256&quot;</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:mimeType</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ResearchArtifact</span></code></p></td>
+<td><p>Literal (string)</p></td>
+<td><p>The MIME type of an artifact.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="arrangement-and-location-properties">
+<h3>Arrangement and Location Properties<a class="headerlink" href="#arrangement-and-location-properties" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Domain</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArtifactLocation</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactArrangement</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactLocation</span></code></p></td>
+<td><p>Links an arrangement to one of its artifact locations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:artifact</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactLocation</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ResearchArtifact</span></code></p></td>
+<td><p>Links a location to the artifact placed there.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArtifactLocation</span></code></p></td>
+<td><p>Literal (string: file path, URI, or other locator)</p></td>
+<td><p>The resource path for the artifact within this arrangement.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="warrant-chain-properties">
+<h3>Warrant Chain Properties<a class="headerlink" href="#warrant-chain-properties" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Domain</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:warrantedBy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRPAttribute</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>Links a performance attribute to the TRS capability that justifies it.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:warrantedBy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TROAttribute</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRPAttribute</span></code></p></td>
+<td><p>Links a TRO attribute to the performance attribute(s) that justify it.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="named-individuals-trs-capability-types">
+<h2>Named Individuals: TRS Capability Types<a class="headerlink" href="#named-individuals-trs-capability-types" title="Link to this heading">#</a></h2>
+<p>The following capability types are currently defined. This list is designed to grow as new transparency conditions are identified by the research community.</p>
+<section id="capabilities-implemented-by-tro-utils-sivacor">
+<h3>Capabilities Implemented by tro-utils / SIVACOR<a class="headerlink" href="#capabilities-implemented-by-tro-utils-sivacor" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Individual</p></th>
+<th class="head"><p>Parent</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanProvideInternetIsolation</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can isolate computations from network access during a TRP.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanRecordInternetAccess</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can record all network accesses made during a TRP.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="additional-capabilities-under-discussion">
+<h3>Additional Capabilities Under Discussion<a class="headerlink" href="#additional-capabilities-under-discussion" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Individual</p></th>
+<th class="head"><p>Parent</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanIsolateEnvironment</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can prevent access to the host environment during a TRP (e.g., sandbox or container execution).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanPreventAuthorIntervention</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can prevent author intervention during a TRP (e.g., fully automated execution).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanExcludeInputs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can exclude input data from a TRO produced during a TRP.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanExcludeOutputs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can exclude output data from a TRO produced during a TRP.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanEnsureInputDataIncludedInTROPackage</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can ensure all input data is included in the TRO package.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanRequireInputDataExistsBeforeRun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can require all input data exists prior to a TRP.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanRequireInputDataLocalBeforeRun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can require all input data is stored locally prior to a TRP.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanEnsureInputDataPersistsAfterRun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can ensure all input data persists after a TRP.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanEnsureOutputDataIncludedInTROPackage</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can ensure all output data is included in the TRO package.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanEnsureCodeIncludedInTROPackage</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can ensure all custom code is included in the TRO package.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanRecordSoftwareEnvironment</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can record a full description of the software environment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanDetectInternetAccess</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can detect Internet access during a TRP.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanEnforceInternetIsolation</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can enforce Internet isolation during a TRP.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanPreventUserInteractionDuringRun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can prevent user interaction during a TRP.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:CanEnforceCapabilitiesTechnically</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRSCapability</span></code></p></td>
+<td><p>The TRS can enforce all of its declared capabilities through technical means (as opposed to policy-based enforcement).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="named-individuals-trp-attribute-types">
+<h2>Named Individuals: TRP Attribute Types<a class="headerlink" href="#named-individuals-trp-attribute-types" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Individual</p></th>
+<th class="head"><p>Parent</p></th>
+<th class="head"><p>Warranted By</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:InternetIsolation</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRPAttribute</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:CanProvideInternetIsolation</span></code></p></td>
+<td><p>The TRP was conducted without network access.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:InternetAccessRecording</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRPAttribute</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:CanRecordInternetAccess</span></code></p></td>
+<td><p>All network accesses during the TRP were recorded.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="named-individuals-tro-attribute-types">
+<h2>Named Individuals: TRO Attribute Types<a class="headerlink" href="#named-individuals-tro-attribute-types" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Individual</p></th>
+<th class="head"><p>Parent</p></th>
+<th class="head"><p>Warranted By</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:IncludesAllInputData</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TROAttribute</span></code></p></td>
+<td><p><em>(TRP attributes)</em></p></td>
+<td><p>The TRO composition includes all input data employed in creating the TRO.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="cardinality-constraints">
+<h2>Cardinality Constraints<a class="headerlink" href="#cardinality-constraints" title="Link to this heading">#</a></h2>
+<p>The following constraints are defined in SHACL shapes and enforced during validation.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Shape</p></th>
+<th class="head"><p>Property</p></th>
+<th class="head"><p>Constraint</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TRO</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:vocabularyVersion</span></code></p></td>
+<td><p>Exactly 1 (string)</p></td>
+</tr>
+<tr class="row-odd"><td><p>TRO</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:wasAssembledBy</span></code></p></td>
+<td><p>Exactly 1 TRS</p></td>
+</tr>
+<tr class="row-even"><td><p>TRO</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:wasTimestampedBy</span></code></p></td>
+<td><p>At most 1 TSA</p></td>
+</tr>
+<tr class="row-odd"><td><p>TRO</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code></p></td>
+<td><p>Exactly 1</p></td>
+</tr>
+<tr class="row-even"><td><p>TRO</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code></p></td>
+<td><p>At least 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>TRS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
+<td><p>Exactly 1 (string)</p></td>
+</tr>
+<tr class="row-even"><td><p>TSA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
+<td><p>Exactly 1 (string)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Composition</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:hasFingerprint</span></code></p></td>
+<td><p>Exactly 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Composition</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArtifact</span></code></p></td>
+<td><p>At least 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fingerprint</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:hash</span></code></p></td>
+<td><p>Exactly 1 (string)</p></td>
+</tr>
+<tr class="row-even"><td><p>Fingerprint</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:hashAlgorithm</span></code></p></td>
+<td><p>Exactly 1 (string)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Artifact</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:hash</span></code></p></td>
+<td><p>Exactly 1 (string)</p></td>
+</tr>
+<tr class="row-even"><td><p>Artifact</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:hashAlgorithm</span></code></p></td>
+<td><p>Exactly 1 (string)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Artifact</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:mimeType</span></code></p></td>
+<td><p>At most 1 (string)</p></td>
+</tr>
+<tr class="row-even"><td><p>Arrangement</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArtifactLocation</span></code></p></td>
+<td><p>At least 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Location</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:artifact</span></code></p></td>
+<td><p>Exactly 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Location</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:path</span></code></p></td>
+<td><p>Exactly 1 (string)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="external-vocabularies-used">
+<h2>External Vocabularies Used<a class="headerlink" href="#external-vocabularies-used" title="Link to this heading">#</a></h2>
+<p>TROV uses terms from the following external vocabularies:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Prefix</p></th>
+<th class="head"><p>Namespace</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rdf:</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rdf:type</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rdfs:</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">http://www.w3.org/2000/01/rdf-schema#</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rdfs:comment</span></code>, <code class="docutils literal notranslate"><span class="pre">rdfs:Class</span></code>, <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">schema:</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://schema.org</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">schema:CreativeWork</span></code>, <code class="docutils literal notranslate"><span class="pre">schema:Organization</span></code>, <code class="docutils literal notranslate"><span class="pre">schema:creator</span></code>, <code class="docutils literal notranslate"><span class="pre">schema:name</span></code>, <code class="docutils literal notranslate"><span class="pre">schema:description</span></code>, <code class="docutils literal notranslate"><span class="pre">schema:dateCreated</span></code>. Optional — used in tro-utils for TRO and TRS metadata but not required for conformance. See <a class="reference internal" href="tro-declaration-format.html#the-context-block"><span class="std std-ref">TRO Declaration Format — dependency boundary</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="known-limitations">
+<h2>Known Limitations<a class="headerlink" href="#known-limitations" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Limitation</p></th>
+<th class="head"><p>Disposition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Only two TRP attribute types defined (<code class="docutils literal notranslate"><span class="pre">InternetIsolation</span></code>, <code class="docutils literal notranslate"><span class="pre">InternetAccessRecording</span></code>)</p></td>
+<td><p>Acceptable for 0.1 — new types can be added without breaking changes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Only one TRO attribute type defined (<code class="docutils literal notranslate"><span class="pre">IncludesAllInputData</span></code>)</p></td>
+<td><p>Acceptable for 0.1 — same reasoning</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code> representation not finalized (GPG vs X.509 certificate)</p></td>
+<td><p>Resolve for 0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>No <code class="docutils literal notranslate"><span class="pre">trov:signingMechanism</span></code> property to identify the signing approach</p></td>
+<td><p>Resolve for 0.1</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TRSPolicy</span></code> / <code class="docutils literal notranslate"><span class="pre">trov:hasPolicy</span></code> defined but not wired up</p></td>
+<td><p>Deferred to 0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:TimeStampingAuthority</span></code> wraps an external concept (RFC 3161 TSA)</p></td>
+<td><p>Acceptable for 0.1 — no standard RDF class exists; candidate for replacement if one emerges</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
+<p><strong>Namespace.</strong> The 0.1 namespace is <code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1#</span></code>; the pre-release namespace <code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/2023/05/trov#</span></code> is retired. See <a class="reference internal" href="trov-prerelease.html"><span class="std std-doc">Pre-Release Vocabulary Reference</span></a> for migration guidance.</p>
+<p><strong>Extensibility.</strong> The capability and attribute type lists are designed to be extended. New TRS capability types and corresponding performance/TRO attribute types can be added as new transparency conditions are identified. Existing TRS certificates and TRO declarations remain valid when new types are introduced.</p>
+<p><strong>Signing mechanism.</strong> TROV is agnostic to the specific signing technology. Current implementations use GPG and X.509/CMS. The <code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code> property representation and a proposed <code class="docutils literal notranslate"><span class="pre">trov:signingMechanism</span></code> property are under review for 0.1.</p>
+<p><strong>Interoperability.</strong> TROV aims to be interoperable with, rather than to replace, current and future Research Object standards (e.g., RO-Crate), archival formats (e.g., BagIt), and repository layouts. TROV complements the W3C PROV-O ontology for describing general provenance relationships.</p>
+<p><strong>JSON-LD context.</strong> TRO declarations use a <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> block to map short-form term names to the URIs defined here. See <a class="reference internal" href="tro-declaration-format.html"><span class="std std-doc">TRO Declaration Format</span></a> for the structure and <a class="reference internal" href="tro-declaration-design.html"><span class="std std-doc">TRO Declaration Design</span></a> for the dual-audience rationale.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tro-declaration-design.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TRO Declaration Design: JSON and RDF</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="trov-extension-guide.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TROV Extension Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vocabulary-metadata">Vocabulary Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-entities">Core Entities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artifacts-and-compositions">Artifacts and Compositions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangements-and-locations">Arrangements and Locations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-warrant-chain-attributes-and-capabilities">The Warrant Chain: Attributes and Capabilities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tro-properties">TRO Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trs-properties">TRS Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trp-properties">TRP Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-and-artifact-properties">Composition and Artifact Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrangement-and-location-properties">Arrangement and Location Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warrant-chain-properties">Warrant Chain Properties</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-trs-capability-types">Named Individuals: TRS Capability Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capabilities-implemented-by-tro-utils-sivacor">Capabilities Implemented by tro-utils / SIVACOR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-capabilities-under-discussion">Additional Capabilities Under Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-trp-attribute-types">Named Individuals: TRP Attribute Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-tro-attribute-types">Named Individuals: TRO Attribute Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinality-constraints">Cardinality Constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-vocabularies-used">External Vocabularies Used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-limitations">Known Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The TRACE Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

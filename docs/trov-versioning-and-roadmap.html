@@ -1,0 +1,1013 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TROV Versioning Strategy and Roadmap &#8212; Transparency Certified</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/trov-versioning-and-roadmap';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TROV Pre-Release Vocabulary Reference" href="trov-prerelease.html" />
+    <link rel="prev" title="TROV Extension Guide" href="trov-extension-guide.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Transparency Certified - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Transparency Certified - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Our Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Personas in TRACE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="barriers.html">Barriers to Transparency</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="case-profiles.html">Case Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/rdc.html">Federal Research Data Centers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/bplim.html">Banco de Portugal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/twitter.html">Twitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/ipums.html">IPUMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/campus-cluster.html">Campus Cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Specifications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="specifications.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Transparency Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">TRACE Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual-model.html">Conceptual Model (v4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tro-declaration-format.html">TRO Declaration Format — TROV 0.1 Draft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tro-declaration-design.html">TRO Declaration Design: JSON and RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-vocabulary.html">TROV Vocabulary Reference — TROV 0.1 Draft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-extension-guide.html">TROV Extension Guide</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TROV Versioning Strategy and Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-prerelease.html">TROV Pre-Release Vocabulary Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation-infrastructure.html">Documentation Infrastructure</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Infrastructure</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-prototype.html">TRACE Prototype</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-toolkit.html">TRACE Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-plugin.html">SLURM Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample-implementation.html">TRACE Sample Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dev/signing.html">Signing</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/trov-versioning-and-roadmap.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TROV Versioning Strategy and Roadmap</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-goals">Design Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-numbering">Version Numbering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-1-0-evolving">Pre-1.0 (Evolving)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-1-0-stable">Post-1.0 (Stable)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-lifecycle">Version Lifecycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#namespace-uris">Namespace URIs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#namespace-history">Namespace History</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-lifecycle">Documentation Lifecycle</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-constitutes-a-version">What Constitutes a Version</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trov-0-1-current-draft-stabilization-target">TROV 0.1 (Current Draft — Stabilization Target)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trov-1-0-first-stable-release">TROV 1.0 (First Stable Release)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensibility-adopter-specific-terms">Extensibility: Adopter-Specific Terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breaking-vs-non-breaking-changes">Breaking vs Non-Breaking Changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-structure-and-namespace-resolution">Repository Structure and Namespace Resolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trov-repository">The trov repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trace-specification-repository">The trace-specification repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#namespace-resolution-via-w3id-org">Namespace resolution via w3id.org</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roadmap">Roadmap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-stabilize-0-1-now-june-2026">Phase 1: Stabilize 0.1 (Now — June 2026)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-evolve-0-x-july-2026-june-2027">Phase 2: Evolve 0.x (July 2026 — June 2027)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-release-1-0-june-2027">Phase 3: Release 1.0 (June 2027)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-4-governance-and-maintenance-1-x-july-2027-june-2029">Phase 4: Governance and Maintenance 1.x (July 2027 — June 2029)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="trov-versioning-strategy-and-roadmap">
+<h1>TROV Versioning Strategy and Roadmap<a class="headerlink" href="#trov-versioning-strategy-and-roadmap" title="Link to this heading">#</a></h1>
+<p>How TROV versions are numbered, what stability guarantees each version provides, and the roadmap from the current draft (0.1) to a stable 1.0 release. Covers namespace management, documentation lifecycle, repository structure, and resolution of URI-qualified terms.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Document Section</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#design-goals"><span class="xref myst">Design Goals</span></a></p></td>
+<td><p>Design goals governing TROV’s evolution</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#version-numbering"><span class="xref myst">Version Numbering</span></a></p></td>
+<td><p>Pre-1.0 vs post-1.0 stability and namespace URIs</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#what-constitutes-a-version"><span class="xref myst">What Constitutes a Version</span></a></p></td>
+<td><p>What’s in 0.1 (current draft) and what 1.0 requires</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#extensibility-adopter-specific-terms"><span class="xref myst">Extensibility</span></a></p></td>
+<td><p>How adopters add institution-specific terms safely</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#breaking-vs-non-breaking-changes"><span class="xref myst">Breaking vs Non-Breaking Changes</span></a></p></td>
+<td><p>Classification table for post-1.0 changes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#repository-structure-and-namespace-resolution"><span class="xref myst">Repository Structure</span></a></p></td>
+<td><p>trov and trace-specification layouts, URI resolution</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#roadmap"><span class="xref myst">Roadmap</span></a></p></td>
+<td><p>Four phases: stabilize 0.1, evolve 0.x, release 1.0, governance/maintenance 1.x</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For the vocabulary terms themselves, see the <a class="reference internal" href="trov-vocabulary.html"><span class="std std-doc">TROV Vocabulary Reference</span></a>. For the JSON-LD document format, see <a class="reference internal" href="tro-declaration-format.html"><span class="std std-doc">TRO Declaration Format</span></a>. For adding institution-specific metadata to TRO declarations, see the <a class="reference internal" href="trov-extension-guide.html"><span class="std std-doc">TROV Extension Guide</span></a>.</p>
+<hr class="docutils" />
+<section id="design-goals">
+<h2>Design Goals<a class="headerlink" href="#design-goals" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Grounded in practice.</strong> TROV addresses transparency problems faced by real organizations, describes capabilities systems can feasibly implement, and answers verification questions reviewers commonly ask.</p></li>
+<li><p><strong>Two perspectives, one vocabulary.</strong> TRO declarations are simultaneously valid JSON and valid RDF. Both perspectives remain first-class across versions. (See <a class="reference internal" href="tro-declaration-design.html"><span class="std std-doc">TRO Declaration Design</span></a>.)</p></li>
+<li><p><strong>Stability for adopters.</strong> Every version is identifiable. Breaking changes are explicit and rare.</p></li>
+<li><p><strong>Extensibility without conflict.</strong> Adopters include institution-specific metadata in TRO declarations using their own namespaces. Broadly applicable extensions may be standardized in future TROV versions. (See <a class="reference internal" href="#extensibility-adopter-specific-terms"><span class="xref myst">Extensibility</span></a> for details.)</p></li>
+<li><p><strong>Low barrier to adoption.</strong> Any community producing computational research artifacts can benefit from TROV.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="version-numbering">
+<h2>Version Numbering<a class="headerlink" href="#version-numbering" title="Link to this heading">#</a></h2>
+<p>TROV uses <strong>semantic versioning</strong> with different stability guarantees before and after 1.0.</p>
+<section id="pre-1-0-evolving">
+<h3>Pre-1.0 (Evolving)<a class="headerlink" href="#pre-1-0-evolving" title="Link to this heading">#</a></h3>
+<p>Pre-1.0 versions (0.1, 0.2, etc.) are working drafts that <strong>may include breaking changes</strong> — terms renamed, removed, or given incompatible semantics. Each 0.x version receives its own namespace URI; when superseded, its documentation is frozen into a snapshot page with migration guidance.</p>
+</section>
+<section id="post-1-0-stable">
+<h3>Post-1.0 (Stable)<a class="headerlink" href="#post-1-0-stable" title="Link to this heading">#</a></h3>
+<p>Once 1.0 is released, the standard semantic versioning rules apply:</p>
+<ul class="simple">
+<li><p><strong>MAJOR</strong> (e.g. 1.0 → 2.0): Breaking changes: terms removed, renamed, or given incompatible semantics. Existing valid TRO declarations may no longer validate against the latest version. New namespace URI.</p></li>
+<li><p><strong>MINOR</strong> (e.g. 1.0 → 1.1): Add-only: new capability types, new attribute types, new optional properties. No terms removed, renamed, or redefined. Existing TRO declarations remain valid against the new version. Same namespace URI.</p></li>
+<li><p><strong>No patch versions.</strong> Description clarifications and typo fixes in vocabulary files are editorial changes that can be made without changing the version number.</p></li>
+</ul>
+<p>Minor versions share a namespace because they only add optional terms. The ontology file at the namespace URI is updated to include new terms, but existing declarations remain valid — the new terms are available, not required. Only a major version bump changes the namespace URI and triggers a frozen snapshot of the superseded version.</p>
+</section>
+<section id="version-lifecycle">
+<h3>Version Lifecycle<a class="headerlink" href="#version-lifecycle" title="Link to this heading">#</a></h3>
+<p>Each version passes through a simple lifecycle:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Status</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Draft</strong></p></td>
+<td><p>Under active development. The namespace URI works and adopters can build against it, but terms may still change before release.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Released</strong></p></td>
+<td><p>Stable. The terms defined in this version will not be removed, renamed, or redefined. Future minor versions may add new terms at the same namespace URI.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Retired</strong></p></td>
+<td><p>Superseded by a newer version. Documentation frozen into a snapshot page with migration guidance. Files remain available at their URIs indefinitely.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The namespace URI stays the same across states — <code class="docutils literal notranslate"><span class="pre">trov/0.1#</span></code> is <code class="docutils literal notranslate"><span class="pre">trov/0.1#</span></code> whether the version is draft or released. Adopters do not need to change their <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> on release day.</p>
+<p>When a version is released or retired, both <code class="docutils literal notranslate"><span class="pre">trace-specification</span></code> and <code class="docutils literal notranslate"><span class="pre">trov</span></code> repos are tagged <code class="docutils literal notranslate"><span class="pre">trov/0.1</span></code>, <code class="docutils literal notranslate"><span class="pre">trov/0.2</span></code>, etc.</p>
+</section>
+<section id="namespace-uris">
+<h3>Namespace URIs<a class="headerlink" href="#namespace-uris" title="Link to this heading">#</a></h3>
+<p>Each version that may contain breaking changes relative to its predecessor receives its own namespace URI:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Version</p></th>
+<th class="head"><p>Namespace URI</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>(pre-release)</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/2023/05/trov#</span></code></p></td>
+<td><p>Retired. Frozen snapshot. Pre-Release Reference [coming soon].</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1#</span></code></p></td>
+<td><p>Draft. Concrete target for implementers to converge on.</p></td>
+</tr>
+<tr class="row-even"><td><p>0.2, 0.3, …</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.2#</span></code>, …</p></td>
+<td><p>Future pre-1.0 versions. Each gets its own namespace.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/1#</span></code></p></td>
+<td><p>Planned.</p></td>
+</tr>
+<tr class="row-even"><td><p>1.1, 1.2, …</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/1#</span></code></p></td>
+<td><p>Future minor versions share the major-version namespace.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/2#</span></code></p></td>
+<td><p>No current plans.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="namespace-history">
+<h3>Namespace History<a class="headerlink" href="#namespace-history" title="Link to this heading">#</a></h3>
+<p>The pre-release namespace <code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/2023/05/trov#</span></code> was minted in May 2023 using a date-based URI pattern. TROV now uses a version-based pattern (<code class="docutils literal notranslate"><span class="pre">trace/trov/{version}#</span></code>).</p>
+<p>The pre-release namespace is retired. TRO declarations using the <code class="docutils literal notranslate"><span class="pre">2023/05</span></code> namespace require conversion for TROV 0.1 conformance. The <code class="docutils literal notranslate"><span class="pre">2023/05</span></code> URI will resolve to the Pre-Release Vocabulary Reference [coming soon], which documents the pre-release terms and provides migration guidance.</p>
+</section>
+<section id="documentation-lifecycle">
+<h3>Documentation Lifecycle<a class="headerlink" href="#documentation-lifecycle" title="Link to this heading">#</a></h3>
+<p>On <code class="docutils literal notranslate"><span class="pre">main</span></code>, <code class="docutils literal notranslate"><span class="pre">trov-vocabulary.md</span></code> always describes the latest released version (or the current draft if nothing has been released yet). Draft work for the next version happens on a branch (e.g. <code class="docutils literal notranslate"><span class="pre">0.2-draft</span></code>). When the new version is ready to release we:</p>
+<ol class="arabic simple">
+<li><p>Snapshot <code class="docutils literal notranslate"><span class="pre">trov-vocabulary.md</span></code> to a version-specific file (e.g. <code class="docutils literal notranslate"><span class="pre">trov-0.1.md</span></code>).</p></li>
+<li><p>Merge the draft branch into <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+</ol>
+<p>The snapshot is a self-contained page: term inventory, known issues, migration steps. Other documents (<code class="docutils literal notranslate"><span class="pre">tro-declaration-format.md</span></code>, <code class="docutils literal notranslate"><span class="pre">trov-extension-guide.md</span></code>, etc.) are updated on the draft branch as needed and merged along with the vocabulary reference.</p>
+<p><strong>Post-1.0:</strong> The same workflow continues. Minor versions are backwards-compatible (add-only), but <code class="docutils literal notranslate"><span class="pre">trov-vocabulary.md</span></code> is still snapshotted before each merge. This keeps every version visible side by side at the head of <code class="docutils literal notranslate"><span class="pre">main</span></code>, and lets someone receiving a TRO that references a specific TROV version look up what terms were available when that TRO was produced.</p>
+<p>Snapshots and namespace URIs serve different purposes. Namespace URIs track compatibility — all 1.x versions share a namespace because they are backwards-compatible. Snapshots track what terms each version defined. TRO declarations post-0.1 include an explicit vocabulary version property so consumers can determine the specific minor version without parsing the namespace URI.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2023</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="n">trov</span><span class="c1">#   →  frozen snapshot (trov-prerelease.md)</span>
+<span class="n">trov</span><span class="o">/</span><span class="mf">0.1</span><span class="c1">#       →  living docs on main (current)</span>
+<span class="n">trov</span><span class="o">/</span><span class="mf">0.2</span><span class="c1">#       →  trov-vocabulary.md snapshotted to trov-0.1.md, 0.2-draft branch merged</span>
+  <span class="o">...</span>
+<span class="n">trov</span><span class="o">/</span><span class="mi">1</span><span class="c1">#         →  last 0.x frozen, living docs describe latest 1.x release</span>
+<span class="n">trov</span><span class="o">/</span><span class="mi">1</span><span class="c1"># (1.1)   →  trov-vocabulary.md snapshotted to trov-1.0.md, 1.1-draft branch merged</span>
+<span class="n">trov</span><span class="o">/</span><span class="mi">1</span><span class="c1"># (1.2)   →  trov-vocabulary.md snapshotted to trov-1.1.md, 1.2-draft branch merged</span>
+  <span class="o">...</span>
+<span class="n">trov</span><span class="o">/</span><span class="mi">2</span><span class="c1">#         →  1.x frozen, new namespace, living docs describe latest 2.x release</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="what-constitutes-a-version">
+<h2>What Constitutes a Version<a class="headerlink" href="#what-constitutes-a-version" title="Link to this heading">#</a></h2>
+<section id="trov-0-1-current-draft-stabilization-target">
+<h3>TROV 0.1 (Current Draft — Stabilization Target)<a class="headerlink" href="#trov-0-1-current-draft-stabilization-target" title="Link to this heading">#</a></h3>
+<p><strong>Namespace:</strong> <code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1#</span></code></p>
+<p><strong>Status:</strong> First formally documented version. Based on pre-release implementations: property names reconciled, known bugs fixed, term list curated.</p>
+<p><strong>Goal:</strong> Produce a documented, testable baseline. Descriptive of deployed reality, with known issues resolved.</p>
+<p><strong>Authoritative sources (in priority order):</strong></p>
+<ol class="arabic simple">
+<li><p><strong>tro-utils source code</strong> — the reference implementation. What it produces is what 0.1 means.</p></li>
+<li><p><strong>trov.ttl</strong> — the formal OWL ontology. Currently incomplete; will be updated to match the above.</p></li>
+<li><p><strong>trov-shacl.ttl</strong> — SHACL validation shapes. Currently partial; will be extended.</p></li>
+<li><p><strong>TROV Vocabulary Reference</strong> (<code class="docutils literal notranslate"><span class="pre">trov-vocabulary.md</span></code>) — the human-readable specification.</p></li>
+</ol>
+<p><strong>What is in 0.1 (draft — under discussion and subject to change before release):</strong></p>
+<ul class="simple">
+<li><p>The classes, properties, and named individuals documented in the <a class="reference internal" href="trov-vocabulary.html"><span class="std std-doc">TROV Vocabulary Reference</span></a>.</p></li>
+<li><p>The JSON-LD structure documented in the <a class="reference internal" href="tro-declaration-format.html"><span class="std std-doc">TRO Declaration Format</span></a>.</p></li>
+<li><p>Support for GPG and X.509/CMS signing mechanisms.</p></li>
+</ul>
+<p><strong>What must happen before 0.1 is considered stable:</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Reconcile property name divergences between tro-utils and hand-written examples.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Update trov.ttl to include all properties and classes actually in use.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Enable <a class="reference external" href="http://w3id.org">w3id.org</a> namespace resolution.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Design signing-identity representation that works across signing mechanisms (GPG, X.509/CMS, and others).</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Reconcile duplicate capability types.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Add <code class="docutils literal notranslate"><span class="pre">trov:vocabularyVersion</span></code> property for declaring the TROV vocabulary version used in a TRO declaration.</p></li>
+</ul>
+</section>
+<section id="trov-1-0-first-stable-release">
+<h3>TROV 1.0 (First Stable Release)<a class="headerlink" href="#trov-1-0-first-stable-release" title="Link to this heading">#</a></h3>
+<p><strong>Goal:</strong> A stable vocabulary with guaranteed backwards compatibility, tooling for validation and reporting, and documentation sufficient for independent adoption without direct guidance from the TROV maintainers.</p>
+<p><strong>Expected capabilities (introduced incrementally in 0.x releases):</strong></p>
+<ul class="simple">
+<li><p>Formal namespace resolution via <a class="reference external" href="http://w3id.org">w3id.org</a> with content negotiation. HTML for browsers, Turtle and JSON-LD for RDF tools.</p></li>
+<li><p>Published <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> file at a stable URI for reference. We recommend that TRO declarations embed the context inline so they remain self-contained.</p></li>
+<li><p>JSON Schema for basic validation of TRO declarations.</p></li>
+<li><p>Full set of SHACL shapes for validating TRO declarations and TRS certificates.</p></li>
+<li><p>Complete warrant chain validation (TRO attributes → TRP attributes → TRS capabilities) implemented in tooling.</p></li>
+<li><p>Signing mechanism formally specified (algorithm-agnostic, supporting GPG and X.509/CMS at minimum).</p></li>
+<li><p>At least one standard TRO package format specified (ZIP layout, relationship between declaration, signature, and payload).</p></li>
+<li><p>trov-validate tool for deep compliance testing (warrant chain completeness, cross-reference integrity).</p></li>
+<li><p>trov-report tool for human-readable summaries.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="extensibility-adopter-specific-terms">
+<h2>Extensibility: Adopter-Specific Terms<a class="headerlink" href="#extensibility-adopter-specific-terms" title="Link to this heading">#</a></h2>
+<p>Adopters will need to include metadata specific to their systems — container runtime details, internal system versions, resource utilization metrics, and similar operational data. For a step-by-step walkthrough, see the <a class="reference internal" href="trov-extension-guide.html"><span class="std std-doc">TROV Extension Guide</span></a>.</p>
+<p><strong>Rules for adopter extensions:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Use your own namespace</strong> for institution-specific terms. For example, an adopter might use <code class="docutils literal notranslate"><span class="pre">mytrs:</span></code> for system-specific metadata (the prefix shorthand is local to each declaration; what matters is the URI it expands to). This guarantees no collision with future TROV terms.</p></li>
+<li><p><strong>Unprefixed or <code class="docutils literal notranslate"><span class="pre">trov:</span></code>-prefixed terms not in the vocabulary are non-conformant.</strong> A validator will flag them. This protects adopters from silently depending on terms that may change or conflict with future TROV additions.</p></li>
+<li><p><strong>Propose new <code class="docutils literal notranslate"><span class="pre">trov:</span></code> terms.</strong> If an extension proves broadly applicable, it can be proposed for inclusion in a future TROV minor version.</p></li>
+<li><p><strong>The <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> is extensible.</strong> Adopters can add their own namespace prefixes to the <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> block alongside the standard TROV prefixes.</p></li>
+</ol>
+<p><strong>Example — adopter-specific metadata alongside TROV terms:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;rdf&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rdfs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.w3.org/2000/01/rdf-schema#&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://w3id.org/trace/trov/0.1#&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mytrs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.org/mytrs#&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">],</span>
+<span class="err">...</span>
+<span class="nt">&quot;mytrs:version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.1&quot;</span><span class="p">,</span>
+<span class="nt">&quot;mytrs:architecture&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;x86_64&quot;</span><span class="p">,</span>
+<span class="nt">&quot;mytrs:kernelVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6.14.0-37-generic&quot;</span><span class="p">,</span>
+<span class="nt">&quot;mytrs:imageRepoDigests&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;dataeditors/stata18_5-mp@sha256:3699b018...&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="breaking-vs-non-breaking-changes">
+<h2>Breaking vs Non-Breaking Changes<a class="headerlink" href="#breaking-vs-non-breaking-changes" title="Link to this heading">#</a></h2>
+<p>The following table describes how changes are classified <strong>after 1.0</strong> (pre-1.0, any of these changes may occur in any 0.x release).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Change</p></th>
+<th class="head"><p>Breaking?</p></th>
+<th class="head"><p>Post-1.0 version bump</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Change the description of an existing term</p></td>
+<td><p>No</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>Add a new optional property</p></td>
+<td><p>No</p></td>
+<td><p>Minor</p></td>
+</tr>
+<tr class="row-even"><td><p>Add a new capability type</p></td>
+<td><p>No</p></td>
+<td><p>Minor</p></td>
+</tr>
+<tr class="row-odd"><td><p>Add a new TRP or TRO attribute type</p></td>
+<td><p>No</p></td>
+<td><p>Minor</p></td>
+</tr>
+<tr class="row-even"><td><p>Rename a property or class</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Major</p></td>
+</tr>
+<tr class="row-odd"><td><p>Remove a property or class</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Major</p></td>
+</tr>
+<tr class="row-even"><td><p>Change a property from optional to required</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Major</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change the semantics of an existing term</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Major</p></td>
+</tr>
+<tr class="row-even"><td><p>Change the namespace URI</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Major</p></td>
+</tr>
+<tr class="row-odd"><td><p>Add a new required property</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Major</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="repository-structure-and-namespace-resolution">
+<h2>Repository Structure and Namespace Resolution<a class="headerlink" href="#repository-structure-and-namespace-resolution" title="Link to this heading">#</a></h2>
+<section id="the-trov-repository">
+<h3>The trov repository<a class="headerlink" href="#the-trov-repository" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://github.com/transparency-certified/trov"><code class="docutils literal notranslate"><span class="pre">trov</span></code></a> repository is the source for all machine-readable vocabulary files. It contains one directory per version, and the GitHub Actions workflow deploys these directories to GitHub Pages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trov/
+  README.md
+  .github/workflows/deploy.yml      ← generates HTML docs, deploys to GitHub Pages
+  0.1/
+    context.jsonld                   ← JSON-LD context file (for reference)
+    tro-schema.json                  ← JSON Schema for TRO declaration validation
+    trov-shacl.ttl                   ← SHACL validation shapes
+    trov.jsonld                      ← OWL ontology (JSON-LD format)
+    trov.ttl                         ← OWL ontology (Turtle)
+  prerelease/
+    trov.ttl                         ← frozen OWL ontology (2023/05/trov# namespace)
+</pre></div>
+</div>
+<p><strong>What goes in the trov repo:</strong> master copies of the machine-readable artifacts that consumers fetch programmatically via GitHub Pages — ontology files, validation schemas, SHACL shapes.</p>
+<p><strong>What does not go in the trov repo:</strong> human-readable documentation (that lives in <code class="docutils literal notranslate"><span class="pre">trace-specification/docs/</span></code>).</p>
+<p>When a version is superseded, its directory is frozen in place. The files remain available at the same URIs indefinitely.</p>
+</section>
+<section id="the-trace-specification-repository">
+<h3>The trace-specification repository<a class="headerlink" href="#the-trace-specification-repository" title="Link to this heading">#</a></h3>
+<p>Human-readable documentation lives in <code class="docutils literal notranslate"><span class="pre">trace-specification</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>trace-specification/
+  docs/
+    tro-declaration-format.md        ← living declaration format guide (current version)
+    trov-0.1.md                      ← snapshot of trov-vocabulary.md when 0.1 is superseded
+    trov-prerelease.md               ← frozen snapshot (retired pre-release)
+    trov-versioning-and-roadmap.md   ← this document (version-independent)
+    trov-vocabulary.md               ← living vocabulary reference (current version)
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">docs/</span></code> directory always describes the current version; retired versions are frozen into snapshot pages.</p>
+</section>
+<section id="namespace-resolution-via-w3id-org">
+<h3>Namespace resolution via <a class="reference external" href="http://w3id.org">w3id.org</a><a class="headerlink" href="#namespace-resolution-via-w3id-org" title="Link to this heading">#</a></h3>
+<p>TROV namespace URIs are persistent URIs managed through <a class="reference external" href="https://w3id.org/">w3id.org</a>. The redirect rules live in a <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> file submitted via pull request to the <a class="reference external" href="https://github.com/perma-id/w3id.org">perma-id/w3id.org</a> repository (under a <code class="docutils literal notranslate"><span class="pre">trace/</span></code> directory). Once merged, the <a class="reference external" href="http://w3id.org">w3id.org</a> Apache server uses these rules to redirect requests to our GitHub Pages site. The wildcard design means this is a one-time PR. For testing procedures, see <a class="reference internal" href="documentation-infrastructure.html#testing-the-w3id-org-redirect-rules"><span class="std std-ref">Documentation Infrastructure</span></a>.</p>
+<div class="highlight-apache notranslate"><div class="highlight"><pre><span></span><span class="nb">RewriteEngine</span><span class="w"> </span><span class="k">On</span>
+
+<span class="c"># All redirects use 303 (See Other) per linked data best practice.</span>
+<span class="c"># The wildcard (.+?) captures the version (e.g. 0.1, 1) so new versions</span>
+<span class="c"># work without new rules.</span>
+
+<span class="c"># Direct access to the JSON-LD context file for a specific version</span>
+<span class="nb">RewriteRule</span><span class="w"> </span>^trov/(.+?)/context\.jsonld$<span class="w"> </span>https://transparency-certified.github.io/trov/$1/context.jsonld<span class="w"> </span>[R=303,L]
+
+<span class="c"># RDF tool requesting Turtle → serve the OWL ontology file</span>
+<span class="nb">RewriteCond</span><span class="w"> </span>%{HTTP_ACCEPT}<span class="w"> </span>text/turtle
+<span class="nb">RewriteRule</span><span class="w"> </span>^trov/(.+?)/?$<span class="w"> </span>https://transparency-certified.github.io/trov/$1/trov.ttl<span class="w"> </span>[R=303,L]
+
+<span class="c"># JSON-LD processor requesting JSON-LD → serve the ontology in JSON-LD format</span>
+<span class="nb">RewriteCond</span><span class="w"> </span>%{HTTP_ACCEPT}<span class="w"> </span>application/ld\+json
+<span class="nb">RewriteRule</span><span class="w"> </span>^trov/(.+?)/?$<span class="w"> </span>https://transparency-certified.github.io/trov/$1/trov.jsonld<span class="w"> </span>[R=303,L]
+
+<span class="c"># Browser or anything else → serve the HTML landing page for this version</span>
+<span class="nb">RewriteRule</span><span class="w"> </span>^trov/(.+?)/?$<span class="w"> </span>https://transparency-certified.github.io/trov/$1/<span class="w"> </span>[R=303,L]
+
+<span class="c"># Special case: serve the HTML landing page for the pre-release version</span>
+<span class="nb">RewriteRule</span><span class="w"> </span>^2023/05/trov/?$<span class="w"> </span>https://transparency-certified.github.io/trov/prerelease/<span class="w"> </span>[R=303,L]
+</pre></div>
+</div>
+<p>Examples of how namespace URIs resolve:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Request</p></th>
+<th class="head"><p>Accept header</p></th>
+<th class="head"><p>Resolves to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1/context.jsonld</span></code></p></td>
+<td><p><em>(any)</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://transparency-certified.github.io/trov/0.1/context.jsonld</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">text/turtle</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://transparency-certified.github.io/trov/0.1/trov.ttl</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/ld+json</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://transparency-certified.github.io/trov/0.1/trov.jsonld</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1</span></code></p></td>
+<td><p><em>(any other)</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://transparency-certified.github.io/trov/0.1/</span></code> (HTML landing page)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/2023/05/trov</span></code></p></td>
+<td><p><em>(any)</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://transparency-certified.github.io/trov/prerelease/</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>What gets served.</strong> All content — including the Turtle and JSON-LD ontology files — is served from GitHub Pages, not from the <code class="docutils literal notranslate"><span class="pre">trov</span></code> repo directly. The repo is the source; the GitHub Actions workflow deploys its contents to GitHub Pages, which serves files with correct MIME types to confirm the format that <a class="reference external" href="http://w3id.org">w3id.org</a>’s content negotiation selected. See <a class="reference internal" href="documentation-infrastructure.html#why-github-pages-not-raw-github-urls"><span class="std std-ref">Documentation Infrastructure</span></a> for details.</p>
+<p>The deployed site layout:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>transparency-certified.github.io/trov/
+  0.1/
+    context.jsonld          ← JSON-LD context file (for reference)
+    index.html              ← HTML landing page (generated)
+    tro-schema.json         ← JSON Schema for TRO declaration validation
+    trov-shacl.ttl          ← SHACL validation shapes
+    trov.jsonld             ← OWL ontology (JSON-LD)
+    trov.ttl                ← OWL ontology (Turtle)
+  prerelease/
+    index.html              ← HTML landing page (generated)
+    trov.ttl                ← frozen OWL ontology
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="roadmap">
+<h2>Roadmap<a class="headerlink" href="#roadmap" title="Link to this heading">#</a></h2>
+<section id="phase-1-stabilize-0-1-now-june-2026">
+<h3>Phase 1: Stabilize 0.1 (Now — June 2026)<a class="headerlink" href="#phase-1-stabilize-0-1-now-june-2026" title="Link to this heading">#</a></h3>
+<p>Produce a documented, testable, internally consistent 0.1 that matches deployed reality.</p>
+<ul class="simple">
+<li><p>Establish JSON Schema generation workflow.</p></li>
+<li><p>Complete and publish the specification documents (vocabulary reference, declaration format, package format).</p></li>
+<li><p>Enable <a class="reference external" href="http://w3id.org">w3id.org</a> namespace resolution.</p></li>
+<li><p>Fix known bugs and resolve vocabulary variations.</p></li>
+<li><p>Test the JSON Schema against TRO declarations produced by pre-release implementations updated to target 0.1.</p></li>
+<li><p>Publish the vocabulary reference at the namespace URI.</p></li>
+</ul>
+</section>
+<section id="phase-2-evolve-0-x-july-2026-june-2027">
+<h3>Phase 2: Evolve 0.x (July 2026 — June 2027)<a class="headerlink" href="#phase-2-evolve-0-x-july-2026-june-2027" title="Link to this heading">#</a></h3>
+<p>Extend the vocabulary, complete validation and reporting tooling, and resolve open design questions.</p>
+<ul class="simple">
+<li><p>Release JSON Schema validator for basic structural validation of TRO declarations.</p></li>
+<li><p>Complete SHACL shapes for validating TRO declarations and TRS certificates.</p></li>
+<li><p>Develop trov-validate tool for deep compliance testing (SPARQL, SHACL).</p></li>
+<li><p>Develop trov-report tool for human-readable HTML and PDF summaries (SPARQL).</p></li>
+<li><p>Resolve open design questions (signing mechanisms, package formats, signing-identity representations).</p></li>
+<li><p>Update trov.ttl to full OWL coverage.</p></li>
+<li><p>Publish machine-readable vocabulary documents and JSON-LD context at namespace URIs.</p></li>
+</ul>
+</section>
+<section id="phase-3-release-1-0-june-2027">
+<h3>Phase 3: Release 1.0 (June 2027)<a class="headerlink" href="#phase-3-release-1-0-june-2027" title="Link to this heading">#</a></h3>
+<p>Release TROV 1.0 with guaranteed backwards compatibility, tooling for validation and reporting, and documentation sufficient for independent adoption.</p>
+<ul class="simple">
+<li><p>Stable namespace URI with content negotiation.</p></li>
+<li><p>Complete warrant chain validation implemented in tooling.</p></li>
+<li><p>At least one standard TRO package format specified.</p></li>
+<li><p>Full documentation set.</p></li>
+</ul>
+</section>
+<section id="phase-4-governance-and-maintenance-1-x-july-2027-june-2029">
+<h3>Phase 4: Governance and Maintenance 1.x (July 2027 — June 2029)<a class="headerlink" href="#phase-4-governance-and-maintenance-1-x-july-2027-june-2029" title="Link to this heading">#</a></h3>
+<p>Support independent adoption, establish community governance, and publish the vocabulary description.</p>
+<ul class="simple">
+<li><p>Publish TRACE Adoption Guide for organizations building TRACE-compatible systems.</p></li>
+<li><p>Expand capability and attribute type catalog based on adopter feedback.</p></li>
+<li><p>Establish TROV Interest Group with charter and governance documents.</p></li>
+<li><p>Engage with relevant standards bodies and research data communities.</p></li>
+<li><p>Collect community feedback and incorporate into post-1.0 minor releases.</p></li>
+<li><p>Submit description of vocabulary design and capabilities to a peer-reviewed journal.</p></li>
+<li><p>Improve adopter documentation based on deployment experience.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="trov-extension-guide.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TROV Extension Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="trov-prerelease.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TROV Pre-Release Vocabulary Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-goals">Design Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-numbering">Version Numbering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-1-0-evolving">Pre-1.0 (Evolving)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-1-0-stable">Post-1.0 (Stable)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-lifecycle">Version Lifecycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#namespace-uris">Namespace URIs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#namespace-history">Namespace History</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-lifecycle">Documentation Lifecycle</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-constitutes-a-version">What Constitutes a Version</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trov-0-1-current-draft-stabilization-target">TROV 0.1 (Current Draft — Stabilization Target)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trov-1-0-first-stable-release">TROV 1.0 (First Stable Release)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensibility-adopter-specific-terms">Extensibility: Adopter-Specific Terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breaking-vs-non-breaking-changes">Breaking vs Non-Breaking Changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-structure-and-namespace-resolution">Repository Structure and Namespace Resolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trov-repository">The trov repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-trace-specification-repository">The trace-specification repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#namespace-resolution-via-w3id-org">Namespace resolution via w3id.org</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roadmap">Roadmap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-stabilize-0-1-now-june-2026">Phase 1: Stabilize 0.1 (Now — June 2026)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-evolve-0-x-july-2026-june-2027">Phase 2: Evolve 0.x (July 2026 — June 2027)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-release-1-0-june-2027">Phase 3: Release 1.0 (June 2027)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-4-governance-and-maintenance-1-x-july-2027-june-2029">Phase 4: Governance and Maintenance 1.x (July 2027 — June 2029)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The TRACE Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

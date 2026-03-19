@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documentation Infrastructure &#8212; Transparency Certified</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/documentation-infrastructure';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overview" href="infrastructure.html" />
+    <link rel="prev" title="TROV Pre-Release Vocabulary Reference" href="trov-prerelease.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Transparency Certified - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Transparency Certified - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Our Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Personas in TRACE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="barriers.html">Barriers to Transparency</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="case-profiles.html">Case Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/rdc.html">Federal Research Data Centers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/bplim.html">Banco de Portugal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/twitter.html">Twitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/ipums.html">IPUMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/campus-cluster.html">Campus Cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Specifications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="specifications.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Transparency Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">TRACE Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual-model.html">Conceptual Model (v4)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tro-declaration-format.html">TRO Declaration Format — TROV 0.1 Draft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tro-declaration-design.html">TRO Declaration Design: JSON and RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-vocabulary.html">TROV Vocabulary Reference — TROV 0.1 Draft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-extension-guide.html">TROV Extension Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-versioning-and-roadmap.html">TROV Versioning Strategy and Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-prerelease.html">TROV Pre-Release Vocabulary Reference</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Documentation Infrastructure</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Infrastructure</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-prototype.html">TRACE Prototype</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-toolkit.html">TRACE Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-plugin.html">SLURM Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample-implementation.html">TRACE Sample Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dev/signing.html">Signing</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/documentation-infrastructure.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Documentation Infrastructure</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositories">Repositories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-pieces-connect">How the Pieces Connect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-project-website">The Project Website</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-specification-site">The Specification Site</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build">Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy">Deploy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-vocabulary-reference">The Vocabulary Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Deploy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-github-pages-not-raw-github-urls">Why GitHub Pages, not raw GitHub URLs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-w3id-org-redirect-rules">Testing the w3id.org redirect rules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-page-to-the-specification">Adding a Page to the Specification</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="documentation-infrastructure">
+<h1>Documentation Infrastructure<a class="headerlink" href="#documentation-infrastructure" title="Link to this heading">#</a></h1>
+<p>How the TRACE project’s documentation is built and deployed across three GitHub repositories, each with its own build pipeline, and how the results combine into a single public website.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Document Section</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#repositories"><span class="xref myst">Repositories</span></a></p></td>
+<td><p>The three repos that contribute to the public site</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#how-the-pieces-connect"><span class="xref myst">How the Pieces Connect</span></a></p></td>
+<td><p>URL structure showing how the three repos map to the public site</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#the-project-website"><span class="xref myst">The Project Website</span></a></p></td>
+<td><p>Jekyll site serving the landing page and top-level navigation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#the-specification-site"><span class="xref myst">The Specification Site</span></a></p></td>
+<td><p>Jupyter Book build and deploy pipeline</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#the-vocabulary-reference"><span class="xref myst">The Vocabulary Reference</span></a></p></td>
+<td><p>Widoco-generated documentation from the TROV Turtle ontology</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#adding-a-page-to-the-specification"><span class="xref myst">Adding a Page to the Specification</span></a></p></td>
+<td><p>Steps to create a new document and make it appear on the live site</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For the specification content itself, see <a class="reference internal" href="specifications.html"><span class="std std-doc">TRACE Specifications</span></a>. For the TROV vocabulary terms, see <a class="reference internal" href="trov-vocabulary.html"><span class="std std-doc">TROV Vocabulary</span></a>.</p>
+<hr class="docutils" />
+<section id="repositories">
+<h2>Repositories<a class="headerlink" href="#repositories" title="Link to this heading">#</a></h2>
+<p>Three repositories under the <a class="reference external" href="https://github.com/transparency-certified">transparency-certified</a> GitHub organization contribute to the public documentation:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Repository</p></th>
+<th class="head"><p>Contents</p></th>
+<th class="head"><p>URL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/transparency-certified/transparency-certified.github.io">transparency-certified.github.io</a></p></td>
+<td><p>Jekyll site — project landing page and navigation</p></td>
+<td><p>Serves at root: <a class="reference external" href="https://transparency-certified.github.io/">transparency-certified.github.io/</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/transparency-certified/trace-specification">trace-specification</a></p></td>
+<td><p>Jupyter Book source — specification documents, conceptual model, examples</p></td>
+<td><p>Serves at: <a class="reference external" href="https://transparency-certified.github.io/trace-specification/">transparency-certified.github.io/trace-specification/</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/transparency-certified/trov">trov</a></p></td>
+<td><p>TROV ontology in Turtle and JSON-LD, SHACL shapes, Widoco configuration</p></td>
+<td><p>Serves at: <a class="reference external" href="https://transparency-certified.github.io/trov/0.1/">transparency-certified.github.io/trov/0.1/</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>GitHub serves all three under the same domain: <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io</span></code> is the organization’s GitHub Pages site, and the other two repos are project-level Pages sites that GitHub mounts at subpaths matching their repository names.</p>
+</section>
+<hr class="docutils" />
+<section id="how-the-pieces-connect">
+<h2>How the Pieces Connect<a class="headerlink" href="#how-the-pieces-connect" title="Link to this heading">#</a></h2>
+<p>The public site at <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io</span></code> is assembled by GitHub Pages from three independent deployments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>transparency-certified.github.io/
+│
+├── /                          ← Jekyll site (transparency-certified.github.io repo, main branch)
+│   ├── index.html                Landing page
+│   └── _config.yml               Menu links into /trace-specification/
+│
+├── /trace-specification/      ← Jupyter Book output (trace-specification repo, gh-pages branch)
+│   ├── docs/specifications.html  Specification entry point
+│   ├── docs/...                  Built documentation pages
+│   └── _static/                  Sphinx theme assets
+│
+└── /trov/                     ← Widoco output (trov repo, gh-pages branch)
+    └── 0.1/index.html            Vocabulary reference
+</pre></div>
+</div>
+<p>Each component is built and deployed independently. The Jekyll site links into the specification via its menu configuration. The specification documents link to the vocabulary reference where relevant.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">trace-specification</span></code> and <code class="docutils literal notranslate"><span class="pre">trov</span></code> repos each deploy to an orphan <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch containing only generated HTML and a <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code> file that tells GitHub Pages to serve files directly.</p>
+</section>
+<hr class="docutils" />
+<section id="the-project-website">
+<h2>The Project Website<a class="headerlink" href="#the-project-website" title="Link to this heading">#</a></h2>
+<p>The <strong><a class="reference external" href="https://github.com/transparency-certified/transparency-certified.github.io">transparency-certified.github.io</a></strong> repository is a Jekyll site. GitHub Pages builds it automatically from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. The site provides a landing page with project description and team information, and navigation that links into the specification and vocabulary sites.</p>
+</section>
+<hr class="docutils" />
+<section id="the-specification-site">
+<h2>The Specification Site<a class="headerlink" href="#the-specification-site" title="Link to this heading">#</a></h2>
+<p>The <strong><a class="reference external" href="https://github.com/transparency-certified/trace-specification">trace-specification</a></strong> repository contains the specification documents as Markdown files in <code class="docutils literal notranslate"><span class="pre">docs/</span></code>. The build and deploy process works as follows:</p>
+<section id="source">
+<h3>Source<a class="headerlink" href="#source" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">main</span></code> branch contains:</p>
+<ul class="simple">
+<li><p>Markdown source files in <code class="docutils literal notranslate"><span class="pre">docs/</span></code></p></li>
+<li><p>Jupyter Book configuration: <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> (book settings) and <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> (table of contents structure)</p></li>
+<li><p>A GitHub Actions workflow: <code class="docutils literal notranslate"><span class="pre">.github/workflows/deploy.yml</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> file controls which documents appear in the built site and in what order. It organizes content into parts: TRACE Overview, TRACE Specifications, TRACE Infrastructure, and TRACE Development.</p>
+</section>
+<section id="build">
+<h3>Build<a class="headerlink" href="#build" title="Link to this heading">#</a></h3>
+<p>On every push to <code class="docutils literal notranslate"><span class="pre">main</span></code>, the GitHub Action:</p>
+<ol class="arabic simple">
+<li><p>Checks out the repository</p></li>
+<li><p>Runs <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">--all</span> <span class="pre">.</span></code> inside the <code class="docutils literal notranslate"><span class="pre">craigwillis/jupyter-book:latest</span></code> Docker image</p></li>
+<li><p>Produces static HTML in <code class="docutils literal notranslate"><span class="pre">_build/html/</span></code></p></li>
+</ol>
+</section>
+<section id="deploy">
+<h3>Deploy<a class="headerlink" href="#deploy" title="Link to this heading">#</a></h3>
+<p>The same GitHub Action uses <code class="docutils literal notranslate"><span class="pre">peaceiris/actions-gh-pages&#64;v3.6.1</span></code> to push the built HTML to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch. Each deploy creates a commit with the message <code class="docutils literal notranslate"><span class="pre">deploy:</span> <span class="pre">&lt;commit-hash&gt;</span></code>, where the hash references the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch commit that was built.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-vocabulary-reference">
+<h2>The Vocabulary Reference<a class="headerlink" href="#the-vocabulary-reference" title="Link to this heading">#</a></h2>
+<p>The <strong><a class="reference external" href="https://github.com/transparency-certified/trov">trov</a></strong> repository contains the TROV ontology definition and uses a similar build and deploy pipeline.</p>
+<section id="id1">
+<h3>Source<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">0.1/</span></code> directory contains:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">trov.ttl</span></code> — the ontology in Turtle (RDF) format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trov-shacl.ttl</span></code> — SHACL shape constraints for validation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trov.config</span></code> — configuration for the Widoco documentation generator</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Build<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>On pushes or pull requests to <code class="docutils literal notranslate"><span class="pre">main</span></code> (and on manual dispatch), the GitHub Action runs:</p>
+<ol class="arabic simple">
+<li><p>Checks out the repository</p></li>
+<li><p>Runs <a class="reference external" href="https://github.com/dgarijo/Widoco">Widoco</a> (<code class="docutils literal notranslate"><span class="pre">craigwillis/widoco:latest</span></code> Docker image) to generate HTML documentation from the Turtle ontology</p></li>
+<li><p>Renames the output directory to <code class="docutils literal notranslate"><span class="pre">0.1/</span></code> and fixes the index filename (<code class="docutils literal notranslate"><span class="pre">index-en.html</span></code> to <code class="docutils literal notranslate"><span class="pre">index.html</span></code>)</p></li>
+</ol>
+</section>
+<section id="id3">
+<h3>Deploy<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>The action uses <code class="docutils literal notranslate"><span class="pre">peaceiris/actions-gh-pages&#64;v4</span></code> to push the Widoco output to an orphan <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch, following the same pattern as <code class="docutils literal notranslate"><span class="pre">trace-specification</span></code>. GitHub Pages serves the result at <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io/trov/</span></code>.</p>
+</section>
+<section id="why-github-pages-not-raw-github-urls">
+<h3>Why GitHub Pages, not raw GitHub URLs<a class="headerlink" href="#why-github-pages-not-raw-github-urls" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="http://w3id.org">w3id.org</a> <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> rules redirect namespace URI requests to files on GitHub Pages. Content negotiation (Turtle vs JSON-LD vs HTML) happens at <a class="reference external" href="http://w3id.org">w3id.org</a>, but GitHub Pages confirms the format by serving files with correct MIME types (<code class="docutils literal notranslate"><span class="pre">text/turtle</span></code>, <code class="docutils literal notranslate"><span class="pre">application/ld+json</span></code>, <code class="docutils literal notranslate"><span class="pre">text/html</span></code>). Raw GitHub URLs (<code class="docutils literal notranslate"><span class="pre">raw.githubusercontent.com</span></code>) serve everything as <code class="docutils literal notranslate"><span class="pre">text/plain</span></code>, which well-behaved RDF tools may reject. GitHub Pages is also required for the HTML landing page, which is served as <code class="docutils literal notranslate"><span class="pre">index.html</span></code> from a directory URL.</p>
+</section>
+<section id="testing-the-w3id-org-redirect-rules">
+<h3>Testing the <a class="reference external" href="http://w3id.org">w3id.org</a> redirect rules<a class="headerlink" href="#testing-the-w3id-org-redirect-rules" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="http://w3id.org">w3id.org</a> has no staging environment, so we test independently before and after the PR:</p>
+<ol class="arabic simple">
+<li><p><strong>Verify GitHub Pages targets.</strong> Confirm that <code class="docutils literal notranslate"><span class="pre">https://transparency-certified.github.io/trov/0.1/trov.ttl</span></code> (and <code class="docutils literal notranslate"><span class="pre">.jsonld</span></code>, and the HTML index) serve the correct content.</p></li>
+<li><p><strong>Test rewrite rules locally.</strong> Run Apache in Docker with our <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> and verify redirects with <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-v</span> <span class="pre">-H</span> <span class="pre">&quot;Accept:</span> <span class="pre">text/turtle&quot;</span> <span class="pre">http://localhost/trace/trov/0.1</span></code> etc.</p></li>
+<li><p><strong>Post-merge smoke test.</strong> After the <a class="reference external" href="http://w3id.org">w3id.org</a> PR is merged, verify the live URLs return the expected 303 redirects.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="adding-a-page-to-the-specification">
+<h2>Adding a Page to the Specification<a class="headerlink" href="#adding-a-page-to-the-specification" title="Link to this heading">#</a></h2>
+<p>To add a new document to the specification site:</p>
+<ol class="arabic">
+<li><p><strong>Create the Markdown file</strong> in <code class="docutils literal notranslate"><span class="pre">docs/</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">docs/my-new-page.md</span></code>.</p></li>
+<li><p><strong>Register it in <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>.</strong> Add a <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">file:</span> <span class="pre">docs/my-new-page</span></code> entry under the appropriate part and chapter list. Without this entry, Jupyter Book will not include the page in the build even though the file exists in the repository.</p>
+<p>For example, to add it under TRACE Specifications:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">caption</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRACE Specifications</span>
+<span class="w">  </span><span class="nt">chapters</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/specifications</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/questions</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/my-new-page</span><span class="w">    </span><span class="c1"># ← new entry</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Push to <code class="docutils literal notranslate"><span class="pre">main</span></code>.</strong> The GitHub Action will build the site and deploy the result to <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>. The new page will appear at <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io/trace-specification/docs/my-new-page.html</span></code>.</p></li>
+</ol>
+<p>The build runs automatically. If the build fails (e.g., due to a syntax error or a broken cross-reference), the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch is not updated and the live site remains unchanged. Check the Actions tab on the repository to see build status.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="trov-prerelease.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TROV Pre-Release Vocabulary Reference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="infrastructure.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositories">Repositories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-pieces-connect">How the Pieces Connect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-project-website">The Project Website</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-specification-site">The Specification Site</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build">Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy">Deploy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-vocabulary-reference">The Vocabulary Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Deploy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-github-pages-not-raw-github-urls">Why GitHub Pages, not raw GitHub URLs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-w3id-org-redirect-rules">Testing the w3id.org redirect rules</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-page-to-the-specification">Adding a Page to the Specification</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The TRACE Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

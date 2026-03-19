@@ -1,0 +1,1648 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TRO Declaration Format — TROV 0.1 Draft &#8212; Transparency Certified</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/tro-declaration-format';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TRO Declaration Design: JSON and RDF" href="tro-declaration-design.html" />
+    <link rel="prev" title="Conceptual Model (v4)" href="conceptual-model.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Transparency Certified - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Transparency Certified - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Our Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Personas in TRACE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="barriers.html">Barriers to Transparency</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="case-profiles.html">Case Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/rdc.html">Federal Research Data Centers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/bplim.html">Banco de Portugal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/twitter.html">Twitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/ipums.html">IPUMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/campus-cluster.html">Campus Cluster</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Specifications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="specifications.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Transparency Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">TRACE Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual-model.html">Conceptual Model (v4)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TRO Declaration Format — TROV 0.1 Draft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tro-declaration-design.html">TRO Declaration Design: JSON and RDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-vocabulary.html">TROV Vocabulary Reference — TROV 0.1 Draft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-extension-guide.html">TROV Extension Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-versioning-and-roadmap.html">TROV Versioning Strategy and Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-prerelease.html">TROV Pre-Release Vocabulary Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation-infrastructure.html">Documentation Infrastructure</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Infrastructure</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-prototype.html">TRACE Prototype</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-toolkit.html">TRACE Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-plugin.html">SLURM Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample-implementation.html">TRACE Sample Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Development</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dev/signing.html">Signing</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/tro-declaration-format.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TRO Declaration Format — TROV 0.1 Draft</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-structure">Document Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-level-envelope">Top-Level Envelope</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-context-block">The <code class="docutils literal notranslate"><span class="pre">@context</span></code> Block</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tro-object">The TRO Object</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#root-properties">Root Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trs-description-trov-wasassembledby">TRS Description (<code class="docutils literal notranslate"><span class="pre">trov:wasAssembledBy</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamping-authority-trov-wastimestampedby">Timestamping Authority (<code class="docutils literal notranslate"><span class="pre">trov:wasTimestampedBy</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artifact-composition-trov-hascomposition">Artifact Composition (<code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-composition-fingerprint">Computing the Composition Fingerprint</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artifact-arrangements-trov-hasarrangement">Artifact Arrangements (<code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performances-trov-hasperformance">Performances (<code class="docutils literal notranslate"><span class="pre">trov:hasPerformance</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tro-attributes-trov-hasattribute">TRO Attributes (<code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-warrant-chain">The Warrant Chain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-conventions">Identifier Conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signing-and-timestamping">Signing and Timestamping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-example">Complete Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tro-declaration-format-trov-0-1-draft">
+<h1>TRO Declaration Format — TROV 0.1 Draft<a class="headerlink" href="#tro-declaration-format-trov-0-1-draft" title="Link to this heading">#</a></h1>
+<p>A <strong>TRO Declaration</strong> is a JSON-LD document that describes a Transparent Research Object. It records which digital artifacts were involved in a computational workflow, how they were arranged at each stage, what performances (supervised computations) were conducted, and what transparency claims are warranted about the whole process.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Document Section</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="overview.html"><span class="doc std std-doc">Overview</span></a></p></td>
+<td><p>What a TRO declaration contains at a high level</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#document-structure"><span class="xref myst">Document Structure</span></a></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;graph</span></code>, and namespace prefixes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#the-tro-object"><span class="xref myst">The TRO Object</span></a></p></td>
+<td><p>TRS, compositions, arrangements, artifacts, locations, performances</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#the-warrant-chain"><span class="xref myst">The Warrant Chain</span></a></p></td>
+<td><p>How performance (TRP) attributes link back to TRS capabilities</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#identifier-conventions"><span class="xref myst">Identifier Conventions</span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code> patterns for TRS, performance, arrangement, and artifact nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#signing-and-timestamping"><span class="xref myst">Signing and Timestamping</span></a></p></td>
+<td><p>GPG and X.509/CMS signing, timestamp authorities</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#verification"><span class="xref myst">Verification</span></a></p></td>
+<td><p>What verifying a TRO declaration may involve</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#complete-example"><span class="xref myst">Complete Example</span></a></p></td>
+<td><p>A full annotated TRO declaration</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#notes"><span class="xref myst">Notes</span></a></p></td>
+<td><p>JSON-LD conventions, design rationale, known limitations</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For definitions of the vocabulary terms used here, see the <a class="reference internal" href="trov-vocabulary.html"><span class="std std-doc">TROV Vocabulary Reference</span></a>. For the conceptual background, see the <a class="reference internal" href="conceptual-model.html"><span class="std std-doc">TRACE Conceptual Model</span></a>. For the design rationale behind the JSON-LD format, see <a class="reference internal" href="tro-declaration-design.html"><span class="std std-doc">TRO Declaration Design</span></a>.</p>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>A TRO declaration is a single JSON-LD file (conventionally <code class="docutils literal notranslate"><span class="pre">*.jsonld</span></code>) containing:</p>
+<ol class="arabic simple">
+<li><p>A <strong><code class="docutils literal notranslate"><span class="pre">&#64;context</span></code></strong> block that maps short term names to full URIs.</p></li>
+<li><p>A <strong><code class="docutils literal notranslate"><span class="pre">&#64;graph</span></code></strong> array containing a single TRO object with all of its nested components. (See <a class="reference internal" href="#notes"><span class="xref myst">Note 2</span></a> for why an array.)</p></li>
+</ol>
+<p>The TRO object itself contains:</p>
+<ul class="simple">
+<li><p><strong>Identity and metadata</strong> — who created it and when.</p></li>
+<li><p><strong>TRS description</strong> — the Trusted Research System that assembled and signed the TRO, including the TRS’s declared capabilities and signing identity.</p></li>
+<li><p><strong>Composition</strong> — the complete set of research artifacts, each identified by a content hash. Includes a composition fingerprint for identifying equivalent compositions.</p></li>
+<li><p><strong>Arrangements</strong> — named snapshots showing where artifacts were located at specific points in the workflow.</p></li>
+<li><p><strong>Performances</strong> — records of supervised computations, each linking input arrangements to output arrangements, with transparency attributes warranted by TRS capabilities.</p></li>
+<li><p><strong>TRO attributes</strong> — transparency claims about the TRO as a whole, warranted by performance (TRP) attributes.</p></li>
+</ul>
+<p>Optionally, the TRO is accompanied by:</p>
+<ul class="simple">
+<li><p>A <strong>detached signature</strong> — a cryptographic signature over the declaration (e.g. GPG <code class="docutils literal notranslate"><span class="pre">.sig</span></code> or X.509/CMS <code class="docutils literal notranslate"><span class="pre">.p7s</span></code>).</p></li>
+<li><p>A <strong>timestamp</strong> — proof of when the signature was created (e.g. a separate RFC 3161 <code class="docutils literal notranslate"><span class="pre">.tsr</span></code> file, or embedded in the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code>).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="document-structure">
+<h2>Document Structure<a class="headerlink" href="#document-structure" title="Link to this heading">#</a></h2>
+<section id="top-level-envelope">
+<h3>Top-Level Envelope<a class="headerlink" href="#top-level-envelope" title="Link to this heading">#</a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;@graph&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* single TRO object */</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> maps short property names (like <code class="docutils literal notranslate"><span class="pre">trov:hash</span></code>) to full URIs. In 0.1, the <code class="docutils literal notranslate"><span class="pre">&#64;graph</span></code> array contains a single object — the TRO declaration itself (see <a class="reference internal" href="#notes"><span class="xref myst">Note 2</span></a> for why it is an array).</p>
+</section>
+<section id="the-context-block">
+<h3>The <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> Block<a class="headerlink" href="#the-context-block" title="Link to this heading">#</a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;rdf&quot;</span><span class="p">:</span><span class="w">    </span><span class="s2">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rdfs&quot;</span><span class="p">:</span><span class="w">   </span><span class="s2">&quot;http://www.w3.org/2000/01/rdf-schema#&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov&quot;</span><span class="p">:</span><span class="w">   </span><span class="s2">&quot;https://w3id.org/trace/trov/0.1#&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The context defines four namespace prefixes:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Prefix</p></th>
+<th class="head"><p>Namespace</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rdf:</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span></code></p></td>
+<td><p>RDF type system</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rdfs:</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">http://www.w3.org/2000/01/rdf-schema#</span></code></p></td>
+<td><p>Labels and comments</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1#</span></code></p></td>
+<td><p>All TROV terms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">schema:</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://schema.org</span></code></p></td>
+<td><p>Standard metadata (name, description, dates)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The mandatory parts of a TRO declaration depend only on TROV and the foundational <code class="docutils literal notranslate"><span class="pre">rdf:</span></code> and <code class="docutils literal notranslate"><span class="pre">rdfs:</span></code> namespaces. The <code class="docutils literal notranslate"><span class="pre">schema:</span></code> prefix is a convenience for common metadata — it may be omitted if no <code class="docutils literal notranslate"><span class="pre">schema:</span></code> properties are used, and no TRACE-compliant tool may reject a TRO declaration for missing <code class="docutils literal notranslate"><span class="pre">schema:</span></code> properties. Conversely, consumers of TROs — especially those curating triples extracted from TRO declarations — are free to discard non-TROV triples (e.g. <code class="docutils literal notranslate"><span class="pre">schema:</span></code> properties) to avoid undesired inferences that would result from importing large external ontologies.</p>
+<blockquote>
+<div><p>From the JSON perspective, the <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> is boilerplate copied into every TRO declaration, and everything after the <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> is ordinary JSON. See <a class="reference internal" href="tro-declaration-design.html"><span class="std std-doc">TRO Declaration Design</span></a> for background.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-tro-object">
+<h2>The TRO Object<a class="headerlink" href="#the-tro-object" title="Link to this heading">#</a></h2>
+<p>In 0.1, the single object in the <code class="docutils literal notranslate"><span class="pre">&#64;graph</span></code> array is the TRO itself.</p>
+<section id="root-properties">
+<h3>Root Properties<a class="headerlink" href="#root-properties" title="Link to this heading">#</a></h3>
+<p>Example root properties:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tro&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;trov:TransparentResearchObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;schema:CreativeWork&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;trov:vocabularyVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;schema:creator&quot;</span><span class="p">:</span><span class="w">     </span><span class="s2">&quot;SIVACOR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;schema:name&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;Example TRO&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;schema:description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRO produced by an example workflow&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;schema:dateCreated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-06-15T14:30:00&quot;</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;trov:wasAssembledBy&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;trov:hasComposition&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;trov:hasArrangement&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;trov:hasPerformance&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;trov:hasAttribute&quot;</span><span class="p">:</span><span class="w">    </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">schema:</span></code> properties shown above are optional metadata. See <a class="reference internal" href="#the-context-block"><span class="xref myst">The <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> Block</span></a> for the dependency boundary.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier for the TRO within this document. Conventionally <code class="docutils literal notranslate"><span class="pre">&quot;tro&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string or array</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Must include <code class="docutils literal notranslate"><span class="pre">&quot;trov:TransparentResearchObject&quot;</span></code>. May optionally include <code class="docutils literal notranslate"><span class="pre">&quot;schema:CreativeWork&quot;</span></code> to make the TRO discoverable by schema.org-aware tools (not required for using <code class="docutils literal notranslate"><span class="pre">schema:</span></code> properties).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:vocabularyVersion</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>The TROV vocabulary version this declaration conforms to, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;0.1&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">schema:creator</span></code></p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>Name of the agent or system that created this TRO declaration.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">schema:name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>Short title for the TRO.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">schema:description</span></code></p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>Human-readable description.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">schema:dateCreated</span></code></p></td>
+<td><p>string (ISO 8601)</p></td>
+<td><p>no</p></td>
+<td><p>When the TRO declaration was created.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:wasAssembledBy</span></code></p></td>
+<td><p>object</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>The TRS that produced and signed this TRO.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code></p></td>
+<td><p>object</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>The artifact composition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code></p></td>
+<td><p>array</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>One or more artifact arrangements.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasPerformance</span></code></p></td>
+<td><p>array</p></td>
+<td><p>no</p></td>
+<td><p>Zero or more performance records.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code></p></td>
+<td><p>array</p></td>
+<td><p>no</p></td>
+<td><p>Zero or more TRO-level transparency attributes.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="trs-description-trov-wasassembledby">
+<h3>TRS Description (<code class="docutils literal notranslate"><span class="pre">trov:wasAssembledBy</span></code>)<a class="headerlink" href="#trs-description-trov-wasassembledby" title="Link to this heading">#</a></h3>
+<p>The TRS block identifies the Trusted Research System that supervised the workflow and signed the TRO. It includes the TRS’s declared capabilities and signing identity.</p>
+<p>Example TRS description:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;trov:wasAssembledBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;trov:TrustedResearchSystem&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;schema:Organization&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;schema:name&quot;</span><span class="p">:</span><span class="w">        </span><span class="s2">&quot;SIVACOR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;schema:description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Secure Interactive Virtual Appliance ...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:publicKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:hasCapability&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CanProvideInternetIsolation&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CanRecordInternetAccess&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier. Conventionally <code class="docutils literal notranslate"><span class="pre">&quot;trs&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string or array</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Must include <code class="docutils literal notranslate"><span class="pre">&quot;trov:TrustedResearchSystem&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Signing identity of the TRS (e.g. GPG public key, X.509 certificate). Representation under review for 0.1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasCapability</span></code></p></td>
+<td><p>array</p></td>
+<td><p>no</p></td>
+<td><p>Zero or more capability declarations.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">schema:name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>Short name for the TRS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">schema:description</span></code></p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>Human-readable description of the TRS.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Each <strong>capability</strong> object declares that the TRS is able to enforce a specific transparency condition:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Local identifier, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;trs/capability/0&quot;</span></code>. Referenced by performance attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p>A capability type from the TROV vocabulary, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;trov:CanProvideInternetIsolation&quot;</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>See <a class="reference internal" href="trov-vocabulary.html#named-individuals-trs-capability-types"><span class="std std-ref">TROV Vocabulary Reference — TRS Capability Types</span></a> for the full list of defined capability types.</p>
+</section>
+<hr class="docutils" />
+<section id="timestamping-authority-trov-wastimestampedby">
+<h3>Timestamping Authority (<code class="docutils literal notranslate"><span class="pre">trov:wasTimestampedBy</span></code>)<a class="headerlink" href="#timestamping-authority-trov-wastimestampedby" title="Link to this heading">#</a></h3>
+<p>If the TRS obtained an RFC 3161 timestamp for the TRO signature from a separate timestamping authority, the TSA is recorded as a property of the TRO root object (a sibling of <code class="docutils literal notranslate"><span class="pre">trov:wasAssembledBy</span></code>). Not all signing mechanisms require this — X.509/CMS signatures can embed the timestamp directly in the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code> file, making a separate TSA block unnecessary.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tro&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:TransparentResearchObject&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:wasAssembledBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;trov:wasTimestampedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tsa&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:TimeStampingAuthority&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:publicKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier. Conventionally <code class="docutils literal notranslate"><span class="pre">&quot;tsa&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Must be <code class="docutils literal notranslate"><span class="pre">&quot;trov:TimeStampingAuthority&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Public key of the timestamping authority.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="artifact-composition-trov-hascomposition">
+<h3>Artifact Composition (<code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code>)<a class="headerlink" href="#artifact-composition-trov-hascomposition" title="Link to this heading">#</a></h3>
+<p>The composition is the complete, deduplicated set of all artifacts described by the TRO. Each artifact is identified solely by its content hash, and artifact objects carry no resource path information. Paths are recorded separately in <a class="reference internal" href="#artifact-arrangements-trovhasarrangement"><span class="xref myst">artifact locations</span></a>. An artifact appearing at different paths — or across different workflow stages — is listed once in the composition and referenced by identity wherever it appears.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;trov:hasComposition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactComposition&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trov:hasFingerprint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fingerprint&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CompositionFingerprint&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;218d9c33959c89013ca3f0f9dfa9479e0df8d5e4a53bb319b5bfab87f506dadc&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:hashAlgorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;trov:hasArtifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ResearchArtifact&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;trov:hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;trov:hashAlgorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;trov:mimeType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/plain&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ResearchArtifact&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;trov:hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7d865e959b2466918c9863afca942d0fb89d7c9ac0c99bafc3749504ded97730&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;trov:hashAlgorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;trov:mimeType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/x-python&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Composition</strong> fields:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier. Conventionally <code class="docutils literal notranslate"><span class="pre">&quot;composition/1&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Must be <code class="docutils literal notranslate"><span class="pre">&quot;trov:ArtifactComposition&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasFingerprint</span></code></p></td>
+<td><p>object</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>The composition fingerprint (see below).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArtifact</span></code></p></td>
+<td><p>array</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>One or more artifact objects.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Fingerprint</strong> fields:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier. Conventionally <code class="docutils literal notranslate"><span class="pre">&quot;fingerprint&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Must be <code class="docutils literal notranslate"><span class="pre">&quot;trov:CompositionFingerprint&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hash</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Hash computed over the sorted hashes of all artifacts (see below).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hashAlgorithm</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Algorithm used, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;sha256&quot;</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Artifact</strong> fields:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;composition/1/artifact/0&quot;</span></code>. Referenced by artifact locations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Must be <code class="docutils literal notranslate"><span class="pre">&quot;trov:ResearchArtifact&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hash</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Hash of the artifact’s content.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hashAlgorithm</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Algorithm used, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;sha256&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:mimeType</span></code></p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>MIME type of the artifact (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;text/plain&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;application/pdf&quot;</span></code>).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="computing-the-composition-fingerprint">
+<h4>Computing the Composition Fingerprint<a class="headerlink" href="#computing-the-composition-fingerprint" title="Link to this heading">#</a></h4>
+<p>The composition fingerprint allows two TROs that describe the same set of artifacts to be identified as equivalent, regardless of arrangement or metadata differences.</p>
+<p><strong>Algorithm</strong> (assumes each artifact has exactly one hash, as in TROV 0.1):</p>
+<ol class="arabic simple">
+<li><p>Collect the <code class="docutils literal notranslate"><span class="pre">trov:hash</span></code> value of every artifact in the composition.</p></li>
+<li><p>Sort the hash values lexicographically.</p></li>
+<li><p>Concatenate the sorted values into a single string (no separator).</p></li>
+<li><p>Compute the hash of the concatenated string (UTF-8 encoded). The fingerprint’s hash algorithm is independent of the algorithms used to hash individual artifacts.</p></li>
+</ol>
+<p><strong>Example</strong> (Python):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+
+<span class="n">artifact_hashes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">art</span><span class="p">[</span><span class="s2">&quot;trov:hash&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">art</span> <span class="ow">in</span> <span class="n">composition</span><span class="p">[</span><span class="s2">&quot;trov:hasArtifact&quot;</span><span class="p">])</span>
+<span class="n">fingerprint</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">artifact_hashes</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="artifact-arrangements-trov-hasarrangement">
+<h3>Artifact Arrangements (<code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code>)<a class="headerlink" href="#artifact-arrangements-trov-hasarrangement" title="Link to this heading">#</a></h3>
+<p>An arrangement captures where artifacts were located at a specific point in the workflow. A simple TRO might have just two arrangements — the artifacts present before and after a single computation — but multi-step workflows can have many, with intermediate arrangements shared between performances.</p>
+<p>Each arrangement contains <strong>artifact locations</strong> — records that place a specific artifact at a specific resource path.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;trov:hasArrangement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactArrangement&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rdfs:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Artifacts before execution&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:hasArtifactLocation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/0/location/0&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/0&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data/input.csv&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/0/location/1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/1&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scripts/analyze.py&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactArrangement&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rdfs:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Artifacts after execution&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:hasArtifactLocation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1/location/0&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/0&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data/input.csv&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1/location/1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/1&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scripts/analyze.py&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1/location/2&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/2&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;results/output.csv&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Arrangement</strong> fields:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;arrangement/0&quot;</span></code>. Referenced by performances.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Must be <code class="docutils literal notranslate"><span class="pre">&quot;trov:ArtifactArrangement&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rdfs:comment</span></code></p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>Human-readable description of what this arrangement represents.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArtifactLocation</span></code></p></td>
+<td><p>array</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>One or more artifact location objects.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Artifact location</strong> fields:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;arrangement/0/location/0&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Must be <code class="docutils literal notranslate"><span class="pre">&quot;trov:ArtifactLocation&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:artifact</span></code></p></td>
+<td><p>object</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Reference to an artifact in the composition, e.g. <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;&#64;id&quot;:</span> <span class="pre">&quot;composition/1/artifact/0&quot;</span> <span class="pre">}</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:path</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>The resource path (file path, URI, or other locator) for this artifact within this arrangement.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Key concept:</strong> The same artifact (same <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code> and content hash) can appear in multiple arrangements at different or identical paths. Conversely, different content at the same path across arrangements represents the file changing between workflow stages.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="performances-trov-hasperformance">
+<h3>Performances (<code class="docutils literal notranslate"><span class="pre">trov:hasPerformance</span></code>)<a class="headerlink" href="#performances-trov-hasperformance" title="Link to this heading">#</a></h3>
+<p>A performance records a supervised unit of work — typically a computation executed inside the TRS. Each performance links input arrangements to output arrangements and carries transparency attributes warranted by TRS capabilities.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;trov:hasPerformance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trp/0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:TrustedResearchPerformance&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rdfs:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Execution of analysis workflow&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:wasConductedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;trov:startedAtTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-06-15T14:00:00&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:endedAtTime&quot;</span><span class="p">:</span><span class="w">   </span><span class="s2">&quot;2024-06-15T14:25:00&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:accessedArrangement&quot;</span><span class="p">:</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/0&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;trov:contributedToArrangement&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;trov:hasPerformanceAttribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trp/0/attribute/0&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:InternetIsolation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:warrantedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/0&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trp/0/attribute/1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:InternetAccessRecording&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:warrantedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/1&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Performance</strong> fields:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;trp/0&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Must be <code class="docutils literal notranslate"><span class="pre">&quot;trov:TrustedResearchPerformance&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rdfs:comment</span></code></p></td>
+<td><p>string</p></td>
+<td><p>no</p></td>
+<td><p>Human-readable description.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:wasConductedBy</span></code></p></td>
+<td><p>object</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Reference to the TRS, e.g. <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;&#64;id&quot;:</span> <span class="pre">&quot;trs&quot;</span> <span class="pre">}</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:startedAtTime</span></code></p></td>
+<td><p>string (ISO 8601)</p></td>
+<td><p>no</p></td>
+<td><p>When the performance began.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:endedAtTime</span></code></p></td>
+<td><p>string (ISO 8601)</p></td>
+<td><p>no</p></td>
+<td><p>When the performance ended.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:accessedArrangement</span></code></p></td>
+<td><p>object or array</p></td>
+<td><p>no</p></td>
+<td><p>Reference(s) to input arrangement(s). A single arrangement may be a plain object reference; multiple arrangements use an array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:contributedToArrangement</span></code></p></td>
+<td><p>object or array</p></td>
+<td><p>no</p></td>
+<td><p>Reference(s) to output arrangement(s). A single arrangement may be a plain object reference; multiple arrangements use an array.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasPerformanceAttribute</span></code></p></td>
+<td><p>array</p></td>
+<td><p>no</p></td>
+<td><p>Zero or more performance attribute objects.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Performance attribute</strong> fields:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;trp/0/attribute/0&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>A performance attribute type, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;trov:InternetIsolation&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:warrantedBy</span></code></p></td>
+<td><p>object</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Reference to the TRS capability that justifies this claim, e.g. <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;&#64;id&quot;:</span> <span class="pre">&quot;trs/capability/0&quot;</span> <span class="pre">}</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>See <a class="reference internal" href="trov-vocabulary.html#named-individuals-trp-attribute-types"><span class="std std-ref">TROV Vocabulary Reference — TRP Attribute Types</span></a> for the defined attribute types and their required warranting capabilities.</p>
+<blockquote>
+<div><p><strong>Extension points:</strong> TRS implementations can extend performances in two ways. Custom <em>properties</em> (operational metadata like architecture, resource usage, container image digests) use a TRS-specific namespace alongside the standard <code class="docutils literal notranslate"><span class="pre">trov:</span></code> properties. Custom <em>attribute and capability types</em> (new transparency claims specific to a TRS) also use the adopter’s namespace and participate in the warrant chain through the standard <code class="docutils literal notranslate"><span class="pre">trov:warrantedBy</span></code> mechanism. Adopters who publish an RDF vocabulary for their custom types can declare subclass relationships to the core TROV types, enabling RDF consumers to discover them through inference. See <a class="reference internal" href="trov-extension-guide.html"><span class="std std-doc">TROV Extension Guide</span></a> for details.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="tro-attributes-trov-hasattribute">
+<h3>TRO Attributes (<code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code>)<a class="headerlink" href="#tro-attributes-trov-hasattribute" title="Link to this heading">#</a></h3>
+<p>TRO attributes are transparency claims about the TRO as a whole, warranted by attributes of its constituent performances.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;trov:hasAttribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tro/attribute/0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:IncludesAllInputData&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:warrantedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trp/0/attribute/0&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;id</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Local identifier, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;tro/attribute/0&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>A TRO attribute type, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;trov:IncludesAllInputData&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:warrantedBy</span></code></p></td>
+<td><p>object or array</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p>Reference(s) to the performance attribute(s) that justify this claim.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>See <a class="reference internal" href="trov-vocabulary.html#named-individuals-tro-attribute-types"><span class="std std-ref">TROV Vocabulary Reference — TRO Attribute Types</span></a> for the defined attribute types.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-warrant-chain">
+<h2>The Warrant Chain<a class="headerlink" href="#the-warrant-chain" title="Link to this heading">#</a></h2>
+<p>The warrant chain is TROV’s mechanism for accountability. TROV supports declaring part or all of the chain of warranting attributes and capabilities justifying a particular transparency claim. Downstream consumers — publishers, repositories, funding agencies — may impose their own requirements on the completeness of these chains.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>TRO attribute    →  trov:warrantedBy  →  Performance attribute
+                                           →  trov:warrantedBy  →  TRS capability
+</pre></div>
+</div>
+<p>When the full chain is present, it works as follows in JSON terms:</p>
+<ol class="arabic simple">
+<li><p>A TRO attribute (in <code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code>) references a performance attribute by <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>.</p></li>
+<li><p>That performance attribute (in <code class="docutils literal notranslate"><span class="pre">trov:hasPerformanceAttribute</span></code>) references a TRS capability by <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>.</p></li>
+<li><p>That TRS capability (in <code class="docutils literal notranslate"><span class="pre">trov:hasCapability</span></code>) declares the TRS’s ability to enforce the condition.</p></li>
+</ol>
+<p>In this example, the TRO-level claim that all input data is included is warranted by a performance-level attribute asserting Internet isolation, which is in turn warranted by the TRS’s declared capability to enforce it:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;trov:hasCapability&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/0&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CanProvideInternetIsolation&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">],</span>
+<span class="err">...</span>
+<span class="nt">&quot;trov:hasPerformanceAttribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trp/0/attribute/0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:InternetIsolation&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:warrantedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/0&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">],</span>
+<span class="err">...</span>
+<span class="nt">&quot;trov:hasAttribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tro/attribute/0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:IncludesAllInputData&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;trov:warrantedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trp/0/attribute/0&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="identifier-conventions">
+<h2>Identifier Conventions<a class="headerlink" href="#identifier-conventions" title="Link to this heading">#</a></h2>
+<p>All <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code> values are local to the document. They are used for cross-referencing between objects within the same TRO declaration. The conventions used by tro-utils are:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Object</p></th>
+<th class="head"><p>Pattern</p></th>
+<th class="head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TRO</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tro</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;tro&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TRS</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;trs&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TSA</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tsa</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;tsa&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Composition</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">composition/{n}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;composition/1&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Fingerprint</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fingerprint</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;fingerprint&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Artifact</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">composition/{n}/artifact/{i}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;composition/1/artifact/0&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Arrangement</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arrangement/{i}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;arrangement/0&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Artifact location</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">arrangement/{i}/location/{j}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;arrangement/0/location/0&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TRS capability</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trs/capability/{i}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;trs/capability/0&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Performance</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trp/{i}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;trp/0&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Performance attribute</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trp/{i}/attribute/{j}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;trp/0/attribute/0&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TRO attribute</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tro/attribute/{i}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;tro/attribute/0&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> These identifier patterns are conventions, not requirements. The important thing is internal consistency: every <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code> referenced by another object must match a defined <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code> within the document. Tools should treat identifiers as opaque strings and rely on cross-references, not string parsing.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="signing-and-timestamping">
+<h2>Signing and Timestamping<a class="headerlink" href="#signing-and-timestamping" title="Link to this heading">#</a></h2>
+<p>A TRO package includes the declaration and one or more signing artifacts. The signing mechanism is not fixed — different TRS implementations use different approaches. What matters is that the signature can be verified against the public key or certificate recorded in the TRO declaration.</p>
+<p><strong>Current implementations:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Signing mechanism</p></th>
+<th class="head"><p>Package contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GPG detached signature</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.jsonld</span></code> declaration, <code class="docutils literal notranslate"><span class="pre">.sig</span></code> signature, <code class="docutils literal notranslate"><span class="pre">.tsr</span></code> RFC 3161 timestamp</p></td>
+</tr>
+<tr class="row-odd"><td><p>X.509/CMS (PKCS #7)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.jsonld</span></code> declaration, <code class="docutils literal notranslate"><span class="pre">.p7s</span></code> signature (embeds certificate and timestamp)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The signature covers the declaration file byte-for-byte. In the reference implementation (tro-utils), the declaration is serialized with <code class="docutils literal notranslate"><span class="pre">json.dumps(data,</span> <span class="pre">indent=2,</span> <span class="pre">sort_keys=True)</span></code> to ensure a deterministic byte sequence. The signature is a separate file, not embedded in the JSON.</p>
+</section>
+<hr class="docutils" />
+<section id="verification">
+<h2>Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
+<p>Verification of a TRO declaration may include:</p>
+<ol class="arabic simple">
+<li><p>Verifying that the signature on the declaration file matches the public key or certificate in the TRO declaration.</p></li>
+<li><p>Optionally verifying that the timestamp proves the signature existed at the claimed time.</p></li>
+<li><p>Recomputing the composition fingerprint from the listed artifact hashes and confirming it matches the declared fingerprint.</p></li>
+<li><p>Confirming that every artifact referenced by an arrangement is present in the composition.</p></li>
+<li><p>Tracing the warrant chain: confirming that each <code class="docutils literal notranslate"><span class="pre">trov:warrantedBy</span></code> reference resolves to an object of the expected type.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="complete-example">
+<h2>Complete Example<a class="headerlink" href="#complete-example" title="Link to this heading">#</a></h2>
+<p>The following is a minimal but complete TRO declaration describing a data file and a script, a computation that reads them and produces an output, and a claim of Internet isolation.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;@context&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;rdf&quot;</span><span class="p">:</span><span class="w">    </span><span class="s2">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;rdfs&quot;</span><span class="p">:</span><span class="w">   </span><span class="s2">&quot;http://www.w3.org/2000/01/rdf-schema#&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;trov&quot;</span><span class="p">:</span><span class="w">   </span><span class="s2">&quot;https://w3id.org/trace/trov/0.1#&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.org&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;@graph&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tro&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;trov:TransparentResearchObject&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;schema:CreativeWork&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;trov:vocabularyVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schema:name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example analysis TRO&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schema:description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TRO from an analysis reading a data file and a script, producing one output&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schema:dateCreated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-06-15T14:30:00&quot;</span><span class="p">,</span>
+
+<span class="w">            </span><span class="nt">&quot;trov:wasAssembledBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;trov:TrustedResearchSystem&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;schema:Organization&quot;</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;schema:name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example TRS&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema:description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A TRS that enforces Internet isolation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:publicKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----\n&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:hasCapability&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/0&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CanProvideInternetIsolation&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+
+<span class="w">            </span><span class="nt">&quot;trov:wasTimestampedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tsa&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:TimeStampingAuthority&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:publicKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN PUBLIC KEY-----\n...\n-----END PUBLIC KEY-----\n&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+
+<span class="w">            </span><span class="nt">&quot;trov:hasComposition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactComposition&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;trov:hasFingerprint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fingerprint&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CompositionFingerprint&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;trov:hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a1b2c3d4...&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;trov:hashAlgorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;trov:hasArtifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/0&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ResearchArtifact&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;trov:hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aaa111...&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;trov:hashAlgorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;trov:mimeType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/csv&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/1&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ResearchArtifact&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;trov:hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bbb222...&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;trov:hashAlgorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;trov:mimeType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/x-python&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/2&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ResearchArtifact&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;trov:hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ccc333...&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;trov:hashAlgorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;trov:mimeType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/csv&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+
+<span class="w">            </span><span class="nt">&quot;trov:hasArrangement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/0&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactArrangement&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;rdfs:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Artifacts before execution&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;trov:hasArtifactLocation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/0/location/0&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/0&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                            </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data/input.csv&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/0/location/1&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/1&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                            </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scripts/analyze.py&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactArrangement&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;rdfs:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Artifacts after execution&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;trov:hasArtifactLocation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1/location/0&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/0&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                            </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data/input.csv&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1/location/1&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/1&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                            </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scripts/analyze.py&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1/location/2&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:ArtifactLocation&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;trov:artifact&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;composition/1/artifact/2&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                            </span><span class="nt">&quot;trov:path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;results/output.csv&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+
+<span class="w">            </span><span class="nt">&quot;trov:hasPerformance&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trp/0&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:TrustedResearchPerformance&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;rdfs:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Execution of analysis script&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;trov:wasConductedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;trov:startedAtTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-06-15T14:00:00&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;trov:endedAtTime&quot;</span><span class="p">:</span><span class="w">   </span><span class="s2">&quot;2024-06-15T14:25:00&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;trov:accessedArrangement&quot;</span><span class="p">:</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/0&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;trov:contributedToArrangement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arrangement/1&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;trov:hasPerformanceAttribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trp/0/attribute/0&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:InternetIsolation&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;trov:warrantedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/0&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+
+<span class="w">            </span><span class="nt">&quot;trov:hasAttribute&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tro/attribute/0&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:IncludesAllInputData&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;trov:warrantedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trp/0/attribute/0&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
+<p><strong>Note 1: JSON-LD as JSON.</strong> A TRO declaration is valid JSON. Producers can build it with any JSON library, no RDF tooling required. The <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;type</span></code>, and <code class="docutils literal notranslate"><span class="pre">&#64;graph</span></code> keys are the only JSON-LD-specific syntax. Everything else is standard JSON objects, arrays, and strings.</p>
+<p><strong>Note 2: Why <code class="docutils literal notranslate"><span class="pre">&#64;graph</span></code> is an array.</strong> In 0.1, the <code class="docutils literal notranslate"><span class="pre">&#64;graph</span></code> array contains a single object, so the array wrapper may look redundant. It is kept for two reasons: it provides future flexibility for bundling additional top-level objects (e.g. supplementary hash/algorithm pairs for artifacts, or a standalone TRS profile) without changing the core JSON Schema for the TRO itself, and it matches the default output of common JSON-LD writer libraries.</p>
+<p><strong>Note 3: Multiple performances.</strong> A TRO may describe a multi-step workflow with multiple performances. Each performance links its own input and output arrangements. Arrangements may be shared: one performance’s output arrangement can be another performance’s input arrangement.</p>
+<p><strong>Note 4: Arrangement ordering.</strong> Arrangements are not explicitly ordered in the JSON array. The relationships between arrangements are expressed through the performances: <code class="docutils literal notranslate"><span class="pre">trov:accessedArrangement</span></code> identifies arrangements a performance read from, and <code class="docutils literal notranslate"><span class="pre">trov:contributedToArrangement</span></code> identifies arrangements it wrote to.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="conceptual-model.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Conceptual Model (v4)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tro-declaration-design.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TRO Declaration Design: JSON and RDF</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-structure">Document Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-level-envelope">Top-Level Envelope</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-context-block">The <code class="docutils literal notranslate"><span class="pre">@context</span></code> Block</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tro-object">The TRO Object</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#root-properties">Root Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trs-description-trov-wasassembledby">TRS Description (<code class="docutils literal notranslate"><span class="pre">trov:wasAssembledBy</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamping-authority-trov-wastimestampedby">Timestamping Authority (<code class="docutils literal notranslate"><span class="pre">trov:wasTimestampedBy</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artifact-composition-trov-hascomposition">Artifact Composition (<code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-composition-fingerprint">Computing the Composition Fingerprint</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artifact-arrangements-trov-hasarrangement">Artifact Arrangements (<code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performances-trov-hasperformance">Performances (<code class="docutils literal notranslate"><span class="pre">trov:hasPerformance</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tro-attributes-trov-hasattribute">TRO Attributes (<code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-warrant-chain">The Warrant Chain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifier-conventions">Identifier Conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signing-and-timestamping">Signing and Timestamping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-example">Complete Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The TRACE Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
