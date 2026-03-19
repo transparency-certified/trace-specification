@@ -1,4 +1,6 @@
 # TROV Pre-Release Vocabulary Reference
+<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
+  DRAFT</span>
 
 Frozen snapshot of the pre-release vocabulary used by early TRACE implementations. Lists only the terms actually produced by the pre-release implementations, with term changes and migration guidance for TROV 0.1.
 

@@ -1,4 +1,6 @@
 # TRO Declaration Design: JSON and RDF
+<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
+  TROV 0.1 DRAFT</span>
 
 Why TRO declarations use JSON-LD, what each audience gets from the format, and how the JSON Schema constraint makes both JSON and RDF workflows possible from a single file.
 

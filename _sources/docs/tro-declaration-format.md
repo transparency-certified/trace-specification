@@ -1,5 +1,5 @@
 # TRO Declaration Format
-<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; color:black; border-radius:4px; font-size:14px;">
+<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
   TROV 0.1 DRAFT</span>
 
 A **TRO Declaration** is a JSON-LD document that describes a Transparent Research Object. It records which digital artifacts were involved in a computational workflow, how they were arranged at each stage, what performances (supervised computations) were conducted, and what transparency claims are warranted about the whole process.

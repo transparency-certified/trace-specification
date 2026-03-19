@@ -1,4 +1,6 @@
 # TROV Versioning Strategy and Roadmap
+<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
+  DRAFT</span>
 
 How TROV versions are numbered, what stability guarantees each version provides, and the roadmap from the current draft (0.1) to a stable 1.0 release. Covers namespace management, documentation lifecycle, repository structure, and resolution of URI-qualified terms.
 
