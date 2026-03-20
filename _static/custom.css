@@ -1,5 +1,9 @@
 /* Hide auto-generated tables of contents in PDF/print output.
    Our documents include their own TOC tables. */
+@page {
+  margin-top: 20mm;
+}
+
 @media print {
   #jb-print-toc,
   .bd-sidebar-secondary,
