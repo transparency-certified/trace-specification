@@ -183,7 +183,6 @@
 <li class="toctree-l2"><a class="reference internal" href="case-profiles/bplim.html">Banco de Portugal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="case-profiles/twitter.html">Twitter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="case-profiles/ipums.html">IPUMS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="case-profiles/campus-cluster.html">Campus Cluster</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
@@ -198,7 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="elements.html">TRACE Elements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conceptual-model.html">Conceptual Model (v4)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">TROV Specification</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Specification</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="specifications.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tro-declaration-format.html">Declaration Format</a></li>
@@ -207,7 +206,7 @@
 <li class="toctree-l1"><a class="reference internal" href="trov-extension-guide.html">Extension Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trov-versioning-and-roadmap.html">Versioning &amp; Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trov-prerelease.html">Pre-Release Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dev/signing.html">Signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/signing.html">Signing &amp; Verification</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Tools</span></p>
 <ul class="nav bd-sidenav">
@@ -373,16 +372,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-project-website">The Project Website</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-specification-site">The Specification Site</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-stack">Build Stack</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build">Build</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy">Deploy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloads">Downloads</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-vocabulary-reference">The Vocabulary Reference</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Source</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Build</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Deploy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-after-vocabulary-changes">Updating After Vocabulary Changes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w3id-org-namespace-resolution">w3id.org Namespace Resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-github-pages-not-raw-github-urls">Why GitHub Pages, not raw GitHub URLs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-w3id-org-redirect-rules">Testing the w3id.org redirect rules</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-page-to-the-specification">Adding a Page to the Specification</a></li>
@@ -399,7 +401,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="documentation-infrastructure">
 <h1>Documentation Infrastructure<a class="headerlink" href="#documentation-infrastructure" title="Link to this heading">#</a></h1>
-<p>How the TRACE project’s documentation is built and deployed across three GitHub repositories, each with its own build pipeline, and how the results combine into a single public website.</p>
+<p>How the TRACE project’s documentation is built and deployed across GitHub repositories, each with its own build pipeline, and how the results combine into a single public website.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Document Section</p></th>
@@ -408,21 +410,24 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="#repositories"><span class="xref myst">Repositories</span></a></p></td>
-<td><p>The three repos that contribute to the public site</p></td>
+<td><p>The repos that contribute to the public site</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#how-the-pieces-connect"><span class="xref myst">How the Pieces Connect</span></a></p></td>
-<td><p>URL structure showing how the three repos map to the public site</p></td>
+<td><p>URL structure showing how the repos map to the public site</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#the-project-website"><span class="xref myst">The Project Website</span></a></p></td>
 <td><p>Jekyll site serving the landing page and top-level navigation</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#the-specification-site"><span class="xref myst">The Specification Site</span></a></p></td>
-<td><p>Jupyter Book build and deploy pipeline</p></td>
+<td><p>Jupyter Book build stack, deploy pipeline, and downloads</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#the-vocabulary-reference"><span class="xref myst">The Vocabulary Reference</span></a></p></td>
 <td><p>Widoco-generated documentation from the TROV Turtle ontology</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#adding-a-page-to-the-specification"><span class="xref myst">Adding a Page to the Specification</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#updating-after-vocabulary-changes"><span class="xref myst">Updating After Vocabulary Changes</span></a></p></td>
+<td><p>How vocabulary submodules work and how to trigger a rebuild</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#adding-a-page-to-the-specification"><span class="xref myst">Adding a Page to the Specification</span></a></p></td>
 <td><p>Steps to create a new document and make it appear on the live site</p></td>
 </tr>
 </tbody>
@@ -432,7 +437,7 @@ document.write(`
 <hr class="docutils" />
 <section id="repositories">
 <h2>Repositories<a class="headerlink" href="#repositories" title="Link to this heading">#</a></h2>
-<p>Three repositories under the <a class="reference external" href="https://github.com/transparency-certified">transparency-certified</a> GitHub organization contribute to the public documentation:</p>
+<p>Four repositories under the <a class="reference external" href="https://github.com/transparency-certified">transparency-certified</a> GitHub organization contribute to the public documentation:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Repository</p></th>
@@ -442,48 +447,55 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/transparency-certified/transparency-certified.github.io">transparency-certified.github.io</a></p></td>
-<td><p>Jekyll site — project landing page and navigation</p></td>
-<td><p>Serves at root: <a class="reference external" href="https://transparency-certified.github.io/">transparency-certified.github.io/</a></p></td>
+<td><p>Project landing page and navigation</p></td>
+<td><p>Served as Jekyll site at: <a class="reference external" href="https://transparency-certified.github.io/">transparency-certified.github.io/</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/transparency-certified/trace-specification">trace-specification</a></p></td>
-<td><p>Jupyter Book source — specification documents, conceptual model, examples</p></td>
-<td><p>Serves at: <a class="reference external" href="https://transparency-certified.github.io/trace-specification/">transparency-certified.github.io/trace-specification/</a></p></td>
+<td><p>Specification documents, conceptual model, examples</p></td>
+<td><p>Served as Jupyter Book at: <a class="reference external" href="https://transparency-certified.github.io/trace-specification/">transparency-certified.github.io/trace-specification/</a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/transparency-certified/trov">trov</a></p></td>
-<td><p>TROV ontology in Turtle and JSON-LD, SHACL shapes, Widoco configuration</p></td>
-<td><p>Serves at: <a class="reference external" href="https://transparency-certified.github.io/trov/0.1/">transparency-certified.github.io/trov/0.1/</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/transparency-certified/trace-vocabularies">trace-vocabularies</a></p></td>
+<td><p>Build hub — aggregates vocabulary repos as submodules, holds <a class="reference external" href="http://w3id.org">w3id.org</a> redirect config and tests</p></td>
+<td><p>Served as GitHub Pages at: <a class="reference external" href="https://transparency-certified.github.io/trace-vocabularies/">transparency-certified.github.io/trace-vocabularies/</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/transparency-certified/trov">trov</a></p></td>
+<td><p>TROV ontology source files — Turtle, SHACL shapes, Widoco config. Submodule of trace-vocabularies.</p></td>
+<td><p>Served via trace-vocabularies Pages site</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>GitHub serves all three under the same domain: <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io</span></code> is the organization’s GitHub Pages site, and the other two repos are project-level Pages sites that GitHub mounts at subpaths matching their repository names.</p>
+<p>GitHub serves all of these independently under the same domain via its CDN: <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io</span></code> is the organization’s GitHub Pages site, and repos with Pages enabled are mounted at subpaths matching their repository names.</p>
 </section>
 <hr class="docutils" />
 <section id="how-the-pieces-connect">
 <h2>How the Pieces Connect<a class="headerlink" href="#how-the-pieces-connect" title="Link to this heading">#</a></h2>
-<p>The public site at <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io</span></code> is assembled by GitHub Pages from three independent deployments:</p>
+<p>The public site at <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io</span></code> is assembled by GitHub Pages from independent deployments:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>transparency-certified.github.io/
 │
-├── /                          ← Jekyll site (transparency-certified.github.io repo, main branch)
-│   ├── index.html                Landing page
-│   └── _config.yml               Menu links into /trace-specification/
+├── /                              ← Jekyll site (transparency-certified.github.io repo, main branch)
+│   ├── index.html                    Landing page
+│   └── _config.yml                   Menu links into /trace-specification/
 │
-├── /trace-specification/      ← Jupyter Book output (trace-specification repo, gh-pages branch)
-│   ├── docs/specifications.html  Specification entry point
-│   ├── docs/...                  Built documentation pages
-│   └── _static/                  Sphinx theme assets
+├── /trace-specification/          ← Jupyter Book output (trace-specification repo, gh-pages branch)
+│   ├── docs/specifications.html      Specification entry point
+│   ├── docs/...                      Built documentation pages
+│   └── _static/                      Sphinx theme assets
 │
-└── /trov/                     ← Widoco output (trov repo, gh-pages branch)
-    └── 0.1/index.html            Vocabulary reference
+└── /trace-vocabularies/           ← Widoco output (trace-vocabularies repo, gh-pages branch)
+    ├── index.html                    Vocabulary index page
+    ├── trov/0.1/                     TROV 0.1 vocabulary reference
+    └── trov/prerelease/              TROV pre-release vocabulary reference
 </pre></div>
 </div>
 <p>Each component is built and deployed independently. The Jekyll site links into the specification via its menu configuration. The specification documents link to the vocabulary reference where relevant.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">trace-specification</span></code> and <code class="docutils literal notranslate"><span class="pre">trov</span></code> repos each deploy to an orphan <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch containing only generated HTML and a <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code> file that tells GitHub Pages to serve files directly.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">trace-specification</span></code> and <code class="docutils literal notranslate"><span class="pre">trace-vocabularies</span></code> repos each deploy to an orphan <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch containing only generated HTML and a <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code> file that tells GitHub Pages to serve files directly.</p>
 </section>
 <hr class="docutils" />
 <section id="the-project-website">
 <h2>The Project Website<a class="headerlink" href="#the-project-website" title="Link to this heading">#</a></h2>
-<p>The <strong><a class="reference external" href="https://github.com/transparency-certified/transparency-certified.github.io">transparency-certified.github.io</a></strong> repository is a Jekyll site. GitHub Pages builds it automatically from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. The site provides a landing page with project description and team information, and navigation that links into the specification and vocabulary sites.</p>
+<p>The <strong><a class="reference external" href="https://github.com/transparency-certified/transparency-certified.github.io">transparency-certified.github.io</a></strong> repository is a standard <a class="reference external" href="https://jekyllrb.com/">Jekyll</a> site. GitHub Pages builds it automatically from the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch using its built-in Jekyll support — no GitHub Action or Docker image is needed.</p>
+<p>The site provides a landing page with project description and team information, and navigation that links into the specification and vocabulary sites. Jekyll configuration is in <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code>, and the site layout is controlled by standard Jekyll conventions (<code class="docutils literal notranslate"><span class="pre">_layouts/</span></code>, <code class="docutils literal notranslate"><span class="pre">_includes/</span></code>, etc.).</p>
 </section>
 <hr class="docutils" />
 <section id="the-specification-site">
@@ -497,7 +509,44 @@ document.write(`
 <li><p>Jupyter Book configuration: <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> (book settings) and <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> (table of contents structure)</p></li>
 <li><p>A GitHub Actions workflow: <code class="docutils literal notranslate"><span class="pre">.github/workflows/deploy.yml</span></code></p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> file controls which documents appear in the built site and in what order. It organizes content into parts: TRACE Overview, TRACE Specifications, TRACE Infrastructure, and TRACE Development.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> file controls which documents appear in the built site and in what order. It organizes content into parts: TRACE Overview, TRACE Specifications, TRACE Infrastructure, and TRACE Development. Short sidebar labels can be set with <code class="docutils literal notranslate"><span class="pre">title:</span></code> entries in the TOC without changing the document headings. Only files listed in <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> are built (<code class="docutils literal notranslate"><span class="pre">only_build_toc_files:</span> <span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code>) — Markdown files not registered in the TOC are ignored by the build even though they exist in the repository.</p>
+<p>All new documents are written in plain GitHub-Flavored Markdown (GFM). Jupyter Book also supports MyST Markdown (a superset of GFM with Sphinx-specific directives), but MyST syntax renders as raw text when viewed on GitHub. Since the source files are frequently read directly on GitHub, GFM ensures they look correct everywhere — on GitHub, in the Jupyter Book site, in VS Code, and in Pandoc-generated PDFs. A few older documents use MyST features (cross-references, admonitions, glossary); these will be converted to GFM equivalents over time.</p>
+</section>
+<section id="build-stack">
+<h3>Build Stack<a class="headerlink" href="#build-stack" title="Link to this heading">#</a></h3>
+<p>The specification site is built by a pipeline of tools, each handling a different layer:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer</p></th>
+<th class="head"><p>Tool</p></th>
+<th class="head"><p>Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Source</p></td>
+<td><p>GitHub-Flavored Markdown</p></td>
+<td><p>Document content — what authors write</p></td>
+</tr>
+<tr class="row-odd"><td><p>Book engine</p></td>
+<td><p><a class="reference external" href="https://jupyterbook.org/">Jupyter Book</a></p></td>
+<td><p>Reads <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>, assembles pages into a navigable book</p></td>
+</tr>
+<tr class="row-even"><td><p>Doc generator</p></td>
+<td><p><a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a></p></td>
+<td><p>Underlying engine that Jupyter Book delegates to — resolves cross-references, builds the search index, generates HTML</p></td>
+</tr>
+<tr class="row-odd"><td><p>Theme</p></td>
+<td><p><a class="reference external" href="https://sphinx-book-theme.readthedocs.io/">sphinx-book-theme</a></p></td>
+<td><p>Controls layout, sidebar navigation, dark mode, and toolbar (download, fullscreen, search)</p></td>
+</tr>
+<tr class="row-even"><td><p>Styling</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">_static/custom.css</span></code></p></td>
+<td><p>Project-specific CSS overrides (table hover color, print layout adjustments)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Authors interact only with the top layer (Markdown files and the TOC). The lower layers are configured once and rarely need attention.</p>
 </section>
 <section id="build">
 <h3>Build<a class="headerlink" href="#build" title="Link to this heading">#</a></h3>
@@ -512,45 +561,57 @@ document.write(`
 <h3>Deploy<a class="headerlink" href="#deploy" title="Link to this heading">#</a></h3>
 <p>The same GitHub Action uses <code class="docutils literal notranslate"><span class="pre">peaceiris/actions-gh-pages&#64;v3.6.1</span></code> to push the built HTML to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch. Each deploy creates a commit with the message <code class="docutils literal notranslate"><span class="pre">deploy:</span> <span class="pre">&lt;commit-hash&gt;</span></code>, where the hash references the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch commit that was built.</p>
 </section>
+<section id="downloads">
+<h3>Downloads<a class="headerlink" href="#downloads" title="Link to this heading">#</a></h3>
+<p>Each page on the built site offers Markdown and PDF downloads via the toolbar. The Markdown download is the original source file. The PDF is generated by the browser’s print rendering, with project-specific print styles in <code class="docutils literal notranslate"><span class="pre">_static/custom.css</span></code> that hide the auto-generated table of contents and adjust page margins.</p>
+</section>
 </section>
 <hr class="docutils" />
 <section id="the-vocabulary-reference">
 <h2>The Vocabulary Reference<a class="headerlink" href="#the-vocabulary-reference" title="Link to this heading">#</a></h2>
-<p>The <strong><a class="reference external" href="https://github.com/transparency-certified/trov">trov</a></strong> repository contains the TROV ontology definition and uses a similar build and deploy pipeline.</p>
+<p>The <strong><a class="reference external" href="https://github.com/transparency-certified/trace-vocabularies">trace-vocabularies</a></strong> repository is a build hub that aggregates vocabulary source repos as git submodules. It runs Widoco to generate HTML documentation and serialization files, then deploys everything to GitHub Pages.</p>
 <section id="id1">
 <h3>Source<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">0.1/</span></code> directory contains:</p>
+<p>The <strong><a class="reference external" href="https://github.com/transparency-certified/trov">trov</a></strong> repository is a submodule of trace-vocabularies. It contains the ontology source files:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trov.ttl</span></code> — the ontology in Turtle (RDF) format</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">trov-shacl.ttl</span></code> — SHACL shape constraints for validation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">trov.config</span></code> — configuration for the Widoco documentation generator</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0.1/trov.ttl</span></code> — the TROV 0.1 ontology in Turtle format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0.1/trov-shacl.ttl</span></code> — SHACL shape constraints for validation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0.1/trov.config</span></code> — Widoco configuration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prerelease/trov.ttl</span></code> — frozen pre-release ontology (<code class="docutils literal notranslate"><span class="pre">2023/05/trov#</span></code> namespace)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prerelease/trov.config</span></code> — Widoco configuration for the pre-release</p></li>
 </ul>
+<p>Future satellite vocabularies will be separate repos added as additional submodules.</p>
 </section>
 <section id="id2">
 <h3>Build<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>On pushes or pull requests to <code class="docutils literal notranslate"><span class="pre">main</span></code> (and on manual dispatch), the GitHub Action runs:</p>
+<p>On pushes to <code class="docutils literal notranslate"><span class="pre">main</span></code> (and on manual dispatch), the trace-vocabularies GitHub Action:</p>
 <ol class="arabic simple">
-<li><p>Checks out the repository</p></li>
-<li><p>Runs <a class="reference external" href="https://github.com/dgarijo/Widoco">Widoco</a> (<code class="docutils literal notranslate"><span class="pre">craigwillis/widoco:latest</span></code> Docker image) to generate HTML documentation from the Turtle ontology</p></li>
-<li><p>Renames the output directory to <code class="docutils literal notranslate"><span class="pre">0.1/</span></code> and fixes the index filename (<code class="docutils literal notranslate"><span class="pre">index-en.html</span></code> to <code class="docutils literal notranslate"><span class="pre">index.html</span></code>)</p></li>
+<li><p>Checks out the repository with submodules</p></li>
+<li><p>Runs Widoco for each vocabulary version (currently TROV 0.1 and TROV pre-release)</p></li>
+<li><p>Organizes output under <code class="docutils literal notranslate"><span class="pre">trov/{version}/</span></code> to match the GitHub Pages URL structure</p></li>
+<li><p>Renames Widoco’s default output files (<code class="docutils literal notranslate"><span class="pre">ontology.*</span></code>) to vocabulary-specific names (<code class="docutils literal notranslate"><span class="pre">trov.*</span></code>) so the <a class="reference external" href="http://w3id.org">w3id.org</a> content negotiation rules can find them</p></li>
+<li><p>Verifies all expected files exist before deploying</p></li>
 </ol>
 </section>
 <section id="id3">
 <h3>Deploy<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>The action uses <code class="docutils literal notranslate"><span class="pre">peaceiris/actions-gh-pages&#64;v4</span></code> to push the Widoco output to an orphan <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch, following the same pattern as <code class="docutils literal notranslate"><span class="pre">trace-specification</span></code>. GitHub Pages serves the result at <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io/trov/</span></code>.</p>
+<p>The action uses <code class="docutils literal notranslate"><span class="pre">peaceiris/actions-gh-pages&#64;v4</span></code> to push the built output to an orphan <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch. GitHub Pages serves the result at <code class="docutils literal notranslate"><span class="pre">transparency-certified.github.io/trace-vocabularies/</span></code>. Only pushes to <code class="docutils literal notranslate"><span class="pre">main</span></code> trigger deployment — pull requests build but do not deploy.</p>
+<p>A <a class="reference external" href="https://transparency-certified.github.io/trace-vocabularies/">vocabulary index page</a> (<code class="docutils literal notranslate"><span class="pre">index.html</span></code> in the repo root) is copied into the build output during each deploy. It lists all published vocabularies and versions, and serves as the default landing page for unversioned requests via <a class="reference external" href="http://w3id.org">w3id.org</a>.</p>
+</section>
+<section id="updating-after-vocabulary-changes">
+<h3>Updating After Vocabulary Changes<a class="headerlink" href="#updating-after-vocabulary-changes" title="Link to this heading">#</a></h3>
+<p>Pushing changes to a vocabulary repo (e.g. trov) does not automatically rebuild the site. The trace-vocabularies repo uses git submodules — each submodule records a specific commit from the vocabulary repo. To pick up new vocabulary content, you advance the submodule pointer and push to trace-vocabularies, which triggers the build workflow.</p>
+<p>The submodule pointer is a deliberate decision, not an automatic sync. This means the published documentation always corresponds to a known vocabulary commit, and vocabulary authors can push work-in-progress without affecting the live site.</p>
+<p>For the specific git commands to advance submodule pointers, pin to a tagged release, or check submodule status, see the <a class="reference external" href="https://github.com/transparency-certified/trace-vocabularies#updating-vocabulary-documentation">trace-vocabularies README</a>.</p>
+</section>
+<section id="w3id-org-namespace-resolution">
+<h3><a class="reference external" href="http://w3id.org">w3id.org</a> Namespace Resolution<a class="headerlink" href="#w3id-org-namespace-resolution" title="Link to this heading">#</a></h3>
+<p>TROV namespace URIs (e.g. <code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1#ArtifactComposition</span></code>) resolve via redirect rules in a <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> file registered at <a class="reference external" href="https://w3id.org/">w3id.org</a>. The rules perform content negotiation: RDF tools requesting Turtle get <code class="docutils literal notranslate"><span class="pre">trov.ttl</span></code>, JSON-LD processors get <code class="docutils literal notranslate"><span class="pre">trov.jsonld</span></code>, and browsers get the HTML documentation page. The redirect targets are the GitHub Pages URLs served by trace-vocabularies.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> source of truth and a Mocha test suite (27 tests, covering all redirect rules in both local Docker and live remote modes) are in <code class="docutils literal notranslate"><span class="pre">trace-vocabularies/w3id/</span></code>.</p>
 </section>
 <section id="why-github-pages-not-raw-github-urls">
 <h3>Why GitHub Pages, not raw GitHub URLs<a class="headerlink" href="#why-github-pages-not-raw-github-urls" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="http://w3id.org">w3id.org</a> <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> rules redirect namespace URI requests to files on GitHub Pages. Content negotiation (Turtle vs JSON-LD vs HTML) happens at <a class="reference external" href="http://w3id.org">w3id.org</a>, but GitHub Pages confirms the format by serving files with correct MIME types (<code class="docutils literal notranslate"><span class="pre">text/turtle</span></code>, <code class="docutils literal notranslate"><span class="pre">application/ld+json</span></code>, <code class="docutils literal notranslate"><span class="pre">text/html</span></code>). Raw GitHub URLs (<code class="docutils literal notranslate"><span class="pre">raw.githubusercontent.com</span></code>) serve everything as <code class="docutils literal notranslate"><span class="pre">text/plain</span></code>, which well-behaved RDF tools may reject. GitHub Pages is also required for the HTML landing page, which is served as <code class="docutils literal notranslate"><span class="pre">index.html</span></code> from a directory URL.</p>
-</section>
-<section id="testing-the-w3id-org-redirect-rules">
-<h3>Testing the <a class="reference external" href="http://w3id.org">w3id.org</a> redirect rules<a class="headerlink" href="#testing-the-w3id-org-redirect-rules" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="http://w3id.org">w3id.org</a> has no staging environment, so we test independently before and after the PR:</p>
-<ol class="arabic simple">
-<li><p><strong>Verify GitHub Pages targets.</strong> Confirm that <code class="docutils literal notranslate"><span class="pre">https://transparency-certified.github.io/trov/0.1/trov.ttl</span></code> (and <code class="docutils literal notranslate"><span class="pre">.jsonld</span></code>, and the HTML index) serve the correct content.</p></li>
-<li><p><strong>Test rewrite rules locally.</strong> Run Apache in Docker with our <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> and verify redirects with <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-v</span> <span class="pre">-H</span> <span class="pre">&quot;Accept:</span> <span class="pre">text/turtle&quot;</span> <span class="pre">http://localhost/trace/trov/0.1</span></code> etc.</p></li>
-<li><p><strong>Post-merge smoke test.</strong> After the <a class="reference external" href="http://w3id.org">w3id.org</a> PR is merged, verify the live URLs return the expected 303 redirects.</p></li>
-</ol>
 </section>
 </section>
 <hr class="docutils" />
@@ -559,13 +620,14 @@ document.write(`
 <p>To add a new document to the specification site:</p>
 <ol class="arabic">
 <li><p><strong>Create the Markdown file</strong> in <code class="docutils literal notranslate"><span class="pre">docs/</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">docs/my-new-page.md</span></code>.</p></li>
-<li><p><strong>Register it in <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>.</strong> Add a <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">file:</span> <span class="pre">docs/my-new-page</span></code> entry under the appropriate part and chapter list. Without this entry, Jupyter Book will not include the page in the build even though the file exists in the repository.</p>
+<li><p><strong>Register it in <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>.</strong> Add a <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">file:</span> <span class="pre">docs/my-new-page</span></code> entry under the appropriate part and chapter list. Without this entry, Jupyter Book will not include the page in the build even though the file exists in the repository. Optionally add a <code class="docutils literal notranslate"><span class="pre">title:</span></code> for a shorter sidebar label.</p>
 <p>For example, to add it under TRACE Specifications:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">caption</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRACE Specifications</span>
 <span class="w">  </span><span class="nt">chapters</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/specifications</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/questions</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/my-new-page</span><span class="w">    </span><span class="c1"># ← new entry</span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My New Page</span><span class="w">        </span><span class="c1"># ← optional short sidebar label</span>
 </pre></div>
 </div>
 </li>
@@ -635,16 +697,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-project-website">The Project Website</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-specification-site">The Specification Site</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-stack">Build Stack</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build">Build</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy">Deploy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloads">Downloads</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-vocabulary-reference">The Vocabulary Reference</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Source</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Build</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Deploy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-after-vocabulary-changes">Updating After Vocabulary Changes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#w3id-org-namespace-resolution">w3id.org Namespace Resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-github-pages-not-raw-github-urls">Why GitHub Pages, not raw GitHub URLs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-w3id-org-redirect-rules">Testing the w3id.org redirect rules</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-page-to-the-specification">Adding a Page to the Specification</a></li>

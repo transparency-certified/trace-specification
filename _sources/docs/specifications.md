@@ -1,21 +1,27 @@
 # Overview
 
 At the core of the TRACE project is a conceptual model and technical
-specification for formally describing TRACE Systems and TROs. TROs are an
-extension of the research object concept. These specifications are designed to
-systematically answer questions about TROs and the TRACE Systems that generate
-them.
+specification for formally describing Trusted Research Systems and Transparent
+Research Objects. These specifications are designed to systematically answer
+questions about TROs and the systems that generate them.
 
-This section includes the following:
+See [TRACE Concepts](conceptual-model.md) for the conceptual model, transparency
+questions, and TRACE elements that motivate the specification.
 
-* [Transparency Questions](./questions): Questions that the TRACE specifications
-  are intended to help answer.
-* [Elements](./elements): TRACE elements
-* [Conceptual Model](./conceptual-model): TRACE conceptual model
-* [System Certificate Specification](system-certificate-spec): Technical
-  specification for TRACE System certificates. Provide authoritative information
-  about the system in which computations were executed.  
-* Transparent Research Object Specification (TRO): Technical specification for TROs. An extension and
-  clarification of the Research Object contept.
-* <a  href="../../trov/0.1/index.html"
-  target="_blank">Transparent Research Object Vocabulariy (TROV)</a>: Controlled vocabularly for TROs
+## Specification Documents
+
+* [TRO Declaration Format](tro-declaration-format.md): Structure and field
+  reference for TROV 0.1 TRO declarations.
+* [TRO Declaration Design](tro-declaration-design.md): Why TRO declarations
+  use JSON-LD and how the format serves both JSON and RDF audiences.
+* [TROV Vocabulary Reference](trov-vocabulary.md): Term reference for all
+  classes, properties, and named individuals in the TROV vocabulary.
+* [TROV Extension Guide](trov-extension-guide.md): How to include
+  institution-specific metadata in TRO declarations using your own namespace.
+* [TROV Versioning Strategy and Roadmap](trov-versioning-and-roadmap.md):
+  Version numbering, namespace scheme, and roadmap from the current draft to
+  a stable 1.0 release.
+* [TROV Pre-Release Reference](trov-prerelease.md): Frozen snapshot of the
+  pre-release vocabulary with term changes and migration guidance.
+* [Signing](dev/signing.md): Cryptographic signing of TRO declarations and
+  packages.
