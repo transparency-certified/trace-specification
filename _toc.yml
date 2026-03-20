@@ -19,7 +19,6 @@ parts:
     - file: docs/case-profiles/bplim
     - file: docs/case-profiles/twitter
     - file: docs/case-profiles/ipums
-    - file: docs/case-profiles/campus-cluster
   - file: docs/examples
   - file: docs/glossary
   - file: docs/about
@@ -30,7 +29,7 @@ parts:
   - file: docs/questions
   - file: docs/elements
   - file: docs/conceptual-model
-- caption: TROV Specification
+- caption: TRACE Specification
   chapters:
   - file: docs/specifications
     title: Overview
@@ -47,7 +46,7 @@ parts:
   - file: docs/trov-prerelease
     title: Pre-Release Reference
   - file: docs/dev/signing
-    title: Signing
+    title: Signing & Verification
 - caption: TRACE Tools
   chapters:
   - file: docs/infrastructure
