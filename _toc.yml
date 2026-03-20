@@ -25,12 +25,15 @@ parts:
   - file: docs/about
   - file: docs/acknowledgements
   - file: docs/references
-- caption: TRACE Specifications
+- caption: TRACE Concepts
   chapters:
-  - file: docs/specifications
   - file: docs/questions
   - file: docs/elements
   - file: docs/conceptual-model
+- caption: TROV Specification
+  chapters:
+  - file: docs/specifications
+    title: Overview
   - file: docs/tro-declaration-format
     title: Declaration Format
   - file: docs/tro-declaration-design
@@ -43,15 +46,16 @@ parts:
     title: Versioning & Roadmap
   - file: docs/trov-prerelease
     title: Pre-Release Reference
-  - file: docs/documentation-infrastructure
-    title: Documentation Infrastructure
-- caption: TRACE Infrastructure
+  - file: docs/dev/signing
+    title: Signing
+- caption: TRACE Tools
   chapters:
   - file: docs/infrastructure
   - file: docs/trace-prototype
   - file: docs/trace-toolkit
   - file: docs/slurm-plugin
   - file: docs/sample-implementation
-- caption: TRACE Development
+- caption: Project Infrastructure
   chapters:
-  - file: docs/dev/signing
+  - file: docs/documentation-infrastructure
+    title: Documentation Infrastructure
