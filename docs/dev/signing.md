@@ -1,5 +1,5 @@
 (signing)=
-# Signing
+# Signing & Verification
 
 Signing TROs in TRACE can be implemented using any digital signature mechanism.
 The basic requirements for signing TROs are integrity (the TRO is what it is),
