@@ -11,4 +11,19 @@
   h1 {
     margin-bottom: 16px !important;
   }
+
+  /* Strip badge styling in print so text is left-aligned */
+  h1 + span {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    border-radius: 0 !important;
+    font-style: italic;
+  }
+}
+
+/* Replace the purple table hover with a subtle orange */
+.table-hover tbody tr:hover {
+  background-color: #fef3e0 !important;
 }
