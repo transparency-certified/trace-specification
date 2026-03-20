@@ -6,4 +6,9 @@
   .page-toc {
     display: none !important;
   }
+
+  /* Add space between the document title and the draft badge */
+  h1 {
+    margin-bottom: 16px !important;
+  }
 }
