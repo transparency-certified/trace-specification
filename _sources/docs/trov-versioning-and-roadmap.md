@@ -65,7 +65,7 @@ Each version passes through a simple lifecycle:
 
 The namespace URI stays the same across states — `trov/0.1#` is `trov/0.1#` whether the version is draft or released. Adopters do not need to change their `@context` on release day.
 
-When a version is released or retired, both `trace-specification` and `trov` repos are tagged `trov/0.1`, `trov/0.2`, etc.
+When a version is released or retired, both `trace-specification` and `trov` repos are tagged `trov/0.1`, `trov/0.2`, etc. Each tagged release includes built documentation artifacts (Markdown source, per-page PDFs, and the whole-book PDF) as release assets, providing a permanent record of the specification as it stood at that version.
 
 ### Namespace URIs
 
