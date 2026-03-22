@@ -1,0 +1,746 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TRO Packages &#8212; Transparency Certified</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1a298f5b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/tro-packages';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TROV Vocabulary Reference" href="trov-vocabulary.html" />
+    <link rel="prev" title="TRO Declaration Design: JSON and RDF" href="tro-declaration-design.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Transparency Certified - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Transparency Certified - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Our Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">Personas in TRACE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="barriers.html">Barriers to Transparency</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="case-profiles.html">Case Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/rdc.html">Federal Research Data Centers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/bplim.html">Banco de Portugal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/twitter.html">Twitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="case-profiles/ipums.html">IPUMS</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Concepts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Transparency Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">TRACE Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conceptual-model.html">Conceptual Model (v4)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Specification</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="specifications.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tro-declaration-format.html">Declaration Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tro-declaration-design.html">Declaration Design</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TRO Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-vocabulary.html">Vocabulary Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-extension-guide.html">Extension Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-versioning-and-roadmap.html">Versioning &amp; Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trov-prerelease.html">Pre-Release Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/signing.html">Signing &amp; Verification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TRACE Tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="infrastructure.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-prototype.html">TRACE Prototype</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trace-toolkit.html">TRACE Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-plugin.html">SLURM Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample-implementation.html">TRACE Sample Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project Infrastructure</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="documentation-infrastructure.html">Documentation Infrastructure</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/tro-packages.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TRO Packages</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpg-signing">GPG signing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x-509-cms-signing">X.509/CMS signing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-artifacts">Research artifacts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-layout">Directory Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-demand-signing">On-Demand Signing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">Verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signing-identity-and-trust">Signing identity and trust</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-questions">Open Questions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tro-packages">
+<h1>TRO Packages<a class="headerlink" href="#tro-packages" title="Link to this heading">#</a></h1>
+<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
+  TROV 0.1 DRAFT</span>
+<p><em>This document is a draft and subject to revision.
+Please <a class="reference external" href="https://github.com/transparency-certified/trace-specification/issues/new?title=tro-packages.md:%20">submit feedback or report issues</a>.</em></p>
+<p>How Transparent Research Objects are packaged for distribution. TRACE and TROV are generally agnostic to the packaging format. The TRO declaration is the authoritative record, and any container that preserves the declaration, its signature, and optionally the research artifacts is a valid package. This document describes the ZIP-based packaging approach used by current implementations.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Document Section</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="overview.html"><span class="doc std std-doc">Overview</span></a></p></td>
+<td><p>What a TRO package contains</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#package-contents"><span class="xref myst">Package Contents</span></a></p></td>
+<td><p>Declaration, signing artifacts, and optional research artifacts for each signing mechanism</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#directory-layout"><span class="xref myst">Directory Layout</span></a></p></td>
+<td><p>How files are organized inside ZIP archives</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#on-demand-signing"><span class="xref myst">On-Demand Signing</span></a></p></td>
+<td><p>Creating signed packages after execution</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#verification"><span class="xref myst">Verification</span></a></p></td>
+<td><p>Package-level checks beyond declaration validation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#open-questions"><span class="xref myst">Open Questions</span></a></p></td>
+<td><p>Design decisions not yet resolved for 0.1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For the structure of the JSON-LD declaration itself, see <a class="reference internal" href="tro-declaration-format.html"><span class="std std-doc">TRO Declaration Format</span></a>. For the vocabulary terms, see <a class="reference internal" href="trov-vocabulary.html"><span class="std std-doc">TROV Vocabulary Reference</span></a>.</p>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>A TRO package is a collection of files containing:</p>
+<ol class="arabic simple">
+<li><p>A <strong>TRO declaration</strong> — the JSON-LD file describing the artifacts, arrangements, performances, and warrant chain.</p></li>
+<li><p>One or more <strong>signing artifacts</strong> — files that allow a verifier to confirm the declaration’s integrity and the identity of the assembling TRS.</p></li>
+<li><p>Optionally, the <strong>research artifacts</strong> themselves (data files, code, outputs).</p></li>
+</ol>
+<p><strong>Note:</strong>  The word <em>package</em> typically suggests a single bundled archive containing a set of artifacts and descriptive metadata. TRO packages can be exactly that — which is why the ZIP-based formats are documented below — but they don’t have to be. In TRACE, the declaration serves as a catalog of the artifacts and the conditions under which they were produced. The signature establishes that these records have not been altered. Everything else — how the artifacts are stored, whether they are bundled together, what archive format is used — is not constrained.</p>
+<p>The following aspects of TRO packaging illustrate the flexibility this provides.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Explanation</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Artifacts are optional in the package</p></td>
+<td><p>The declaration and its signature are the only required elements of a valid TRO package. The content hashes in the declaration allow artifacts to be verified wherever they are hosted.</p></td>
+<td><p>A TRO describing a computation on restricted census data. The data and results cannot be distributed, but the declaration records what was computed and under what transparency constraints. Anyone who later gains authorized access to the data can verify it against the hashes in the declaration.</p></td>
+</tr>
+<tr class="row-odd"><td><p>The package format itself is not prescribed</p></td>
+<td><p>ZIP is used by current implementations, but any container that preserves the declaration and signature is acceptable.</p></td>
+<td><p>An institutional repository that stores deposits as tarballs, or a data repository like Dataverse where the declaration and artifacts are individual file downloads rather than entries in an archive.</p></td>
+</tr>
+<tr class="row-even"><td><p>Existing package formats can become TROs</p></td>
+<td><p>Adding a TRO declaration and signature to an existing Research Object package can make it TRACE-compliant without breaking its original format.</p></td>
+<td><p>An institution that produces RO-Crate or BagIt packages can add the declaration and signing artifacts to make them TROs while retaining full validity as RO-Crates or BagIt bags.</p></td>
+</tr>
+<tr class="row-odd"><td><p>No literal packaging is required</p></td>
+<td><p>The declaration, signing files, and artifacts do not need to be bundled into an archive at all. They can be individual files served from the same location.</p></td>
+<td><p>A TRS publishes the declaration, its signature, and the research artifacts as files in a directory on a web server. A verifier downloads and checks them individually.</p></td>
+</tr>
+<tr class="row-even"><td><p>The signing mechanism is not prescribed</p></td>
+<td><p>TROV does not require a particular signing technology. GPG and X.509/CMS are both in use; other mechanisms are equally valid.</p></td>
+<td><p>A central bank uses X.509 certificates from its existing PKI infrastructure. An academic research group uses GPG keys managed by its computing center. Both produce valid TRO packages.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Signing can happen after execution</p></td>
+<td><p>A TRS may produce an unsigned package during execution and sign the declaration later on demand.</p></td>
+<td><p>A TRS runs dozens of computations per week. Researchers select which results to publish, and only those declarations are signed, thereby avoiding the cost of signing infrastructure for exploratory runs.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In short, the declaration is the authoritative record. The signing artifacts prove it hasn’t been tampered with. The research artifacts may be included in the package or hosted elsewhere; the declaration’s content hashes allow each artifact to be positively verified against its declared identity regardless of where it resides.</p>
+<p>Critically, in TRACE an artifact’s identity is its content hash, not its filename or path. Two files with different names but identical content are the same artifact. The same artifact can appear at different paths in different arrangements. This is why the package layout can be unconstrained.</p>
+</section>
+<hr class="docutils" />
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">#</a></h2>
+<p>Every TRO package contains at minimum a declaration file and a signature. The specific signing artifacts depend on the mechanism used. TROV is agnostic to the signing mechanism; the two current implementations demonstrate different but equally valid approaches.</p>
+<section id="gpg-signing">
+<h3>GPG signing<a class="headerlink" href="#gpg-signing" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{name}.jsonld</span></code></p></td>
+<td><p>The TRO declaration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{name}.sig</span></code></p></td>
+<td><p>GPG detached signature over the declaration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{name}.tsr</span></code></p></td>
+<td><p>RFC 3161 timestamp response from an external TSA</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The GPG public key of the TRS is included in the declaration itself as <code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code>. Verification uses the public key from the declaration and the TSA’s certificate.</p>
+</section>
+<section id="x-509-cms-signing">
+<h3>X.509/CMS signing<a class="headerlink" href="#x-509-cms-signing" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{name}.jsonld</span></code></p></td>
+<td><p>The TRO declaration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{name}.p7s</span></code></p></td>
+<td><p>CMS/PKCS #7 detached signature (DER-encoded)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.p7s</span></code> file contains the signature, the X.509 certificate chain, and the timestamp countersignature in a single file. No separate <code class="docutils literal notranslate"><span class="pre">.tsr</span></code> is needed. Verification extracts the certificate and timestamp directly from the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code>.</p>
+</section>
+<section id="research-artifacts">
+<h3>Research artifacts<a class="headerlink" href="#research-artifacts" title="Link to this heading">#</a></h3>
+<p>The package may include the research artifacts referenced by the declaration, organized in a directory alongside the declaration and signing files. Their content hashes in the declaration allow verification whether they are packaged or hosted externally.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="directory-layout">
+<h2>Directory Layout<a class="headerlink" href="#directory-layout" title="Link to this heading">#</a></h2>
+<p>TRACE places no requirements on the directory structure within a package. A flat archive with all files at the root is valid. So is any nested structure. The declaration identifies artifacts by content hash, not by path.</p>
+<p>The following examples illustrate two possible layouts inside a ZIP archive.</p>
+<p><strong>GPG signing with separate artifact directory:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>archive.zip
+├── tro/
+│   ├── {name}.jsonld           declaration
+│   ├── {name}.sig              GPG detached signature
+│   └── {name}.tsr              RFC 3161 timestamp response
+└── project/
+    └── ...                     research artifacts (optional)
+</pre></div>
+</div>
+<p><strong>X.509/CMS signing with flat layout:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>archive.zip
+├── {name}.jsonld               declaration
+├── {name}.p7s                  CMS signature with embedded timestamp
+└── ...                         research artifacts (optional)
+</pre></div>
+</div>
+<p>In both cases, the declaration’s <code class="docutils literal notranslate"><span class="pre">trov:path</span></code> entries identify the location of each artifact included in the package. A verifier uses the content hashes in the declaration — not the directory structure or the file names — to confirm artifact integrity.</p>
+<p>Repositories like Zenodo and Dataverse can display the file listing of a ZIP archive directly. Using a recognizable structure (e.g., a <code class="docutils literal notranslate"><span class="pre">tro/</span></code> directory for the declaration and signing files) may make the package easier to browse, but this is a usability choice.</p>
+</section>
+<hr class="docutils" />
+<section id="on-demand-signing">
+<h2>On-Demand Signing<a class="headerlink" href="#on-demand-signing" title="Link to this heading">#</a></h2>
+<p>A TRS may produce unsigned packages during execution and sign them later on demand. This is valid as long as the declaration file is not modified between creation and signing.</p>
+<ol class="arabic simple">
+<li><p>The TRS executes the computation and produces a package with the declaration and artifacts.</p></li>
+<li><p>At a later time, a researcher requests a signed version.</p></li>
+<li><p>The TRS signs the original declaration, producing the signature artifacts.</p></li>
+<li><p>The signed package is assembled with the declaration, signature, and artifacts.</p></li>
+</ol>
+<p>The timestamp in the signature reflects when the signing occurred, not when the computation ran. Execution times are separately recorded in the declaration (<code class="docutils literal notranslate"><span class="pre">trov:startedAtTime</span></code>, <code class="docutils literal notranslate"><span class="pre">trov:endedAtTime</span></code>).</p>
+<p>This allows TRS implementations to decouple signing from execution, which is useful when the signing infrastructure is external or intermittently available.</p>
+<p>The critical constraint is chain of custody: the TRS must sign the declaration it originally produced, not a copy provided by the researcher. The signature attests that the TRS stands behind the integrity of the package.</p>
+</section>
+<hr class="docutils" />
+<section id="verification">
+<h2>Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="tro-declaration-format.html#verification"><span class="std std-ref">TRO Declaration Format</span></a> describes verification of the declaration’s internal consistency (fingerprint, arrangement references, warrant chain). At the package level, a verifier additionally checks:</p>
+<ol class="arabic simple">
+<li><p><strong>Signature validity.</strong> The signature on the declaration file matches the public key or certificate associated with the TRS. The key or certificate must be cryptographically bound to the signature — either by inclusion in the signed declaration itself (GPG: <code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code>) or by a certificate chain embedded in the signature file (X.509/CMS: <code class="docutils literal notranslate"><span class="pre">.p7s</span></code>). A public key provided separately from the signed content does not establish that the claimed TRS produced the signature.</p></li>
+<li><p><strong>Timestamp validity.</strong> The signed timestamp establishes that the declaration’s signature was produced no later than the indicated time. For GPG, this is the <code class="docutils literal notranslate"><span class="pre">.tsr</span></code> file verified against the TSA’s certificate. For X.509/CMS, the timestamp countersignature is embedded in the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code>.</p></li>
+<li><p><strong>Artifact integrity.</strong> If research artifacts are included in the package, verify their content hashes match the values in the declaration.</p></li>
+</ol>
+<p>The signature covers the declaration file byte-for-byte. The declaration must not be modified, reformatted, or re-serialized between signing and verification.</p>
+<section id="signing-identity-and-trust">
+<h3>Signing identity and trust<a class="headerlink" href="#signing-identity-and-trust" title="Link to this heading">#</a></h3>
+<p>The two signing mechanisms currently in use bind the signer’s identity to the signature in different ways, with different trust tradeoffs.</p>
+<p><strong>GPG with <code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code>:</strong> The TRS’s public key is included in the declaration, which is the signed content. This creates a self-binding: a different signer cannot substitute their own key without modifying the declaration, which would invalidate the signature. The binding is strong — key and content are cryptographically inseparable. However, no third party vouches for who owns the key. The verifier must establish trust in the key through an independent channel (e.g., a key server, the TRS’s published documentation, or out-of-band exchange).</p>
+<p><strong>X.509/CMS:</strong> The signer’s certificate (containing their public key, organization name, and a chain to a trusted CA) is embedded in the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code> file alongside the signature — not in the signed declaration itself. The CA vouches for the signer’s identity, providing third-party trust. However, since the certificate is outside the signed content, a verifier must check that the certificate’s identity matches the TRS named in the declaration. A valid signature from a valid certificate chain does not by itself prove the expected TRS signed the declaration, only that <em>some</em> entity with a CA-issued certificate did.</p>
+<p>In both cases, a verifier must consult a trustworthy source beyond the TRO package itself to confirm that the key used to sign the declaration belongs to the TRS identified in the declaration. For GPG, this might be a key server or published key fingerprint. For X.509, the certificate authority serves this role. The mechanisms differ in where they place the key material and how identity is established, but neither is self-sufficient. The package alone cannot prove who signed it.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="open-questions">
+<h2>Open Questions<a class="headerlink" href="#open-questions" title="Link to this heading">#</a></h2>
+<p>The following design decisions are not yet resolved for 0.1:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Question</p></th>
+<th class="head"><p>Context</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>How does a verifier determine the signing mechanism?</p></td>
+<td><p>(1) Require the mechanism to be decided at declaration time and include <code class="docutils literal notranslate"><span class="pre">trov:signingMechanism</span></code> as a mandatory property. (2) Make <code class="docutils literal notranslate"><span class="pre">trov:signingMechanism</span></code> optional, allowing validation rules when present (e.g. flagging a GPG-signed declaration that lacks <code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code>) and requiring the mechanism to be inferred from package contents when absent. (3) Omit the property entirely and always infer from the signing artifacts.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Should the declaration name the signing artifact files?</p></td>
+<td><p>The declaration already names the TRS, the artifacts, and the warrant chain. Referencing the signature and timestamp files (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;trov:signatureFile&quot;:</span> <span class="pre">&quot;tro.p7s&quot;</span></code>) would make the declaration self-describing for verification — a verifier would know exactly what files to look for without inspecting the package. This would require committing to the signing mechanism and file names at declaration time, even for deferred signing. If adopted, <code class="docutils literal notranslate"><span class="pre">trov:signingMechanism</span></code> would effectively become mandatory. The two questions are coupled but separable: the mechanism could be declared without naming files, and files could be named without a formal mechanism property (the file names imply the mechanism).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tro-declaration-design.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TRO Declaration Design: JSON and RDF</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="trov-vocabulary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TROV Vocabulary Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpg-signing">GPG signing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x-509-cms-signing">X.509/CMS signing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-artifacts">Research artifacts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-layout">Directory Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-demand-signing">On-Demand Signing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">Verification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signing-identity-and-trust">Signing identity and trust</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-questions">Open Questions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The TRACE Team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
