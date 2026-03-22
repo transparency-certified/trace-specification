@@ -27,6 +27,8 @@ parts:
 - caption: TRACE Concepts
   chapters:
   - file: docs/questions
+  - file: docs/dev/signing
+    title: Signing & Verification
   - file: docs/elements
   - file: docs/conceptual-model
 - caption: TRACE Specification
@@ -47,8 +49,6 @@ parts:
     title: Versioning & Roadmap
   - file: docs/trov-prerelease
     title: Pre-Release Reference
-  - file: docs/dev/signing
-    title: Signing & Verification
 - caption: TRACE Tools
   chapters:
   - file: docs/infrastructure

@@ -25,5 +25,3 @@ questions, and TRACE elements that motivate the specification.
   a stable 1.0 release.
 * [TROV Pre-Release Reference](trov-prerelease.md): Frozen snapshot of the
   pre-release vocabulary with term changes and migration guidance.
-* [Signing](dev/signing.md): Cryptographic signing of TRO declarations and
-  packages.
