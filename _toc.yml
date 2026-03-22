@@ -37,6 +37,8 @@ parts:
     title: Declaration Format
   - file: docs/tro-declaration-design
     title: Declaration Design
+  - file: docs/tro-packages
+    title: TRO Packages
   - file: docs/trov-vocabulary
     title: Vocabulary Reference
   - file: docs/trov-extension-guide
