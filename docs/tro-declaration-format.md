@@ -106,6 +106,7 @@ Example root properties:
     "schema:dateCreated": "2024-06-15T14:30:00",
 
     "trov:wasAssembledBy":  { ... },
+    "trov:createdWith":     { ... },
     "trov:hasComposition":  { ... },
     "trov:hasArrangement":  [ ... ],
     "trov:hasPerformance":  [ ... ],
@@ -125,6 +126,7 @@ The `schema:` properties shown above are optional metadata. See [The `@context` 
 | `schema:description` | string | no | Human-readable description. |
 | `schema:dateCreated` | string (ISO 8601) | no | When the TRO declaration was created. |
 | `trov:wasAssembledBy` | object | **Yes** | The TRS that produced and signed this TRO. |
+| `trov:createdWith` | object | no | Software tool that generated this declaration. Contains `schema:name` and `schema:softwareVersion`. |
 | `trov:hasComposition` | object | **Yes** | The artifact composition. |
 | `trov:hasArrangement` | array | **Yes** | One or more artifact arrangements. |
 | `trov:hasPerformance` | array | no | Zero or more performance records. |
@@ -574,6 +576,12 @@ The following is a minimal but complete TRO declaration describing a data file a
                         "@type": "trov:CanProvideInternetIsolation"
                     }
                 ]
+            },
+
+            "trov:createdWith": {
+                "@type": "schema:SoftwareApplication",
+                "schema:name": "tro-utils",
+                "schema:softwareVersion": "0.2.2"
             },
 
             "trov:wasTimestampedBy": {
