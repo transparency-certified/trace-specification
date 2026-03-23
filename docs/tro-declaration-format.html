@@ -549,6 +549,7 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <span class="w">    </span><span class="nt">&quot;schema:dateCreated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-06-15T14:30:00&quot;</span><span class="p">,</span>
 
 <span class="w">    </span><span class="nt">&quot;trov:wasAssembledBy&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;trov:createdWith&quot;</span><span class="p">:</span><span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;trov:hasComposition&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;trov:hasArrangement&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;trov:hasPerformance&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
@@ -606,22 +607,27 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <td><p><strong>Yes</strong></p></td>
 <td><p>The TRS that produced and signed this TRO.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:createdWith</span></code></p></td>
+<td><p>object</p></td>
+<td><p>no</p></td>
+<td><p>Software tool that generated this declaration. Contains <code class="docutils literal notranslate"><span class="pre">schema:name</span></code> and <code class="docutils literal notranslate"><span class="pre">schema:softwareVersion</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code></p></td>
 <td><p>object</p></td>
 <td><p><strong>Yes</strong></p></td>
 <td><p>The artifact composition.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code></p></td>
 <td><p>array</p></td>
 <td><p><strong>Yes</strong></p></td>
 <td><p>One or more artifact arrangements.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasPerformance</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasPerformance</span></code></p></td>
 <td><p>array</p></td>
 <td><p>no</p></td>
 <td><p>Zero or more performance records.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code></p></td>
 <td><p>array</p></td>
 <td><p>no</p></td>
 <td><p>Zero or more TRO-level transparency attributes.</p></td>
@@ -1371,6 +1377,12 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <span class="w">                        </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CanProvideInternetIsolation&quot;</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+
+<span class="w">            </span><span class="nt">&quot;trov:createdWith&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;schema:SoftwareApplication&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema:name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tro-utils&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema:softwareVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.2&quot;</span>
 <span class="w">            </span><span class="p">},</span>
 
 <span class="w">            </span><span class="nt">&quot;trov:wasTimestampedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>

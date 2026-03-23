@@ -625,27 +625,32 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchSystem</span></code></p></td>
 <td><p>Links a TRO to the TRS that produced and signed it.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:wasTimestampedBy</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:createdWith</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">schema:SoftwareApplication</span></code></p></td>
+<td><p>Software tool that generated this TRO declaration (optional). Value includes <code class="docutils literal notranslate"><span class="pre">schema:name</span></code> and <code class="docutils literal notranslate"><span class="pre">schema:softwareVersion</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:wasTimestampedBy</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TimeStampingAuthority</span></code></p></td>
 <td><p>Links a TRO to a TSA that timestamped the TRS signature.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ArtifactComposition</span></code></p></td>
 <td><p>Links a TRO to the composition of artifacts it describes.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ArtifactArrangement</span></code></p></td>
 <td><p>Links a TRO to an artifact arrangement it describes.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasPerformance</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasPerformance</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchPerformance</span></code></p></td>
 <td><p>Links a TRO to a TRP it describes.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasAttribute</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TransparentResearchObject</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TROAttribute</span></code></p></td>
 <td><p>Links a TRO to a transparency attribute asserted for it.</p></td>
@@ -998,50 +1003,54 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <td><p>At most 1 TSA</p></td>
 </tr>
 <tr class="row-odd"><td><p>TRO</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trov:createdWith</span></code></p></td>
+<td><p>At most 1 (object)</p></td>
+</tr>
+<tr class="row-even"><td><p>TRO</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:hasComposition</span></code></p></td>
 <td><p>Exactly 1</p></td>
 </tr>
-<tr class="row-even"><td><p>TRO</p></td>
+<tr class="row-odd"><td><p>TRO</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArrangement</span></code></p></td>
 <td><p>At least 1</p></td>
 </tr>
-<tr class="row-odd"><td><p>TRS</p></td>
+<tr class="row-even"><td><p>TRS</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
 <td><p>Exactly 1 (string)</p></td>
 </tr>
-<tr class="row-even"><td><p>TSA</p></td>
+<tr class="row-odd"><td><p>TSA</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
 <td><p>Exactly 1 (string)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Composition</p></td>
+<tr class="row-even"><td><p>Composition</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:hasFingerprint</span></code></p></td>
 <td><p>Exactly 1</p></td>
 </tr>
-<tr class="row-even"><td><p>Composition</p></td>
+<tr class="row-odd"><td><p>Composition</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArtifact</span></code></p></td>
 <td><p>At least 1</p></td>
 </tr>
-<tr class="row-odd"><td><p>Fingerprint</p></td>
+<tr class="row-even"><td><p>Fingerprint</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:hash</span></code></p></td>
 <td><p>Exactly 1 (object)</p></td>
 </tr>
-<tr class="row-even"><td><p>Artifact</p></td>
+<tr class="row-odd"><td><p>Artifact</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:hash</span></code></p></td>
 <td><p>At least 1 (object or array)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Artifact</p></td>
+<tr class="row-even"><td><p>Artifact</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:mimeType</span></code></p></td>
 <td><p>At most 1 (string)</p></td>
 </tr>
-<tr class="row-even"><td><p>Arrangement</p></td>
+<tr class="row-odd"><td><p>Arrangement</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:hasArtifactLocation</span></code></p></td>
 <td><p>At least 1</p></td>
 </tr>
-<tr class="row-odd"><td><p>Location</p></td>
+<tr class="row-even"><td><p>Location</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:artifact</span></code></p></td>
 <td><p>Exactly 1</p></td>
 </tr>
-<tr class="row-even"><td><p>Location</p></td>
+<tr class="row-odd"><td><p>Location</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:path</span></code></p></td>
 <td><p>Exactly 1 (string)</p></td>
 </tr>

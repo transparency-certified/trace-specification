@@ -94,6 +94,7 @@ TRO attribute
 |----------|--------|-------|-------------|
 | `trov:vocabularyVersion` | `TransparentResearchObject` | Literal (string) | The TROV vocabulary version this declaration conforms to (e.g. `"0.1"`). |
 | `trov:wasAssembledBy` | `TransparentResearchObject` | `TrustedResearchSystem` | Links a TRO to the TRS that produced and signed it. |
+| `trov:createdWith` | `TransparentResearchObject` | `schema:SoftwareApplication` | Software tool that generated this TRO declaration (optional). Value includes `schema:name` and `schema:softwareVersion`. |
 | `trov:wasTimestampedBy` | `TransparentResearchObject` | `TimeStampingAuthority` | Links a TRO to a TSA that timestamped the TRS signature. |
 | `trov:hasComposition` | `TransparentResearchObject` | `ArtifactComposition` | Links a TRO to the composition of artifacts it describes. |
 | `trov:hasArrangement` | `TransparentResearchObject` | `ArtifactArrangement` | Links a TRO to an artifact arrangement it describes. |
@@ -205,6 +206,7 @@ The following constraints are defined in SHACL shapes and enforced during valida
 | TRO | `trov:vocabularyVersion` | Exactly 1 (string) |
 | TRO | `trov:wasAssembledBy` | Exactly 1 TRS |
 | TRO | `trov:wasTimestampedBy` | At most 1 TSA |
+| TRO | `trov:createdWith` | At most 1 (object) |
 | TRO | `trov:hasComposition` | Exactly 1 |
 | TRO | `trov:hasArrangement` | At least 1 |
 | TRS | `trov:publicKey` | Exactly 1 (string) |
