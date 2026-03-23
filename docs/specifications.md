@@ -1,4 +1,4 @@
-# Overview
+# TRACE Specification
 
 At the core of the TRACE project is a conceptual model and technical
 specification for formally describing Trusted Research Systems and Transparent
