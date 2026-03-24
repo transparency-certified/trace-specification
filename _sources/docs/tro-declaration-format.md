@@ -164,7 +164,7 @@ Example TRS description:
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Local identifier. Conventionally `"trs"`. |
 | `@type` | string or array | **Yes** | Must include `"trov:TrustedResearchSystem"`. |
-| `trov:publicKey` | string | **Yes** | Signing identity of the TRS (e.g. GPG public key, X.509 certificate). Representation under review for 0.1. |
+| `trov:publicKey` | string | GPG: **Yes**; X.509/CMS: no | The TRS's public key. Required for GPG signing (binds key to signed content). Not needed for X.509/CMS (certificate is in the `.p7s` file). |
 | `trov:hasCapability` | array | no | Zero or more capability declarations. |
 | `schema:name` | string | no | Short name for the TRS. |
 | `schema:description` | string | no | Human-readable description of the TRS. |
@@ -202,7 +202,7 @@ If the TRS obtained an RFC 3161 timestamp for the TRO signature from a separate 
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Local identifier. Conventionally `"tsa"`. |
 | `@type` | string | **Yes** | Must be `"trov:TimeStampingAuthority"`. |
-| `trov:publicKey` | string | **Yes** | Public key of the timestamping authority. |
+| `trov:publicKey` | string | no | Public key of the timestamping authority. Not needed when the timestamp is embedded in the `.p7s` file. |
 
 ---
 

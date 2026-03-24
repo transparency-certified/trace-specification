@@ -678,7 +678,7 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchSystem</span></code></p></td>
 <td><p>Literal</p></td>
-<td><p>The signing identity of the TRS (e.g. GPG public key, X.509 certificate). Representation under review for 0.1.</p></td>
+<td><p>The TRS’s public key (optional). Required for GPG signing (binds the key to the signed declaration content). Not needed for X.509/CMS (the certificate chain is in the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code> file).</p></td>
 </tr>
 </tbody>
 </table>
@@ -1016,11 +1016,11 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 </tr>
 <tr class="row-even"><td><p>TRS</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
-<td><p>Exactly 1 (string)</p></td>
+<td><p>At most 1 (string). Required for GPG signing.</p></td>
 </tr>
 <tr class="row-odd"><td><p>TSA</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
-<td><p>Exactly 1 (string)</p></td>
+<td><p>At most 1 (string)</p></td>
 </tr>
 <tr class="row-even"><td><p>Composition</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">trov:hasFingerprint</span></code></p></td>
@@ -1102,8 +1102,8 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <tr class="row-odd"><td><p>Only one TRO attribute type defined (<code class="docutils literal notranslate"><span class="pre">IncludesAllInputData</span></code>)</p></td>
 <td><p>Acceptable for 0.1 — same reasoning</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code> representation not finalized (GPG vs X.509 certificate)</p></td>
-<td><p>Resolve for 0.1</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code> optional — required for GPG, not needed for X.509/CMS</p></td>
+<td><p>Resolved: see <a class="reference internal" href="tro-packages.html#signing-identity-and-trust"><span class="std std-ref">TRO Packages — Signing identity and trust</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p>No <code class="docutils literal notranslate"><span class="pre">trov:signingMechanism</span></code> property to identify the signing approach</p></td>
 <td><p>Resolve for 0.1</p></td>
@@ -1123,7 +1123,7 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
 <p><strong>Namespace.</strong> The 0.1 namespace is <code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/trov/0.1#</span></code>; the pre-release namespace <code class="docutils literal notranslate"><span class="pre">https://w3id.org/trace/2023/05/trov#</span></code> is retired. See <a class="reference internal" href="trov-prerelease.html"><span class="std std-doc">Pre-Release Vocabulary Reference</span></a> for migration guidance.</p>
 <p><strong>Extensibility.</strong> The capability and attribute type lists are designed to be extended. New TRS capability types and corresponding performance/TRO attribute types can be added as new transparency conditions are identified. Existing TRS certificates and TRO declarations remain valid when new types are introduced.</p>
-<p><strong>Signing mechanism.</strong> TROV is agnostic to the specific signing technology. Current implementations use GPG and X.509/CMS. The <code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code> property representation and a proposed <code class="docutils literal notranslate"><span class="pre">trov:signingMechanism</span></code> property are under review for 0.1.</p>
+<p><strong>Signing mechanism.</strong> TROV is agnostic to the specific signing technology. Current implementations use GPG and X.509/CMS. For GPG, <code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code> is required in the declaration to bind the key to the signed content. For X.509/CMS, the certificate chain in the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code> file provides identity binding, so <code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code> is not needed. See <a class="reference internal" href="tro-packages.html#signing-identity-and-trust"><span class="std std-ref">TRO Packages — Signing identity and trust</span></a> for details. A proposed <code class="docutils literal notranslate"><span class="pre">trov:signingMechanism</span></code> property is under review for 0.1.</p>
 <p><strong>Interoperability.</strong> TROV aims to be interoperable with, rather than to replace, current and future Research Object standards (e.g., RO-Crate), archival formats (e.g., BagIt), and repository layouts. TROV complements the W3C PROV-O ontology for describing general provenance relationships.</p>
 <p><strong>JSON-LD context.</strong> TRO declarations use a <code class="docutils literal notranslate"><span class="pre">&#64;context</span></code> block to map short-form term names to the URIs defined here. See <a class="reference internal" href="tro-declaration-format.html"><span class="std std-doc">TRO Declaration Format</span></a> for the structure and <a class="reference internal" href="tro-declaration-design.html"><span class="std std-doc">TRO Declaration Design</span></a> for the dual-audience rationale.</p>
 </section>

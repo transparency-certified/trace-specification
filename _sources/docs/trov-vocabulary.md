@@ -106,7 +106,7 @@ TRO attribute
 | Property | Domain | Range | Description |
 |----------|--------|-------|-------------|
 | `trov:hasCapability` | `TrustedResearchSystem` | `TRSCapability` | Links a TRS to a capability it declares. |
-| `trov:publicKey` | `TrustedResearchSystem` | Literal | The signing identity of the TRS (e.g. GPG public key, X.509 certificate). Representation under review for 0.1. |
+| `trov:publicKey` | `TrustedResearchSystem` | Literal | The TRS's public key (optional). Required for GPG signing (binds the key to the signed declaration content). Not needed for X.509/CMS (the certificate chain is in the `.p7s` file). |
 
 ### TRP Properties
 
@@ -209,8 +209,8 @@ The following constraints are defined in SHACL shapes and enforced during valida
 | TRO | `trov:createdWith` | At most 1 (object) |
 | TRO | `trov:hasComposition` | Exactly 1 |
 | TRO | `trov:hasArrangement` | At least 1 |
-| TRS | `trov:publicKey` | Exactly 1 (string) |
-| TSA | `trov:publicKey` | Exactly 1 (string) |
+| TRS | `trov:publicKey` | At most 1 (string). Required for GPG signing. |
+| TSA | `trov:publicKey` | At most 1 (string) |
 | Composition | `trov:hasFingerprint` | Exactly 1 |
 | Composition | `trov:hasArtifact` | At least 1 |
 | Fingerprint | `trov:hash` | Exactly 1 (object) |
@@ -240,7 +240,7 @@ TROV uses terms from the following external vocabularies:
 |-----------|------------|
 | Only two TRP attribute types defined (`InternetIsolation`, `InternetAccessRecording`) | Acceptable for 0.1 — new types can be added without breaking changes |
 | Only one TRO attribute type defined (`IncludesAllInputData`) | Acceptable for 0.1 — same reasoning |
-| `trov:publicKey` representation not finalized (GPG vs X.509 certificate) | Resolve for 0.1 |
+| `trov:publicKey` optional — required for GPG, not needed for X.509/CMS | Resolved: see [TRO Packages — Signing identity and trust](tro-packages.md#signing-identity-and-trust) |
 | No `trov:signingMechanism` property to identify the signing approach | Resolve for 0.1 |
 | `TRSPolicy` / `trov:hasPolicy` defined but not wired up | Deferred to 0.2 |
 | `trov:TimeStampingAuthority` wraps an external concept (RFC 3161 TSA) | Acceptable for 0.1 — no standard RDF class exists; candidate for replacement if one emerges |
@@ -253,7 +253,7 @@ TROV uses terms from the following external vocabularies:
 
 **Extensibility.** The capability and attribute type lists are designed to be extended. New TRS capability types and corresponding performance/TRO attribute types can be added as new transparency conditions are identified. Existing TRS certificates and TRO declarations remain valid when new types are introduced.
 
-**Signing mechanism.** TROV is agnostic to the specific signing technology. Current implementations use GPG and X.509/CMS. The `trov:publicKey` property representation and a proposed `trov:signingMechanism` property are under review for 0.1.
+**Signing mechanism.** TROV is agnostic to the specific signing technology. Current implementations use GPG and X.509/CMS. For GPG, `trov:publicKey` is required in the declaration to bind the key to the signed content. For X.509/CMS, the certificate chain in the `.p7s` file provides identity binding, so `trov:publicKey` is not needed. See [TRO Packages — Signing identity and trust](tro-packages.md#signing-identity-and-trust) for details. A proposed `trov:signingMechanism` property is under review for 0.1.
 
 **Interoperability.** TROV aims to be interoperable with, rather than to replace, current and future Research Object standards (e.g., RO-Crate), archival formats (e.g., BagIt), and repository layouts. TROV complements the W3C PROV-O ontology for describing general provenance relationships.
 

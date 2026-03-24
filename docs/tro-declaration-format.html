@@ -681,8 +681,8 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
 <td><p>string</p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p>Signing identity of the TRS (e.g. GPG public key, X.509 certificate). Representation under review for 0.1.</p></td>
+<td><p>GPG: <strong>Yes</strong>; X.509/CMS: no</p></td>
+<td><p>The TRS’s public key. Required for GPG signing (binds key to signed content). Not needed for X.509/CMS (certificate is in the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code> file).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trov:hasCapability</span></code></p></td>
 <td><p>array</p></td>
@@ -762,8 +762,8 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:publicKey</span></code></p></td>
 <td><p>string</p></td>
-<td><p><strong>Yes</strong></p></td>
-<td><p>Public key of the timestamping authority.</p></td>
+<td><p>no</p></td>
+<td><p>Public key of the timestamping authority. Not needed when the timestamp is embedded in the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code> file.</p></td>
 </tr>
 </tbody>
 </table>
