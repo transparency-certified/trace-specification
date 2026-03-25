@@ -2,7 +2,7 @@
 
 The [TRACE](https://transparency-certified.github.io/) (TRAnsparency CErtified) specification defines how Transparent Research Objects (TROs) are declared, signed, and packaged for distribution. It is the primary documentation home for the TRACE project, funded by the National Science Foundation (OAC-2209628, OAC-2209629, OAC-2209630).
 
-The documents in this repository are assembled into a [Jupyter Book](https://jupyterbook.org/) and published at **https://transparency-certified.github.io/trace-specification/**.
+The documents in this repository are assembled into a [Jupyter Book](https://jupyterbook.org/) and published at **https://transparency-certified.github.io/trace-specification/**. For further details on how TRACE documentation is built and deployed across repositories, see [Documentation Infrastructure](https://transparency-certified.github.io/trace-specification/docs/documentation-infrastructure.html).
 
 ## Key specification pages
 
