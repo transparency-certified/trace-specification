@@ -58,7 +58,3 @@ Or with `jupyter-book` installed locally:
 ```
 
 See [.github/workflows/deploy.yml](.github/workflows/deploy.yml) for the full build process.
-
-## License
-
-Content is licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).
