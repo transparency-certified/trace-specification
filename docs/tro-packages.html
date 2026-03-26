@@ -567,7 +567,7 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <li><p>The signed package is assembled with the declaration, signature, and artifacts.</p></li>
 </ol>
 <p>The timestamp in the signature reflects when the signing occurred, not when the computation ran. Execution times are separately recorded in the declaration (<code class="docutils literal notranslate"><span class="pre">trov:startedAtTime</span></code>, <code class="docutils literal notranslate"><span class="pre">trov:endedAtTime</span></code>).</p>
-<p>This allows TRS implementations to decouple signing from execution, which is useful when the signing infrastructure is external or intermittently available.</p>
+<p>This allows TRS implementations to decouple signing from execution, which is useful when the signing infrastructure is external or intermittently available. For example, a TRS operating in an isolated environment without network access during execution can defer both signing and timestamping to a later stage when a timestamp authority is reachable.</p>
 <p>The critical constraint is chain of custody: the TRS must sign the declaration it originally produced, not a copy provided by the researcher. The signature attests that the TRS stands behind the integrity of the package.</p>
 </section>
 <hr class="docutils" />
