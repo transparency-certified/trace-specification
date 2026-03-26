@@ -120,7 +120,7 @@ A TRS may produce unsigned packages during execution and sign them later on dema
 
 The timestamp in the signature reflects when the signing occurred, not when the computation ran. Execution times are separately recorded in the declaration (`trov:startedAtTime`, `trov:endedAtTime`).
 
-This allows TRS implementations to decouple signing from execution, which is useful when the signing infrastructure is external or intermittently available.
+This allows TRS implementations to decouple signing from execution, which is useful when the signing infrastructure is external or intermittently available. For example, a TRS operating in an isolated environment without network access during execution can defer both signing and timestamping to a later stage when a timestamp authority is reachable.
 
 The critical constraint is chain of custody: the TRS must sign the declaration it originally produced, not a copy provided by the researcher. The signature attests that the TRS stands behind the integrity of the package.
 
