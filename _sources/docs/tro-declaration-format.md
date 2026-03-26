@@ -156,6 +156,12 @@ Example TRS description:
             "@id": "trs/capability/1",
             "@type": "trov:CanRecordInternetAccess"
         }
+    ],
+    "trov:customTerm": [
+        {
+            "@id": "mytrs:CanProvideAuditLogging",
+            "rdfs:subClassOf": { "@id": "trov:TRSCapabilityType" }
+        }
     ]
 }
 ```
@@ -166,6 +172,7 @@ Example TRS description:
 | `@type` | string or array | **Yes** | Must include `"trov:TrustedResearchSystem"`. |
 | `trov:publicKey` | string | GPG: **Yes**; X.509/CMS: no | The TRS's public key. Required for GPG signing (binds key to signed content). Not needed for X.509/CMS (certificate is in the `.p7s` file). |
 | `trov:hasCapability` | array | no | Zero or more capability declarations. |
+| `trov:customTerm` | array | no | Declarations of custom terms that extend TROV classes. Each entry names the custom term and the TROV class it extends via `rdfs:subClassOf`. See [TROV Extension Guide](trov-extension-guide.md#declaring-custom-types-in-the-declaration). |
 | `schema:name` | string | no | Short name for the TRS. |
 | `schema:description` | string | no | Human-readable description of the TRS. |
 
@@ -176,7 +183,7 @@ Each **capability** object declares that the TRS is able to enforce a specific t
 | `@id` | string | Local identifier, e.g. `"trs/capability/0"`. Referenced by performance attributes. |
 | `@type` | string | A capability type from the TROV vocabulary, e.g. `"trov:CanProvideInternetIsolation"`. |
 
-See [TROV Vocabulary Reference — TRS Capability Types](trov-vocabulary.md#named-individuals-trs-capability-types) for the full list of defined capability types.
+See [TROV Vocabulary Reference — TRS Capability Types](trov-vocabulary.md#predefined-values-trs-capability-types) for the full list of defined capability types.
 
 ---
 
@@ -420,7 +427,7 @@ A performance records a supervised unit of work — typically a computation exec
 | `@type` | string | **Yes** | A performance attribute type, e.g. `"trov:InternetIsolation"`. |
 | `trov:warrantedBy` | object | **Yes** | Reference to the TRS capability that justifies this claim, e.g. `{ "@id": "trs/capability/0" }`. |
 
-See [TROV Vocabulary Reference — TRP Attribute Types](trov-vocabulary.md#named-individuals-trp-attribute-types) for the defined attribute types and their required warranting capabilities.
+See [TROV Vocabulary Reference — TRP Attribute Types](trov-vocabulary.md#predefined-values-trp-attribute-types) for the defined attribute types and their required warranting capabilities.
 
 > **Extension points:** TRS implementations can extend performances in two ways. Custom *properties* (operational metadata like architecture, resource usage, container image digests) use a TRS-specific namespace alongside the standard `trov:` properties. Custom *attribute and capability types* (new transparency claims specific to a TRS) also use the adopter's namespace and participate in the warrant chain through the standard `trov:warrantedBy` mechanism. Adopters who publish an RDF vocabulary for their custom types can declare subclass relationships to the core TROV types, enabling RDF consumers to discover them through inference. See [TROV Extension Guide](trov-extension-guide.md) for details.
 
@@ -446,7 +453,7 @@ TRO attributes are transparency claims about the TRO as a whole, warranted by at
 | `@type` | string | **Yes** | A TRO attribute type, e.g. `"trov:IncludesAllInputData"`. |
 | `trov:warrantedBy` | object or array | **Yes** | Reference(s) to the performance attribute(s) that justify this claim. |
 
-See [TROV Vocabulary Reference — TRO Attribute Types](trov-vocabulary.md#named-individuals-tro-attribute-types) for the defined attribute types.
+See [TROV Vocabulary Reference — TRO Attribute Types](trov-vocabulary.md#predefined-values-tro-attribute-types) for the defined attribute types.
 
 ---
 

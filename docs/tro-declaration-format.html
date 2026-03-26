@@ -656,6 +656,12 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trs/capability/1&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;@type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:CanRecordInternetAccess&quot;</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;trov:customTerm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mytrs:CanProvideAuditLogging&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;rdfs:subClassOf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;@id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trov:TRSCapabilityType&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -689,12 +695,17 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <td><p>no</p></td>
 <td><p>Zero or more capability declarations.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">schema:name</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:customTerm</span></code></p></td>
+<td><p>array</p></td>
+<td><p>no</p></td>
+<td><p>Declarations of custom terms that extend TROV classes. Each entry names the custom term and the TROV class it extends via <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span></code>. See <a class="reference internal" href="trov-extension-guide.html#declaring-custom-types-in-the-declaration"><span class="std std-ref">TROV Extension Guide</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">schema:name</span></code></p></td>
 <td><p>string</p></td>
 <td><p>no</p></td>
 <td><p>Short name for the TRS.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">schema:description</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">schema:description</span></code></p></td>
 <td><p>string</p></td>
 <td><p>no</p></td>
 <td><p>Human-readable description of the TRS.</p></td>
@@ -722,7 +733,7 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 </tbody>
 </table>
 </div>
-<p>See <a class="reference internal" href="trov-vocabulary.html#named-individuals-trs-capability-types"><span class="std std-ref">TROV Vocabulary Reference — TRS Capability Types</span></a> for the full list of defined capability types.</p>
+<p>See <a class="reference internal" href="trov-vocabulary.html#predefined-values-trs-capability-types"><span class="std std-ref">TROV Vocabulary Reference — TRS Capability Types</span></a> for the full list of defined capability types.</p>
 </section>
 <hr class="docutils" />
 <section id="timestamping-authority-trov-wastimestampedby">
@@ -1156,7 +1167,7 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 </tbody>
 </table>
 </div>
-<p>See <a class="reference internal" href="trov-vocabulary.html#named-individuals-trp-attribute-types"><span class="std std-ref">TROV Vocabulary Reference — TRP Attribute Types</span></a> for the defined attribute types and their required warranting capabilities.</p>
+<p>See <a class="reference internal" href="trov-vocabulary.html#predefined-values-trp-attribute-types"><span class="std std-ref">TROV Vocabulary Reference — TRP Attribute Types</span></a> for the defined attribute types and their required warranting capabilities.</p>
 <blockquote>
 <div><p><strong>Extension points:</strong> TRS implementations can extend performances in two ways. Custom <em>properties</em> (operational metadata like architecture, resource usage, container image digests) use a TRS-specific namespace alongside the standard <code class="docutils literal notranslate"><span class="pre">trov:</span></code> properties. Custom <em>attribute and capability types</em> (new transparency claims specific to a TRS) also use the adopter’s namespace and participate in the warrant chain through the standard <code class="docutils literal notranslate"><span class="pre">trov:warrantedBy</span></code> mechanism. Adopters who publish an RDF vocabulary for their custom types can declare subclass relationships to the core TROV types, enabling RDF consumers to discover them through inference. See <a class="reference internal" href="trov-extension-guide.html"><span class="std std-doc">TROV Extension Guide</span></a> for details.</p>
 </div></blockquote>
@@ -1201,7 +1212,7 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 </tbody>
 </table>
 </div>
-<p>See <a class="reference internal" href="trov-vocabulary.html#named-individuals-tro-attribute-types"><span class="std std-ref">TROV Vocabulary Reference — TRO Attribute Types</span></a> for the defined attribute types.</p>
+<p>See <a class="reference internal" href="trov-vocabulary.html#predefined-values-tro-attribute-types"><span class="std std-ref">TROV Vocabulary Reference — TRO Attribute Types</span></a> for the defined attribute types.</p>
 </section>
 </section>
 <hr class="docutils" />
