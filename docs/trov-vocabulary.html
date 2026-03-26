@@ -386,13 +386,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warrant-chain-properties">Warrant Chain Properties</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-trs-capability-types">Named Individuals: TRS Capability Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predefined-values-trs-capability-types">Predefined Values: TRS Capability Types</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capabilities-implemented-by-tro-utils-sivacor">Capabilities Implemented by tro-utils / SIVACOR</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-capabilities-under-discussion">Additional Capabilities Under Discussion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-trp-attribute-types">Named Individuals: TRP Attribute Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-tro-attribute-types">Named Individuals: TRO Attribute Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predefined-values-trp-attribute-types">Predefined Values: TRP Attribute Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predefined-values-tro-attribute-types">Predefined Values: TRO Attribute Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinality-constraints">Cardinality Constraints</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-vocabularies-used">External Vocabularies Used</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-limitations">Known Limitations</a></li>
@@ -414,7 +414,7 @@ document.write(`
   TROV 0.1 DRAFT</span>
 <p><em>This document is a draft and subject to revision.
 Please <a class="reference external" href="https://github.com/transparency-certified/trace-specification/issues/new?title=trov-vocabulary.md:%20">submit feedback or report issues</a>.</em></p>
-<p>Term reference for the Transparent Research Object Vocabulary (TROV). Lists every class, property, and named individual in the current draft, with descriptions and cardinality constraints.</p>
+<p>Term reference for the Transparent Research Object Vocabulary (TROV). Lists every class, property, and predefined value in the current draft, with descriptions and cardinality constraints.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Document Section</p></th>
@@ -431,13 +431,13 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <tr class="row-even"><td><p><a class="reference internal" href="#properties"><span class="xref myst">Properties</span></a></p></td>
 <td><p>Relationships between entities: linking TROs to TRSs, TRPs, arrangements, etc.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#named-individuals-trs-capability-types"><span class="xref myst">TRS Capability Types</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#predefined-values-trs-capability-types"><span class="xref myst">TRS Capability Types</span></a></p></td>
 <td><p>What a TRS can do (e.g. provide internet isolation)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#named-individuals-trp-attribute-types"><span class="xref myst">TRP Attribute Types</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#predefined-values-trp-attribute-types"><span class="xref myst">TRP Attribute Types</span></a></p></td>
 <td><p>Transparency claims about a specific performance</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#named-individuals-tro-attribute-types"><span class="xref myst">TRO Attribute Types</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#predefined-values-tro-attribute-types"><span class="xref myst">TRO Attribute Types</span></a></p></td>
 <td><p>Transparency claims about a TRO as a whole</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#cardinality-constraints"><span class="xref myst">Cardinality Constraints</span></a></p></td>
@@ -680,6 +680,11 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <td><p>Literal</p></td>
 <td><p>The TRS’s public key (optional). Required for GPG signing (binds the key to the signed declaration content). Not needed for X.509/CMS (the certificate chain is in the <code class="docutils literal notranslate"><span class="pre">.p7s</span></code> file).</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trov:customTerm</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TrustedResearchSystem</span></code></p></td>
+<td><p>Resource</p></td>
+<td><p>Declares a custom term that extends a TROV class. Each value is a resource with an <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span></code> triple connecting it to the TROV class it extends. See <a class="reference internal" href="trov-extension-guide.html#declaring-custom-types-in-the-declaration"><span class="std std-ref">TROV Extension Guide</span></a>.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -831,8 +836,8 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 </section>
 </section>
 <hr class="docutils" />
-<section id="named-individuals-trs-capability-types">
-<h2>Named Individuals: TRS Capability Types<a class="headerlink" href="#named-individuals-trs-capability-types" title="Link to this heading">#</a></h2>
+<section id="predefined-values-trs-capability-types">
+<h2>Predefined Values: TRS Capability Types<a class="headerlink" href="#predefined-values-trs-capability-types" title="Link to this heading">#</a></h2>
 <p>The following capability types are currently defined. This list is designed to grow as new transparency conditions are identified by the research community.</p>
 <section id="capabilities-implemented-by-tro-utils-sivacor">
 <h3>Capabilities Implemented by tro-utils / SIVACOR<a class="headerlink" href="#capabilities-implemented-by-tro-utils-sivacor" title="Link to this heading">#</a></h3>
@@ -932,8 +937,8 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 </section>
 </section>
 <hr class="docutils" />
-<section id="named-individuals-trp-attribute-types">
-<h2>Named Individuals: TRP Attribute Types<a class="headerlink" href="#named-individuals-trp-attribute-types" title="Link to this heading">#</a></h2>
+<section id="predefined-values-trp-attribute-types">
+<h2>Predefined Values: TRP Attribute Types<a class="headerlink" href="#predefined-values-trp-attribute-types" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Individual</p></th>
@@ -958,8 +963,8 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 </div>
 </section>
 <hr class="docutils" />
-<section id="named-individuals-tro-attribute-types">
-<h2>Named Individuals: TRO Attribute Types<a class="headerlink" href="#named-individuals-tro-attribute-types" title="Link to this heading">#</a></h2>
+<section id="predefined-values-tro-attribute-types">
+<h2>Predefined Values: TRO Attribute Types<a class="headerlink" href="#predefined-values-tro-attribute-types" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Individual</p></th>
@@ -1210,13 +1215,13 @@ Please <a class="reference external" href="https://github.com/transparency-certi
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warrant-chain-properties">Warrant Chain Properties</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-trs-capability-types">Named Individuals: TRS Capability Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predefined-values-trs-capability-types">Predefined Values: TRS Capability Types</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capabilities-implemented-by-tro-utils-sivacor">Capabilities Implemented by tro-utils / SIVACOR</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-capabilities-under-discussion">Additional Capabilities Under Discussion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-trp-attribute-types">Named Individuals: TRP Attribute Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#named-individuals-tro-attribute-types">Named Individuals: TRO Attribute Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predefined-values-trp-attribute-types">Predefined Values: TRP Attribute Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predefined-values-tro-attribute-types">Predefined Values: TRO Attribute Types</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cardinality-constraints">Cardinality Constraints</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-vocabularies-used">External Vocabularies Used</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-limitations">Known Limitations</a></li>

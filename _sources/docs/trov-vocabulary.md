@@ -5,16 +5,16 @@
 *This document is a draft and subject to revision.
 Please [submit feedback or report issues](https://github.com/transparency-certified/trace-specification/issues/new?title=trov-vocabulary.md:%20).*
 
-Term reference for the Transparent Research Object Vocabulary (TROV). Lists every class, property, and named individual in the current draft, with descriptions and cardinality constraints.
+Term reference for the Transparent Research Object Vocabulary (TROV). Lists every class, property, and predefined value in the current draft, with descriptions and cardinality constraints.
 
 | Document Section | Description |
 |---------|-------------|
 | [Vocabulary Metadata](#vocabulary-metadata) | Namespace, version, status, and license |
 | [Classes](#classes) | Core entities: TRO, TRS, TRP, artifacts, compositions, arrangements |
 | [Properties](#properties) | Relationships between entities: linking TROs to TRSs, TRPs, arrangements, etc. |
-| [TRS Capability Types](#named-individuals-trs-capability-types) | What a TRS can do (e.g. provide internet isolation) |
-| [TRP Attribute Types](#named-individuals-trp-attribute-types) | Transparency claims about a specific performance |
-| [TRO Attribute Types](#named-individuals-tro-attribute-types) | Transparency claims about a TRO as a whole |
+| [TRS Capability Types](#predefined-values-trs-capability-types) | What a TRS can do (e.g. provide internet isolation) |
+| [TRP Attribute Types](#predefined-values-trp-attribute-types) | Transparency claims about a specific performance |
+| [TRO Attribute Types](#predefined-values-tro-attribute-types) | Transparency claims about a TRO as a whole |
 | [Cardinality Constraints](#cardinality-constraints) | Required vs optional properties and their multiplicities |
 | [External Vocabularies](#external-vocabularies-used) | RDF, RDFS, and schema.org terms used alongside TROV |
 | [Known Limitations](#known-limitations) | Scope boundaries and open questions for 0.1 |
@@ -107,6 +107,7 @@ TRO attribute
 |----------|--------|-------|-------------|
 | `trov:hasCapability` | `TrustedResearchSystem` | `TRSCapability` | Links a TRS to a capability it declares. |
 | `trov:publicKey` | `TrustedResearchSystem` | Literal | The TRS's public key (optional). Required for GPG signing (binds the key to the signed declaration content). Not needed for X.509/CMS (the certificate chain is in the `.p7s` file). |
+| `trov:customTerm` | `TrustedResearchSystem` | Resource | Declares a custom term that extends a TROV class. Each value is a resource with an `rdfs:subClassOf` triple connecting it to the TROV class it extends. See [TROV Extension Guide](trov-extension-guide.md#declaring-custom-types-in-the-declaration). |
 
 ### TRP Properties
 
@@ -147,7 +148,7 @@ TRO attribute
 
 ---
 
-## Named Individuals: TRS Capability Types
+## Predefined Values: TRS Capability Types
 
 The following capability types are currently defined. This list is designed to grow as new transparency conditions are identified by the research community.
 
@@ -180,7 +181,7 @@ The following capability types are currently defined. This list is designed to g
 
 ---
 
-## Named Individuals: TRP Attribute Types
+## Predefined Values: TRP Attribute Types
 
 | Individual | Parent | Warranted By | Description |
 |------------|--------|-------------|-------------|
@@ -189,7 +190,7 @@ The following capability types are currently defined. This list is designed to g
 
 ---
 
-## Named Individuals: TRO Attribute Types
+## Predefined Values: TRO Attribute Types
 
 | Individual | Parent | Warranted By | Description |
 |------------|--------|-------------|-------------|
