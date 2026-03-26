@@ -17,7 +17,7 @@ questions, and TRACE elements that motivate the specification.
 * [TRO Packages](tro-packages.md): How TROs are packaged for distribution,
   including ZIP layouts, signing artifacts, and on-demand signing.
 * [TROV Vocabulary Reference](trov-vocabulary.md): Term reference for all
-  classes, properties, and named individuals in the TROV vocabulary.
+  classes, properties, and predefined values in the TROV vocabulary.
 * [TROV Extension Guide](trov-extension-guide.md): How to include
   institution-specific metadata in TRO declarations using your own namespace.
 * [TROV Versioning Strategy and Roadmap](trov-versioning-and-roadmap.md):

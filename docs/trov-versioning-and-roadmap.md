@@ -132,7 +132,7 @@ trov/2#         →  1.x frozen, new namespace, living docs describe latest 2.x 
 
 **What is in 0.1 (draft — under discussion and subject to change before release):**
 
-- The classes, properties, and named individuals documented in the [TROV Vocabulary Reference](trov-vocabulary.md).
+- The classes, properties, and predefined values documented in the [TROV Vocabulary Reference](trov-vocabulary.md).
 - The JSON-LD structure documented in the [TRO Declaration Format](tro-declaration-format.md).
 - Support for GPG and X.509/CMS signing mechanisms.
 
