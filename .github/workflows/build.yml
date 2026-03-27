@@ -1,0 +1,20 @@
+name: build-docs
+
+# Run on pull requests to verify the build succeeds
+on:
+  pull_request:
+
+# Build the docs to verify they compile without errors
+jobs:
+  build-book:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the jupyter-book
+      uses: addnab/docker-run-action@v3
+      with: 
+          image: craigwillis/jupyter-book:latest
+          options: -v ${{ github.workspace }}:/src
+          run: jupyter-book build --all .
