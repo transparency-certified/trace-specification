@@ -37,8 +37,6 @@ sphinx:
       - custom.css
     html_theme_options:
       search_bar_text: "Search..."
-      repository_url: https://github.com/transparency-certified/trace-specification
-      repository_branch: main
       path_to_docs: docs
       use_issues_button: true
       use_repository_button: true
