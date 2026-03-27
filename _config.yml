@@ -24,14 +24,12 @@ bibtex_bibfiles:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/transparency-certified/trace-specification
-  path_to_book: docs
+  path_to_book: .
   branch: main
 
 # Add GitHub buttons to your book
 html:
   favicon: favicon.ico
-  use_issues_button: true
-  use_repository_button: true
 
 sphinx:
   config:
@@ -39,3 +37,9 @@ sphinx:
       - custom.css
     html_theme_options:
       search_bar_text: "Search..."
+      repository_url: https://github.com/transparency-certified/trace-specification
+      repository_branch: main
+      path_to_docs: docs
+      use_issues_button: true
+      use_repository_button: true
+      use_edit_page_button: true
