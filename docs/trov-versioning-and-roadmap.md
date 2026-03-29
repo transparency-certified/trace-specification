@@ -21,6 +21,7 @@ For the vocabulary terms themselves, see the [TROV Vocabulary Reference](trov-vo
 
 ---
 
+(design-goals)=
 ## Design Goals
 
 1. **Grounded in practice.** TROV addresses transparency problems faced by real organizations, describes capabilities systems can feasibly implement, and answers verification questions reviewers commonly ask.
@@ -35,6 +36,7 @@ For the vocabulary terms themselves, see the [TROV Vocabulary Reference](trov-vo
 
 ---
 
+(version-numbering)=
 ## Version Numbering
 
 TROV uses **semantic versioning** with different stability guarantees before and after 1.0.
@@ -113,6 +115,7 @@ trov/2#         →  1.x frozen, new namespace, living docs describe latest 2.x 
 
 ---
 
+(what-constitutes-a-version)=
 ## What Constitutes a Version
 
 ### TROV 0.1 (Current Draft — Stabilization Target)
@@ -163,6 +166,7 @@ trov/2#         →  1.x frozen, new namespace, living docs describe latest 2.x 
 
 ---
 
+(extensibility-adopter-specific-terms)=
 ## Extensibility: Adopter-Specific Terms
 
 Adopters will need to include metadata specific to their systems — container runtime details, internal system versions, resource utilization metrics, and similar operational data. For a step-by-step walkthrough, see the [TROV Extension Guide](trov-extension-guide.md).
@@ -198,6 +202,7 @@ Adopters will need to include metadata specific to their systems — container r
 
 ---
 
+(breaking-vs-non-breaking-changes)=
 ## Breaking vs Non-Breaking Changes
 
 The following table describes how changes are classified **after 1.0** (pre-1.0, any of these changes may occur in any 0.x release).
@@ -217,6 +222,7 @@ The following table describes how changes are classified **after 1.0** (pre-1.0,
 
 ---
 
+(repository-structure-and-namespace-resolution)=
 ## Repository Structure and Namespace Resolution
 
 ### The trov repository
@@ -318,6 +324,7 @@ transparency-certified.github.io/trov/
 
 ---
 
+(roadmap)=
 ## Roadmap
 
 ### Phase 1: Stabilize 0.1 (Now — June 2026)

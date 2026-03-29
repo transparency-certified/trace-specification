@@ -9,26 +9,27 @@ A **TRO Declaration** is a JSON-LD document that describes a Transparent Researc
 
 | Document Section | Description |
 |---------|-------------|
-| [Overview](#overview) | What a TRO declaration contains at a high level |
+| [Overview](#tro-format-overview) | What a TRO declaration contains at a high level |
 | [Document Structure](#document-structure) | The `@context`, `@graph`, and namespace prefixes |
 | [The TRO Object](#the-tro-object) | TRS, compositions, arrangements, artifacts, locations, performances |
 | [The Warrant Chain](#the-warrant-chain) | How performance (TRP) attributes link back to TRS capabilities |
 | [Identifier Conventions](#identifier-conventions) | `@id` patterns for TRS, performance, arrangement, and artifact nodes |
 | [Signing and Timestamping](#signing-and-timestamping) | GPG and X.509/CMS signing, timestamp authorities |
-| [Verification](#verification) | What verifying a TRO declaration may involve |
+| [Verification](#tro-format-verification) | What verifying a TRO declaration may involve |
 | [Complete Example](#complete-example) | A full annotated TRO declaration |
-| [Notes](#notes) | JSON-LD conventions, design rationale, known limitations |
+| [Notes](#tro-format-notes) | JSON-LD conventions, design rationale, known limitations |
 
 For definitions of the vocabulary terms used here, see the [TROV Vocabulary Reference](trov-vocabulary.md). For the conceptual background, see the [TRACE Conceptual Model](conceptual-model.md). For the design rationale behind the JSON-LD format, see [TRO Declaration Design](tro-declaration-design.md).
 
 ---
 
+(tro-format-overview)=
 ## Overview
 
 A TRO declaration is a single JSON-LD file (conventionally `*.jsonld`) containing:
 
 1. A **`@context`** block that maps short term names to full URIs.
-2. A **`@graph`** array containing a single TRO object with all of its nested components. (See [Note 2](#notes) for why an array.)
+2. A **`@graph`** array containing a single TRO object with all of its nested components. (See [Note 2](#tro-format-notes) for why an array.)
 
 The TRO object itself contains:
 
@@ -46,6 +47,7 @@ Optionally, the TRO is accompanied by:
 
 ---
 
+(document-structure)=
 ## Document Structure
 
 ### Top-Level Envelope
@@ -57,8 +59,9 @@ Optionally, the TRO is accompanied by:
 }
 ```
 
-The `@context` maps short property names (like `trov:hash`) to full URIs. In 0.1, the `@graph` array contains a single object — the TRO declaration itself (see [Note 2](#notes) for why it is an array).
+The `@context` maps short property names (like `trov:hash`) to full URIs. In 0.1, the `@graph` array contains a single object — the TRO declaration itself (see [Note 2](#tro-format-notes) for why it is an array).
 
+(the-context-block)=
 ### The `@context` Block
 
 ```json
@@ -87,6 +90,7 @@ The mandatory parts of a TRO declaration depend only on TROV and the foundationa
 
 ---
 
+(the-tro-object)=
 ## The TRO Object
 
 In 0.1, the single object in the `@graph` array is the TRO itself.
@@ -297,6 +301,7 @@ fingerprint = hashlib.sha256("".join(all_hashes).encode("utf-8")).hexdigest()
 
 ---
 
+(artifact-arrangements-trovhasarrangement)=
 ### Artifact Arrangements (`trov:hasArrangement`)
 
 An arrangement captures where artifacts were located at a specific point in the workflow. A simple TRO might have just two arrangements — the artifacts present before and after a single computation — but multi-step workflows can have many, with intermediate arrangements shared between performances.
@@ -457,6 +462,7 @@ See [TROV Vocabulary Reference — TRO Attribute Types](trov-vocabulary.md#prede
 
 ---
 
+(the-warrant-chain)=
 ## The Warrant Chain
 
 The warrant chain is TROV's mechanism for accountability. TROV supports declaring part or all of the chain of warranting attributes and capabilities justifying a particular transparency claim. Downstream consumers — publishers, repositories, funding agencies — may impose their own requirements on the completeness of these chains.
@@ -498,6 +504,7 @@ In this example, the TRO-level claim that all input data is included is warrante
 
 ---
 
+(identifier-conventions)=
 ## Identifier Conventions
 
 All `@id` values are local to the document. They are used for cross-referencing between objects within the same TRO declaration. The conventions used by tro-utils are:
@@ -521,6 +528,7 @@ All `@id` values are local to the document. They are used for cross-referencing 
 
 ---
 
+(signing-and-timestamping)=
 ## Signing and Timestamping
 
 A TRO package includes the declaration and one or more signing artifacts. The signing mechanism is not fixed — different TRS implementations use different approaches. What matters is that the signature can be verified against the public key or certificate recorded in the TRO declaration.
@@ -536,6 +544,7 @@ The signature covers the declaration file byte-for-byte. In the reference implem
 
 ---
 
+(tro-format-verification)=
 ## Verification
 
 Verification of a TRO declaration may include:
@@ -548,6 +557,7 @@ Verification of a TRO declaration may include:
 
 ---
 
+(complete-example)=
 ## Complete Example
 
 The following is a minimal but complete TRO declaration describing a data file and a script, a computation that reads them and produces an output, and a claim of Internet isolation.
@@ -708,6 +718,7 @@ The following is a minimal but complete TRO declaration describing a data file a
 
 ---
 
+(tro-format-notes)=
 ## Notes
 
 **Note 1: JSON-LD as JSON.** A TRO declaration is valid JSON. Producers can build it with any JSON library, no RDF tooling required. The `@context`, `@id`, `@type`, and `@graph` keys are the only JSON-LD-specific syntax. Everything else is standard JSON objects, arrays, and strings.

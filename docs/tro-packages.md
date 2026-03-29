@@ -9,17 +9,18 @@ How Transparent Research Objects are packaged for distribution. TRACE and TROV a
 
 | Document Section | Description |
 |---------|-------------|
-| [Overview](#overview) | What a TRO package contains |
+| [Overview](#tro-packages-overview) | What a TRO package contains |
 | [Package Contents](#package-contents) | Declaration, signing artifacts, and optional research artifacts for each signing mechanism |
 | [Directory Layout](#directory-layout) | How files are organized inside ZIP archives |
 | [On-Demand Signing](#on-demand-signing) | Creating signed packages after execution |
-| [Verification](#verification) | Package-level checks beyond declaration validation |
+| [Verification](#tro-packages-verification) | Package-level checks beyond declaration validation |
 | [Open Questions](#open-questions) | Design decisions not yet resolved for 0.1 |
 
 For the structure of the JSON-LD declaration itself, see [TRO Declaration Format](tro-declaration-format.md). For the vocabulary terms, see [TROV Vocabulary Reference](trov-vocabulary.md).
 
 ---
 
+(tro-packages-overview)=
 ## Overview
 
 A TRO package is a collection of files containing:
@@ -47,6 +48,7 @@ Critically, in TRACE an artifact's identity is its content hash, not its filenam
 
 ---
 
+(package-contents)=
 ## Package Contents
 
 Every TRO package contains at minimum a declaration file and a signature. The specific signing artifacts depend on the mechanism used. TROV is agnostic to the signing mechanism; the two current implementations demonstrate different but equally valid approaches.
@@ -76,6 +78,7 @@ The package may include the research artifacts referenced by the declaration, or
 
 ---
 
+(directory-layout)=
 ## Directory Layout
 
 TRACE places no requirements on the directory structure within a package. A flat archive with all files at the root is valid. So is any nested structure. The declaration identifies artifacts by content hash, not by path.
@@ -109,6 +112,7 @@ Repositories like Zenodo and Dataverse can display the file listing of a ZIP arc
 
 ---
 
+(on-demand-signing)=
 ## On-Demand Signing
 
 A TRS may produce unsigned packages during execution and sign them later on demand. This is valid as long as the declaration file is not modified between creation and signing.
@@ -126,9 +130,10 @@ The critical constraint is chain of custody: the TRS must sign the declaration i
 
 ---
 
+(tro-packages-verification)=
 ## Verification
 
-The [TRO Declaration Format](tro-declaration-format.md#verification) describes verification of the declaration's internal consistency (fingerprint, arrangement references, warrant chain). At the package level, a verifier additionally checks:
+The [TRO Declaration Format](tro-declaration-format.md#tro-format-verification) describes verification of the declaration's internal consistency (fingerprint, arrangement references, warrant chain). At the package level, a verifier additionally checks:
 
 1. **Signature validity.** The signature on the declaration file matches the public key or certificate associated with the TRS. The key or certificate must be cryptographically bound to the signature — either by inclusion in the signed declaration itself (GPG: `trov:publicKey`) or by a certificate chain embedded in the signature file (X.509/CMS: `.p7s`). A public key provided separately from the signed content does not establish that the claimed TRS produced the signature.
 2. **Timestamp validity.** The signed timestamp establishes that the declaration's signature was produced no later than the indicated time. For GPG, this is the `.tsr` file verified against the TSA's certificate. For X.509/CMS, the timestamp countersignature is embedded in the `.p7s`.
@@ -148,6 +153,7 @@ In both cases, a verifier must consult a trustworthy source beyond the TRO packa
 
 ---
 
+(open-questions)=
 ## Open Questions
 
 The following design decisions are not yet resolved for 0.1:

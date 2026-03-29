@@ -55,4 +55,4 @@ whether a "re-hydrated" dataset matches the original.
 
 ### Examples
 
-See [Twitter](example-twitter) examples.
+See [Twitter](#example-twitter) examples.

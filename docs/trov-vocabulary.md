@@ -18,12 +18,13 @@ Term reference for the Transparent Research Object Vocabulary (TROV). Lists ever
 | [Cardinality Constraints](#cardinality-constraints) | Required vs optional properties and their multiplicities |
 | [External Vocabularies](#external-vocabularies-used) | RDF, RDFS, and schema.org terms used alongside TROV |
 | [Known Limitations](#known-limitations) | Scope boundaries and open questions for 0.1 |
-| [Notes](#notes) | JSON-LD context, design rationale, relationship to pre-release |
+| [Notes](#trov-vocab-notes) | JSON-LD context, design rationale, relationship to pre-release |
 
 For the conceptual background motivating this vocabulary, see the [TRACE Conceptual Model](conceptual-model.md). For the JSON-LD format used to express TRO declarations, see [TRO Declaration Format](tro-declaration-format.md). For the design rationale behind the JSON-LD format, see [TRO Declaration Design](tro-declaration-design.md).
 
 ---
 
+(vocabulary-metadata)=
 ## Vocabulary Metadata
 
 | | |
@@ -37,6 +38,7 @@ For the conceptual background motivating this vocabulary, see the [TRACE Concept
 
 ---
 
+(classes)=
 ## Classes
 
 ### Core Entities
@@ -86,6 +88,7 @@ TRO attribute
 
 ---
 
+(properties)=
 ## Properties
 
 ### TRO Properties
@@ -148,6 +151,7 @@ TRO attribute
 
 ---
 
+(predefined-values-trs-capability-types)=
 ## Predefined Values: TRS Capability Types
 
 The following capability types are currently defined. This list is designed to grow as new transparency conditions are identified by the research community.
@@ -181,6 +185,7 @@ The following capability types are currently defined. This list is designed to g
 
 ---
 
+(predefined-values-trp-attribute-types)=
 ## Predefined Values: TRP Attribute Types
 
 | Individual | Parent | Warranted By | Description |
@@ -190,6 +195,7 @@ The following capability types are currently defined. This list is designed to g
 
 ---
 
+(predefined-values-tro-attribute-types)=
 ## Predefined Values: TRO Attribute Types
 
 | Individual | Parent | Warranted By | Description |
@@ -198,6 +204,7 @@ The following capability types are currently defined. This list is designed to g
 
 ---
 
+(cardinality-constraints)=
 ## Cardinality Constraints
 
 The following constraints are defined in SHACL shapes and enforced during validation.
@@ -223,6 +230,7 @@ The following constraints are defined in SHACL shapes and enforced during valida
 
 ---
 
+(external-vocabularies-used)=
 ## External Vocabularies Used
 
 TROV uses terms from the following external vocabularies:
@@ -235,6 +243,7 @@ TROV uses terms from the following external vocabularies:
 
 ---
 
+(known-limitations)=
 ## Known Limitations
 
 | Limitation | Disposition |
@@ -248,6 +257,7 @@ TROV uses terms from the following external vocabularies:
 
 ---
 
+(trov-vocab-notes)=
 ## Notes
 
 **Namespace.** The 0.1 namespace is `https://w3id.org/trace/trov/0.1#`; the pre-release namespace `https://w3id.org/trace/2023/05/trov#` is retired. See [Pre-Release Vocabulary Reference](trov-prerelease.md) for migration guidance.

@@ -135,7 +135,7 @@ export GPG_PASSPHRASE="s3cr3tkey"
 (trace-server-setup)=
 ## Setting up the TRACE Server Environment
 
-The TRACE "server" environment is where the workflow is executed. This will depend greatly on the existing infrastructure, and is meant to be general. Your environment will need the tools to collect and sign the information for TROs, but can otherwise be quite variable. The section about [TRS Description](trs-description) will capture this environment in a formal manner. 
+The TRACE "server" environment is where the workflow is executed. This will depend greatly on the existing infrastructure, and is meant to be general. Your environment will need the tools to collect and sign the information for TROs, but can otherwise be quite variable. The section about [TRS Description](#trs-description) will capture this environment in a formal manner. 
 
 
 
@@ -203,11 +203,11 @@ ubuntu@b3fabd1971c7:/project#
 ### Define the TRACE Server capabilities
 
 TROs contain by default basic information about the TRS that was used to generate them. We therefore need to specify the [TRACE System
-Certificate](element-trace-certificate), that specifies how transparency is
-supported by the system and a signing key associated with the certificate. The current implementation relies on a JSON-LD representation of the capabilities of the system. By convention, this is stored in a file `trs.jsonld` or similar. There can be multiple such specifications in use at the same time. Those in use should be separately published (see [web server](web-server)), and preserved.
+Certificate](#element-trace-certificate), that specifies how transparency is
+supported by the system and a signing key associated with the certificate. The current implementation relies on a JSON-LD representation of the capabilities of the system. By convention, this is stored in a file `trs.jsonld` or similar. There can be multiple such specifications in use at the same time. Those in use should be separately published (see [web server](#web-server)), and preserved.
 
 The TRACE System Certificate is expressed in structured language that describe assertions about supported transparency levels and features (see
-  [transparency questions](questions)).
+  [transparency questions](#questions)).
 
 
 :::{margin} The **`trs.jsonld** here is very simple. 

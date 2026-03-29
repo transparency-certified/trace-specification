@@ -3,7 +3,7 @@
 By certifying the original execution of a computational workflow, consumers of
 research can trust results without necessarily repeating the computations.
 Instead of relying on researchers to
-[self-certify](barriers-self-certification), TRACE requires that the operators
+[self-certify](#barriers-self-certification), TRACE requires that the operators
 or owners of systems that researchers use adopt key practices to aid in the
 production of transparent and trustworthy artifacts.
 

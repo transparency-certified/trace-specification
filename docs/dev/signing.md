@@ -7,8 +7,8 @@ non-repudiability (the signer cannot deny that they signed it). The signature
 mechanism determines how TROs are verified and TRACE is concerned with verifying
 the signature at the time of TRO creation even if the signing key/certificate
 has expired or been revoked/invalidated.  We have considered initially using
-[GPG](signing-gpg) with possible future support for [X.509
-certificates](signing-x509). 
+[GPG](#signing-gpg) with possible future support for [X.509
+certificates](#signing-x509). 
 
 A key difference between these two approaches is the underlying trust model.
 In public key infrastructure (PKI), trust models define how the authenticity of

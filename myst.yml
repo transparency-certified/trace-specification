@@ -73,5 +73,3 @@ site:
     favicon: favicon.ico
     folders: true
   template: book-theme
-
-myst_heading_anchors: 2

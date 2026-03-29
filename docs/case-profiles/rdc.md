@@ -1,7 +1,7 @@
 (caseprofile-rdc)=
 # Federal Research Data Centers
 
-Jump to [TRACE in the FSRDC](caseprofile-trace-in-the-rdc).
+Jump to [TRACE in the FSRDC](#caseprofile-trace-in-the-rdc).
 
 [Federal Statistical Research Data
 Centers](https://www.census.gov/about/adrm/fsrdc.html) (FSRDC) provide secure
@@ -64,7 +64,7 @@ not preserved or de-accessioned, a record of the when and why should be kept.
 
 ### TRACE System description
 
-A TRACE System description should be published. The content should conform to the [TRACE System](element-trace-system), and could be made human-readable as a  webpage that has
+A TRACE System description should be published. The content should conform to the [TRACE System](#element-trace-system), and could be made human-readable as a  webpage that has
 structured, machine-readable content. It is expected
 that a TRACE System description does not reveal sensitive information. It should
 include principles of disclosure review. In principle, a duly

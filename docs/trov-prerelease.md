@@ -9,16 +9,17 @@ Frozen snapshot of the pre-release vocabulary used by early TRACE implementation
 
 | Document Section | Description |
 |---------|-------------|
-| [Vocabulary Metadata](#vocabulary-metadata) | Namespace, prefix, and status |
+| [Vocabulary Metadata](#prerelease-vocabulary-metadata) | Namespace, prefix, and status |
 | [Scope](#scope) | What terms are included |
-| [Classes](#classes) | Core entities, artifacts, arrangements, and locations |
-| [Properties](#properties) | TRO, TRS, composition, arrangement, TRP, and warrant chain properties |
+| [Classes](#prerelease-classes) | Core entities, artifacts, arrangements, and locations |
+| [Properties](#prerelease-properties) | TRO, TRS, composition, arrangement, TRP, and warrant chain properties |
 | [TRS Capabilities](#trs-capability-types) | Capability types produced by pre-release implementations |
 | [TRP Attributes](#trp-attribute-types) | Attribute types and their warrant links |
-| [External Vocabularies](#external-vocabularies-used) | RDF, RDFS, and schema.org terms used alongside TROV |
+| [External Vocabularies](#prerelease-external-vocabularies-used) | RDF, RDFS, and schema.org terms used alongside TROV |
 | [Term Changes in TROV 0.1](#term-changes-in-trov-01) | Term renames |
 | [Migration](#migration-to-trov-01) | Steps to convert pre-release declarations to 0.1 |
 
+(prerelease-vocabulary-metadata)=
 ## Vocabulary Metadata
 
 - Namespace: `https://w3id.org/trace/2023/05/trov#`
@@ -29,12 +30,14 @@ Frozen snapshot of the pre-release vocabulary used by early TRACE implementation
 
 ---
 
+(scope)=
 ## Scope
 
 This document records only the terms actually used by the pre-release implementations. Terms previously defined in the ontology file (`trov.ttl`) or in hand-written examples but not produced by early implementations are not listed here. For the full vocabulary including additional capability types and attribute types, see [TROV 0.1](trov-vocabulary.md).
 
 ---
 
+(prerelease-classes)=
 ## Classes
 
 ### Core Entities
@@ -62,6 +65,7 @@ This document records only the terms actually used by the pre-release implementa
 
 ---
 
+(prerelease-properties)=
 ## Properties
 
 ### TRO Properties
@@ -121,6 +125,7 @@ This document records only the terms actually used by the pre-release implementa
 
 ---
 
+(trs-capability-types)=
 ## TRS Capability Types
 
 | Type | Description |
@@ -130,6 +135,7 @@ This document records only the terms actually used by the pre-release implementa
 
 ---
 
+(trp-attribute-types)=
 ## TRP Attribute Types
 
 | Type | Warranted by | Description |
@@ -139,6 +145,7 @@ This document records only the terms actually used by the pre-release implementa
 
 ---
 
+(prerelease-external-vocabularies-used)=
 ## External Vocabularies Used
 
 Both implementations use the following external vocabularies alongside TROV:
@@ -153,6 +160,7 @@ The `schema:` terms appear on the TRO root node and on the TRS node.
 
 ---
 
+(term-changes-in-trov-01)=
 ## Term Changes in TROV 0.1
 
 | Pre-release | TROV 0.1 |
@@ -165,6 +173,7 @@ The `schema:` terms appear on the TRO root node and on the TRS node.
 
 ---
 
+(migration-to-trov-01)=
 ## Migration to TROV 0.1
 
 Based on the current 0.1 draft, updating a pre-release TRO declaration to conform to TROV 0.1 involves the following changes. These steps may be revised as 0.1 is finalized.
