@@ -1,0 +1,30 @@
+name: Jupyter Book Build Check
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      - name: Install Jupyter Book (via myst)
+        run: npm install -g jupyter-book
+
+      - name: Build and check for warnings
+        run: |
+          jupyter-book build --site --strict 2>&1 | tee build.log
+          if grep -qE '^⚠️' build.log; then
+            echo "::error::Jupyter Book build produced warnings. See log for details."
+            grep -E '^⚠️' build.log | while IFS= read -r line; do
+              echo "::warning::$line"
+            done
+            exit 1
+          fi
