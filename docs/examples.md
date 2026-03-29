@@ -102,7 +102,7 @@ Economic Literature.
 [Paper](https://www.aeaweb.org/articles?id=10.1257/jel.20211623)
 
 * This paper uses [IPUMS USA](#caseprofile-ipums) data accessed via API. 
-* An [unofficial Github](https://github.com/AEADataEditor/JEL-2021-162) is
+* An [unofficial Github](https://github.com/AEADataEditor/JEL-2021-1623) is
   available to demonstrate how the API is used to obtain extracts. A private
   repo provided by the authors has a copy of the extracted data.
 

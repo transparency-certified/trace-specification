@@ -5,7 +5,7 @@ The [Banco de Portugal Microdata Research
 Laboratory](https://bplim.bportugal.pt/content/access-0) (BPLIM) provides access
 to datasets about the Portuguese economy. The following summary is based on the
 BPLIM [Guide for
-Researchers](https://msites-dee-bplim-prd.azurewebsites.net/sites/default/files/guide_for_researchers_v202210.pdf) and [Guimarães (2023)](https://doi.org/10.1162/99608f92.54a00239).
+Researchers](https://bplim.github.io/Manuals/Guides/01_Guide_for_Researchers/) and [Guimarães (2023)](https://doi.org/10.1162/99608f92.54a00239).
 
 ## Data access
 
