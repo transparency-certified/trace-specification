@@ -1,5 +1,12 @@
 # TRACE Sample Implementation
 
+:::{admonition} Pre-release Example
+:class: warning
+
+This example was created using a **pre-release version** of TRACE/TROV. References within this page may not point to current (versioned) pages. An update to this example is pending.
+
+:::
+
 This document illustrates the "full package". It provides implementable examples of how to define a TRACE server in the formal specification of a TRS, then how to run two different types of TRACE-compliant workflows (automated and manual), and two separate ways to publish the final results (all-in-one server, and separately with a trusted repository).
 
 ## Pre-requisites
