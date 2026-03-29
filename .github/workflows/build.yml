@@ -18,13 +18,22 @@ jobs:
       - name: Install Jupyter Book (via myst)
         run: npm install -g jupyter-book
 
-      - name: Build and check for warnings
+      - name: Build and check for warnings or errors
         run: |
-          jupyter-book build --site --strict 2>&1 | tee build.log
+          jupyter-book build --site --check-links --strict 2>&1 | tee build.log
+          FAILED=0
           if grep -qE '^⚠️' build.log; then
             echo "::error::Jupyter Book build produced warnings. See log for details."
             grep -E '^⚠️' build.log | while IFS= read -r line; do
               echo "::warning::$line"
             done
-            exit 1
+            FAILED=1
           fi
+          if grep -qE '^⛔️' build.log; then
+            echo "::error::Jupyter Book build produced errors. See log for details."
+            grep -E '^⛔️' build.log | while IFS= read -r line; do
+              echo "::error::$line"
+            done
+            FAILED=1
+          fi
+          exit $FAILED
