@@ -1,0 +1,77 @@
+version: 1
+project:
+  title: Transparency Certified
+  authors:
+    - name: The TRACE Team
+  exclude:
+    - venv
+  github: transparency-certified/trace-specification
+  bibliography:
+    - references.bib
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/book.pdf
+  toc:
+    - file: docs/intro.md
+    - title: TRACE Overview
+      children:
+        - file: docs/motivation.md
+        - file: docs/overview.md
+        - file: docs/users.md
+        - file: docs/barriers.md
+        - file: docs/case-profiles.md
+          children:
+            - file: docs/case-profiles/rdc.md
+            - file: docs/case-profiles/bplim.md
+            - file: docs/case-profiles/twitter.md
+            - file: docs/case-profiles/ipums.md
+        - file: docs/examples.md
+        - file: docs/glossary.md
+        - file: docs/about.md
+        - file: docs/acknowledgements.md
+        - file: docs/references.md
+    - title: TRACE Concepts
+      children:
+        - file: docs/questions.md
+        - file: docs/dev/signing.md
+          title: Signing & Verification
+        - file: docs/elements.md
+        - file: docs/conceptual-model.md
+    - title: TRACE Specification
+      children:
+        - file: docs/specifications.md
+          title: Overview
+        - file: docs/tro-declaration-format.md
+          title: Declaration Format
+        - file: docs/tro-declaration-design.md
+          title: Declaration Design
+        - file: docs/tro-packages.md
+          title: TRO Packages
+        - file: docs/trov-vocabulary.md
+          title: Vocabulary Reference
+        - file: docs/trov-extension-guide.md
+          title: Extension Guide
+        - file: docs/trov-versioning-and-roadmap.md
+          title: Versioning & Roadmap
+        - file: docs/trov-prerelease.md
+          title: Pre-Release Reference
+    - title: TRACE Tools
+      children:
+        - file: docs/infrastructure.md
+        - file: docs/trace-prototype.md
+        - file: docs/trace-toolkit.md
+        - file: docs/slurm-plugin.md
+        - file: docs/sample-implementation.md
+    - title: Project Infrastructure
+      children:
+        - file: docs/documentation-infrastructure.md
+          title: Documentation Infrastructure
+site:
+  options:
+    logo: logo.png
+    favicon: favicon.ico
+    folders: true
+  template: book-theme
+
+myst_heading_anchors: 2
