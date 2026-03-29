@@ -73,3 +73,6 @@ site:
     favicon: favicon.ico
     folders: true
   template: book-theme
+  actions:
+    - title: Open Issue
+      url: https://github.com/transparency-certified/trace-specification/issues/new
