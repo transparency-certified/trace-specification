@@ -11,11 +11,11 @@ author-provided artifacts are complete or can actually be used to reproduced
 results.
 
 Particularly problematic are studies that employ [sensitive or proprietary
-data](barriers-sensitive-proprietary) for which access and reuse are restricted; 
-[streaming, transient, or ephemeral data](barriers-streaming-transient-ephemeral)
+data](#barriers-sensitive-proprietary) for which access and reuse are restricted; 
+[streaming, transient, or ephemeral data](#barriers-streaming-transient-ephemeral)
 that cannot be used to verify reproducibility due to their dynamic nature; or 
 [very large-scale or specialized computational
-resources](barriers-large-specialized-compute) available only to authorized
+resources](#barriers-large-specialized-compute) available only to authorized
 users. In these cases, verification by repeating computations may not be
 possible.
 

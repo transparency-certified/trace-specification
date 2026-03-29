@@ -12,11 +12,12 @@ Why TRO declarations use JSON-LD, what each audience gets from the format, and h
 | [The Core Idea](#the-core-idea) | One file, two perspectives: valid JSON and valid RDF simultaneously |
 | [What This Means in Practice](#what-this-means-in-practice) | What producers, JSON consumers, RDF consumers, and repositories each get |
 | [The JSON Schema Constraint](#the-json-schema-constraint) | How the fixed document structure enables both audiences |
-| [The @context Is the Bridge](#the-context-is-the-bridge) | How the JSON-LD context connects the JSON and RDF perspectives |
+| [The `@context` Is the Bridge](#the-context-is-the-bridge) | How the JSON-LD context connects the JSON and RDF perspectives |
 | [Summary](#summary) | Four-audience comparison table |
 
 ---
 
+(the-core-idea)=
 ## The Core Idea
 
 A TRO declaration — the document that describes a Transparent Research Object — is a JSON-LD document. This means it is simultaneously:
@@ -30,6 +31,7 @@ This dual nature is the central architectural decision for TRO declarations: one
 
 ---
 
+(what-this-means-in-practice)=
 ## What This Means in Practice
 
 ### For TRO producers
@@ -85,6 +87,7 @@ Both perspectives let repositories integrate TRO metadata with other vocabularie
 
 ---
 
+(the-json-schema-constraint)=
 ## The JSON Schema Constraint
 
 The flexibility of RDF is powerful for interoperability but makes validation and tooling harder. If a TRO declaration were unconstrained RDF, a producer could express the same information in many structurally different ways, and consumers would need graph-pattern matching to find anything.
@@ -99,6 +102,7 @@ The constraint is more restrictive than what RDF allows. You cannot rearrange th
 
 ---
 
+(the-context-is-the-bridge)=
 ## The `@context` Is the Bridge
 
 The `@context` block is the mechanism that connects the two perspectives. For JSON producers, it is a fixed header that can be copied from the [TRO Declaration Format](tro-declaration-format.md) examples and modified only if adding a namespace prefix. For RDF consumers, it is the mapping that turns JSON property names into globally unique URIs.
@@ -107,6 +111,7 @@ A TRO producer who follows the JSON Schema and preserves the `@context` is produ
 
 ---
 
+(summary)=
 ## Summary
 
 | Perspective | Tools | What you see | What you get |

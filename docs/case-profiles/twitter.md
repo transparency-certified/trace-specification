@@ -4,7 +4,7 @@
 Twitter provides access to data for [Academic
 Research](https://developer.twitter.com/en/products/twitter-api/academic-research).
 The Twitter [Developer Agreement and
-Policy](https://developer.twitter.com/en/developer-terms/agreement-and-policy)
+Policy](https://web.archive.org/web/20220307191453/https://developer.twitter.com/en/developer-terms/agreement-and-policy)
 includes the following content redistribution policy:
 
 > If you provide Twitter Content to third parties, including downloadable
@@ -55,4 +55,4 @@ whether a "re-hydrated" dataset matches the original.
 
 ### Examples
 
-See [Twitter](example-twitter) examples.
+See [Twitter](#example-twitter) examples.

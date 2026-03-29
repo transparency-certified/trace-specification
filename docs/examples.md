@@ -20,14 +20,14 @@ package](https://doi.org/10.3886/E135041V1)
 Berger, David, Kyle Herkenhoff, and Simon Mongey. 2022. "Labor Market Power."
 American Economic Review 112(4): 1147–93. [Replication
 package](https://doi.org/10.3886/E154241V2)
-* Uses confidential [Census data](caseprofile-rdc), passed disclosure avoidance review
+* Uses confidential [Census data](#caseprofile-rdc), passed disclosure avoidance review
 
 Yeh, Chen, Claudia Macaluso, and Brad Hershbein. 2022. "Monopsony in the US
 Labor Market." American Economic Review 112(7): 2099–2138.
 [Paper](https://www.aeaweb.org/articles?id=10.1257/aer.20200025) [Replication
 package](https://doi.org/10.3886/E162581V1)
 
-* Uses confidential [Census data](caseprofile-rdc), passed disclosure avoidance review
+* Uses confidential [Census data](#caseprofile-rdc), passed disclosure avoidance review
 
 
 (example-specialized-compute)=
@@ -101,8 +101,8 @@ Economics of Internal Migration: Advances and Policy Questions." Journal of
 Economic Literature.
 [Paper](https://www.aeaweb.org/articles?id=10.1257/jel.20211623)
 
-* This paper uses [IPUMS USA](caseprofile-ipums) data accessed via API. 
-* An [unofficial Github](https://github.com/AEADataEditor/JEL-2021-162) is
+* This paper uses [IPUMS USA](#caseprofile-ipums) data accessed via API. 
+* An [unofficial Github](https://github.com/AEADataEditor/JEL-2021-1623) is
   available to demonstrate how the API is used to obtain extracts. A private
   repo provided by the authors has a copy of the extracted data.
 

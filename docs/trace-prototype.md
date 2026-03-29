@@ -1,17 +1,23 @@
 (trace-prototype)=
 # TRACE Prototype
+:::{attention}
+
+`server.trace-poc.xyz` has been discontinued as of November 2024. It has been superseeded by https://sivacor.org/
+Following text is retained for archival purposes.
+
+:::
 
 The TRACE Prototype has been developed as an end-to-end implementation to
 facilitate requirements discussions. It consists of the following:
 
-* https://server.trace-poc.xyz: Running instance of the TRACE prototype server
+* `https://server.trace-poc.xyz`: Running instance of the TRACE prototype server
 * [trace-prototype](https://github.com/transparency-certified/trace-prototype):
   contains source code for a proof-of-concept TRACE Server and associated
   commandline interface. 
 * [sample-trace-workflow](https://github.com/transparency-certified/sample-trace-workflow/): Example
   workflow to demonstrate command-line integration including GitHub actions.
 
-## server.trace-poc.xyz
+## `server.trace-poc.xyz`
 
 This is a running instance of the
 [trace-prototype](https://github.com/transparency-certified/trace-prototype) server
@@ -46,7 +52,7 @@ $ trace-poc submit --entrypoint "run.sh" --container-user rstudio \
   --target-repo-dir "/home/rstudio" --trace-server https://server.trace-poc.xyz .
 ```
 
-This will create a new entry on the server at https://server.trace-poc.xyz/.
+This will create a new entry on the server at `https://server.trace-poc.xyz/`.
 
 ## Inspecting the TRO
 

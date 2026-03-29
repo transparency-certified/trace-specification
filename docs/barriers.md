@@ -28,7 +28,7 @@ within a specific system.
 Research in the social sciences often relies on access to {term}`sensitive <Sensitive data>` 
 or {term}`proprietary <Proprietary data>` data that cannot be redistributed
 and, in many cases, is only accessible to authorized users on [access-controlled
-resources](barriers-large-specialized-compute). This includes data collected by
+resources](#barriers-large-specialized-compute). This includes data collected by
 researchers and stored on secure infrastructure at their institutions;
 confidential private-sector, school district, or government administrative data;
 as well as data from national statistical agencies. The results of research may

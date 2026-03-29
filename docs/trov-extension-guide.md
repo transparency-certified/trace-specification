@@ -9,20 +9,22 @@ How to extend the TRACE model with institution-specific terms in TRO declaration
 
 | Document Section | Description |
 |---------|-------------|
-| [Overview](#overview) | The core principle and what this guide covers |
-| [Step by Step](#step-by-step) | Choose a prefix, add to @context, use prefixed property names |
+| [Overview](#extension-guide-overview) | The core principle and what this guide covers |
+| [Step by Step](#step-by-step) | Choose a prefix, add to `@context`, use prefixed property names |
 | [JSON Schema Validation](#how-json-schema-validation-handles-extensions) | How the schema validates TROV terms while supporting extensions |
 | [Extending TROV with Custom Types](#extending-trov-with-custom-types) | Defining custom capabilities, attributes, signing mechanisms, and other typed terms |
 | [Aligning with Future Versions](#aligning-custom-terms-with-future-trov-versions) | Alignment when a custom term is later standardized in TROV |
 
 ---
 
+(extension-guide-overview)=
 ## Overview
 
 Use your own namespace for institution-specific terms. TROV uses the prefix `trov:` for its terms; your system may define its own prefix for terms specific to your implementation. Custom terms coexist with TROV terms in the same declaration without conflict. The JSON Schema validates TROV terms while allowing namespaced extensions through.
 
 ---
 
+(step-by-step)=
 ## Step by Step
 
 ### 1. Choose a namespace and prefix
@@ -87,6 +89,7 @@ See [Extending TROV with Custom Types](#extending-trov-with-custom-types) for a 
 
 ---
 
+(how-json-schema-validation-handles-extensions)=
 ## How JSON Schema Validation Handles Extensions
 
 The TROV JSON Schema is designed to validate the TROV core while supporting namespaced extensions:
@@ -98,6 +101,7 @@ The TROV JSON Schema is designed to validate the TROV core while supporting name
 
 ---
 
+(extending-trov-with-custom-types)=
 ## Extending TROV with Custom Types
 
 The TROV vocabulary defines predefined values for capabilities, performance attributes, and other typed properties. Adopters whose TRS uses types not yet covered by TROV can define custom types in their own namespace.
@@ -185,6 +189,7 @@ If a custom type proves broadly useful across multiple TRS implementations, it c
 
 ---
 
+(aligning-custom-terms-with-future-trov-versions)=
 ## Aligning Custom Terms with Future TROV Versions
 
 If a concept you defined in your namespace is later standardized as a `trov:` term (for example, if a future version of TROV adds `trov:cpuArchitecture`, and this term fully captures the concept represented by your custom `mytrs:architecture` term), consider using the standard term in new declarations. Existing TRO declarations remain valid.
