@@ -1,5 +1,5 @@
 # TROV Vocabulary Reference
-<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
+<span class="draft-badge">
   TROV 0.1 DRAFT</span>
 
 *This document is a draft and subject to revision.
@@ -66,6 +66,7 @@ For the conceptual background motivating this vocabulary, see the [TRACE Concept
 |-------|-------------|
 | `trov:ArtifactArrangement` | A named collection of artifact locations. Arrangements are linked to performances as inputs or outputs. |
 | `trov:ArtifactLocation` | The placement of a specific artifact within an arrangement. Links one artifact to one resource path. |
+| `trov:ArrangementBinding` | Binds an arrangement to a TRP at a specific path. Used when a TRP accesses or contributes to an arrangement at a particular location. |
 
 ### The Warrant Chain: Attributes and Capabilities
 
@@ -117,8 +118,10 @@ TRO attribute
 | Property | Domain | Range | Description |
 |----------|--------|-------|-------------|
 | `trov:wasConductedBy` | `TrustedResearchPerformance` | `TrustedResearchSystem` | Links a TRP to the TRS that conducted it. |
-| `trov:accessedArrangement` | `TrustedResearchPerformance` | `ArtifactArrangement` | Links a TRP to an arrangement it read from. |
-| `trov:contributedToArrangement` | `TrustedResearchPerformance` | `ArtifactArrangement` | Links a TRP to an arrangement it wrote to. |
+| `trov:accessedArrangement` | `TrustedResearchPerformance` | `ArrangementBinding` | Links a TRP to an arrangement it read from, via an `ArrangementBinding` with an optional `trov:boundTo` path. |
+| `trov:contributedToArrangement` | `TrustedResearchPerformance` | `ArrangementBinding` | Links a TRP to an arrangement it wrote to, via an `ArrangementBinding` with an optional `trov:boundTo` path. |
+| `trov:arrangement` | `ArrangementBinding` | `ArtifactArrangement` | Links a binding to the arrangement it binds. |
+| `trov:boundTo` | `ArrangementBinding` | Literal (string) | Where the arrangement was accessible to the TRP (optional). Relative paths in the arrangement resolve against this. |
 | `trov:hasPerformanceAttribute` | `TrustedResearchPerformance` | `TRPAttribute` | Links a TRP to a transparency attribute claimed for it. |
 | `trov:startedAtTime` | `TrustedResearchPerformance` | Literal (ISO 8601 string) | When the performance began. |
 | `trov:endedAtTime` | `TrustedResearchPerformance` | Literal (ISO 8601 string) | When the performance ended. |
