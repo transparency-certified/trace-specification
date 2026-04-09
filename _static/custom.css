@@ -28,6 +28,13 @@
   }
 }
 
+/* Reduce prominence of author subtitle under page titles */
+.myst-fm-authors-list {
+  margin-top: -0.5em;
+  margin-bottom: 0.5em;
+  opacity: 0.7;
+}
+
 /* DRAFT badge pill */
 .draft-badge {
   display: inline-block;
