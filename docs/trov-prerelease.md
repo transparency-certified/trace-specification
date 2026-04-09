@@ -1,5 +1,5 @@
 # TROV Pre-Release Vocabulary Reference
-<span style="display:inline-block; padding:2px 10px;  margin-bottom:16px; background:#f0ad4e; font-weight:bold; color:black; border-radius:4px; font-size:14px;">
+<span class="draft-badge">
   DRAFT</span>
 
 *This document is a draft and subject to revision.
