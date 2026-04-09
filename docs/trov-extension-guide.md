@@ -47,7 +47,7 @@ The `@context` block in a TRO declaration maps prefixes to namespace URIs. Add y
         "rdf":  "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
         "trov": "https://w3id.org/trace/trov/0.1#",
-        "schema": "https://schema.org",
+        "schema": "https://schema.org/",
         "mytrs": "https://example.org/mytrs#"
     }
 ]

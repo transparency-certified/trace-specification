@@ -70,7 +70,7 @@ The `@context` maps short property names (like `trov:hash`) to full URIs. In 0.1
         "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
         "trov":   "https://w3id.org/trace/trov/0.1#",
-        "schema": "https://schema.org"
+        "schema": "https://schema.org/"
     }
 ]
 ```
@@ -82,7 +82,7 @@ The context defines four namespace prefixes:
 | `rdf:` | `http://www.w3.org/1999/02/22-rdf-syntax-ns#` | RDF type system |
 | `rdfs:` | `http://www.w3.org/2000/01/rdf-schema#` | Labels and comments |
 | `trov:` | `https://w3id.org/trace/trov/0.1#` | All TROV terms |
-| `schema:` | `https://schema.org` | Standard metadata (name, description, dates) |
+| `schema:` | `https://schema.org/` | Standard metadata (name, description, dates) |
 
 The mandatory parts of a TRO declaration depend only on TROV and the foundational `rdf:` and `rdfs:` namespaces. The `schema:` prefix is a convenience for common metadata — it may be omitted if no `schema:` properties are used, and no TRACE-compliant tool may reject a TRO declaration for missing `schema:` properties. Conversely, consumers of TROs — especially those curating triples extracted from TRO declarations — are free to discard non-TROV triples (e.g. `schema:` properties) to avoid undesired inferences that would result from importing large external ontologies.
 
@@ -569,7 +569,7 @@ The following is a minimal but complete TRO declaration describing a data file a
             "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
             "trov":   "https://w3id.org/trace/trov/0.1#",
-            "schema": "https://schema.org"
+            "schema": "https://schema.org/"
         }
     ],
     "@graph": [
