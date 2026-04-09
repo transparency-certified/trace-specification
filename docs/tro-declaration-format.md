@@ -392,8 +392,16 @@ A performance records a supervised unit of work — typically a computation exec
         "trov:wasConductedBy": { "@id": "trs" },
         "trov:startedAtTime": "2024-06-15T14:00:00",
         "trov:endedAtTime":   "2024-06-15T14:25:00",
-        "trov:accessedArrangement":       { "@id": "arrangement/0" },
-        "trov:contributedToArrangement":  { "@id": "arrangement/1" },
+        "trov:accessedArrangement": {
+            "@id": "trp/0/binding/0",
+            "@type": "trov:ArrangementBinding",
+            "trov:arrangement": { "@id": "arrangement/0" }
+        },
+        "trov:contributedToArrangement": {
+            "@id": "trp/0/binding/1",
+            "@type": "trov:ArrangementBinding",
+            "trov:arrangement": { "@id": "arrangement/1" }
+        },
         "trov:hasPerformanceAttribute": [
             {
                 "@id": "trp/0/attribute/0",
@@ -420,9 +428,18 @@ A performance records a supervised unit of work — typically a computation exec
 | `trov:wasConductedBy` | object | **Yes** | Reference to the TRS, e.g. `{ "@id": "trs" }`. |
 | `trov:startedAtTime` | string (ISO 8601) | no | When the performance began. |
 | `trov:endedAtTime` | string (ISO 8601) | no | When the performance ended. |
-| `trov:accessedArrangement` | object or array | no | Reference(s) to input arrangement(s). A single arrangement may be a plain object reference; multiple arrangements use an array. |
-| `trov:contributedToArrangement` | object or array | no | Reference(s) to output arrangement(s). A single arrangement may be a plain object reference; multiple arrangements use an array. |
+| `trov:accessedArrangement` | object or array | no | `ArrangementBinding`(s) for input arrangement(s). Each binding references an arrangement via `trov:arrangement` and optionally specifies a path via `trov:boundTo`. |
+| `trov:contributedToArrangement` | object or array | no | `ArrangementBinding`(s) for output arrangement(s). Each binding references an arrangement via `trov:arrangement` and optionally specifies a path via `trov:boundTo`. |
 | `trov:hasPerformanceAttribute` | array | no | Zero or more performance attribute objects. |
+
+**Arrangement binding** fields:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `@id` | string | **Yes** | Local identifier, e.g. `"trp/0/binding/0"`. |
+| `@type` | string | **Yes** | Must be `"trov:ArrangementBinding"`. |
+| `trov:arrangement` | object | **Yes** | Reference to the arrangement, e.g. `{ "@id": "arrangement/0" }`. |
+| `trov:boundTo` | string | no | Path where the arrangement was accessible to the TRP during execution. |
 
 **Performance attribute** fields:
 
@@ -692,8 +709,16 @@ The following is a minimal but complete TRO declaration describing a data file a
                     "trov:wasConductedBy": { "@id": "trs" },
                     "trov:startedAtTime": "2024-06-15T14:00:00",
                     "trov:endedAtTime":   "2024-06-15T14:25:00",
-                    "trov:accessedArrangement":      { "@id": "arrangement/0" },
-                    "trov:contributedToArrangement": { "@id": "arrangement/1" },
+                    "trov:accessedArrangement": {
+                        "@id": "trp/0/binding/0",
+                        "@type": "trov:ArrangementBinding",
+                        "trov:arrangement": { "@id": "arrangement/0" }
+                    },
+                    "trov:contributedToArrangement": {
+                        "@id": "trp/0/binding/1",
+                        "@type": "trov:ArrangementBinding",
+                        "trov:arrangement": { "@id": "arrangement/1" }
+                    },
                     "trov:hasPerformanceAttribute": [
                         {
                             "@id": "trp/0/attribute/0",
@@ -727,4 +752,4 @@ The following is a minimal but complete TRO declaration describing a data file a
 
 **Note 3: Multiple performances.** A TRO may describe a multi-step workflow with multiple performances. Each performance links its own input and output arrangements. Arrangements may be shared: one performance's output arrangement can be another performance's input arrangement.
 
-**Note 4: Arrangement ordering.** Arrangements are not explicitly ordered in the JSON array. The relationships between arrangements are expressed through the performances: `trov:accessedArrangement` identifies arrangements a performance read from, and `trov:contributedToArrangement` identifies arrangements it wrote to.
+**Note 4: Arrangement ordering.** Arrangements are not explicitly ordered in the JSON array. The relationships between arrangements are expressed through the performances: `trov:accessedArrangement` identifies arrangements a performance read from, and `trov:contributedToArrangement` identifies arrangements it wrote to. Both properties take `ArrangementBinding` objects that reference the arrangement and optionally specify a `trov:boundTo` path.
