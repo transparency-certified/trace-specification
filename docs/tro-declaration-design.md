@@ -120,3 +120,11 @@ A TRO producer who follows the JSON Schema and preserves the `@context` is produ
 | **JSON consumer** | jq, JSONPath, any language's JSON parser | A predictable tree you can navigate | Known paths to every piece of information |
 | **RDF consumer** | Triplestore, SPARQL, SHACL | A graph of triples with standard vocabulary | Cross-TRO queries, linked data interoperability |
 | **Repository** | JSON or RDF technologies | A collection of JSON documents or single graph of triples | Integration with existing metadata and standards |
+
+---
+
+## History
+
+| Date | Change |
+|------|--------|
+| 2026-02-23 | Initial publication. |

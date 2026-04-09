@@ -162,3 +162,12 @@ The following design decisions are not yet resolved for 0.1:
 |----------|---------|
 | How does a verifier determine the signing mechanism? | (1) Require the mechanism to be decided at declaration time and include `trov:signingMechanism` as a mandatory property. (2) Make `trov:signingMechanism` optional, allowing validation rules when present (e.g. flagging a GPG-signed declaration that lacks `trov:publicKey`) and requiring the mechanism to be inferred from package contents when absent. (3) Omit the property entirely and always infer from the signing artifacts. |
 | Should the declaration name the signing artifact files? | The declaration already names the TRS, the artifacts, and the warrant chain. Referencing the signature and timestamp files (e.g. `"trov:signatureFile": "tro.p7s"`) would make the declaration self-describing for verification — a verifier would know exactly what files to look for without inspecting the package. This would require committing to the signing mechanism and file names at declaration time, even for deferred signing. If adopted, `trov:signingMechanism` would effectively become mandatory. The two questions are coupled but separable: the mechanism could be declared without naming files, and files could be named without a formal mechanism property (the file names imply the mechanism). |
+
+---
+
+## History
+
+| Date | Change |
+|------|--------|
+| 2026-03-26 | Added isolated-environment timestamping scenario to on-demand signing section. |
+| 2026-03-22 | Initial publication. |

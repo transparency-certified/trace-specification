@@ -272,3 +272,14 @@ TROV uses terms from the following external vocabularies:
 **Interoperability.** TROV aims to be interoperable with, rather than to replace, current and future Research Object standards (e.g., RO-Crate), archival formats (e.g., BagIt), and repository layouts. TROV complements the W3C PROV-O ontology for describing general provenance relationships.
 
 **JSON-LD context.** TRO declarations use a `@context` block to map short-form term names to the URIs defined here. See [TRO Declaration Format](tro-declaration-format.md) for the structure and [TRO Declaration Design](tro-declaration-design.md) for the dual-audience rationale.
+
+---
+
+## History
+
+| Date | Change |
+|------|--------|
+| 2026-04-08 | Added `ArrangementBinding` class, `trov:arrangement` and `trov:boundTo` properties. Updated ranges of `accessedArrangement`/`contributedToArrangement` to `ArrangementBinding`. |
+| 2026-03-26 | Added `trov:customTerm` property. Renamed "Named Individuals" to "Predefined Values". |
+| 2026-03-22 | Made `trov:publicKey` optional for X.509/CMS signing. Added `trov:createdWith` property. |
+| 2026-02-17 | Initial publication. |

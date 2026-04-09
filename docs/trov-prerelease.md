@@ -182,3 +182,11 @@ Based on the current 0.1 draft, updating a pre-release TRO declaration to confor
 2. **Replace `trov:sha256`** with a `trov:hash` object containing `trov:hashAlgorithm` and `trov:hashValue`. For example, `"trov:sha256": "abc..."` becomes `"trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "abc..." }`.
 3. **Add `trov:vocabularyVersion`** property to the TRO root object (value `"0.1"`).
 4. **Rename artifact location terms.** `trov:ArtifactLocus` → `trov:ArtifactLocation`, `trov:hasLocus` → `trov:hasArtifactLocation`, `trov:hasArtifact` (on locations) → `trov:artifact`, `trov:hasLocation` → `trov:path`.
+
+---
+
+## History
+
+| Date | Change |
+|------|--------|
+| 2026-03-09 | Initial publication. |

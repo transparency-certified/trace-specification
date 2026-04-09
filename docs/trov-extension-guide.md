@@ -212,3 +212,12 @@ This tells RDF tools that `mytrs:architecture` is a specific case of the new `tr
 
 If you don't have infrastructure to serve files at your namespace URI, the mapping file can also be distributed alongside your TRO packages or published in a repository.
 
+---
+
+## History
+
+| Date | Change |
+|------|--------|
+| 2026-03-26 | Added `trov:customTerm` and embedded type declarations for custom capabilities, attributes, and signing mechanisms. |
+| 2026-02-23 | Initial publication. |
+

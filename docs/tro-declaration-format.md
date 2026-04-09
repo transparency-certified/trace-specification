@@ -753,3 +753,14 @@ The following is a minimal but complete TRO declaration describing a data file a
 **Note 3: Multiple performances.** A TRO may describe a multi-step workflow with multiple performances. Each performance links its own input and output arrangements. Arrangements may be shared: one performance's output arrangement can be another performance's input arrangement.
 
 **Note 4: Arrangement ordering.** Arrangements are not explicitly ordered in the JSON array. The relationships between arrangements are expressed through the performances: `trov:accessedArrangement` identifies arrangements a performance read from, and `trov:contributedToArrangement` identifies arrangements it wrote to. Both properties take `ArrangementBinding` objects that reference the arrangement and optionally specify a `trov:boundTo` path.
+
+---
+
+## History
+
+| Date | Change |
+|------|--------|
+| 2026-04-08 | Updated examples and field tables for ArrangementBinding. Fixed `schema:` prefix URI (trailing slash). |
+| 2026-03-26 | Added `trov:customTerm` to TRS section with example. |
+| 2026-03-22 | Made `trov:publicKey` optional for X.509/CMS signing. Added `trov:createdWith` to TRO root. |
+| 2026-02-17 | Initial publication. |

@@ -371,3 +371,12 @@ Support independent adoption, establish community governance, and publish the vo
 - Submit description of vocabulary design and capabilities to a peer-reviewed journal.
 - Improve adopter documentation based on deployment experience.
 
+---
+
+## History
+
+| Date | Change |
+|------|--------|
+| 2026-03-26 | Updated terminology from "Named Individuals" to "Predefined Values". |
+| 2026-02-19 | Initial publication. |
+
