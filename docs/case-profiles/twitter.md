@@ -1,8 +1,14 @@
 (caseprofile-twitter)=
 # Twitter
 
+:::{note}
+
+This case study refers to Twitter before the transition to its current owner and website, X.
+
+:::
+
 Twitter provides access to data for [Academic
-Research](https://developer.twitter.com/en/products/twitter-api/academic-research).
+Research](https://web.archive.org/web/20230605065020/https://developer.twitter.com/en/products/twitter-api/academic-research).
 The Twitter [Developer Agreement and
 Policy](https://web.archive.org/web/20220307191453/https://developer.twitter.com/en/developer-terms/agreement-and-policy)
 includes the following content redistribution policy:
