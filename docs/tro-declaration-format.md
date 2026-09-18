@@ -149,7 +149,7 @@ Example TRS description:
     "@id": "trs",
     "@type": ["trov:TrustedResearchSystem", "schema:Organization"],
     "schema:name":        "SIVACOR",
-    "schema:description": "Secure Interactive Virtual Appliance ...",
+    "schema:description": "Scalable Infrastructure for Validation of Computational Social Science Research is a ...",
     "trov:publicKey": "...",
     "trov:hasCapability": [
         {
