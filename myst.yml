@@ -6,6 +6,15 @@ project:
   exclude:
     - venv
   github: transparency-certified/trace-specification
+  # theseus.fi answers the link checker with 403 Forbidden from GitHub Actions
+  # runners while serving the PDF fine to a browser, so the CI link check reads
+  # a live link as broken. Ignored by exact URL rather than relaxing the rule,
+  # so every other link stays checked.
+  error_rules:
+    - rule: link-resolves
+      severity: ignore
+      keys:
+        - https://www.theseus.fi/bitstream/handle/10024/155717/horn_klaus.pdf
   bibliography:
     - references.bib
   exports:

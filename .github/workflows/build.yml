@@ -1,26 +1,94 @@
 name: Jupyter Book Build Check
 
+# Pull requests only. A push trigger would double up: a branch with an open PR
+# matches both events, and concurrency can only cancel the redundant run, not
+# stop it being reported -- a cancelled run shows on the PR as a failing check.
+# Pushes to main are built and published by deploy.yml instead.
 on:
-  push:
-    branches-ignore: [main]
   pull_request:
+  workflow_dispatch:
+
+# Supersede in-flight builds when a PR is pushed to again; only the tip matters.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
   build:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 18.x
+          node-version: 22.x
 
       - name: Install Jupyter Book (via myst)
         run: npm install -g jupyter-book
 
-      - name: Build and check for warnings or errors
+      # `--html` is what writes _build/html, the directory deployed below;
+      # `--site` alone only produces the _build/site content bundle.
+      # BASE_URL is deliberately unset: Cloudflare Pages serves at the root of
+      # the domain, unlike the GitHub Pages deploy, which lives under /<repo>.
+      #
+      # Deliberately not --strict: that flag stops the build at the first error,
+      # which leaves no HTML to preview -- exactly when a rendered page is most
+      # useful to look at. Without it the build logs problems and carries on,
+      # and "Report build warnings and errors" below turns those logs into the
+      # job's result, after the preview has been deployed and linked.
+      - name: Build docs
+        id: build
         run: |
-          jupyter-book build --site --check-links --strict 2>&1 | tee build.log
+          jupyter-book build --site --html --check-links 2>&1 | tee build.log
+          echo "status=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      # Preview deploys go to Cloudflare Pages, not GitHub Pages, which only has
+      # room for one deployment (production, from main). Skipped for forked PRs:
+      # their runs cannot read secrets, and handing a Pages-write token to
+      # unreviewed code would be a bad trade for a preview. Also skipped when
+      # the build failed badly enough to leave no HTML behind.
+      - name: Deploy PR preview to Cloudflare Pages
+        id: preview
+        if: |
+          github.event_name == 'pull_request'
+          && github.event.pull_request.head.repo.full_name == github.repository
+          && hashFiles('_build/html/index.html') != ''
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # `pr-N` never matches the project's production branch, so these are
+          # always preview deployments, and the alias URL stays stable for the
+          # life of the PR instead of changing on every force-push.
+          command: >-
+            pages deploy ./_build/html
+            --project-name=trace-specification-preview
+            --branch=pr-${{ github.event.pull_request.number }}
+
+      # `--edit-last` keeps this to one comment per PR that is rewritten in
+      # place, rather than a new one on every push. Values are passed through
+      # env rather than interpolated into the script, so nothing from the PR
+      # can be executed as shell. The alias URL is only set when the deployment
+      # has one, so fall back to the per-deployment URL.
+      - name: Publish preview link
+        if: steps.preview.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          URL: ${{ steps.preview.outputs.pages-deployment-alias-url || steps.preview.outputs.deployment-url }}
+        run: |
+          echo "📖 Docs preview: $URL" >> "$GITHUB_STEP_SUMMARY"
+          gh pr comment "$PR" --edit-last --create-if-none \
+            --body "📖 **Docs preview:** $URL — built from commit \`${GITHUB_SHA:0:7}\`"
+
+      - name: Report build warnings and errors
+        if: always() && steps.build.conclusion != 'skipped'
+        env:
+          BUILD_STATUS: ${{ steps.build.outputs.status }}
+        run: |
           FAILED=0
           if grep -qE '^⚠️' build.log; then
             echo "::error::Jupyter Book build produced warnings. See log for details."
@@ -34,6 +102,11 @@ jobs:
             grep -E '^⛔️' build.log | while IFS= read -r line; do
               echo "::error::$line"
             done
+            FAILED=1
+          fi
+          # Catches failures that leave no ⚠️/⛔️ line at all, such as a crash.
+          if [ "${BUILD_STATUS:-1}" != "0" ]; then
+            echo "::error::Jupyter Book build exited with status ${BUILD_STATUS:-unknown}."
             FAILED=1
           fi
           exit $FAILED
