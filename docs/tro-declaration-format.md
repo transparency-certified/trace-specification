@@ -34,7 +34,7 @@ A TRO declaration is a single JSON-LD file (conventionally `*.jsonld`) containin
 The TRO object itself contains:
 
 - **Identity and metadata** — who created it and when.
-- **TRS description** — the Trusted Research System that assembled and signed the TRO, including the TRS's declared capabilities and signing identity.
+- **TRS declaration** — the Trusted Research System that assembled and signed the TRO, including the TRS's declared capabilities and signing identity.
 - **Composition** — the complete set of research artifacts, each identified by a content hash. Includes a composition fingerprint for identifying equivalent compositions.
 - **Arrangements** — named snapshots showing where artifacts were located at specific points in the workflow.
 - **Performances** — records of supervised computations, each linking input arrangements to output arrangements, with transparency attributes warranted by TRS capabilities.
@@ -54,7 +54,7 @@ Optionally, the TRO is accompanied by:
 
 ```json
 {
-    "@context": [ ... ],
+    "@context": { ... },
     "@graph": [ { /* single TRO object */ } ]
 }
 ```
@@ -65,14 +65,12 @@ The `@context` maps short property names (like `trov:hash`) to full URIs. In 0.1
 ### The `@context` Block
 
 ```json
-"@context": [
-    {
-        "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-        "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
-        "trov":   "https://w3id.org/trace/trov/0.1#",
-        "schema": "https://schema.org/"
-    }
-]
+"@context": {
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "trov":   "https://w3id.org/trace/trov/0.1#",
+    "schema": "https://schema.org/"
+}
 ```
 
 The context defines four namespace prefixes:
@@ -84,10 +82,9 @@ The context defines four namespace prefixes:
 | `trov:` | `https://w3id.org/trace/trov/0.1#` | All TROV terms |
 | `schema:` | `https://schema.org/` | Standard metadata (name, description, dates) |
 
+The `@context` may also carry an `@base`, a URL prefixed to every relative `@id` in the declaration; see [Identifier Conventions](#identifier-conventions).
+
 The mandatory parts of a TRO declaration depend only on TROV and the foundational `rdf:` and `rdfs:` namespaces. The `schema:` prefix is a convenience for common metadata — it may be omitted if no `schema:` properties are used, and no TRACE-compliant tool may reject a TRO declaration for missing `schema:` properties. Conversely, consumers of TROs — especially those curating triples extracted from TRO declarations — are free to discard non-TROV triples (e.g. `schema:` properties) to avoid undesired inferences that would result from importing large external ontologies.
-
-> From the JSON perspective, the `@context` is boilerplate copied into every TRO declaration, and everything after the `@context` is ordinary JSON. See [TRO Declaration Design](tro-declaration-design.md) for background.
-
 ---
 
 (the-tro-object)=
@@ -104,10 +101,11 @@ Example root properties:
     "@id": "tro",
     "@type": ["trov:TransparentResearchObject", "schema:CreativeWork"],
     "trov:vocabularyVersion": "0.1",
-    "schema:creator":     "SIVACOR",
+    "schema:creator":     { "@id": "https://trs.example.org/" },
     "schema:name":        "Example TRO",
     "schema:description": "TRO produced by an example workflow",
-    "schema:dateCreated": "2024-06-15T14:30:00",
+    "schema:dateCreated": "2024-06-15T14:30:00Z",
+    "trov:signingMechanism": { "@id": "trov:GPGSigning" },
 
     "trov:wasAssembledBy":  { ... },
     "trov:createdWith":     { ... },
@@ -118,17 +116,18 @@ Example root properties:
 }
 ```
 
-The `schema:` properties shown above are optional metadata. See [The `@context` Block](#the-context-block) for the dependency boundary.
+The `schema:` properties shown above are optional metadata. Where present, they take the values schema.org defines for them. See [The `@context` Block](#the-context-block) for the dependency boundary.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Local identifier for the TRO within this document. Conventionally `"tro"`. |
 | `@type` | string or array | **Yes** | Must include `"trov:TransparentResearchObject"`. May optionally include `"schema:CreativeWork"` to make the TRO discoverable by schema.org-aware tools (not required for using `schema:` properties). |
 | `trov:vocabularyVersion` | string | **Yes** | The TROV vocabulary version this declaration conforms to, e.g. `"0.1"`. |
-| `schema:creator` | string | no | Name of the agent or system that created this TRO declaration. |
-| `schema:name` | string | no | Short title for the TRO. |
-| `schema:description` | string | no | Human-readable description. |
-| `schema:dateCreated` | string (ISO 8601) | no | When the TRO declaration was created. |
+| `schema:creator` | object | no | The person or organization that created this TRO declaration: an object, never a string, typed `schema:Person` or `schema:Organization` where it carries a type. |
+| `schema:name` | string or array | no | Short title for the TRO. |
+| `schema:description` | string or array | no | Human-readable description. |
+| `schema:dateCreated` | string (ISO 8601) | no | When the TRO declaration was created: a date or a date-time. |
+| `trov:signingMechanism` | object | no | How the TRO declaration is signed, as a reference: `{ "@id": "trov:GPGSigning" }` or `{ "@id": "trov:X509CMSSigning" }`, or a custom mechanism outside the `trov:` namespace. See [Signing and Timestamping](#signing-and-timestamping). |
 | `trov:wasAssembledBy` | object | **Yes** | The TRS that produced and signed this TRO. |
 | `trov:createdWith` | object | no | Software tool that generated this declaration. Contains `schema:name` and `schema:softwareVersion`. |
 | `trov:hasComposition` | object | **Yes** | The artifact composition. |
@@ -138,26 +137,26 @@ The `schema:` properties shown above are optional metadata. See [The `@context` 
 
 ---
 
-### TRS Description (`trov:wasAssembledBy`)
+### TRS Declaration (`trov:wasAssembledBy`)
 
 The TRS block identifies the Trusted Research System that supervised the workflow and signed the TRO. It includes the TRS's declared capabilities and signing identity.
 
-Example TRS description:
+Example TRS declaration:
 
 ```json
 "trov:wasAssembledBy": {
-    "@id": "trs",
+    "@id": "https://trs.example.org/",
     "@type": ["trov:TrustedResearchSystem", "schema:Organization"],
-    "schema:name":        "SIVACOR",
-    "schema:description": "Scalable Infrastructure for Validation of Computational Social Science Research is a ...",
+    "schema:name":        "Example TRS",
+    "schema:description": "A TRS that enforces Internet isolation and records Internet access",
     "trov:publicKey": "...",
     "trov:hasCapability": [
         {
-            "@id": "trs/capability/0",
+            "@id": "https://trs.example.org/capability/internet-isolation",
             "@type": "trov:CanProvideInternetIsolation"
         },
         {
-            "@id": "trs/capability/1",
+            "@id": "https://trs.example.org/capability/internet-access-recording",
             "@type": "trov:CanRecordInternetAccess"
         }
     ],
@@ -172,7 +171,7 @@ Example TRS description:
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `@id` | string | **Yes** | Local identifier. Conventionally `"trs"`. |
+| `@id` | string | **Yes** | A URL uniquely identifying the TRS, on a domain its operator controls, ideally one that leads to a description of the system. |
 | `@type` | string or array | **Yes** | Must include `"trov:TrustedResearchSystem"`. |
 | `trov:publicKey` | string | GPG: **Yes**; X.509/CMS: no | The TRS's public key. Required for GPG signing (binds key to signed content). Not needed for X.509/CMS (certificate is in the `.p7s` file). |
 | `trov:hasCapability` | array | no | Zero or more capability declarations. |
@@ -184,7 +183,7 @@ Each **capability** object declares that the TRS is able to enforce a specific t
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `@id` | string | Local identifier, e.g. `"trs/capability/0"`. Referenced by performance attributes. |
+| `@id` | string | A URL uniquely identifying the capability. Referenced by performance attributes. |
 | `@type` | string | A capability type from the TROV vocabulary, e.g. `"trov:CanProvideInternetIsolation"`. |
 
 See [TROV Vocabulary Reference — TRS Capability Types](trov-vocabulary.md#predefined-values-trs-capability-types) for the full list of defined capability types.
@@ -193,7 +192,7 @@ See [TROV Vocabulary Reference — TRS Capability Types](trov-vocabulary.md#pred
 
 ### Timestamping Authority (`trov:wasTimestampedBy`)
 
-If the TRS obtained an RFC 3161 timestamp for the TRO signature from a separate timestamping authority, the TSA is recorded as a property of the TRO root object (a sibling of `trov:wasAssembledBy`). Not all signing mechanisms require this — X.509/CMS signatures can embed the timestamp directly in the `.p7s` file, making a separate TSA block unnecessary.
+If the TRS obtained an RFC 3161 timestamp for the TRO signature from a separate timestamping authority, the TSA is recorded as a property of the TRO root object (a sibling of `trov:wasAssembledBy`). Not all signing mechanisms require this — an X.509/CMS signature file (`.p7s`) can carry the timestamp itself, in which case no separate TSA block is needed.
 
 ```json
 {
@@ -213,13 +212,13 @@ If the TRS obtained an RFC 3161 timestamp for the TRO signature from a separate 
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Local identifier. Conventionally `"tsa"`. |
 | `@type` | string | **Yes** | Must be `"trov:TimeStampingAuthority"`. |
-| `trov:publicKey` | string | no | Public key of the timestamping authority. Not needed when the timestamp is embedded in the `.p7s` file. |
+| `trov:publicKey` | string | no | Public key of the timestamping authority. Not needed when the timestamp is embedded in an X.509/CMS signature (`.p7s`). |
 
 ---
 
 ### Artifact Composition (`trov:hasComposition`)
 
-The composition is the complete, deduplicated set of all artifacts described by the TRO. Each artifact is identified solely by its content hash, and artifact objects carry no resource path information. Paths are recorded separately in [artifact locations](#artifact-arrangements-trovhasarrangement). An artifact appearing at different paths — or across different workflow stages — is listed once in the composition and referenced by identity wherever it appears.
+The composition is the complete set of artifacts described by the TRO. Each artifact object records the hash of the artifact's content, and no resource path information. Paths are recorded separately in [artifact locations](#artifact-arrangements-trovhasarrangement). An artifact appearing at different paths — or across different workflow stages — is listed once in the composition and referenced by identity wherever it appears.
 
 ```json
 "trov:hasComposition": {
@@ -228,20 +227,38 @@ The composition is the complete, deduplicated set of all artifacts described by 
     "trov:hasFingerprint": {
         "@id": "fingerprint",
         "@type": "trov:CompositionFingerprint",
-        "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "218d9c33..." }
+        "trov:hash": {
+            "trov:hashAlgorithm": "sha256",
+            "trov:hashValue": "dd98ec1402795231d1ed39dc64336f9771411aaff6e916e3bd6f5107bf28d474"
+        }
     },
     "trov:hasArtifact": [
         {
             "@id": "composition/1/artifact/0",
             "@type": "trov:ResearchArtifact",
-            "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "b5bb9d80..." },
-            "trov:mimeType": "text/plain"
+            "trov:hash": {
+                "trov:hashAlgorithm": "sha256",
+                "trov:hashValue": "d0c804c3db78dbfa3d9a9206c5140f692c5f6735d2ed1f325d817a4e3bce713c"
+            },
+            "trov:mimeType": "text/csv"
         },
         {
             "@id": "composition/1/artifact/1",
             "@type": "trov:ResearchArtifact",
-            "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "7d865e95..." },
+            "trov:hash": {
+                "trov:hashAlgorithm": "sha256",
+                "trov:hashValue": "068eeb145bad28caf162afe17344cbfa8d302036f9d275a3a10c36a49aca696a"
+            },
             "trov:mimeType": "application/x-python"
+        },
+        {
+            "@id": "composition/1/artifact/2",
+            "@type": "trov:ResearchArtifact",
+            "trov:hash": {
+                "trov:hashAlgorithm": "sha256",
+                "trov:hashValue": "fb986b83d00a50a45a52c8313d8e9f4b9963ca1cb979a18830bc8770c7106516"
+            },
+            "trov:mimeType": "text/csv"
         }
     ]
 }
@@ -262,16 +279,16 @@ The composition is the complete, deduplicated set of all artifacts described by 
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Local identifier. Conventionally `"fingerprint"`. |
 | `@type` | string | **Yes** | Must be `"trov:CompositionFingerprint"`. |
-| `trov:hash` | object | **Yes** | Hash computed over the sorted hash values of all artifacts (see below). Contains `trov:hashAlgorithm` and `trov:hashValue`. |
+| `trov:hash` | object | **Yes** | Hash computed over the sorted hash values of all artifacts (see below). Contains `trov:hashAlgorithm` and `trov:hashValue`, with the algorithms and form permitted for artifacts. |
 
 **Artifact** fields:
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Local identifier, e.g. `"composition/1/artifact/0"`. Referenced by artifact locations. |
-| `@type` | string | **Yes** | Must be `"trov:ResearchArtifact"`. |
-| `trov:hash` | object or array | **Yes** | One or more hashes of the artifact's content. Each object contains `trov:hashAlgorithm` (e.g. `"sha256"`) and `trov:hashValue`. |
-| `trov:mimeType` | string | no | MIME type of the artifact (e.g. `"text/plain"`, `"application/pdf"`). |
+| `@type` | string or array | **Yes** | Must be (or include) `"trov:ResearchArtifact"`. |
+| `trov:hash` | object or array | **Yes** | One or more hashes of the artifact's content. Each object contains `trov:hashAlgorithm` (e.g. `"sha256"`) and `trov:hashValue`. The algorithms currently permitted are `"sha256"`, `"sha384"`, `"sha512"`, `"sha3-256"`, `"sha3-384"`, `"sha3-512"`, `"blake2b"`, `"blake2s"` and `"blake3"`. Hash values are in lowercase hexadecimal. |
+| `trov:mimeType` | string | no | MIME type of the artifact, without parameters (e.g. `"text/plain"`, `"application/pdf"`, not `"text/plain; charset=utf-8"`). |
 
 #### Computing the Composition Fingerprint
 
@@ -389,9 +406,9 @@ A performance records a supervised unit of work — typically a computation exec
         "@id": "trp/0",
         "@type": "trov:TrustedResearchPerformance",
         "rdfs:comment": "Execution of analysis workflow",
-        "trov:wasConductedBy": { "@id": "trs" },
-        "trov:startedAtTime": "2024-06-15T14:00:00",
-        "trov:endedAtTime":   "2024-06-15T14:25:00",
+        "trov:wasConductedBy": { "@id": "https://trs.example.org/" },
+        "trov:startedAtTime": "2024-06-15T14:00:00Z",
+        "trov:endedAtTime":   "2024-06-15T14:25:00Z",
         "trov:accessedArrangement": {
             "@id": "trp/0/binding/0",
             "@type": "trov:ArrangementBinding",
@@ -406,12 +423,12 @@ A performance records a supervised unit of work — typically a computation exec
             {
                 "@id": "trp/0/attribute/0",
                 "@type": "trov:InternetIsolation",
-                "trov:warrantedBy": { "@id": "trs/capability/0" }
+                "trov:warrantedBy": { "@id": "https://trs.example.org/capability/internet-isolation" }
             },
             {
                 "@id": "trp/0/attribute/1",
                 "@type": "trov:InternetAccessRecording",
-                "trov:warrantedBy": { "@id": "trs/capability/1" }
+                "trov:warrantedBy": { "@id": "https://trs.example.org/capability/internet-access-recording" }
             }
         ]
     }
@@ -425,9 +442,9 @@ A performance records a supervised unit of work — typically a computation exec
 | `@id` | string | **Yes** | Local identifier, e.g. `"trp/0"`. |
 | `@type` | string | **Yes** | Must be `"trov:TrustedResearchPerformance"`. |
 | `rdfs:comment` | string | no | Human-readable description. |
-| `trov:wasConductedBy` | object | **Yes** | Reference to the TRS, e.g. `{ "@id": "trs" }`. |
-| `trov:startedAtTime` | string (ISO 8601) | no | When the performance began. |
-| `trov:endedAtTime` | string (ISO 8601) | no | When the performance ended. |
+| `trov:wasConductedBy` | object | **Yes** | Reference to the TRS, e.g. `{ "@id": "https://trs.example.org/" }`. |
+| `trov:startedAtTime` | string (ISO 8601) | no | When the performance began, with its time zone (e.g. `Z` or `-08:00`). |
+| `trov:endedAtTime` | string (ISO 8601) | no | When the performance ended, with its time zone. |
 | `trov:accessedArrangement` | object or array | no | `ArrangementBinding`(s) for input arrangement(s). Each binding references an arrangement via `trov:arrangement` and optionally specifies a path via `trov:boundTo`. |
 | `trov:contributedToArrangement` | object or array | no | `ArrangementBinding`(s) for output arrangement(s). Each binding references an arrangement via `trov:arrangement` and optionally specifies a path via `trov:boundTo`. |
 | `trov:hasPerformanceAttribute` | array | no | Zero or more performance attribute objects. |
@@ -447,7 +464,7 @@ A performance records a supervised unit of work — typically a computation exec
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Local identifier, e.g. `"trp/0/attribute/0"`. |
 | `@type` | string | **Yes** | A performance attribute type, e.g. `"trov:InternetIsolation"`. |
-| `trov:warrantedBy` | object | **Yes** | Reference to the TRS capability that justifies this claim, e.g. `{ "@id": "trs/capability/0" }`. |
+| `trov:warrantedBy` | object | **Yes** | Reference to the TRS capability that justifies this claim, e.g. `{ "@id": "https://trs.example.org/capability/internet-isolation" }`. |
 
 See [TROV Vocabulary Reference — TRP Attribute Types](trov-vocabulary.md#predefined-values-trp-attribute-types) for the defined attribute types and their required warranting capabilities.
 
@@ -499,14 +516,14 @@ In this example, the TRO-level claim that all input data is included is warrante
 
 ```json
 "trov:hasCapability": [
-    { "@id": "trs/capability/0", "@type": "trov:CanProvideInternetIsolation" }
+    { "@id": "https://trs.example.org/capability/internet-isolation", "@type": "trov:CanProvideInternetIsolation" }
 ],
 ...
 "trov:hasPerformanceAttribute": [
     {
         "@id": "trp/0/attribute/0",
         "@type": "trov:InternetIsolation",
-        "trov:warrantedBy": { "@id": "trs/capability/0" }
+        "trov:warrantedBy": { "@id": "https://trs.example.org/capability/internet-isolation" }
     }
 ],
 ...
@@ -524,53 +541,55 @@ In this example, the TRO-level claim that all input data is included is warrante
 (identifier-conventions)=
 ## Identifier Conventions
 
-All `@id` values are local to the document. They are used for cross-referencing between objects within the same TRO declaration. The conventions used by tro-utils are:
+Every element of a TRO declaration that this page describes (the TRS and its capabilities, the TSA, the composition, its fingerprint and artifacts, the arrangements and their locations, the performances and their bindings, and the attributes) must be defined in the TRO declaration itself, and an `@id` referring to one must match an object defined there. Other `@id` values may name resources elsewhere.
 
-| Object | Pattern | Examples |
-|--------|---------|----------|
-| TRO | `tro` | `"tro"` |
-| TRS | `trs` | `"trs"` |
-| TSA | `tsa` | `"tsa"` |
-| Composition | `composition/{n}` | `"composition/1"` |
-| Fingerprint | `fingerprint` | `"fingerprint"` |
-| Artifact | `composition/{n}/artifact/{i}` | `"composition/1/artifact/0"` |
-| Arrangement | `arrangement/{i}` | `"arrangement/0"` |
-| Artifact location | `arrangement/{i}/location/{j}` | `"arrangement/0/location/0"` |
-| TRS capability | `trs/capability/{i}` | `"trs/capability/0"` |
-| Performance | `trp/{i}` | `"trp/0"` |
-| Performance attribute | `trp/{i}/attribute/{j}` | `"trp/0/attribute/0"` |
-| TRO attribute | `tro/attribute/{i}` | `"tro/attribute/0"` |
+Most `@id` values referring to other elements of the TRO can be written as relative paths, such as `"arrangement/0"`, to which the declaration's `@base` is prefixed. Without an `@base` such paths stay relative, and a consumer reading the declaration as linked data must supply a base. The TRS and its capabilities, which appear in every TRO the TRS assembles, are identified by full URLs.
 
-> **Note:** These identifier patterns are conventions, not requirements. The important thing is internal consistency: every `@id` referenced by another object must match a defined `@id` within the document. Tools should treat identifiers as opaque strings and rely on cross-references, not string parsing.
+With an `@base` of `https://trs.example.org/tro/3f2a9c/`, the identifiers used in this page's examples become:
+
+| Element | `@id` in the declaration | Full identifier |
+|---------|--------------------------|-----------------|
+| TRO | `tro` | `https://trs.example.org/tro/3f2a9c/tro` |
+| Composition | `composition/1` | `https://trs.example.org/tro/3f2a9c/composition/1` |
+| Artifact | `composition/1/artifact/0` | `https://trs.example.org/tro/3f2a9c/composition/1/artifact/0` |
+| Arrangement | `arrangement/0` | `https://trs.example.org/tro/3f2a9c/arrangement/0` |
+| Artifact location | `arrangement/0/location/0` | `https://trs.example.org/tro/3f2a9c/arrangement/0/location/0` |
+| Performance | `trp/0` | `https://trs.example.org/tro/3f2a9c/trp/0` |
+| Arrangement binding | `trp/0/binding/0` | `https://trs.example.org/tro/3f2a9c/trp/0/binding/0` |
+| TRS | `https://trs.example.org/` | `https://trs.example.org/` (already full) |
+
+This is an alternative to giving every element its own opaque identifier, such as a UUID. Uniqueness comes from one unique URI, the `@base`, together with a convention that yields suffixes unique within the declaration and easy to read. The convention is not a requirement, and tools should still treat identifiers as opaque strings, relying on cross-references rather than parsing.
 
 ---
 
 (signing-and-timestamping)=
 ## Signing and Timestamping
 
-A TRO package includes the declaration and one or more signing artifacts. The signing mechanism is not fixed — different TRS implementations use different approaches. What matters is that the signature can be verified against the public key or certificate recorded in the TRO declaration.
+A [TRO package](tro-packages.md) includes the declaration and one or more signing artifacts. The signing mechanism is not fixed — different TRS implementations use different approaches. What matters is that a verifier can confirm the declaration has not been altered since it was signed and, by checking the signing key or certificate against a source outside the package, that the TRS it names signed it. See [TRO Packages — Signing identity and trust](tro-packages.md#signing-identity-and-trust).
 
-**Current implementations:**
+A TRO declaration states which mechanism signed it with `trov:signingMechanism`, whose value is the mechanism's TROV term, e.g. `"trov:signingMechanism": { "@id": "trov:GPGSigning" }`. The table lists the mechanisms in use today, with the TROV term for each and the files each puts in a TRO package:
 
-| Signing mechanism | Package contents |
-|-------------------|-----------------|
-| GPG detached signature | `.jsonld` declaration, `.sig` signature, `.tsr` RFC 3161 timestamp |
-| X.509/CMS (PKCS #7) | `.jsonld` declaration, `.p7s` signature (embeds certificate and timestamp) |
-
-The signature covers the declaration file byte-for-byte. In the reference implementation (tro-utils), the declaration is serialized with `json.dumps(data, indent=2, sort_keys=True)` to ensure a deterministic byte sequence. The signature is a separate file, not embedded in the JSON.
+| Signing mechanism | TROV term | Package contents |
+|-------------------|-----------|-----------------|
+| GPG detached signature | `trov:GPGSigning` | `.jsonld` declaration, `.sig` signature, `.tsr` RFC 3161 timestamp |
+| X.509/CMS (PKCS #7) | `trov:X509CMSSigning` | `.jsonld` declaration, `.p7s` signature (embeds certificate and timestamp) |
 
 ---
 
 (tro-format-verification)=
 ## Verification
 
-Verification of a TRO declaration may include:
+Verifying a TRO declaration entails:
 
-1. Verifying that the signature on the declaration file matches the public key or certificate in the TRO declaration.
-2. Optionally verifying that the timestamp proves the signature existed at the claimed time.
-3. Recomputing the composition fingerprint from the listed artifact hashes and confirming it matches the declared fingerprint.
-4. Confirming that every artifact referenced by an arrangement is present in the composition.
-5. Tracing the warrant chain: confirming that each `trov:warrantedBy` reference resolves to an object of the expected type.
+1. Using the signature to confirm that the declaration has not been altered since it was signed.
+2. Confirming that the key or certificate used to sign the TRO belongs to the TRS the declaration names.
+3. If the TRO was timestamped, using the timestamp to confirm that the signature existed at the claimed time.
+
+Verification may also include:
+
+4. Recomputing the composition fingerprint from the listed artifact hashes and confirming it matches the declared fingerprint.
+5. Confirming that every artifact referenced by an arrangement is present in the composition.
+6. Confirming that the capabilities of the TRS warrant the attributes declared for each TRP.
 
 ---
 
@@ -581,14 +600,13 @@ The following is a minimal but complete TRO declaration describing a data file a
 
 ```json
 {
-    "@context": [
-        {
-            "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-            "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
-            "trov":   "https://w3id.org/trace/trov/0.1#",
-            "schema": "https://schema.org/"
-        }
-    ],
+    "@context": {
+        "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+        "trov":   "https://w3id.org/trace/trov/0.1#",
+        "schema": "https://schema.org/",
+        "@base":  "https://trs.example.org/tro/3f2a9c/"
+    },
     "@graph": [
         {
             "@id": "tro",
@@ -596,17 +614,18 @@ The following is a minimal but complete TRO declaration describing a data file a
             "trov:vocabularyVersion": "0.1",
             "schema:name": "Example analysis TRO",
             "schema:description": "TRO from an analysis reading a data file and a script, producing one output",
-            "schema:dateCreated": "2024-06-15T14:30:00",
+            "schema:dateCreated": "2024-06-15T14:30:00Z",
+            "trov:signingMechanism": { "@id": "trov:GPGSigning" },
 
             "trov:wasAssembledBy": {
-                "@id": "trs",
+                "@id": "https://trs.example.org/",
                 "@type": ["trov:TrustedResearchSystem", "schema:Organization"],
                 "schema:name": "Example TRS",
                 "schema:description": "A TRS that enforces Internet isolation",
                 "trov:publicKey": "-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----\n",
                 "trov:hasCapability": [
                     {
-                        "@id": "trs/capability/0",
+                        "@id": "https://trs.example.org/capability/internet-isolation",
                         "@type": "trov:CanProvideInternetIsolation"
                     }
                 ]
@@ -630,25 +649,37 @@ The following is a minimal but complete TRO declaration describing a data file a
                 "trov:hasFingerprint": {
                     "@id": "fingerprint",
                     "@type": "trov:CompositionFingerprint",
-                    "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "a1b2c3d4..." }
+                    "trov:hash": {
+                        "trov:hashAlgorithm": "sha256",
+                        "trov:hashValue": "dd98ec1402795231d1ed39dc64336f9771411aaff6e916e3bd6f5107bf28d474"
+                    }
                 },
                 "trov:hasArtifact": [
                     {
                         "@id": "composition/1/artifact/0",
                         "@type": "trov:ResearchArtifact",
-                        "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "aaa1..." },
+                        "trov:hash": {
+                            "trov:hashAlgorithm": "sha256",
+                            "trov:hashValue": "d0c804c3db78dbfa3d9a9206c5140f692c5f6735d2ed1f325d817a4e3bce713c"
+                        },
                         "trov:mimeType": "text/csv"
                     },
                     {
                         "@id": "composition/1/artifact/1",
                         "@type": "trov:ResearchArtifact",
-                        "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "bbb2..." },
+                        "trov:hash": {
+                            "trov:hashAlgorithm": "sha256",
+                            "trov:hashValue": "068eeb145bad28caf162afe17344cbfa8d302036f9d275a3a10c36a49aca696a"
+                        },
                         "trov:mimeType": "application/x-python"
                     },
                     {
                         "@id": "composition/1/artifact/2",
                         "@type": "trov:ResearchArtifact",
-                        "trov:hash": { "trov:hashAlgorithm": "sha256", "trov:hashValue": "ccc3..." },
+                        "trov:hash": {
+                            "trov:hashAlgorithm": "sha256",
+                            "trov:hashValue": "fb986b83d00a50a45a52c8313d8e9f4b9963ca1cb979a18830bc8770c7106516"
+                        },
                         "trov:mimeType": "text/csv"
                     }
                 ]
@@ -706,9 +737,9 @@ The following is a minimal but complete TRO declaration describing a data file a
                     "@id": "trp/0",
                     "@type": "trov:TrustedResearchPerformance",
                     "rdfs:comment": "Execution of analysis script",
-                    "trov:wasConductedBy": { "@id": "trs" },
-                    "trov:startedAtTime": "2024-06-15T14:00:00",
-                    "trov:endedAtTime":   "2024-06-15T14:25:00",
+                    "trov:wasConductedBy": { "@id": "https://trs.example.org/" },
+                    "trov:startedAtTime": "2024-06-15T14:00:00Z",
+                    "trov:endedAtTime":   "2024-06-15T14:25:00Z",
                     "trov:accessedArrangement": {
                         "@id": "trp/0/binding/0",
                         "@type": "trov:ArrangementBinding",
@@ -723,7 +754,7 @@ The following is a minimal but complete TRO declaration describing a data file a
                         {
                             "@id": "trp/0/attribute/0",
                             "@type": "trov:InternetIsolation",
-                            "trov:warrantedBy": { "@id": "trs/capability/0" }
+                            "trov:warrantedBy": { "@id": "https://trs.example.org/capability/internet-isolation" }
                         }
                     ]
                 }
@@ -760,6 +791,7 @@ The following is a minimal but complete TRO declaration describing a data file a
 
 | Date | Change |
 |------|--------|
+| (push date) | Aligned with tro-checks. Rewrote [Identifier Conventions](#identifier-conventions) and [Verification](#tro-format-verification) sections. |
 | 2026-04-08 | Updated examples and field tables for ArrangementBinding. Fixed `schema:` prefix URI (trailing slash). |
 | 2026-03-26 | Added `trov:customTerm` to TRS section with example. |
 | 2026-03-22 | Made `trov:publicKey` optional for X.509/CMS signing. Added `trov:createdWith` to TRO root. |
