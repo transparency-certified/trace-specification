@@ -126,12 +126,11 @@ trov/2#         →  1.x frozen, new namespace, living docs describe latest 2.x 
 
 **Goal:** Produce a documented, testable baseline. Descriptive of deployed reality, with known issues resolved.
 
-**Authoritative sources (in priority order):**
+**Authoritative sources, in priority order:**
 
-1. **tro-utils source code** — the reference implementation. What it produces is what 0.1 means.
-2. **trov.ttl** — the formal OWL ontology. Currently incomplete; will be updated to match the above.
-3. **trov-shacl.ttl** — SHACL validation shapes. Currently partial; will be extended.
-4. **TROV Vocabulary Reference** (`trov-vocabulary.md`) — the human-readable specification.
+1. **[tro-checks](https://github.com/transparency-certified/tro-checks)**, the machine-checkable statement of what TRACE requires of a TRO declaration. Where anything below disagrees with it, tro-checks is right.
+2. **This Specification**, including the [TROV Vocabulary Reference](trov-vocabulary.md) and the [TRO Declaration Format](tro-declaration-format.md). It may state requirements that tro-checks does not yet check.
+3. **`trov.ttl` and `trov-shacl.ttl`**, the OWL ontology and SHACL shapes. They currently lag behind the Specification and will be updated to match it.
 
 **What is in 0.1 (draft — under discussion and subject to change before release):**
 

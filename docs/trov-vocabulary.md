@@ -210,9 +210,9 @@ The following capability types are currently defined. This list is designed to g
 (cardinality-constraints)=
 ## Cardinality Constraints
 
-The following constraints are defined in SHACL shapes and enforced during validation.
+The table below declares the cardinality of each property.
 
-| Shape | Property | Constraint |
+| Element | Property | Constraint |
 |-------|----------|------------|
 | TRO | `trov:vocabularyVersion` | Exactly 1 (string) |
 | TRO | `trov:wasAssembledBy` | Exactly 1 TRS |
