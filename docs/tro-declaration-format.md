@@ -142,7 +142,7 @@ The table below describes each property in the example above: the type of its va
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Identifier for the TRO, conventionally the relative path `"tro"`. See [Identifier Conventions](#identifier-conventions). |
 | `@type` | string or array | **Yes** | Must be (or include) `"trov:TransparentResearchObject"`. |
-| `trov:vocabularyVersion` | string | **Yes** | The TROV vocabulary version this declaration conforms to, e.g. `"0.1"`, matching the version in the `trov` prefix's namespace. |
+| `trov:vocabularyVersion` | string | **Yes** | The TROV vocabulary version this declaration conforms to, e.g. `"0.1"`, matching the version in the `trov` prefix. |
 | `schema:creator` | object | no | The person or organization that created this TRO declaration, given as an object rather than a string. |
 | `schema:name` | string or array | no | Short title for the TRO. |
 | `schema:description` | string or array | no | Human-readable description of the TRO. |
@@ -510,7 +510,7 @@ TRO attributes are transparency claims about the TRO as a whole, warranted by at
 |-------|------|----------|-------------|
 | `@id` | string | **Yes** | Identifier, conventionally a relative path like `"tro/attribute/0"`. |
 | `@type` | string | **Yes** | A TRO attribute type, e.g. `"trov:IncludesAllInputData"`. |
-| `trov:warrantedBy` | object or array | **Yes** | Reference(s) to the performance attribute(s) that justify this claim. |
+| `trov:warrantedBy` | object or array | **Yes** | Reference(s) to the TRS capability or performance attribute(s) that justify this claim. |
 
 See [TROV Vocabulary Reference — TRO Attribute Types](trov-vocabulary.md#predefined-values-tro-attribute-types) for the defined attribute types.
 
@@ -521,10 +521,7 @@ See [TROV Vocabulary Reference — TRO Attribute Types](trov-vocabulary.md#prede
 
 The warrant chain is TROV's mechanism for accountability. TROV supports declaring part or all of the chain of warranting attributes and capabilities justifying a particular transparency claim. Downstream consumers — publishers, repositories, funding agencies — may impose their own requirements on the completeness of these chains.
 
-```
-TRO attribute    →  trov:warrantedBy  →  Performance attribute
-                                           →  trov:warrantedBy  →  TRS capability
-```
+A TRP attribute is warranted by a TRS capability; a TRO attribute is warranted by a TRS capability, either directly or through TRP attributes. See [TROV Vocabulary Reference — The Warrant Chain](trov-vocabulary.md#the-warrant-chain-attributes-and-capabilities).
 
 When the full chain is present, it works as follows in JSON terms:
 
