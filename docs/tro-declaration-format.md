@@ -582,7 +582,7 @@ This approach is an alternative to giving every element its own opaque identifie
 (signing-and-timestamping)=
 ## Signing and Timestamping
 
-A [TRO package](tro-packages.md) includes the declaration and one or more signing artifacts. The signing mechanism is not fixed; different TRS implementations use different approaches. What matters is that a verifier can confirm the declaration has not been altered since it was signed and, by checking the signing key or certificate against a source outside the package, that the TRS it names signed it. See [TRO Packages — Signing identity and trust](tro-packages.md#signing-identity-and-trust).
+A [TRO package](tro-packages.md) includes the declaration and one or more signature files. The signing mechanism is not fixed; different TRS implementations use different approaches. What matters is that a verifier can confirm the declaration has not been altered since it was signed and, by checking the signing key or certificate against a source outside the package, that the TRS it names signed it. See [TRO Packages — Signing identity and trust](tro-packages.md#signing-identity-and-trust).
 
 A TRO declaration states which mechanism signed it with `trov:signingMechanism`, whose value is the mechanism's TROV term, e.g. `"trov:signingMechanism": { "@id": "trov:GPGSigning" }`. The table lists the mechanisms in use today, with the TROV term for each and the files each puts in a TRO package:
 
