@@ -150,5 +150,6 @@ In both cases, the verifier consults a source beyond the TRO package to connect 
 
 | Date | Change |
 |------|--------|
+| 2026-11-18 | Rewrote the Verification section. |
 | 2026-03-26 | Added isolated-environment timestamping scenario to on-demand signing section. |
 | 2026-03-22 | Initial publication. |

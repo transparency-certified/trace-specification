@@ -806,7 +806,7 @@ The following is a minimal but complete TRO declaration describing a data file a
 
 | Date | Change |
 |------|--------|
-| (push date) | Aligned with tro-checks. Rewrote [Identifier Conventions](#identifier-conventions) and [Verification](#tro-format-verification) sections. |
+| 2026-11-17 | Rewrote [Identifier Conventions](#identifier-conventions) and [Verification](#tro-format-verification) sections. |
 | 2026-04-08 | Updated examples and field tables for ArrangementBinding. Fixed `schema:` prefix URI (trailing slash). |
 | 2026-03-26 | Added `trov:customTerm` to TRS section with example. |
 | 2026-03-22 | Made `trov:publicKey` optional for X.509/CMS signing. Added `trov:createdWith` to TRO root. |

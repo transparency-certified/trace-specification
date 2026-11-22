@@ -292,6 +292,7 @@ TROV uses terms from the following external vocabularies:
 
 | Date | Change |
 |------|--------|
+| 2026-11-17 | Added `trov:signingMechanism`. |
 | 2026-04-08 | Added `ArrangementBinding` class, `trov:arrangement` and `trov:boundTo` properties. Updated ranges of `accessedArrangement`/`contributedToArrangement` to `ArrangementBinding`. |
 | 2026-03-26 | Added `trov:customTerm` property. Renamed "Named Individuals" to "Predefined Values". |
 | 2026-03-22 | Made `trov:publicKey` optional for X.509/CMS signing. Added `trov:createdWith` property. |
